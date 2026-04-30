@@ -159,8 +159,17 @@ export default function IngestProcess() {
                     border: 1px solid #E2E8F0;
                     box-shadow: 0 4px 32px rgba(13, 65, 225, 0.07);
                     overflow: hidden;
-                    min-height: 460px;
+                    min-height: 200px;
+                    padding: 0;
                 }
+
+                @media (max-width: 768px) {
+                    .ingest-wrap {
+                        padding: 1.5rem 1rem;
+                        min-height: 280px;
+                    }
+                }
+
                 .ingest-svg {
                     width: 100%;
                     height: 100%;

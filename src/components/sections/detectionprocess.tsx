@@ -137,7 +137,7 @@ export default function DetectionProcess() {
                 ))}
 
                 {/* ── FOOTER ── */}
-                <text x="340" y="422" textAnchor="middle" fontSize="9" fill={TM}
+                <text x="350" y="425" textAnchor="middle" fontSize="9" fill={TM}
                     fontFamily="'Poppins', sans-serif" fontWeight="600" letterSpacing="2">
                     SIGNALS → INTENT GRAPH → DETECTIONS
                 </text>
@@ -155,8 +155,17 @@ export default function DetectionProcess() {
                     border: 1px solid #E2E8F0;
                     box-shadow: 0 4px 32px rgba(13, 65, 225, 0.07);
                     overflow: hidden;
-                    min-height: 460px;
+                    min-height: 400px;
+                    padding: 0;
                 }
+
+                @media (max-width: 768px) {
+                    .detect-wrap {
+                        padding: 1.5rem 1rem;
+                        min-height: 500px;
+                    }
+                }
+
                 .detect-svg {
                     width: 100%;
                     height: 100%;

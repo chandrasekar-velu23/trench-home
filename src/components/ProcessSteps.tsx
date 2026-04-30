@@ -48,7 +48,7 @@ export default function ProcessSteps() {
       <div className="section-header">
         <ScrollReveal direction="up" distance={30}>
           <span className="eyebrow">ONE PLATFORM. ZERO BLIND SPOTS. TOTAL CONTROL.</span>
-          <TextReveal text="How Trench Works." as="h2" className="headline" />
+          <TextReveal text="How Trench Works." as="h1" className="title-lg" />
           <p className="sub-headline" style={{ textTransform: 'uppercase', letterSpacing: '2px', fontSize: '13px', fontWeight: 600 }}>
             THREE STEPS. FULLY AUTOMATED. ALWAYS ON.
           </p>
@@ -107,7 +107,7 @@ export default function ProcessSteps() {
               exit={{ opacity: 0, x: -20 }}
               transition={{ duration: 0.3 }}
             >
-              <h3 className="title-lg" style={{ marginBottom: "1rem" }}>{activeStep.subtitle}</h3>
+              <h3 className="headline" style={{ marginBottom: "1rem" }}>{activeStep.subtitle}</h3>
               <p className="body-text-p" style={{ marginBottom: "2rem" }}>{activeStep.description}</p>
 
               <div className="badges-grid">
@@ -239,7 +239,7 @@ export default function ProcessSteps() {
 
         @media (min-width: 1024px) {
           .visual-card-container {
-            height: 600px;
+            height: 200px;
           }
         }
 
