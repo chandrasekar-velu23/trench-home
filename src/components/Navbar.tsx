@@ -122,10 +122,11 @@ export default function Navbar() {
 
             {/* Mobile Menu Button */}
             <button
-              className="mobile-only mobile-hamburger z-[60]"
+              className="mobile-hamburger z-[60]"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label="Toggle mobile menu"
             >
+
               <div className="hamburger-box">
                 <span className={`hamburger-inner ${mobileMenuOpen ? 'open' : ''}`}></span>
               </div>

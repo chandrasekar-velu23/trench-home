@@ -68,9 +68,10 @@ export default function SocialProof() {
 
       <div className="testimonial-container">
         <ScrollReveal direction="up" className="text-center" distance={40} style={{ marginBottom: "3rem" }}>
-          <span className="eyebrow" style={{ justifyContent: "center" }}></span>
+
           <h2 className="title-lg" style={{ fontSize: "250%" }}>​Loved by Practitioners & Security Leaders</h2>
         </ScrollReveal>
+
 
         <div className="testimonial-slider">
           <AnimatePresence mode="wait">
@@ -92,19 +93,20 @@ export default function SocialProof() {
                     width={120}
                     height={120}
                     className="avatar-img"
-                    quality={85}
+                    quality={90}
                   />
                 </div>
 
-                <blockquote className="quote-text">
+                <blockquote className="quote-text text-medium">
                   "{current.quote}"
                 </blockquote>
 
                 <div className="author-info">
-                  <span className="author-name">{current.author},</span>
-                  <span className="author-role">{current.role}</span>
+                  <span className="author-name fw-bold">{current.author},</span>
+                  <span className="author-role text-small">{current.role}</span>
                 </div>
               </div>
+
             </motion.div>
           </AnimatePresence>
 
@@ -189,7 +191,7 @@ export default function SocialProof() {
           display: flex;
           align-items: center;
           justify-content: center;
-          padding: 2rem 4rem;
+          padding: 2rem 1.5rem;
         }
 
         .card-content {
@@ -199,8 +201,8 @@ export default function SocialProof() {
           flex-direction: column;
           align-items: center;
           text-align: center;
-          gap: 2rem;
-          max-width: 800px;
+          gap: 2.5rem;
+          max-width: 850px;
         }
 
         .avatar-wrapper {
@@ -211,6 +213,7 @@ export default function SocialProof() {
           border: 2px solid #0D41E1;
           background: white;
           overflow: hidden;
+          flex-shrink: 0;
         }
 
         .avatar-img {
@@ -222,33 +225,29 @@ export default function SocialProof() {
 
         .quote-text {
           font-family: var(--font-primary);
-          font-size: clamp(1rem, 2vw, 1.2rem); /* Reduced by 20% */
-          line-height: 1.6;
-          font-weight: 500;
           font-style: italic;
           color: #111;
           margin: 0;
+          line-height: 1.6;
         }
 
         .author-info {
           display: flex;
           flex-direction: column;
-          gap: 0.25rem;
+          gap: 0.5rem;
         }
 
         .author-name {
-          font-weight: 700;
           color: #0D41E1;
-          font-size: 1.1rem;
+          font-size: 1.15rem;
         }
 
         .author-role {
           color: #888;
-          font-size: 0.95rem;
         }
 
         .slider-controls {
-          margin-top: 3rem;
+          margin-top: 4rem;
           display: flex;
           justify-content: center;
           width: 100%;
@@ -256,7 +255,8 @@ export default function SocialProof() {
 
         .controls-relative {
           position: relative;
-          width: 356px;
+          width: 100%;
+          max-width: 356px;
           height: 42px;
         }
 
@@ -276,7 +276,7 @@ export default function SocialProof() {
         }
 
         .invisible-btn {
-          width: 85px; /* Matches the width of the SVG button areas */
+          width: 25%;
           height: 100%;
           background: transparent;
           border: none;
@@ -318,14 +318,18 @@ export default function SocialProof() {
         }
 
         @media (max-width: 768px) {
-          .testimonial-card {
-            padding: 3rem 1.5rem;
-            min-height: auto;
+          .social-proof-section {
+            padding: 4rem 0;
           }
-          .card-content { gap: 1.5rem; }
-          .avatar-wrapper { width: 100px; height: 100px; }
-          .quote-text { font-size: 0.92rem; } /* Reduced by 20% */
+          .testimonial-card {
+            padding: 1rem 0;
+          }
+          .card-content { gap: 2rem; }
+          .avatar-wrapper { width: 90px; height: 90px; }
+          .quote-text { line-height: 1.5; }
+          .slider-controls { margin-top: 3rem; }
         }
+
       `}</style>
     </section>
   );

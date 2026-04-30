@@ -72,70 +72,70 @@ export default function ProcessSteps() {
 
       {/* Main Grid Layout */}
       <div className="main-grid-layout">
-        
+
         {/* Visual Layer (Card) */}
         <div className="visual-card-container">
-            <AnimatePresence mode="wait">
-                <motion.div
-                    key={activeIndex}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    transition={{ duration: 0.3 }}
-                    style={{ width: "100%", height: "100%", display: "flex", alignItems: "stretch" }}
-                >
-                    {activeStep.Component ? (
-                        <activeStep.Component />
-                    ) : (
-                        <img src={activeStep.image} alt="Process visual" className="visual-image" />
-                    )}
-                </motion.div>
-            </AnimatePresence>
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeIndex}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.3 }}
+              style={{ width: "100%", height: "100%", display: "flex", alignItems: "stretch" }}
+            >
+              {activeStep.Component ? (
+                <activeStep.Component />
+              ) : (
+                <img src={activeStep.image} alt="Process visual" className="visual-image" />
+              )}
+            </motion.div>
+          </AnimatePresence>
         </div>
 
         {/* Content Layer */}
         <div className="content-container">
-            <div className="step-indicator">
-                {activeStep.step.toUpperCase()} — {activeStep.title.toUpperCase()}
-            </div>
-            
-            <AnimatePresence mode="wait">
-                <motion.div
-                    key={activeIndex}
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -20 }}
-                    transition={{ duration: 0.3 }}
-                >
-                    <h3 className="title-lg" style={{ marginBottom: "1rem" }}>{activeStep.subtitle}</h3>
-                    <p className="body-text-p" style={{ marginBottom: "2rem" }}>{activeStep.description}</p>
-                    
-                    <div className="badges-grid">
-                        {activeStep.badges.map((badge, bi) => (
-                            <div key={bi} className="badge-item">
-                                <div className="tick-wrapper">
-                                    <svg width="18" height="18" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <circle cx="12.5" cy="12.5" r="12" fill="var(--color-primary-100)" fillOpacity="0.1" />
-                                        <path d="M8.48535 12.236L10.9854 14.736L15.9854 9.73596" stroke="var(--color-primary-100)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                                    </svg>
-                                </div>
-                                <span className="badge-label">{badge}</span>
-                            </div>
-                        ))}
-                    </div>
-                </motion.div>
-            </AnimatePresence>
+          <div className="step-indicator">
+            {activeStep.step.toUpperCase()} — {activeStep.title.toUpperCase()}
+          </div>
 
-            {/* Progress Bars */}
-            <div style={{ display: "flex", gap: "6px", marginTop: "3rem" }}>
-                {steps.map((s, i) => (
-                    <div key={i} onClick={() => setActiveIndex(i)} style={{
-                        height: "4px", flex: 1, borderRadius: "2px", cursor: "pointer",
-                        background: i === activeIndex ? "var(--color-primary-100)" : i < activeIndex ? "rgba(13, 65, 225, 0.3)" : "rgba(0,0,0,0.1)",
-                        transition: "all 0.3s",
-                    }} />
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeIndex}
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -20 }}
+              transition={{ duration: 0.3 }}
+            >
+              <h3 className="title-lg" style={{ marginBottom: "1rem" }}>{activeStep.subtitle}</h3>
+              <p className="body-text-p" style={{ marginBottom: "2rem" }}>{activeStep.description}</p>
+
+              <div className="badges-grid">
+                {activeStep.badges.map((badge, bi) => (
+                  <div key={bi} className="badge-item">
+                    <div className="tick-wrapper">
+                      <svg width="18" height="18" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="12.5" cy="12.5" r="12" fill="var(--color-primary-100)" fillOpacity="0.1" />
+                        <path d="M8.48535 12.236L10.9854 14.736L15.9854 9.73596" stroke="var(--color-primary-100)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </div>
+                    <span className="badge-label">{badge}</span>
+                  </div>
                 ))}
-            </div>
+              </div>
+            </motion.div>
+          </AnimatePresence>
+
+          {/* Progress Bars */}
+          <div style={{ display: "flex", gap: "6px", marginTop: "3rem" }}>
+            {steps.map((s, i) => (
+              <div key={i} onClick={() => setActiveIndex(i)} style={{
+                height: "4px", flex: 1, borderRadius: "2px", cursor: "pointer",
+                background: i === activeIndex ? "var(--color-primary-100)" : i < activeIndex ? "rgba(13, 65, 225, 0.3)" : "rgba(0,0,0,0.1)",
+                transition: "all 0.3s",
+              }} />
+            ))}
+          </div>
         </div>
 
       </div>

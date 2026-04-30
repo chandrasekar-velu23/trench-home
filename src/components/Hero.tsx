@@ -15,26 +15,28 @@ export default function Hero() {
         {/* Desktop Background */}
         <div className="desktop-bg hero-bg-image-wrap">
           <Image
-            src="/images/hero-sample.png"
+            src="/images/Hero-sample.png"
             alt="Trench Guardian Castle"
             fill
             priority
             quality={100}
             className="hero-bg-image"
-            sizes="100vw"
+            sizes="(max-width: 1024px) 100vw, 100vw"
           />
+
         </div>
         {/* Mobile Background */}
         <div className="mobile-bg hero-bg-image-wrap">
           <Image
-            src="/images/hero-ph.png"
+            src="/images/Hero-ph-sample.png"
             alt="Trench Guardian Castle Mobile"
             fill
             priority
-            quality={90}
+            quality={100}
             className="hero-bg-image"
-            sizes="100vw"
+            sizes="(max-width: 768px) 100vw, 33vw"
           />
+
         </div>
         <div className="hero-overlay-sky" />
       </div>
