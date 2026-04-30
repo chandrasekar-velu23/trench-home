@@ -10,42 +10,50 @@ export default function Footer() {
       <div className="footer-content">
         {/* Column 1 — Brand + Certs */}
         <div className="footer-col footer-brand-col">
-          <Image 
-            src="/logo/trench-logo.png" 
-            alt="Trench Logo" 
+          <Image
+            src="/logo/trench-logo.png"
+            alt="Trench Logo"
             width={160}
             height={32}
-            className="footer-logo-img" 
+            className="footer-logo-img"
           />
           <div className="footer-certs">
-            <span className="footer-certs-label">Certified &amp; Compliant</span>
+            <span className="footer-certs-label">Certified</span>
             <div className="footer-certs-badges">
-              <Image 
-                src="/certificates/AICPA SOC.svg" 
-                alt="AICPA SOC" 
+              <Image
+                src="/certificates/AICPA SOC.svg"
+                alt="AICPA SOC"
                 width={77}
                 height={77}
-                className="footer-cert-badge" 
+                className="footer-cert-badge"
               />
-              <Image 
-                src="/certificates/GDPR.svg" 
-                alt="GDPR" 
-                width={77}
-                height={77}
-                className="footer-cert-badge" 
+              <Image
+                src="/certificates/GDPR.svg"
+                alt="GDPR"
+                width={95}
+                height={95}
+                className="footer-cert-badge"
               />
-              <Image 
-                src="/certificates/ISO.svg" 
-                alt="ISO" 
+              <Image
+                src="/certificates/ISO.svg"
+                alt="ISO"
                 width={77}
                 height={77}
-                className="footer-cert-badge" 
+                className="footer-cert-badge"
               />
             </div>
           </div>
         </div>
 
-        {/* Column 2 — Platform */}
+        {/* Column 2 — Legal */}
+        <div className="footer-col link-column">
+          <h4 className="footer-heading">Legal</h4>
+          <Link href="#">Privacy policy</Link>
+          <Link href="#">Cookies notice</Link>
+          <Link href="#">Trust center</Link>
+        </div>
+
+        {/* Column 3 — Platform */}
         <div className="footer-col link-column">
           <h4 className="footer-heading">Platform</h4>
           <Link href="/why-trench">Why Trench?</Link>
@@ -53,20 +61,26 @@ export default function Footer() {
           <Link href="/how-it-works">How it works?</Link>
         </div>
 
-        {/* Column 3 — Resources */}
-        <div className="footer-col link-column">
-          <h4 className="footer-heading">Resources</h4>
-          <Link href="/for-mssps">For MSSPs</Link>
-          <Link href="/blog">Blog</Link>
-          <Link href="#">Book a demo</Link>
-        </div>
-
-        {/* Column 4 — Legal */}
-        <div className="footer-col link-column">
-          <h4 className="footer-heading">Legal</h4>
-          <Link href="#">Privacy policy</Link>
-          <Link href="#">Cookies notice</Link>
-          <Link href="#">Trust center</Link>
+        {/* Column 4 — Address */}
+        <div className="footer-col address-column">
+          <h4 className="footer-heading">Address</h4>
+          <div className="addresses-container">
+            <div className="address-item">
+              <h5 className="address-label">India Office:</h5>
+              <address className="footer-address">
+                <p>Trench Security Private Limited,</p>
+                <p>4th Flr, TheHub@RaiSerenity, Khatha No:10, Yelеnahali, Begur,</p>
+                <p>Bangalore South, Bangalore-560068, Karnataka</p>
+              </address>
+            </div>
+            <div className="address-item">
+              <h5 className="address-label">US Office:</h5>
+              <address className="footer-address">
+                <p>Trench Security Inc</p>
+                <p>16192 Coastal Highway, Lewes, DE 19958</p>
+              </address>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -100,10 +114,10 @@ export default function Footer() {
 
         .footer-content {
           display: grid;
-          grid-template-columns: 1.2fr 1fr 1fr 1fr;
+          grid-template-columns: 1.2fr 0.8fr 0.8fr 3fr;
           gap: 2.5rem;
           width: 100%;
-          max-width: 1100px;
+          max-width: 1200px;
           margin: 0 auto;
           position: relative;
           z-index: 10;
@@ -195,7 +209,61 @@ export default function Footer() {
           color: #0D41E1;
         }
 
+        /* ── Address column ── */
+        .address-column {
+          display: flex;
+          flex-direction: column;
+        }
+
+        .addresses-container {
+          display: flex;
+          flex-direction: row;
+          gap: 2rem;
+          flex-wrap: wrap;
+        }
+
+        .address-item {
+          flex: 1;
+          min-width: 200px;
+        }
+
+        .address-label {
+          font-size: 0.7rem;
+          font-weight: 800;
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+          margin-bottom: 0.5rem;
+          color: var(--color-primary-100, #0D41E1);
+          opacity: 0.8;
+        }
+
+        .footer-address {
+          font-style: normal;
+          display: flex;
+          flex-direction: column;
+          gap: 0.2rem;
+        }
+
+        .footer-address p {
+          font-size: 0.85rem;
+          font-weight: 500;
+          color: #475569;
+          margin: 0;
+          line-height: 1.4;
+        }
+
         /* ── Responsive ── */
+        @media (max-width: 1100px) {
+          .footer-content {
+            grid-template-columns: 1fr 1fr 1fr;
+          }
+          .address-column {
+            grid-column: 1 / -1;
+            border-top: 1px solid rgba(13, 65, 225, 0.05);
+            padding-top: 1.5rem;
+          }
+        }
+
         @media (max-width: 900px) {
           .footer-content {
             grid-template-columns: 1fr 1fr;
@@ -203,6 +271,9 @@ export default function Footer() {
             padding: 2rem 2rem;
           }
           .footer-brand-col {
+            grid-column: 1 / -1;
+          }
+          .address-column {
             grid-column: 1 / -1;
           }
         }
