@@ -1,0 +1,394 @@
+/* =============================================================
+   WHY TRENCH PAGE — Scoped Styles
+   All classes prefixed with `wt-` to avoid global conflicts.
+   ============================================================= */
+
+/* ── Section rhythm ── */
+.wt-section {
+  padding: 5rem 0;
+}
+
+/* The Mission/Vision section hosts the ribbon — must not clip it */
+.wt-section.wt-section--tinted {
+  background: rgba(13, 65, 225, 0.025);
+  overflow: visible;
+  display: block; /* override content-block flex so ribbon can go full-width */
+  width: 100%;
+}
+
+/* ── Full-bleed quote ribbon — plain, like BrandBanner primary ── */
+.wt-quote-ribbon {
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  margin-top: 3.5rem;
+  padding: 4rem 2rem;
+  background: #0D41E1; /* same as BrandBanner primaryColor */
+  text-align: center;
+}
+
+
+/* ── Eyebrow label ── */
+/* Override default h3/h4 sizes when used as eyebrow via TextReveal */
+.wt-eyebrow,
+h3.wt-eyebrow,
+h4.wt-eyebrow {
+  display: flex !important;
+  font-size: 0.72rem !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.18em !important;
+  text-transform: uppercase !important;
+  color: var(--color-primary-100) !important;
+  margin-bottom: 0.9rem !important;
+  line-height: 1.4 !important;
+}
+
+/* ── Hero title ── */
+/* Reduced 20%: clamp(2rem→1.6rem, 5vw→4vw, 3.2rem→2.56rem) */
+.wt-title-hero,
+h1.wt-title-hero {
+  font-family: var(--font-primary) !important;
+  font-size: clamp(1.6rem, 4vw, 2.56rem) !important;
+  font-weight: 900 !important;
+  line-height: 1.1 !important;
+  letter-spacing: -0.03em !important;
+  color: var(--color-primary-100) !important;
+  margin-bottom: 2rem !important;
+}
+
+/* ── Section titles ── */
+/* Reduced 20%: clamp(1.6rem→1.28rem, 3.5vw→2.8vw, 2.4rem→1.92rem) */
+.wt-title-section,
+h2.wt-title-section,
+h3.wt-title-section,
+h4.wt-title-section {
+  font-family: var(--font-primary) !important;
+  font-size: clamp(1.28rem, 2.8vw, 1.92rem) !important;
+  font-weight: 800 !important;
+  line-height: 1.2 !important;
+  letter-spacing: -0.02em !important;
+  color: var(--color-primary-100) !important;
+}
+
+/* ── Quote / italic text ── */
+/* Reduced 20%: clamp(1.2rem→0.96rem, 2.5vw→2vw, 1.75rem→1.4rem) */
+.wt-title-quote,
+h2.wt-title-quote {
+  font-family: var(--font-primary) !important;
+  font-size: clamp(0.96rem, 2vw, 1.4rem) !important;
+  font-weight: 600 !important;
+  font-style: italic !important;
+  line-height: 1.4 !important;
+  letter-spacing: -0.01em !important;
+  color: var(--color-primary-200) !important;
+  max-width: 780px !important;
+  margin: 0 auto !important;
+  opacity: 0.85 !important;
+}
+
+/* ── White variants for ribbon context ── */
+.wt-eyebrow--white,
+h3.wt-eyebrow--white,
+h4.wt-eyebrow--white {
+  color: rgba(255, 255, 255, 0.65) !important;
+}
+
+.wt-title-quote--white,
+h2.wt-title-quote--white {
+  color: #ffffff !important;
+  opacity: 1 !important;
+  font-size: clamp(1.1rem, 2.4vw, 1.6rem) !important;
+  font-weight: 700 !important;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* ── Hero body paragraphs ── */
+.wt-hero-body {
+  max-width: 760px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--color-neutral-600);
+}
+
+.wt-hero-accent {
+  font-weight: 700;
+  color: var(--color-primary-100);
+  margin-top: 0.2rem;
+}
+
+/* Inner container padding when section is display:block (ribbon case) */
+.wt-section.wt-section--tinted > .container-wide {
+  padding-top: 5rem;
+}
+
+/* ── Mission / Vision cards ── */
+.wt-mv-grid {
+  gap: 2.5rem;
+  align-items: stretch;
+}
+
+.wt-card {
+  padding: 2.25rem;
+  border-radius: 18px;
+  background: #ffffff;
+  border: 1px solid rgba(13, 65, 225, 0.08);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.03);
+  height: 100%;
+}
+
+/* Icon badge on Mission / Vision cards */
+.wt-card-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: rgba(13, 65, 225, 0.08);
+  color: var(--color-primary-100);
+  margin-bottom: 1.25rem;
+  transition: background 0.3s ease;
+}
+
+.wt-card:hover .wt-card-icon {
+  background: rgba(13, 65, 225, 0.15);
+}
+
+/* ── Cofounder grid ── */
+.cofounders-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2.5rem;
+  margin-bottom: 4rem;
+}
+
+.cofounder-card {
+  background: #ffffff;
+  border-radius: 18px;
+  border: 1px solid rgba(13, 65, 225, 0.08);
+  box-shadow: 0 8px 28px -10px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2.5rem 2rem 2.25rem;
+  transition: transform 0.35s cubic-bezier(0.2, 0, 0.2, 1), box-shadow 0.35s ease;
+}
+
+.cofounder-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px -12px rgba(13, 65, 225, 0.14);
+  border-color: rgba(13, 65, 225, 0.18);
+}
+
+.cofounder-photo-wrap {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 1.25rem;
+  border: 3px solid #ffffff;
+  outline: 1px solid rgba(13, 65, 225, 0.12);
+  flex-shrink: 0;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.07);
+}
+
+.cofounder-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.cofounder-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.cofounder-name {
+  font-family: var(--font-primary);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-neutral-700);
+  margin-bottom: 0.35rem;
+}
+
+.eyebrow-role {
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: var(--color-primary-100);
+  text-transform: uppercase;
+  margin-bottom: 0.9rem;
+}
+
+.body-text-small {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--color-neutral-500);
+  max-width: 280px;
+}
+
+/* ── Sub-teams ── */
+.sub-teams-container {
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+  margin-top: 2.5rem;
+}
+
+.sub-team-section {
+  width: 100%;
+}
+
+.team-members-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 2rem;
+  justify-items: center;
+}
+
+.member-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.75rem;
+  transition: transform 0.3s ease;
+  width: 100%;
+  max-width: 160px;
+}
+
+.member-card:hover {
+  transform: translateY(-4px);
+}
+
+.member-photo-wrap {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid #ffffff;
+  outline: 1px solid rgba(13, 65, 225, 0.1);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+  transition: outline-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.member-card:hover .member-photo-wrap {
+  outline-color: var(--color-primary-100);
+  box-shadow: 0 8px 22px rgba(13, 65, 225, 0.14);
+}
+
+.member-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.member-name {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-neutral-700);
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+}
+
+/* ── Values ── */
+.value-item {
+  padding: 1.75rem 2rem;
+  border-radius: 14px;
+  border: 1px solid rgba(13, 65, 225, 0.06);
+  background: rgba(255, 255, 255, 0.5);
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.value-item:hover {
+  background: #ffffff;
+  border-color: rgba(13, 65, 225, 0.12);
+}
+
+/* Icon for each value card */
+.value-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: rgba(13, 65, 225, 0.08);
+  color: var(--color-primary-100);
+  margin-bottom: 1rem;
+  transition: background 0.3s ease;
+}
+
+.value-item:hover .value-icon {
+  background: rgba(13, 65, 225, 0.14);
+}
+
+.value-title {
+  font-family: var(--font-primary);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-primary-100);
+  margin-bottom: 0.5rem;
+}
+
+/* ── Careers section ── */
+.wt-email-link {
+  color: var(--color-primary-100);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.wt-cta-row {
+  display: flex;
+  gap: 1.25rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .wt-section {
+    padding: 3.5rem 0;
+  }
+
+  .cofounders-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .cofounder-card {
+    padding: 2rem 1.5rem 1.75rem;
+  }
+
+  .cofounder-photo-wrap {
+    width: 80px;
+    height: 80px;
+  }
+
+  .team-members-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.75rem 1rem;
+  }
+
+  .member-photo-wrap {
+    width: 64px;
+    height: 64px;
+  }
+
+  .sub-teams-container {
+    gap: 2.5rem;
+  }
+
+  .wt-mv-grid {
+    gap: 1.25rem;
+  }
+}
