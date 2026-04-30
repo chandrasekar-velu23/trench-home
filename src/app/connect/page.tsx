@@ -63,13 +63,97 @@ export default function ConnectPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setTimeout(() => {
+    
+    try {
+      // Get form data
+      const form = e.target as HTMLFormElement;
+      const formData = new FormData(form);
+      
+      // Collect form fields
+      const data = {
+        firstName: formData.get('firstName') as string,
+        lastName: formData.get('lastName') as string,
+        email: formData.get('email') as string,
+        company: formData.get('company') as string,
+        teamSize: formData.get('teamSize') as string,
+        intent: formData.get('intent') as string,
+        message: formData.get('message') as string,
+        ipAddress: await getClientIP(),
+        userAgent: navigator.userAgent
+      };
+      
+      console.log('Form data collected:', data);
+      
+      // Send to Google Apps Script
+      const scriptUrl = process.env.NEXT_PUBLIC_GOOGLE_APPS_SCRIPT_URL;
+      console.log('Script URL from env:', scriptUrl);
+      
+      if (!scriptUrl) {
+        throw new Error('Google Apps Script URL not configured');
+      }
+      
+      console.log('Sending request to:', scriptUrl);
+      
+      const response = await fetch(scriptUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+      
+      console.log('Response status:', response.status);
+      console.log('Response headers:', response.headers);
+      
+      const responseText = await response.text();
+      console.log('Response text:', responseText);
+      
+      let result;
+      try {
+        result = JSON.parse(responseText);
+      } catch (parseError) {
+        console.error('Failed to parse response as JSON:', parseError);
+        console.log('Raw response:', responseText);
+        throw new Error('Invalid response from server');
+      }
+      
+      console.log('Parsed result:', result);
+      
+      if (result.status === 'success') {
+        setIsSuccess(true);
+      } else {
+        throw new Error(result.message || 'Submission failed');
+      }
+    } catch (error) {
+      console.error('Form submission error:', error);
+      console.error('Error details:', {
+        name: error.name,
+        message: error.message,
+        stack: error.stack
+      });
+      
+      // Show error to user for debugging
+      alert(`Form submission failed: ${error.message}. Check console for details.`);
+      
+      // Don't show success on error for debugging
+      setIsSuccess(false);
+    } finally {
       setIsSubmitting(false);
-      setIsSuccess(true);
-    }, 1600);
+    }
+  };
+
+  // Function to get client IP (simple implementation)
+  const getClientIP = async (): Promise<string> => {
+    try {
+      const response = await fetch('https://api.ipify.org?format=json');
+      const data = await response.json();
+      return data.ip;
+    } catch (error) {
+      return 'Not available';
+    }
   };
 
   const fade = (delay = 0) => ({
@@ -165,29 +249,29 @@ export default function ConnectPage() {
                   <div className="connect-row">
                     <div className="connect-field">
                       <label htmlFor="firstName" className="connect-label">First Name <span>*</span></label>
-                      <input type="text" id="firstName" required className="connect-input" autoComplete="given-name" />
+                      <input type="text" id="firstName" name="firstName" required className="connect-input" autoComplete="given-name" />
                     </div>
                     <div className="connect-field">
                       <label htmlFor="lastName" className="connect-label">Last Name <span>*</span></label>
-                      <input type="text" id="lastName" required className="connect-input" autoComplete="family-name" />
+                      <input type="text" id="lastName" name="lastName" required className="connect-input" autoComplete="family-name" />
                     </div>
                   </div>
 
                   {/* Email */}
                   <div className="connect-field">
                     <label htmlFor="email" className="connect-label">Work Email <span>*</span></label>
-                    <input type="email" id="email" required className="connect-input" autoComplete="work email" />
+                    <input type="email" id="email" name="email" required className="connect-input" autoComplete="work email" />
                   </div>
 
                   {/* Company + Team size */}
                   <div className="connect-row">
                     <div className="connect-field">
                       <label htmlFor="company" className="connect-label">Company</label>
-                      <input type="text" id="company" className="connect-input" autoComplete="organization" />
+                      <input type="text" id="company" name="company" className="connect-input" autoComplete="organization" />
                     </div>
                     <div className="connect-field">
                       <label htmlFor="teamSize" className="connect-label">Team Size</label>
-                      <select id="teamSize" className="connect-select" defaultValue="">
+                      <select id="teamSize" name="teamSize" className="connect-select" defaultValue="">
                         <option value="" disabled>Select…</option>
                         <option>1–10</option>
                         <option>11–50</option>
@@ -201,7 +285,7 @@ export default function ConnectPage() {
                   {/* Intent */}
                   <div className="connect-field">
                     <label htmlFor="intent" className="connect-label">What are you looking for? <span>*</span></label>
-                    <select id="intent" required className="connect-select" defaultValue="">
+                    <select id="intent" name="intent" required className="connect-select" defaultValue="">
                       <option value="" disabled>Select…</option>
                       <option>Custom Demo</option>
                       <option>Security Assessment</option>
@@ -214,7 +298,7 @@ export default function ConnectPage() {
                   {/* Message */}
                   <div className="connect-field">
                     <label htmlFor="message" className="connect-label">How can we help? <span>*</span></label>
-                    <textarea id="message" required className="connect-textarea" />
+                    <textarea id="message" name="message" required className="connect-textarea" />
                   </div>
 
                   <button type="submit" disabled={isSubmitting} className="connect-submit">

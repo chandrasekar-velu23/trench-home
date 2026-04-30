@@ -12,28 +12,28 @@ const testimonials = [
     quote: "The agentic approach from Trench AI delivers proactive detection engineering in real-time. Rather than relying on static rulesets in an AI-powered threat landscape, their platform orchestrates autonomous, context-rich detections and accelerates the threat intelligence to high fidelity rule literally in minutes.",
     author: "Srikanth Devarajan",
     role: "Ex-VP & GM, Zscaler",
-    avatar: "/images/avatar.jpg"
+    avatar: "/images/avatar.png"
   },
   {
     id: 2,
     quote: "What impressed me most is Trench’s clarity of vision,  building unique AI systemic thinking that actually solve detection problems and reduce real threat response times, not just automate for the sake of it. The team combines deep domain expertise with pragmatic execution, which is rare in today’s noisy cybersecurity market.",
     author: "Deepak Kothule",
     role: "VP - Engineering Leader, Ex-FICO, Ex-Symantec",
-    avatar: "/images/avatar.jpg"
+    avatar: "/images/avatar.png"
   },
   {
     id: 3,
     quote: "Trench AI is a game-changer for modern Security teams, its speed, precision, and AI-powered detections drastically cut through noise from the source and accelerate threat response. An innovative application of AI to solve hard detection problem in SOC",
     author: "Senthil Kumar Iyyappan",
     role: "CISO - Ocrolus, Ex-Freshworks",
-    avatar: "/images/avatar.jpg"
+    avatar: "/images/avatar.png"
   },
   {
     id: 4,
     quote: "Trench Security's agentic detection system model for threat detection and response is a paradigm shift. Its regulated AI-powered LLM engine, combined with a visionary team and a progressive learning mindset, sets it apart in today’s evolving cyber defense landscape. SOC teams have already started experiencing MTTD for real-time intelligence in minutes from days/weeks. The solution’s seamless compatibility with multi-vendor security monitoring tools, such as EDR, SIEM, and CSPM makes it both flexible and future-ready",
     author: "Subhro Banerjee",
     role: "Senior Global IT Security Leader | Lifescience MNC",
-    avatar: "/images/avatar.jpg"
+    avatar: "/images/avatar.png"
   },
 ];
 

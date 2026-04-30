@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import AdvancedTimeline from "./animations/AdvancedTimeline";
 import TextReveal from "./animations/TextReveal";
 import ScrollReveal from "./animations/ScrollReveal";
@@ -66,12 +67,16 @@ export default function Hero() {
               </p>
 
               <div className="hero-button-group">
-                <Button className="hero-btn-primary">
-                  Get a Demo
-                </Button>
-                <Button variant="secondary" className="hero-btn-secondary">
-                  Let's Talk
-                </Button>
+                <Link href="/connect">
+                  <Button className="hero-btn-primary">
+                    Get a Demo
+                  </Button>
+                </Link>
+                <Link href="/connect">
+                  <Button variant="secondary" className="hero-btn-secondary">
+                    Let's Talk
+                  </Button>
+                </Link>
               </div>
             </div>
           </motion.div>
@@ -226,6 +231,7 @@ export default function Hero() {
         @media (max-width: 1024px) {
           .hero-content-wrapper {
             padding: 6rem 3rem 3rem;
+            margin-top: -20vh;
           }
           .hero-glass-card {
             max-width: 800px;
@@ -250,7 +256,7 @@ export default function Hero() {
             justify-content: center;
             align-items: center;
             flex: 1;
-            margin-top: -20vh;
+            margin-top: 0;
           }
 
 
@@ -266,21 +272,24 @@ export default function Hero() {
             justify-content: center;
             gap: 2rem;
           }
-          .hero-title {
-            font-size: 1.85rem;
+          .hero-title-override {
+            font-size: 1.85rem !important;
             text-align: center;
+            line-height: 1.2;
           }
           .hero-subtitle {
             font-size: 1rem;
             text-align: center;
             margin: 0 auto;
             color: rgba(255,255,255,0.9);
+            max-width: 100%;
           }
           .hero-button-group {
             flex-direction: column;
             width: 100%;
-            gap: 1.25rem;
-            align-items: center;
+            gap: 1rem;
+            align-items: stretch;
+            max-width: 280px;
           }
           .hide-mobile { display: none; }
         }

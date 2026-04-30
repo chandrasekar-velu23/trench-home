@@ -97,12 +97,8 @@ export default function WhyTrenchPage() {
             <ScrollReveal delay={0.4} direction="none">
               <div className="wt-hero-body">
                 <p>
-                  Adversaries deploy attacks in minutes. Your security team should detect and respond in minutes too — at scale, not someday.
-                </p>
-                <p>
+                  Adversaries deploy attacks in minutes. Your security team should detect and respond in minutes too,at scale, not someday.
                   Every existing SIEM, detection workflow, and security operations tool was built for a slower world. That world no longer exists.
-                </p>
-                <p>
                   We're rebuilding the operating system for security teams: AI-native, agent-powered, with the sophistication to connect signals, reason about intent, and act before threats take hold.
                 </p>
                 <p className="wt-hero-accent">
@@ -127,8 +123,8 @@ export default function WhyTrenchPage() {
                 </div>
                 <TextReveal text="Mission" as="h4" className="wt-eyebrow" />
                 <TextReveal
-                  text="Threat Detection in Minutes."
-                  as="h2"
+                  text="Velocity with Operational Intelligence at scale."
+                  as="h4"
                   className="wt-title-section"
                   delay={0.2}
                 />
@@ -143,8 +139,8 @@ export default function WhyTrenchPage() {
                 </div>
                 <TextReveal text="Vision" as="h4" className="wt-eyebrow" />
                 <TextReveal
-                  text="The new operating system for security teams — velocity and intelligence at scale."
-                  as="h2"
+                  text="The new operating system in the Agentic Era for Headless security operations"
+                  as="h4"
                   className="wt-title-section"
                   delay={0.2}
                 />
@@ -184,7 +180,7 @@ export default function WhyTrenchPage() {
           >
             <TextReveal
               text="The Castle Builders"
-              as="h4"
+              as="h3"
               className="wt-eyebrow"
               style={{ justifyContent: "center", width: "100%" }}
             />

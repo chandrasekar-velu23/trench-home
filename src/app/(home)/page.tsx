@@ -24,7 +24,7 @@ export default function Home() {
       <SiemRibbon />
 
       {/* COMPARISON BLOCK */}
-      <section className="content-block" style={{ paddingTop: "6rem", paddingBottom: "2rem" }}>
+      <section className="content-block-full" style={{ paddingTop: "6rem", paddingBottom: "2rem" }}>
         <ScrollReveal direction="up" className="text-center" distance={40} style={{ marginBottom: "3rem" }}>
           <TextReveal text="The Trench Advantage" as="h3" className="eyebrow" style={{ justifyContent: "center", width: "100%" }} />
           <TextReveal text="One AI Platform. Three Outcomes." as="h2" className="title-lg" delay={0.2} style={{ justifyContent: "center", width: "100%" }} />
@@ -32,7 +32,7 @@ export default function Home() {
             <p className="body-lead" style={{ maxWidth: '800px', margin: '0 auto' }}>Trench unifies your entire security stack into one AI-native platform — so your lean team operates like an enterprise SOC.</p>
           </ScrollReveal>
         </ScrollReveal>
-        <div className="container-wide">
+        <div className="container-full">
           <ComparisonTable />
         </div>
       </section>
@@ -41,8 +41,8 @@ export default function Home() {
       <BrandBanner />
 
       {/* PROCESS BLOCK */}
-      <section className="content-block" style={{ paddingTop: "2rem", paddingBottom: "6rem" }}>
-        <div className="container-wide">
+      <section className="content-block-full" style={{ paddingTop: "2rem", paddingBottom: "6rem" }}>
+        <div className="container-full">
           <ProcessSteps />
         </div>
       </section>
@@ -51,11 +51,11 @@ export default function Home() {
       <CTASection />
 
       {/* FAQ BLOCK */}
-      <section className="content-block padding-section">
-        <div className="container-wide">
+      <section className="content-block-full padding-section">
+        <div className="container-full">
           <ScrollReveal direction="up" className="text-center" distance={40} style={{ marginBottom: "5rem" }}>
-            <TextReveal text="Resources" as="h3" className="eyebrow" style={{ justifyContent: "center", width: "100%" }} />
-            <TextReveal text="Got Questions?" as="h2" className="title-lg" delay={0.2} style={{ justifyContent: "center", width: "100%" }} />
+            <TextReveal text="Got Questions?" as="h3" className="eyebrow" style={{ justifyContent: "center", width: "100%" }} />
+            <TextReveal text="We thought you might." as="h2" className="title-lg" delay={0.2} style={{ justifyContent: "center", width: "100%" }} />
           </ScrollReveal>
           <FAQ />
         </div>

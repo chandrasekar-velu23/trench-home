@@ -313,7 +313,8 @@ export default function ComparisonTable() {
           background: rgba(13, 65, 225, 0.06);
           padding: 0.4rem;
           border-radius: 14px;
-          width: fit-content;
+          width: 100%;
+          max-width: 500px;
           margin-left: auto;
           margin-right: auto;
           border: 1px solid rgba(13, 65, 225, 0.12);
@@ -670,6 +671,107 @@ export default function ComparisonTable() {
           text-transform: uppercase;
           background: rgba(13, 65, 225, 0.12);
           border-radius: 3px;
+        }
+
+        /* Mobile Column Layout */
+        @media (max-width: 768px) {
+          .ct-tabs {
+            width: 100%;
+            max-width: none;
+            padding: 0.3rem;
+            gap: 0.15rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+          }
+
+          .ct-tab {
+            padding: 0.55rem 1rem;
+            font-size: 0.8rem;
+            gap: 0.4rem;
+            flex: 1;
+            justify-content: center;
+          }
+
+          .ct-tab-icon {
+            display: none;
+          }
+
+          .ct-comparison-container {
+            overflow-x: visible;
+          }
+
+          .ct-row-wrapper {
+            scroll-snap-type: none;
+          }
+
+          .ct-row {
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            padding: 0 1rem;
+            min-width: auto;
+          }
+
+          .ct-platform-section {
+            padding: 2rem 1.5rem;
+            min-height: auto;
+            border-radius: 8px;
+          }
+
+          .ct-platform-header {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1rem;
+          }
+
+          .ct-platform-title {
+            font-size: 1.1rem;
+            font-weight: 900;
+          }
+
+          .ct-platform-content {
+            margin-bottom: 1rem;
+          }
+
+          .ct-platform-text {
+            font-size: 1rem;
+            line-height: 1.7;
+          }
+
+          .ct-platform-footer {
+            margin-top: 1rem;
+          }
+
+          .ct-badge {
+            font-size: 0.65rem;
+            padding: 0.3rem 0.8rem;
+          }
+        }
+
+        /* ── Small Mobile Layout ── */
+        @media (max-width: 480px) {
+          .ct-row {
+            gap: 1rem;
+            padding: 0 0.5rem;
+          }
+
+          .ct-platform-section {
+            padding: 1.5rem 1rem;
+            border-radius: 6px;
+          }
+
+          .ct-platform-title {
+            font-size: 1rem;
+          }
+
+          .ct-platform-text {
+            font-size: 0.95rem;
+          }
+
+          .ct-badge {
+            font-size: 0.6rem;
+            padding: 0.25rem 0.6rem;
+          }
         }
       `}</style>
     </div>

@@ -2,6 +2,7 @@
 
 import React, { useState, useRef, useCallback } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import Button from "../ui/Button";
 
 export default function CTASection() {
@@ -76,16 +77,19 @@ export default function CTASection() {
                 </p>
               </div>
               <div className="cta-actions">
-                <Button className="cta-btn-primary" onClick={handleCTAClick}>
-                  Show Me the Trench
-                </Button>
-                <Button
-                  variant="secondary"
-                  className="cta-btn-secondary"
-                  onClick={handleCTAClick}
-                >
-                  Take a Tour
-                </Button>
+                <Link href="/connect">
+                  <Button className="cta-btn-primary">
+                    Show Me the Trench
+                  </Button>
+                </Link>
+                <Link href="/connect">
+                  <Button
+                    variant="secondary"
+                    className="cta-btn-secondary"
+                  >
+                    Take a Tour
+                  </Button>
+                </Link>
               </div>
             </div>
           </div>
