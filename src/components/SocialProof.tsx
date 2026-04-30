@@ -74,17 +74,15 @@ export default function SocialProof() {
 
 
         <div className="testimonial-slider">
-          <AnimatePresence mode="wait">
+          <AnimatePresence mode="popLayout" initial={false}>
             <motion.div
               key={current.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.5, ease: "easeOut" }}
+              initial={{ opacity: 0, scale: 0.95, y: 10 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 1.05, y: -10 }}
+              transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
               className="testimonial-card"
             >
-
-
               <div className="card-content">
                 <div className="avatar-wrapper">
                   <Image
@@ -106,7 +104,6 @@ export default function SocialProof() {
                   <span className="author-role text-small">{current.role}</span>
                 </div>
               </div>
-
             </motion.div>
           </AnimatePresence>
 
@@ -149,7 +146,7 @@ export default function SocialProof() {
           display: flex;
           flex-direction: column;
           align-items: center;
-          margin-top: -2rem; /* Reduce distance to hero section */
+          margin-top: 1rem; /* Reduce distance to hero section */
           position: relative;
           z-index: 5;
         }
@@ -183,6 +180,8 @@ export default function SocialProof() {
           flex-direction: column;
           align-items: center;
           position: relative;
+          min-height: 480px; /* Fixed height to prevent layout shift */
+          justify-content: center;
         }
 
         .testimonial-card {
@@ -321,6 +320,10 @@ export default function SocialProof() {
           .social-proof-section {
             padding: 4rem 0;
           }
+          .testimonial-slider {
+            min-height: 650px; /* Taller for mobile text stacking */
+          }
+
           .testimonial-card {
             padding: 1rem 0;
           }

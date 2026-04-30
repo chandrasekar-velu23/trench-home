@@ -11,8 +11,7 @@ import "./Navbar.css";
 const navLinks = [
   { name: "Home", href: "/" },
   { name: "Why Trench?", href: "/why-trench" },
-  { name: "Integrations", href: "/integrations" },
-  { name: "Blog", href: "/blog" },
+  { name: "Integrations", href: "/integrations" }
 ];
 
 export default function Navbar() {
@@ -122,10 +121,11 @@ export default function Navbar() {
 
             {/* Mobile Menu Button */}
             <button
-              className="mobile-hamburger z-[60]"
+              className="mobile-hamburger z-[2100]"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label="Toggle mobile menu"
             >
+
 
               <div className="hamburger-box">
                 <span className={`hamburger-inner ${mobileMenuOpen ? 'open' : ''}`}></span>

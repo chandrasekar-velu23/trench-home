@@ -134,7 +134,7 @@
   background: rgba(255, 255, 255, 0.98);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  z-index: 50;
+  z-index: 2000;
   padding-top: 100px;
 }
 
@@ -185,6 +185,7 @@
 }
 
 
+
 @media (max-width: 1024px) {
 
   .nav-links-center,
@@ -199,5 +200,10 @@
 
   .mobile-hamburger {
     display: flex !important;
+    width: 44px;
+    height: 44px;
+    margin-right: -8px;
+    z-index: 100;
   }
+
 }

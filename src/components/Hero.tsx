@@ -15,7 +15,7 @@ export default function Hero() {
         {/* Desktop Background */}
         <div className="desktop-bg hero-bg-image-wrap">
           <Image
-            src="/images/Hero-sample.png"
+            src="/images/hero-sample.webp"
             alt="Trench Guardian Castle"
             fill
             priority
@@ -28,7 +28,7 @@ export default function Hero() {
         {/* Mobile Background */}
         <div className="mobile-bg hero-bg-image-wrap">
           <Image
-            src="/images/Hero-ph-sample.png"
+            src="/images/Hero-ph-sample.webp"
             alt="Trench Guardian Castle Mobile"
             fill
             priority
@@ -84,7 +84,7 @@ export default function Hero() {
           position: relative;
           width: 100%;
           height: 100vh;
-          min-height: 800px;
+          min-height: 600px;
           display: flex;
           overflow: hidden;
         }
@@ -94,7 +94,7 @@ export default function Hero() {
           bottom: 0;
           left: 0;
           right: 0;
-          height: 200px;
+          height: 250px;
           background: linear-gradient(to top, #ffffff 0%, rgba(255,255,255,0.85) 25%, rgba(255,255,255,0.5) 50%, rgba(255,255,255,0.15) 75%, transparent 100%);
           z-index: 1;
           pointer-events: none;
@@ -114,7 +114,7 @@ export default function Hero() {
         }
 
         .hero-bg-image {
-          object-fit: cover;
+          object-fit: cover !important;
           object-position: center;
         }
 
@@ -129,14 +129,14 @@ export default function Hero() {
 
         .hero-content-wrapper {
           position: relative;
-          z-index: 5;
+          z-index: 15;
           width: 100%;
-          min-height: 100vh;
+          height: 100%;
           display: flex;
           flex-direction: column;
           align-items: center;
-          justify-content: flex-start;
-          padding: 8rem 6rem 6rem;
+          justify-content: center;
+          padding: 4rem 2rem;
         }
 
         .hero-container-inner {
@@ -144,9 +144,10 @@ export default function Hero() {
           max-width: 1400px;
           display: flex;
           justify-content: center;
-          align-items: stretch;
-          flex: 1;
+          align-items: center;
+          margin-top: -20vh;
         }
+
 
         .hero-glass-card {
           padding: 0;
@@ -156,15 +157,14 @@ export default function Hero() {
           display: flex;
           flex-direction: column;
           align-items: center;
-          justify-content: space-between;
-          padding-bottom: 2rem;
+          gap: 2.5rem;
         }
 
         .hero-top-group {
           display: flex;
           flex-direction: column;
           align-items: center;
-          gap: 1rem;
+          gap: 1.25rem;
         }
 
         .hero-bottom-group {
@@ -178,6 +178,7 @@ export default function Hero() {
           margin: 0;
           text-align: center;
           color: #ffffff;
+          text-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
         }
 
         .hero-eyebrow-container {
@@ -209,7 +210,7 @@ export default function Hero() {
           font-size: 1.25rem;
           line-height: 1.6;
           color: #334155;
-          max-width: 580px;
+          max-width: 640px;
           margin: 0;
           font-weight: 500;
         }
@@ -228,7 +229,6 @@ export default function Hero() {
           }
           .hero-glass-card {
             max-width: 800px;
-            padding: 0;
           }
         }
 
@@ -238,19 +238,22 @@ export default function Hero() {
 
           .hero-section {
             height: 100vh;
-            min-height: 700px;
+            min-height: 600px;
           }
           .hero-content-wrapper {
-            padding: 1.5rem;
-            padding-top: 80px; 
+            padding: 2rem 1.5rem;
+            padding-top: 100px; 
             align-items: center; 
             justify-content: flex-start;
           }
           .hero-container-inner {
             justify-content: center;
-            align-items: stretch;
+            align-items: center;
             flex: 1;
+            margin-top: -20vh;
           }
+
+
           .hero-glass-card {
             padding: 0;
             border-radius: 0;
@@ -259,17 +262,19 @@ export default function Hero() {
             margin-bottom: 0;
             background: transparent;
             width: 100%;
-            height: 100%;
-            justify-content: space-between;
+            height: auto;
+            justify-content: center;
+            gap: 2rem;
           }
           .hero-title {
             font-size: 1.85rem;
             text-align: center;
           }
           .hero-subtitle {
-            font-size: 0.95rem;
+            font-size: 1rem;
             text-align: center;
             margin: 0 auto;
+            color: rgba(255,255,255,0.9);
           }
           .hero-button-group {
             flex-direction: column;
@@ -279,6 +284,7 @@ export default function Hero() {
           }
           .hide-mobile { display: none; }
         }
+
       `}</style>
     </section>
   );

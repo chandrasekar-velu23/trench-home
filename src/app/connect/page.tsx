@@ -158,7 +158,7 @@ export default function ConnectPage() {
             ) : (
               <>
                 <div className="connect-form-title">Get in Touch</div>
-                <p className="connect-form-sub">Fill out the form and we'll reach out within 24 hours.</p>
+                <p className="connect-form-sub">Fill out the form and we'll reach out to you shortly.</p>
 
                 <form onSubmit={handleSubmit}>
                   {/* Name row */}

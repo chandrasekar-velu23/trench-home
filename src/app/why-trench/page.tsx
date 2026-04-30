@@ -304,7 +304,7 @@ export default function WhyTrenchPage() {
       </section>
 
       {/* ── BRAND BANNER ── */}
-      <BrandBanner variant="secondary" />
+      <BrandBanner variant="primary" />
 
       {/* ── SECTION 5: CAREERS ── */}
       <section className="content-block wt-section">

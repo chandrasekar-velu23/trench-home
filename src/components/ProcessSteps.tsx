@@ -143,15 +143,16 @@ export default function ProcessSteps() {
       <style jsx>{`
         .process-wrapper {
           width: 100%;
-          padding: 6rem 1rem;
+          padding: 8rem 0;
           display: flex;
           flex-direction: column;
         }
 
         .section-header {
-          max-width: 800px;
-          margin: 0 auto 2rem;
+          max-width: 900px;
+          margin: 0 auto 4rem;
           text-align: center;
+          padding: 0 2rem;
         }
 
         .eyebrow {
@@ -166,48 +167,44 @@ export default function ProcessSteps() {
         }
 
         :global(.headline) {
-          font-family: var(--font-primary);
-          font-size: clamp(2.5rem, 5vw, 4rem);
-          font-weight: 900;
-          color: var(--color-primary-100);
-          line-height: 1.1;
           margin-bottom: 1.5rem;
-          letter-spacing: -0.02em;
         }
 
         .sub-headline {
           color: var(--color-text-secondary);
+          max-width: 600px;
+          margin: 0 auto;
         }
 
         .main-grid-layout {
           display: grid;
           grid-template-columns: 1fr;
-          gap: 3rem;
+          gap: 4rem;
           max-width: 1300px;
           margin: 0 auto;
-          align-items: stretch;
+          align-items: center;
+          padding: 0 2rem;
         }
 
         @media (min-width: 1024px) {
           .main-grid-layout {
-            grid-template-columns: 55% 45%;
-            gap: 3rem;
-            align-items: stretch;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 5rem;
           }
         }
 
         .tab-button {
           flex: 1;
-          padding: 12px 16px;
+          padding: 1rem;
           border-radius: 12px;
           border: 1.5px solid rgba(0,0,0,0.05);
           background: #ffffff;
           color: var(--color-text-secondary);
-          font-size: 11px;
+          font-size: 12px;
           font-weight: 700;
-          letter-spacing: 2px;
+          letter-spacing: 0.1em;
           cursor: pointer;
-          transition: all 0.25s ease;
+          transition: all 0.3s ease;
           font-family: inherit;
         }
         .tab-button:hover {
@@ -220,9 +217,9 @@ export default function ProcessSteps() {
           color: var(--color-primary-100);
         }
         .tab-number {
-          font-size: 20px;
-          margin-bottom: 6px;
-          opacity: 0.4;
+          font-size: 24px;
+          margin-bottom: 4px;
+          opacity: 0.3;
           font-family: var(--font-primary);
         }
         .tab-button.active .tab-number {
@@ -233,22 +230,28 @@ export default function ProcessSteps() {
           background: transparent;
           position: relative;
           width: 100%;
-          height: 500px;
+          min-height: 400px;
+          height: 50vh;
           display: flex;
-          align-items: stretch;
-          justify-content: stretch;
+          align-items: center;
+          justify-content: center;
         }
 
         @media (min-width: 1024px) {
           .visual-card-container {
-            height: 560px;
+            height: 600px;
           }
+        }
+
+        .visual-image {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
         }
 
         :global(.custom-process-component) {
           width: 100% !important;
           height: 100% !important;
-          min-height: 420px !important;
           padding: 0 !important;
           background: transparent !important;
           display: flex;
@@ -256,63 +259,59 @@ export default function ProcessSteps() {
           flex: 1;
         }
 
-        @media (min-width: 1024px) {
-          :global(.custom-process-component) {
-            aspect-ratio: auto !important;
-            max-height: 600px !important;
-            min-height: 480px !important;
-          }
-        }
-
         .step-indicator {
-          font-size: 12px;
-          letter-spacing: 3px;
+          font-size: 14px;
+          letter-spacing: 0.2em;
           color: var(--color-primary-100);
-          margin-bottom: 20px;
+          margin-bottom: 1.5rem;
           font-weight: 800;
           font-family: var(--font-primary);
         }
         
         .content-container {
-          padding: 1rem 0;
+          padding: 2rem 0;
         }
 
         .title-lg {
-          font-family: var(--font-primary);
-          font-size: clamp(1.25rem, 2.5vw, 1.75rem);
-          font-weight: 700;
-          color: var(--color-text-primary);
-          line-height: 1.3;
+          margin-bottom: 1.5rem;
         }
 
         .body-text-p {
-          font-size: 15px;
           color: var(--color-text-secondary);
-          line-height: 1.6;
-          font-weight: 500;
+          margin-bottom: 2.5rem;
         }
 
         .badges-grid {
           display: flex;
           flex-direction: column;
-          gap: 1rem;
+          gap: 1.25rem;
         }
         .badge-item {
           display: flex;
-          align-items: center;
-          gap: 0.75rem;
+          align-items: flex-start;
+          gap: 1rem;
         }
         .tick-wrapper {
           flex-shrink: 0;
-          display: flex;
-          align-items: center;
-          justify-content: center;
+          padding-top: 2px;
         }
         .badge-label {
-          font-size: 0.95rem;
+          font-size: 1rem;
           font-weight: 600;
           color: var(--color-text-primary);
+          line-height: 1.4;
         }
+
+        @media (max-width: 768px) {
+          .process-wrapper { padding: 4rem 0; }
+          .section-header { margin-bottom: 3rem; }
+          .main-grid-layout { gap: 3rem; padding: 0 1.5rem; }
+          .visual-card-container { height: 400px; }
+          .tab-button { padding: 0.75rem; }
+          .tab-number { font-size: 20px; }
+          .badge-label { font-size: 0.9rem; }
+        }
+
       `}</style>
     </div>
   );
