@@ -247,8 +247,8 @@ export default function Hero() {
             min-height: 600px;
           }
           .hero-content-wrapper {
-            padding: 2rem 1.5rem;
-            padding-top: 100px; 
+            padding: 1rem 1rem;
+            padding-top: 80px; 
             align-items: center; 
             justify-content: flex-start;
           }
@@ -256,7 +256,7 @@ export default function Hero() {
             justify-content: center;
             align-items: center;
             flex: 1;
-            margin-top: 0;
+            margin-top: 15vh;
           }
 
 
@@ -270,15 +270,18 @@ export default function Hero() {
             width: 100%;
             height: auto;
             justify-content: center;
-            gap: 2rem;
+            gap: 1rem;
+          }
+          .hero-eyebrow {
+            font-size: 12px;
           }
           .hero-title-override {
-            font-size: 1.85rem !important;
+            font-size: 1.2rem !important;
             text-align: center;
-            line-height: 1.2;
+            line-height: 1.15;
           }
           .hero-subtitle {
-            font-size: 1rem;
+            font-size: 0.75rem;
             text-align: center;
             margin: 0 auto;
             color: rgba(255,255,255,0.9);
@@ -287,9 +290,9 @@ export default function Hero() {
           .hero-button-group {
             flex-direction: column;
             width: 100%;
-            gap: 1rem;
+            gap: 0.75rem;
             align-items: stretch;
-            max-width: 280px;
+            max-width: 220px;
           }
           .hide-mobile { display: none; }
         }

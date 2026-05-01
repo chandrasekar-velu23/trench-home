@@ -67,7 +67,7 @@ export default function SocialProof() {
       </div>
 
       <div className="testimonial-container">
-        <ScrollReveal direction="up" className="text-center" distance={40} style={{ marginBottom: "3rem" }}>
+        <ScrollReveal direction="up" className="text-center" distance={40} style={{ marginBottom: "0rems" }}>
 
           <h2 className="title-lg" style={{ fontSize: "250%" }}>​Loved by Practitioners & Security Leaders</h2>
         </ScrollReveal>
@@ -142,13 +142,14 @@ export default function SocialProof() {
       <style jsx>{`
         .social-proof-section {
           padding: 1rem 0 6rem;
-          background: transparent;
+          background: linear-gradient(to bottom, transparent 0%, transparent 50%, white 50%, white 100%);
           display: flex;
           flex-direction: column;
           align-items: center;
-          margin-top: 1rem; /* Reduce distance to hero section */
+          margin-top: 1rem;
           position: relative;
           z-index: 5;
+          margin-bottom: 0;
         }
 
         .section-divider-wrapper {
@@ -182,6 +183,8 @@ export default function SocialProof() {
           position: relative;
           min-height: 480px; /* Fixed height to prevent layout shift */
           justify-content: center;
+          margin-top: -5rem;
+          
         }
 
         .testimonial-card {
@@ -205,14 +208,7 @@ export default function SocialProof() {
         }
 
         .avatar-wrapper {
-          width: 120px;
-          height: 120px;
-          border-radius: 50%;
-          padding: 0px;
-          border: 2px solid #0D41E1;
-          background: white;
-          overflow: hidden;
-          flex-shrink: 0;
+          display: none;
         }
 
         .avatar-img {
@@ -318,19 +314,70 @@ export default function SocialProof() {
 
         @media (max-width: 768px) {
           .social-proof-section {
-            padding: 4rem 0;
+            padding: 2rem 0;
+            background: linear-gradient(to bottom, transparent 0%, transparent 50%, white 50%, white 100%);
           }
+          
+          .section-divider-wrapper {
+            margin-bottom: 2rem;
+            transform: scale(0.5);
+            transform-origin: top center;
+            margin-top: -1rem;
+            margin-bottom: 0rem;
+          }
+          
+          .testimonial-container {
+            text-align: center;
+          }
+          
+          .testimonial-container h2 {
+            font-size: 1.5rem !important;
+            text-align: center;
+            margin-bottom: 0rem;
+          }
+          
           .testimonial-slider {
-            min-height: 650px; /* Taller for mobile text stacking */
+            min-height: 450px;
+            margin-top: 0rem;
+            margin-bottom: 0rem;
           }
 
           .testimonial-card {
-            padding: 1rem 0;
+            padding: 0.5rem 0;
           }
-          .card-content { gap: 2rem; }
-          .avatar-wrapper { width: 90px; height: 90px; }
-          .quote-text { line-height: 1.5; }
-          .slider-controls { margin-top: 3rem; }
+          
+          .card-content { 
+            gap: 1rem;
+            padding: 0 0.5rem;
+          }
+          .avatar-wrapper { 
+            display: none;
+          }
+          
+          .card-content {
+            padding-top: 0;
+            gap: 1.5rem;
+          }
+          
+          .quote-text { 
+            line-height: 1.4;
+            font-size: 0.875rem;
+          }
+          
+          .author-name {
+            font-size: 0.75rem;
+          }
+          
+          .author-role {
+            font-size: 0.65rem;
+          }
+          
+          .slider-controls { 
+            margin-top: 1.5rem;
+            transform: scale(0.5);
+            transform-origin: center;
+            margin-bottom: -1rem;
+          }
         }
 
       `}</style>

@@ -303,13 +303,20 @@ export default function ProcessSteps() {
         }
 
         @media (max-width: 768px) {
-          .process-wrapper { padding: 4rem 0; }
-          .section-header { margin-bottom: 3rem; }
-          .main-grid-layout { gap: 3rem; padding: 0 1.5rem; }
-          .visual-card-container { height: 400px; }
-          .tab-button { padding: 0.75rem; }
-          .tab-number { font-size: 20px; }
-          .badge-label { font-size: 0.9rem; }
+          .process-wrapper { padding: 2rem 0; }
+          .section-header { margin-bottom: 1.5rem; padding: 0 1rem; }
+          .eyebrow { font-size: 12px; margin-bottom: 1rem; }
+          :global(.title-lg) { font-size: 1.5rem; }
+          .sub-headline { font-size: 11px; }
+          .main-grid-layout { gap: 1.5rem; padding: 0 1rem; }
+          .visual-card-container { height: 250px; }
+          .tab-button { padding: 0.5rem; font-size: 10px; }
+          .tab-number { font-size: 16px; }
+          .step-indicator { font-size: 12px; margin-bottom: 1rem; }
+          :global(.headline) { font-size: 1rem; margin-bottom: 0.75rem; }
+          .body-text-p { font-size: 0.85rem; margin-bottom: 1rem; }
+          .badge-label { font-size: 0.75rem; }
+          .badges-grid { gap: 0.75rem; }
         }
 
       `}</style>

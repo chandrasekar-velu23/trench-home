@@ -293,6 +293,15 @@ export default function Footer() {
             grid-template-columns: 1fr;
             gap: 1.75rem;
             padding: 2rem 1.5rem;
+            background: transparent;
+            border: none;
+            backdrop-filter: none;
+          }
+          .footer-address p {
+            color: #000000;
+          }
+          .link-column :global(a) {
+            color: #000000;
           }
           .footer-cert-badge {
             height: 52px;

@@ -94,7 +94,7 @@ export default function FAQ() {
           font-family: var(--font-primary);
           font-size: 20px;
           font-weight: 700;
-          color: #0D41E1;
+          color: #000000;
           transition: color 0.3s ease;
         }
         .faq-trigger:hover .faq-question { color: var(--color-primary-100); }
@@ -103,7 +103,7 @@ export default function FAQ() {
           padding: 0.375rem;
           border-radius: 9999px;
           background: rgba(13, 65, 225, 0.05);
-          color: #0D41E1;
+          color: #808080;
           transition: all 0.3s ease;
           border: 1px solid rgba(13, 65, 225, 0.1);
         }
@@ -119,6 +119,24 @@ export default function FAQ() {
           line-height: 1.6;
           font-weight: 500;
           max-width: 90%;
+          text-align: justify;
+        }
+
+        @media (max-width: 768px) {
+          .faq-trigger {
+            padding: 1.5rem 0;
+          }
+          .faq-question {
+            font-size: 1rem;
+          }
+          .faq-answer {
+            padding: 0 0 1.5rem;
+            font-size: 0.85rem;
+            max-width: 100%;
+          }
+          .faq-divider-wrapper {
+            height: 4px;
+          }
         }
 
         .faq-divider-wrapper {

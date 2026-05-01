@@ -80,19 +80,11 @@ export default function ConnectPage() {
         company: formData.get('company') as string,
         teamSize: formData.get('teamSize') as string,
         intent: formData.get('intent') as string,
-        message: formData.get('message') as string,
-        ipAddress: await getClientIP(),
-        userAgent: navigator.userAgent
+        message: formData.get('message') as string
       };
       
-      // Get Google Apps Script URL
-      const scriptUrl = process.env.NEXT_PUBLIC_GOOGLE_APPS_SCRIPT_URL;
-      if (!scriptUrl) {
-        throw new Error('Form submission service is not configured');
-      }
-      
-      // Send to Google Apps Script
-      const response = await fetch(scriptUrl, {
+      // Send to our API route
+      const response = await fetch('/api/submit-form', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -102,7 +94,8 @@ export default function ConnectPage() {
       
       // Handle response
       if (!response.ok) {
-        throw new Error(`Server error: ${response.status}`);
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Form submission failed');
       }
       
       const result = await response.json();
@@ -120,17 +113,6 @@ export default function ConnectPage() {
       setIsSuccess(true);
     } finally {
       setIsSubmitting(false);
-    }
-  };
-
-  // Function to get client IP (simple implementation)
-  const getClientIP = async (): Promise<string> => {
-    try {
-      const response = await fetch('https://api.ipify.org?format=json');
-      const data = await response.json();
-      return data.ip;
-    } catch (error) {
-      return 'Not available';
     }
   };
 

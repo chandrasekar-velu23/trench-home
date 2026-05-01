@@ -220,31 +220,46 @@ export default function CTASection() {
         }
 
         @media (max-width: 640px) {
+          .cta-section {
+            padding: 3rem 0;
+          }
           .cta-card {
-            padding: 2.5rem 1.5rem;
+            padding: 1.75rem 1rem;
+          }
+          .cta-eyebrow {
+            font-size: 0.6rem;
+            margin-bottom: 0.75rem;
+          }
+          .cta-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+          }
+          .cta-subtitle {
+            font-size: 0.8rem;
           }
           .cta-actions {
             flex-direction: column;
             width: 100%;
+            gap: 0.75rem;
           }
           :global(.cta-btn-primary),
           :global(.cta-btn-secondary) {
             width: 100% !important;
           }
           .cta-cloud {
-            width: 160px;
-            opacity: 0.35;
+            width: 120px;
+            opacity: 0.25;
           }
           .cta-cloud.visible {
-            opacity: 0.35;
+            opacity: 0.25;
           }
           .cta-cloud-left {
-            left: -20px;
-            margin-top: -60px;
+            left: -10px;
+            margin-top: -40px;
           }
           .cta-cloud-right {
-            right: -20px;
-            margin-top: -80px;
+            right: -10px;
+            margin-top: -60px;
           }
         }
       `}</style>

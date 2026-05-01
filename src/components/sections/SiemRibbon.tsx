@@ -7,7 +7,7 @@ export default function SiemRibbon() {
     <section className="siem-ribbon">
       <div className="container-wide">
         <p className="siem-text" style={{ color: "#FFFFFF", fontSize: "1.5rem", fontWeight: "bold", fontStyle: "italic", textAlign: "center" }}>
-          AI SIEM with agents built in not bolted on.
+          AI for Actionability, not just Visibility.
         </p>
       </div>
       <style jsx>{`
