@@ -63,7 +63,7 @@ export default function Hero() {
             <div className="hero-bottom-group">
               <p className="hero-subtitle">
                 Ingest every signal, detect every threat, and respond at machine
-                speed — while your coffee is still hot.
+                speed, while your coffee is still hot.
               </p>
 
               <div className="hero-button-group">
