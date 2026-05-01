@@ -224,6 +224,7 @@ export default function SocialProof() {
           color: #111;
           margin: 0;
           line-height: 1.6;
+          margin-top: 5rem;
         }
 
         .author-info {
