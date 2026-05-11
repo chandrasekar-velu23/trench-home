@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 
 /* ─── Data ──────────────────────────────────────────────────── */
 const comparisonData = [
@@ -177,39 +177,10 @@ function SquigglyBorder({ color }: { color: string }) {
 }
 
 /* ─── Component ─────────────────────────────────────────────── */
-export default function ComparisonTable({ data }: { data?: any }) {
-  // Map Strapi's compare array to the format expected by the UI, or fallback to the hardcoded one
-  const rawCompare = data?.compare || [];
-  const mappedComparisonData = rawCompare.length > 0 
-    ? rawCompare.map((item: any, idx: number) => ({
-        id: item.feature_id || item.id || `feature-${idx}`,
-        feature: item.feature,
-        legacy: item.legacyvalue,
-        bolted: item.boltedvalue,
-        trench: item.trenchvalue,
-      }))
-    : comparisonData;
-
+export default function ComparisonTable() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
-  const activeData = mappedComparisonData[activeIndex] || mappedComparisonData[0];
+  const activeData = comparisonData[activeIndex];
   const scrollRef = useRef<HTMLDivElement>(null);
-  const autoPlayRef = useRef<NodeJS.Timeout | null>(null);
-
-  // Auto-play functionality
-  useEffect(() => {
-    if (!isPaused) {
-      autoPlayRef.current = setInterval(() => {
-        setActiveIndex((prevIndex) => (prevIndex + 1) % mappedComparisonData.length);
-      }, 2000); // Change every 2 seconds
-    }
-
-    return () => {
-      if (autoPlayRef.current) {
-        clearInterval(autoPlayRef.current);
-      }
-    };
-  }, [isPaused]);
 
   const scroll = (direction: "left" | "right") => {
     if (scrollRef.current) {
@@ -218,36 +189,25 @@ export default function ComparisonTable({ data }: { data?: any }) {
     }
   };
 
-  const handleTabClick = (index: number) => {
-    setActiveIndex(index);
-    setIsPaused(true); // Pause auto-play when user manually selects
-    // Resume auto-play after 10 seconds of inactivity
-    setTimeout(() => setIsPaused(false), 10000);
-  };
-
-  const handleMouseEnter = () => {
-    setIsPaused(true);
-  };
-
-  const handleMouseLeave = () => {
-    setIsPaused(false);
-  };
-
   return (
-    <div className="ct-wrap" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+    <div className="ct-wrap">
 
+      {/* ── Notation ── */}
+      <div className="ct-notation">
+        Click a category below to compare capabilities
+      </div>
 
       {/* ── Tab selector ── */}
       <div className="ct-tabs" role="tablist" aria-label="Comparison category">
-        {mappedComparisonData.map((item: any, i: number) => {
-          const TabIcon = tabIcons[i % tabIcons.length];
+        {comparisonData.map((item, i) => {
+          const TabIcon = tabIcons[i];
           const isActive = activeIndex === i;
           return (
             <button
               key={item.id}
               role="tab"
               aria-selected={isActive}
-              onClick={() => handleTabClick(i)}
+              onClick={() => setActiveIndex(i)}
               className={`ct-tab ${isActive ? "ct-tab--active" : ""}`}
             >
               {isActive && (
@@ -333,9 +293,15 @@ export default function ComparisonTable({ data }: { data?: any }) {
           margin: 0 auto;
         }
 
-        /* ── Notation (Removed) ── */
+        /* ── Notation ── */
         .ct-notation {
-          display: none; /* Hidden but keeping styles for potential future use */
+          text-align: center;
+          font-size: 0.75rem;
+          color: #888;
+          margin-bottom: 1rem;
+          text-transform: uppercase;
+          letter-spacing: 0.08em;
+          font-weight: 700;
         }
 
         /* ── Tabs ── */

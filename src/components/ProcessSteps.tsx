@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import ScrollReveal from "./animations/ScrollReveal";
 import MouseInteract from "./animations/MouseInteract";
@@ -14,7 +14,7 @@ const steps = [
     step: "Step 1",
     title: "Ingest",
     subtitle: "Connect everything. Miss nothing.",
-    description: "Trench connects to every log source, tool, and data stream across your stack : cloud, endpoint, identity, network, and SaaS. No agents to deploy. No data duplication. Clean, normalized, and ready for detection from day one.",
+    description: "Trench connects to every log source, tool, and data stream across your stack — cloud, endpoint, identity, network, and SaaS. No agents to deploy. No data duplication. Clean, normalized, and ready for detection from day one.",
     badges: ["20+ native integrations", "Agentless connector-based setup", "Auto-normalized, enriched, and searchable"],
     image: "/steps/investigate.svg",
     Component: IngestProcess
@@ -39,79 +39,29 @@ const steps = [
   }
 ];
 
-export default function ProcessSteps({ data }: { data?: any }) {
-  const baseUrl = process.env.NEXT_PUBLIC_STRAPI_URL || "http://127.0.0.1:1337";
-
-  const rawSteps = data?.steps || [];
-  const mappedSteps = rawSteps.length > 0
-    ? rawSteps.map((s: any, i: number) => {
-        // Map backend badges (json) or fallback
-        const parsedBadges = Array.isArray(s.badges) ? s.badges : (typeof s.badges === 'string' ? JSON.parse(s.badges || '[]') : steps[i % steps.length]?.badges);
-        return {
-          step: s.stepNumber || `Step ${i + 1}`,
-          title: s.title,
-          subtitle: s.subtitle,
-          description: s.description,
-          badges: parsedBadges,
-          image: s.image?.url ? `${baseUrl}${s.image.url}` : steps[i % steps.length]?.image,
-          Component: steps[i % steps.length]?.Component // Fallback to hardcoded components for visualization if needed
-        };
-      })
-    : steps;
-
+export default function ProcessSteps() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
-  const activeStep = mappedSteps[activeIndex] || mappedSteps[0];
-  const autoPlayRef = useRef<NodeJS.Timeout | null>(null);
-
-  // Auto-play functionality
-  useEffect(() => {
-    if (!isPaused) {
-      autoPlayRef.current = setInterval(() => {
-        setActiveIndex((prevIndex) => (prevIndex + 1) % mappedSteps.length);
-      }, 2000); // Change every 2 seconds
-    }
-
-    return () => {
-      if (autoPlayRef.current) {
-        clearInterval(autoPlayRef.current);
-      }
-    };
-  }, [isPaused]);
-
-  const handleTabClick = (index: number) => {
-    setActiveIndex(index);
-    setIsPaused(true); // Pause auto-play when user manually selects
-    // Resume auto-play after 10 seconds of inactivity
-    setTimeout(() => setIsPaused(false), 10000);
-  };
-
-  const handleMouseEnter = () => {
-    setIsPaused(true);
-  };
-
-  const handleMouseLeave = () => {
-    setIsPaused(false);
-  };
+  const activeStep = steps[activeIndex];
 
   return (
-    <div className="process-wrapper" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+    <div className="process-wrapper">
       <div className="section-header">
         <ScrollReveal direction="up" distance={30}>
-          <span className="eyebrow">{data?.eyebrow || "ONE PLATFORM. ZERO BLIND SPOTS. TOTAL CONTROL."}</span>
-          <TextReveal text={data?.mainTitle || "How Trench Works."} as="h1" className="title-lg" />
+          <span className="eyebrow">ONE PLATFORM. ZERO BLIND SPOTS. TOTAL CONTROL.</span>
+          <TextReveal text="How Trench Works." as="h1" className="title-lg" />
           <p className="sub-headline" style={{ textTransform: 'uppercase', letterSpacing: '2px', fontSize: '13px', fontWeight: 600 }}>
             THREE STEPS. FULLY AUTOMATED. ALWAYS ON.
           </p>
         </ScrollReveal>
       </div>
 
+      {/* Step tabs */}
       <div style={{
         display: "flex", gap: "12px", justifyContent: "center",
         maxWidth: "600px", margin: "0 auto 4rem",
       }}>
-        {mappedSteps.map((s: any, i: number) => (
-          <button key={i} onClick={() => handleTabClick(i)} className={`tab-button ${activeIndex === i ? 'active' : ''}`}>
+        {steps.map((s, i) => (
+          <button key={i} onClick={() => setActiveIndex(i)} className={`tab-button ${activeIndex === i ? 'active' : ''}`}>
             <div className="tab-number">
               0{i + 1}
             </div>
@@ -161,7 +111,7 @@ export default function ProcessSteps({ data }: { data?: any }) {
               <p className="body-text-p" style={{ marginBottom: "2rem" }}>{activeStep.description}</p>
 
               <div className="badges-grid">
-                {activeStep.badges.map((badge: string, bi: number) => (
+                {activeStep.badges.map((badge, bi) => (
                   <div key={bi} className="badge-item">
                     <div className="tick-wrapper">
                       <svg width="18" height="18" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -178,8 +128,8 @@ export default function ProcessSteps({ data }: { data?: any }) {
 
           {/* Progress Bars */}
           <div style={{ display: "flex", gap: "6px", marginTop: "3rem" }}>
-            {mappedSteps.map((s: any, i: number) => (
-              <div key={i} onClick={() => handleTabClick(i)} style={{
+            {steps.map((s, i) => (
+              <div key={i} onClick={() => setActiveIndex(i)} style={{
                 height: "4px", flex: 1, borderRadius: "2px", cursor: "pointer",
                 background: i === activeIndex ? "var(--color-primary-100)" : i < activeIndex ? "rgba(13, 65, 225, 0.3)" : "rgba(0,0,0,0.1)",
                 transition: "all 0.3s",

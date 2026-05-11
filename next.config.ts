@@ -19,25 +19,8 @@ const nextConfig: NextConfig = {
   allowedDevOrigins: getLocalIPs(),
   images: {
     formats: ["image/avif", "image/webp"],
-    remotePatterns: [
-      {
-        protocol: "http",
-        hostname: "127.0.0.1",
-        port: "1337",
-        pathname: "/uploads/**",
-      },
-      {
-        protocol: "http",
-        hostname: "localhost",
-        port: "1337",
-        pathname: "/uploads/**",
-      },
-      {
-        protocol: "https",
-        hostname: "**",
-      }
-    ],
-    unoptimized: true, // Prevents "upstream image resolved to private ip" error for local Strapi
+    remotePatterns: [],
+    unoptimized: false,
     qualities: [100, 75, 85, 90,95],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],

@@ -6,10 +6,8 @@ export default function SiemRibbon() {
   return (
     <section className="siem-ribbon">
       <div className="container-wide">
-        <p className="siem-text">
-          <span style={{ color: "#FFFFFF", fontSize: "2rem", fontWeight: "bold", fontStyle: "italic", textAlign: "center" }}>AI for </span>
-          <span style={{ color: "#FFFFFF", fontSize: "2rem", fontWeight: "bold", fontStyle: "italic", textAlign: "center", background: "linear-gradient(45deg, #FFB547, #FFB547)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Actionability</span>
-          <span style={{ color: "#FFFFFF", fontSize: "2rem", fontWeight: "bold", fontStyle: "italic", textAlign: "center" }}>, not just Visibility.</span>
+        <p className="siem-text" style={{ color: "#FFFFFF", fontSize: "1.5rem", fontWeight: "bold", fontStyle: "italic", textAlign: "center" }}>
+          AI for Actionability, not just Visibility.
         </p>
       </div>
       <style jsx>{`
@@ -18,14 +16,6 @@ export default function SiemRibbon() {
           background: var(--color-primary-100);
           border-bottom: 1px solid rgba(255, 255, 255, 0.1);
           border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .siem-text {
-          font-size: 2rem; /* h2 equivalent size */
-          font-weight: bold;
-          font-style: italic;
-          text-align: center;
-          color: #FFFFFF;
         }
       `}</style>
     </section>

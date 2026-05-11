@@ -9,33 +9,13 @@ import ScrollReveal from "./animations/ScrollReveal";
 import Parallax from "./animations/Parallax";
 import Button from "./ui/Button";
 
-
-
-interface HeroProps {
-  data: {
-    Heading: string;
-    subheading: string;
-    Eyebrow: string;
-    BackgroundImage?: {
-      url: string;
-    };
-    // Add other fields you created in Strapi Step 1
-  }
-}
-
-export default function Hero({ data }: HeroProps) {
-  const heading = data?.Heading || "Default Heading";
-  const subHeading = data?.subheading || "Default Subheading text here...";
-  const bgImage = data?.BackgroundImage?.url 
-    ? `${process.env.NEXT_PUBLIC_STRAPI_URL}${data.BackgroundImage.url}` 
-    : "/images/hero-sample.webp";
-
+export default function Hero() {
   return (
     <section className="hero-section">
       <div className="hero-bg-container">
         {/* Desktop Background */}
         <div className="desktop-bg hero-bg-image-wrap">
-          {/* <Image
+          <Image
             src="/images/hero-sample.webp"
             alt="Trench Guardian Castle"
             fill
@@ -43,15 +23,8 @@ export default function Hero({ data }: HeroProps) {
             quality={100}
             className="hero-bg-image"
             sizes="(max-width: 1024px) 100vw, 100vw"
-          /> */}
-          <Image
-            src={bgImage} // Connected to Strapi
-            alt="Hero Background"
-            fill
-            priority
-            className="hero-bg-image"
-            unoptimized={true}
           />
+
         </div>
         {/* Mobile Background */}
         <div className="mobile-bg hero-bg-image-wrap">
@@ -82,19 +55,16 @@ export default function Hero({ data }: HeroProps) {
                 <span className="hero-eyebrow">Built for next generation Security Champions.</span>
               </div>
 
-              {/* <h1 className="title-lg hero-title-override">
+              <h1 className="title-lg hero-title-override">
                 One AI Platform for <br className="hide-mobile" /> Cloud-Native Security Teams
-              </h1> */}
-              <h1 className="hero-title-override">{heading}</h1> {/* Connected to Strapi */}
-          
+              </h1>
             </div>
 
             <div className="hero-bottom-group">
-              {/* <p className="hero-subtitle">
+              <p className="hero-subtitle">
                 Ingest every signal, detect every threat, and respond at machine
                 speed, while your coffee is still hot.
-              </p> */}
-              <p className="hero-subtitle">{subHeading}</p>
+              </p>
 
               <div className="hero-button-group">
                 <Link href="/connect">
