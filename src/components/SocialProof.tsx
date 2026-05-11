@@ -6,52 +6,87 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import Image from "next/image";
 import ScrollReveal from "./animations/ScrollReveal";
 
+
+
+interface Testimonial {
+  id: number;
+  quote: string;
+  author: string;
+  role: string;
+  avatar?: {
+    url: string;
+  };
+}
+
 const testimonials = [
   {
     id: 1,
     quote: "The agentic approach from Trench AI delivers proactive detection engineering in real-time. Rather than relying on static rulesets in an AI-powered threat landscape, their platform orchestrates autonomous, context-rich detections and accelerates the threat intelligence to high fidelity rule literally in minutes.",
     author: "Srikanth Devarajan",
     role: "Ex-VP & GM, Zscaler",
-    avatar: "/images/avatar.png"
+    avatar: "/testimonials/SD.png"
   },
   {
     id: 2,
-    quote: "What impressed me most is Trench’s clarity of vision,  building unique AI systemic thinking that actually solve detection problems and reduce real threat response times, not just automate for the sake of it. The team combines deep domain expertise with pragmatic execution, which is rare in today’s noisy cybersecurity market.",
+    quote: "What impressed me most is Trench's clarity of vision,  building unique AI systemic thinking that actually solve detection problems and reduce real threat response times, not just automate for the sake of it. The team combines deep domain expertise with pragmatic execution, which is rare in today's noisy cybersecurity market.",
     author: "Deepak Kothule",
     role: "VP - Engineering Leader, Ex-FICO, Ex-Symantec",
-    avatar: "/images/avatar.png"
+    avatar: "/testimonials/DK.png"
   },
   {
     id: 3,
     quote: "Trench AI is a game-changer for modern Security teams, its speed, precision, and AI-powered detections drastically cut through noise from the source and accelerate threat response. An innovative application of AI to solve hard detection problem in SOC",
     author: "Senthil Kumar Iyyappan",
     role: "CISO - Ocrolus, Ex-Freshworks",
-    avatar: "/images/avatar.png"
+    avatar: "/testimonials/SKI.png"
   },
   {
     id: 4,
-    quote: "Trench Security's agentic detection system model for threat detection and response is a paradigm shift. Its regulated AI-powered LLM engine, combined with a visionary team and a progressive learning mindset, sets it apart in today’s evolving cyber defense landscape. SOC teams have already started experiencing MTTD for real-time intelligence in minutes from days/weeks. The solution’s seamless compatibility with multi-vendor security monitoring tools, such as EDR, SIEM, and CSPM makes it both flexible and future-ready",
+    quote: "Trench Security's agentic detection system model for threat detection and response is a paradigm shift. Its regulated AI-powered LLM engine, combined with a visionary team and a progressive learning mindset, sets it apart in today's evolving cyber defense landscape. SOC teams have already started experiencing MTTD for real-time intelligence in minutes from days/weeks. The solution's seamless compatibility with multi-vendor security monitoring tools, such as EDR, SIEM, and CSPM makes it both flexible and future-ready",
     author: "Subhro Banerjee",
     role: "Senior Global IT Security Leader | Lifescience MNC",
-    avatar: "/images/avatar.png"
+    avatar: "/testimonials/SB.png"
   },
 ];
 
-export default function SocialProof() {
+export default function SocialProof({ data }: { data: any }) {
+  const baseUrl = process.env.NEXT_PUBLIC_STRAPI_URL || "http://127.0.0.1:1337";
+  // Use CMS title or fallback
+  const sectionTitle = data?.title || "Trusted by the world's most secure teams";
+
+  // Use CMS testimonials array or empty list
+  const rawTestimonials = data?.Testimonial || [];
+  
+  // Map Strapi's Testimonial and Designations to the format expected by the UI, or fallback to the hardcoded ones
+  const testimonialList = rawTestimonials.length > 0 
+    ? rawTestimonials.map((t: any, idx: number) => ({
+        id: t.id || idx,
+        quote: t.quote,
+        author: t.author,
+        role: t.Designations || t.role,
+        avatar: t.avatar
+      }))
+    : testimonials;
+
+  if (testimonialList.length === 0) {
+    console.error("SocialProof: testimonialList is empty!", { rawTestimonials, data });
+    return <section className="social-proof-section empty">No Testimonials</section>;
+  }
+
   const [index, setIndex] = useState(0);
 
-  const next = () => setIndex((prev) => (prev + 1) % testimonials.length);
-  const prev = () => setIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+  const next = () => setIndex((prev) => (prev + 1) % testimonialList.length);
+  const prev = () => setIndex((prev) => (prev - 1 + testimonialList.length) % testimonialList.length);
 
   // Auto-slide every 2 seconds
   useEffect(() => {
     const timer = setInterval(() => {
-      setIndex((prev) => (prev + 1) % testimonials.length);
+      setIndex((prev) => (prev + 1) % testimonialList.length);
     }, 2000);
     return () => clearInterval(timer);
-  }, []);
+  }, [testimonialList.length]);
 
-  const current = testimonials[index];
+  const item = testimonialList[index];
 
   return (
     <section className="social-proof-section">
@@ -68,15 +103,15 @@ export default function SocialProof() {
 
       <div className="testimonial-container">
         <ScrollReveal direction="up" className="text-center" distance={40} style={{ marginBottom: "0rems" }}>
-
-          <h2 className="title-lg" style={{ fontSize: "250%" }}>​Loved by Practitioners & Security Leaders</h2>
+          <h2 className="title-md text-center text-white mb-12">{sectionTitle}</h2>
+          {/* <h2 className="title-lg" style={{ fontSize: "250%" }}>​Loved by Practitioners & Security Leaders</h2> */}
         </ScrollReveal>
 
 
         <div className="testimonial-slider">
-          <AnimatePresence mode="popLayout" initial={false}>
+          <AnimatePresence mode="wait">
             <motion.div
-              key={current.id}
+              key={item.id}
               initial={{ opacity: 0, scale: 0.95, y: 10 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 1.05, y: -10 }}
@@ -86,22 +121,22 @@ export default function SocialProof() {
               <div className="card-content">
                 <div className="avatar-wrapper">
                   <Image
-                    src={current.avatar}
-                    alt={current.author}
+                    src={item.avatar?.url ? `${baseUrl}${item.avatar.url}` : '/testimonials/default.png'}
+                    alt={item.author}
                     width={120}
                     height={120}
                     className="avatar-img"
-                    quality={90}
+                    unoptimized={true}
                   />
                 </div>
 
                 <blockquote className="quote-text text-medium">
-                  "{current.quote}"
+                  "{item.quote}"
                 </blockquote>
 
                 <div className="author-info">
-                  <span className="author-name fw-bold">{current.author},</span>
-                  <span className="author-role text-small">{current.role}</span>
+                  <span className="author-name fw-bold">{item.author},</span>
+                  <span className="author-role text-small">{item.role}</span>
                 </div>
               </div>
             </motion.div>
@@ -125,7 +160,7 @@ export default function SocialProof() {
               </div>
 
               <div className="pagination-overlay">
-                {testimonials.map((_, i) => (
+                {testimonialList.map((_: Testimonial, i: number) => (
                   <button
                     key={i}
                     className={`dot ${i === index ? "active" : ""}`}
@@ -150,6 +185,7 @@ export default function SocialProof() {
           position: relative;
           z-index: 5;
           margin-bottom: 0;
+          overflow: hidden; /* Hide background sharpen lines during scrolling */
         }
 
         .section-divider-wrapper {
@@ -205,17 +241,31 @@ export default function SocialProof() {
           text-align: center;
           gap: 2.5rem;
           max-width: 850px;
+          margin-top: 5rem; /* Desktop padding to prevent image-title overlap */
         }
 
         .avatar-wrapper {
-          display: none;
+        width:60px;
+        height:60px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-top: 3rem;
         }
 
         .avatar-img {
-          width: 100%;
-          height: 100%;
+          width: 120px;
+          height: 120px;
           object-fit: cover;
           border-radius: 50%;
+          border: 4px solid #0D41E1;
+          box-shadow: 0 8px 32px rgba(13, 65, 225, 0.2);
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .avatar-img:hover {
+          transform: scale(1.05);
+          box-shadow: 0 12px 48px rgba(13, 65, 225, 0.3);
         }
 
         .quote-text {
@@ -224,7 +274,6 @@ export default function SocialProof() {
           color: #111;
           margin: 0;
           line-height: 1.6;
-          margin-top: 5rem;
         }
 
         .author-info {
@@ -350,14 +399,23 @@ export default function SocialProof() {
           .card-content { 
             gap: 1rem;
             padding: 0 0.5rem;
+            margin-top: 0; /* Remove top padding for mobile view */
           }
           .avatar-wrapper { 
-            display: none;
+            display: flex;
+            margin-bottom: 1rem;
           }
           
-          .card-content {
-            padding-top: 0;
-            gap: 1.5rem;
+          .avatar-img {
+            width: 40px;
+            height: 40px;
+            border: 3px solid #0D41E1;
+            box-shadow: 0 4px 16px rgba(13, 65, 225, 0.15);
+          }
+          
+          .avatar-img:hover {
+            transform: scale(1.02);
+            box-shadow: 0 6px 24px rgba(13, 65, 225, 0.2);
           }
           
           .quote-text { 

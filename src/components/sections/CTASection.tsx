@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Button from "../ui/Button";
 
-export default function CTASection() {
+export default function CTASection({ data }: { data?: any }) {
   const sectionRef = useRef<HTMLElement>(null);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [isRevealed, setIsRevealed] = useState(true);
@@ -68,28 +68,43 @@ export default function CTASection() {
           <div className="cta-card">
             <div className="cta-content">
               <div className="cta-text">
-                <span className="cta-eyebrow">EVERY CASTLE NEEDS A TRENCH.</span>
+                <span className="cta-eyebrow">{data?.eyebrows_text || "EVERY CASTLE NEEDS A TRENCH."}</span>
                 <h2 className="cta-title">
-                  Our Trench Protects Your Castle.
+                  {data?.cta_line || "Our Trench Protects Your Castle."}
                 </h2>
                 <p className="cta-subtitle">
-                  The Agentic Operating System for your security stack protecting everything you have built, 24/7.
+                  {data?.subtile || "The Agentic Operating System for your security stack protecting everything you have built, 24/7."}
                 </p>
               </div>
               <div className="cta-actions">
-                <Link href="/connect">
-                  <Button className="cta-btn-primary">
-                    Show Me the Trench
-                  </Button>
-                </Link>
-                <Link href="/connect">
-                  <Button
-                    variant="secondary"
-                    className="cta-btn-secondary"
-                  >
-                    Take a Tour
-                  </Button>
-                </Link>
+                {data?.Link && data.Link.length > 0 ? (
+                  data.Link.map((link: any, idx: number) => (
+                    <Link key={idx} href={link.href || "/connect"}>
+                      <Button
+                        variant={link.variant === "secondary" ? "secondary" : undefined}
+                        className={link.variant === "secondary" ? "cta-btn-secondary" : "cta-btn-primary"}
+                      >
+                        {link.label}
+                      </Button>
+                    </Link>
+                  ))
+                ) : (
+                  <>
+                    <Link href="/connect">
+                      <Button className="cta-btn-primary">
+                        Show Me the Trench
+                      </Button>
+                    </Link>
+                    <Link href="/connect">
+                      <Button
+                        variant="secondary"
+                        className="cta-btn-secondary"
+                      >
+                        Take a Tour
+                      </Button>
+                    </Link>
+                  </>
+                )}
               </div>
             </div>
           </div>

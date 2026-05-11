@@ -1,0 +1,62 @@
+{
+  "kind": "singleType",
+  "collectionName": "why_trench_pages",
+  "info": {
+    "singularName": "why-trench-page",
+    "pluralName": "why-trench-pages",
+    "displayName": "why_trench_page"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "hero": {
+      "type": "component",
+      "component": "sections.why-trench-hero",
+      "repeatable": false
+    },
+    "mission_vision": {
+      "type": "component",
+      "component": "elements.info-card",
+      "repeatable": true
+    },
+    "eyebrows_text": {
+      "type": "string"
+    },
+    "ribbon": {
+      "type": "component",
+      "component": "elements.ribbon",
+      "repeatable": false
+    },
+    "team_titles": {
+      "type": "string"
+    },
+    "founder": {
+      "type": "component",
+      "component": "elements.team-info-1",
+      "repeatable": true
+    },
+    "team_section_title": {
+      "type": "string"
+    },
+    "team_members": {
+      "type": "component",
+      "component": "elements.team-info",
+      "repeatable": true
+    },
+    "core_values": {
+      "type": "string"
+    },
+    "cores_values": {
+      "type": "component",
+      "component": "elements.info-card",
+      "repeatable": true
+    },
+    "join_cta": {
+      "type": "component",
+      "component": "sections.cta",
+      "repeatable": false
+    }
+  }
+}

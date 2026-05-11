@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_links_links",
+  "info": {
+    "displayName": "link"
+  },
+  "options": {},
+  "attributes": {
+    "href": {
+      "type": "string"
+    },
+    "text": {
+      "type": "string"
+    },
+    "external": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "config": {}
+}

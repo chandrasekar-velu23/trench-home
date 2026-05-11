@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_elements_team_infos",
+  "info": {
+    "displayName": "team_info"
+  },
+  "options": {},
+  "attributes": {
+    "profile": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "Name": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

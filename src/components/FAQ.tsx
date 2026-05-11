@@ -29,13 +29,16 @@ const faqData = [
   }
 ];
 
-export default function FAQ() {
+export default function FAQ({ data }: { data?: any }) {
   const [activeIdx, setActiveIdx] = useState<number | null>(null);
+
+  const rawFaqs = data?.faqs || [];
+  const mappedFaqs = rawFaqs.length > 0 ? rawFaqs : faqData;
 
   return (
     <div className="w-full" style={{ maxWidth: "48rem", margin: "0 auto", padding: "0 1rem" }}>
       <AdvancedTimeline staggerDelay={0.15} className="faq-list">
-        {faqData.map((item, i) => (
+        {mappedFaqs.map((item: any, i: number) => (
           <ScrollReveal key={item.question} direction="up" distance={20} delay={0}>
             <div className="faq-item">
               <button

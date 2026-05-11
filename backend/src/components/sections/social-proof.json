@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_sections_social_proofs",
+  "info": {
+    "displayName": "SocialProof"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "Testimonial": {
+      "type": "component",
+      "component": "sections.testimonial",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

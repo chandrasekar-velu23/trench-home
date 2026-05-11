@@ -3,6 +3,8 @@
 import React, { useState, useRef, useCallback, useEffect } from "react";
 import Image from "next/image";
 import "./integrations.css";
+import VariationSlack from '@/components/variation-slack';
+import { TweaksPanel } from '@/components/tweaks-panel';
 
 /* ─────────────────────────────────────────
    DATA
@@ -173,7 +175,12 @@ export default function IntegrationsPage() {
   return (
     <main className="page-main overflow-hidden">
       <div className="container-wide">
-
+        <>
+        <VariationSlack />
+        <TweaksPanel title="Tweaks">
+          <div>
+          </div>
+        </TweaksPanel></>
         {/* ── Hero ── */}
         <div className="int-hero">
           <p className="int-eyebrow">Ecosystem</p>

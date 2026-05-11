@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_sections_cta_sections",
+  "info": {
+    "displayName": "CTASection"
+  },
+  "options": {},
+  "attributes": {
+    "eyebrows_text": {
+      "type": "string"
+    },
+    "cta_line": {
+      "type": "string"
+    },
+    "subtile": {
+      "type": "string"
+    },
+    "Link": {
+      "type": "component",
+      "component": "shared.link",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}
