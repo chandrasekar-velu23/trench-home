@@ -3,6 +3,8 @@
 import React, { useState, useRef, useCallback, useEffect } from "react";
 import Image from "next/image";
 import "./integrations.css";
+import VariationSlack from "@/components/variation-slack";
+import { TweaksPanel } from "@/components/tweaks-panel";
 
 /* ─────────────────────────────────────────
    DATA
@@ -172,7 +174,14 @@ export default function IntegrationsPage() {
 
   return (
     <main className="page-main overflow-hidden">
+      <TweaksPanel title="Settings">
+        <div style={{ padding: "8px 14px", color: "var(--color-neutral-500)" }}>
+          Settings will appear here
+        </div>
+      </TweaksPanel>
       <div className="container-wide">
+        
+        <VariationSlack />
 
         {/* ── Hero ── */}
         <div className="int-hero">

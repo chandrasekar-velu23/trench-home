@@ -9,7 +9,7 @@ export default function DetectionProcess() {
     }, []);
 
     const threatNodes = [
-        { x: 336, y: 55,  label: "LATERAL\nMOVEMENT" },
+        { x: 336, y: 55, label: "LATERAL\nMOVEMENT" },
         { x: 475, y: 130, label: "PRIV\nESCALATION" },
         { x: 470, y: 286, label: "DATA\nEXFIL" },
         { x: 312, y: 345, label: "C2\nCOMMS" },
@@ -19,7 +19,7 @@ export default function DetectionProcess() {
     const active = tick % threatNodes.length;
 
     // Brand palette only
-    const P  = "#0D41E1";
+    const P = "#0D41E1";
     const PT = "#EFF6FF";
     const PM = "#DBEAFE";
     const BG = "#ffffff";
@@ -161,8 +161,12 @@ export default function DetectionProcess() {
 
                 @media (max-width: 768px) {
                     .detect-wrap {
-                        padding: 1.5rem 1rem;
-                        min-height: 500px;
+                        height: 100%;
+                        width: 100%;
+                        padding: 0.5rem 1rem;
+                        margin-top: -10px;
+                        margin-bottm: 0px
+                        max-height: 80px;
                     }
                 }
 

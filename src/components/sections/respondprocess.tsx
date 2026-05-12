@@ -9,7 +9,7 @@ export default function RespondProcess() {
     }, []);
 
     // Brand palette only
-    const P  = "#0D41E1";
+    const P = "#0D41E1";
     const P2 = "#1E3EB0";
     const PT = "#EFF6FF";
     const PM = "#DBEAFE";
@@ -21,7 +21,7 @@ export default function RespondProcess() {
 
     // Timeline nodes — evenly spaced across the wider viewBox
     const flow = [
-        { x: 58,  label: "THREAT\nDETECTED" },
+        { x: 58, label: "THREAT\nDETECTED" },
         { x: 196, label: "AGENT\nINVESTIGATES" },
         { x: 334, label: "CONTEXT\nCORRELATED" },
         { x: 472, label: "RESPONSE\nTRIGGERED" },
@@ -37,10 +37,10 @@ export default function RespondProcess() {
     ];
 
     const metrics = [
-        { label: "Detection → Response", value: "< 5 min",       active: step >= 2 },
-        { label: "Alert → Closed",       value: "< 10 min",      active: step >= 3 },
-        { label: "Human Review",         value: "Decisions only", active: step >= 4 },
-        { label: "Coverage",             value: "Full stack",     active: step >= 1 },
+        { label: "Detection → Response", value: "< 5 min", active: step >= 2 },
+        { label: "Alert → Closed", value: "< 10 min", active: step >= 3 },
+        { label: "Human Review", value: "Decisions only", active: step >= 4 },
+        { label: "Coverage", value: "Full stack", active: step >= 1 },
     ];
 
     return (
@@ -191,8 +191,8 @@ export default function RespondProcess() {
 
                 @media (max-width: 768px) {
                     .respond-wrap {
-                        padding: 1.5rem 1rem;
-                        min-height: 320px;
+                        padding: 0.5rem 1rem;
+                        max-height: 80px;
                     }
                 }
 

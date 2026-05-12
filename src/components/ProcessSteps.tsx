@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import ScrollReveal from "./animations/ScrollReveal";
 import MouseInteract from "./animations/MouseInteract";
@@ -42,6 +42,30 @@ const steps = [
 export default function ProcessSteps() {
   const [activeIndex, setActiveIndex] = useState(0);
   const activeStep = steps[activeIndex];
+  const intervalRef = useRef<number | null>(null);
+
+  const startAutoPlay = () => {
+    stopAutoPlay();
+    intervalRef.current = window.setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % steps.length);
+    }, 2500); // Auto play every 2.5 seconds
+  };
+
+  const stopAutoPlay = () => {
+    if (intervalRef.current !== null) {
+      window.clearInterval(intervalRef.current);
+    }
+  };
+
+  useEffect(() => {
+    startAutoPlay();
+    return () => stopAutoPlay();
+  }, []);
+
+  const handleTabClick = (i: number) => {
+    setActiveIndex(i);
+    startAutoPlay(); // Reset timer on click
+  };
 
   return (
     <div className="process-wrapper">
@@ -58,10 +82,10 @@ export default function ProcessSteps() {
       {/* Step tabs */}
       <div style={{
         display: "flex", gap: "12px", justifyContent: "center",
-        maxWidth: "600px", margin: "0 auto 4rem",
+        maxWidth: "700px", margin: "0 auto 4rem",
       }}>
         {steps.map((s, i) => (
-          <button key={i} onClick={() => setActiveIndex(i)} className={`tab-button ${activeIndex === i ? 'active' : ''}`}>
+          <button key={i} onClick={() => handleTabClick(i)} className={`tab-button ${activeIndex === i ? 'active' : ''}`}>
             <div className="tab-number">
               0{i + 1}
             </div>
@@ -81,7 +105,7 @@ export default function ProcessSteps() {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.3 }}
+              transition={{ duration: 0.1 }}
               style={{ width: "100%", height: "100%", display: "flex", alignItems: "stretch" }}
             >
               {activeStep.Component ? (
@@ -105,7 +129,7 @@ export default function ProcessSteps() {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -20 }}
-              transition={{ duration: 0.3 }}
+              transition={{ duration: 0.1 }}
             >
               <h3 className="headline" style={{ marginBottom: "1rem" }}>{activeStep.subtitle}</h3>
               <p className="body-text-p" style={{ marginBottom: "2rem" }}>{activeStep.description}</p>
@@ -129,7 +153,7 @@ export default function ProcessSteps() {
           {/* Progress Bars */}
           <div style={{ display: "flex", gap: "6px", marginTop: "3rem" }}>
             {steps.map((s, i) => (
-              <div key={i} onClick={() => setActiveIndex(i)} style={{
+              <div key={i} onClick={() => handleTabClick(i)} style={{
                 height: "4px", flex: 1, borderRadius: "2px", cursor: "pointer",
                 background: i === activeIndex ? "var(--color-primary-100)" : i < activeIndex ? "rgba(13, 65, 225, 0.3)" : "rgba(0,0,0,0.1)",
                 transition: "all 0.3s",
@@ -213,7 +237,7 @@ export default function ProcessSteps() {
         }
         .tab-button.active {
           border-color: var(--color-primary-100);
-          background: rgba(13, 65, 225, 0.05);
+          background: #ffffff;
           color: var(--color-primary-100);
         }
         .tab-number {

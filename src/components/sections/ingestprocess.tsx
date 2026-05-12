@@ -10,17 +10,17 @@ export default function IngestProcess() {
     }, []);
 
     const sources = [
-        { label: "CLOUD",    Icon: Cloud,   y: 55 },
+        { label: "CLOUD", Icon: Cloud, y: 55 },
         { label: "ENDPOINT", Icon: Monitor, y: 130 },
-        { label: "IDENTITY", Icon: Shield,  y: 205 },
-        { label: "NETWORK",  Icon: Network, y: 280 },
-        { label: "SaaS",     Icon: Box,     y: 355 },
+        { label: "IDENTITY", Icon: Shield, y: 205 },
+        { label: "NETWORK", Icon: Network, y: 280 },
+        { label: "SaaS", Icon: Box, y: 355 },
     ];
 
     const pipeline = ["PARSE", "NORMALIZE", "ENRICH", "VALIDATE"];
 
     // Brand palette only
-    const P  = "#0D41E1";    // --color-primary-100
+    const P = "#0D41E1";    // --color-primary-100
     const P2 = "#1E3EB0";    // --color-primary-200
     const PT = "#EFF6FF";    // light blue tint
     const PM = "#DBEAFE";    // mid blue tint
@@ -165,8 +165,8 @@ export default function IngestProcess() {
 
                 @media (max-width: 768px) {
                     .ingest-wrap {
-                        padding: 1.5rem 1rem;
-                        min-height: 280px;
+                        padding: 0.5rem 1rem;
+                        max-height: 80px;
                     }
                 }
 

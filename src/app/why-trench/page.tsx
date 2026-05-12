@@ -36,7 +36,7 @@ const SUB_TEAMS = [
     members: [
       { name: "Guru Raghav Saravanan", img: "/team/gururaghav.jpg" },
       { name: "Harish Narayan", img: "/team/harish.jpg" },
-      { name: "Shriram K S", img: "/team/sriram.jpg" },
+
     ],
   },
   {
@@ -322,8 +322,8 @@ export default function WhyTrenchPage() {
             <ScrollReveal delay={0.4} direction="none">
               <p className="body-lead" style={{ marginBottom: "2.5rem" }}>
                 Excited about joining a dynamic team? Send resumes to{" "}
-                <a href="mailto:careers@trenchsecurity.com" className="wt-email-link">
-                  careers@trenchsecurity.com
+                <a href="mailto:careers@trenchsecurity.ai" className="wt-email-link">
+                  careers@trenchsecurity.ai
                 </a>
                 .
               </p>

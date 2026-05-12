@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 
 /* ─── Data ──────────────────────────────────────────────────── */
 const comparisonData = [
@@ -181,6 +181,30 @@ export default function ComparisonTable() {
   const [activeIndex, setActiveIndex] = useState(0);
   const activeData = comparisonData[activeIndex];
   const scrollRef = useRef<HTMLDivElement>(null);
+  const intervalRef = useRef<number | null>(null);
+
+  const startAutoPlay = () => {
+    stopAutoPlay();
+    intervalRef.current = window.setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % comparisonData.length);
+    }, 2500); // Change tab every 2.5 seconds
+  };
+
+  const stopAutoPlay = () => {
+    if (intervalRef.current !== null) {
+      window.clearInterval(intervalRef.current);
+    }
+  };
+
+  useEffect(() => {
+    startAutoPlay();
+    return () => stopAutoPlay();
+  }, []);
+
+  const handleTabClick = (i: number) => {
+    setActiveIndex(i);
+    startAutoPlay(); // Reset timer on click
+  };
 
   const scroll = (direction: "left" | "right") => {
     if (scrollRef.current) {
@@ -192,10 +216,6 @@ export default function ComparisonTable() {
   return (
     <div className="ct-wrap">
 
-      {/* ── Notation ── */}
-      <div className="ct-notation">
-        Click a category below to compare capabilities
-      </div>
 
       {/* ── Tab selector ── */}
       <div className="ct-tabs" role="tablist" aria-label="Comparison category">
@@ -207,16 +227,10 @@ export default function ComparisonTable() {
               key={item.id}
               role="tab"
               aria-selected={isActive}
-              onClick={() => setActiveIndex(i)}
+              onClick={() => handleTabClick(i)}
               className={`ct-tab ${isActive ? "ct-tab--active" : ""}`}
             >
-              {isActive && (
-                <motion.span
-                  layoutId="tab-pill"
-                  className="ct-tab-pill"
-                  transition={{ type: "spring", bounce: 0.2, duration: 0.5 }}
-                />
-              )}
+
               <span className="ct-tab-icon">
                 <TabIcon size={15} />
               </span>
@@ -263,7 +277,7 @@ export default function ComparisonTable() {
                         initial={{ opacity: 0, y: 12 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -8 }}
-                        transition={{ duration: 0.3, ease: "easeOut" }}
+                        transition={{ duration: 0.05, ease: "easeInOut" }}
                         className="ct-platform-text"
                         style={{ color: cfg.textColor }}
                       >
@@ -349,6 +363,8 @@ export default function ComparisonTable() {
         /* Active: solid primary background, white text */
         .ct-tab--active {
           color: #0D41E1 !important;
+          background: #ffffff !important;
+          box-shadow: 0 2px 8px rgba(13, 65, 225, 0.15);
         }
 
         .ct-tab--active:hover {
@@ -359,7 +375,7 @@ export default function ComparisonTable() {
         .ct-tab-pill {
           position: absolute;
           inset: 0;
-          background: var(--color-primary-100, #0D41E1);
+          background: #ffffff;
           border-radius: 10px;
           z-index: 0;
           display: block;
@@ -458,9 +474,7 @@ export default function ComparisonTable() {
           scroll-snap-align: center;
           border: 1px solid;
           border-radius: 12px;
-          background: rgba(255, 255, 255, 0.7);
-          backdrop-filter: blur(8px);
-          -webkit-backdrop-filter: blur(8px);
+          background: #ffffff;
           transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 

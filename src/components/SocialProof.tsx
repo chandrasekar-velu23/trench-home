@@ -12,28 +12,28 @@ const testimonials = [
     quote: "The agentic approach from Trench AI delivers proactive detection engineering in real-time. Rather than relying on static rulesets in an AI-powered threat landscape, their platform orchestrates autonomous, context-rich detections and accelerates the threat intelligence to high fidelity rule literally in minutes.",
     author: "Srikanth Devarajan",
     role: "Ex-VP & GM, Zscaler",
-    avatar: "/images/avatar.png"
+    avatar: "/social/SD.png"
   },
   {
     id: 2,
     quote: "What impressed me most is Trench’s clarity of vision,  building unique AI systemic thinking that actually solve detection problems and reduce real threat response times, not just automate for the sake of it. The team combines deep domain expertise with pragmatic execution, which is rare in today’s noisy cybersecurity market.",
     author: "Deepak Kothule",
     role: "VP - Engineering Leader, Ex-FICO, Ex-Symantec",
-    avatar: "/images/avatar.png"
+    avatar: "/social/DK.png"
   },
   {
     id: 3,
     quote: "Trench AI is a game-changer for modern Security teams, its speed, precision, and AI-powered detections drastically cut through noise from the source and accelerate threat response. An innovative application of AI to solve hard detection problem in SOC",
     author: "Senthil Kumar Iyyappan",
     role: "CISO - Ocrolus, Ex-Freshworks",
-    avatar: "/images/avatar.png"
+    avatar: "/social/SKI.png"
   },
   {
     id: 4,
     quote: "Trench Security's agentic detection system model for threat detection and response is a paradigm shift. Its regulated AI-powered LLM engine, combined with a visionary team and a progressive learning mindset, sets it apart in today’s evolving cyber defense landscape. SOC teams have already started experiencing MTTD for real-time intelligence in minutes from days/weeks. The solution’s seamless compatibility with multi-vendor security monitoring tools, such as EDR, SIEM, and CSPM makes it both flexible and future-ready",
     author: "Subhro Banerjee",
     role: "Senior Global IT Security Leader | Lifescience MNC",
-    avatar: "/images/avatar.png"
+    avatar: "/social/SB.png"
   },
 ];
 
@@ -141,7 +141,7 @@ export default function SocialProof() {
 
       <style jsx>{`
         .social-proof-section {
-          padding: 1rem 0 6rem;
+          padding: 1rem 0 2rem;
           background: linear-gradient(to bottom, transparent 0%, transparent 50%, white 50%, white 100%);
           display: flex;
           flex-direction: column;
@@ -156,7 +156,7 @@ export default function SocialProof() {
           width: 100%;
           display: flex;
           justify-content: center;
-          margin-bottom: 4rem;
+          margin-bottom: 2rem;
         }
 
         .section-divider-svg {
@@ -181,10 +181,9 @@ export default function SocialProof() {
           flex-direction: column;
           align-items: center;
           position: relative;
-          min-height: 480px; /* Fixed height to prevent layout shift */
+          height: 450px;
           justify-content: center;
-          margin-top: -5rem;
-          
+          margin-top: 1.5rem;
         }
 
         .testimonial-card {
@@ -203,12 +202,15 @@ export default function SocialProof() {
           flex-direction: column;
           align-items: center;
           text-align: center;
-          gap: 2.5rem;
+          gap: 1rem;
           max-width: 850px;
         }
 
         .avatar-wrapper {
-          display: none;
+          width: 120px;
+          height: 120px;
+          flex-shrink: 0;
+          margin: 0 auto;
         }
 
         .avatar-img {
@@ -224,7 +226,6 @@ export default function SocialProof() {
           color: #111;
           margin: 0;
           line-height: 1.6;
-          margin-top: 5rem;
         }
 
         .author-info {
@@ -243,7 +244,8 @@ export default function SocialProof() {
         }
 
         .slider-controls {
-          margin-top: 4rem;
+          position: absolute;
+          bottom: 0;
           display: flex;
           justify-content: center;
           width: 100%;
@@ -315,7 +317,7 @@ export default function SocialProof() {
 
         @media (max-width: 768px) {
           .social-proof-section {
-            padding: 2rem 0;
+            padding: 1rem 0;
             background: linear-gradient(to bottom, transparent 0%, transparent 50%, white 50%, white 100%);
           }
           
@@ -328,6 +330,9 @@ export default function SocialProof() {
           }
           
           .testimonial-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             text-align: center;
           }
           
@@ -338,8 +343,8 @@ export default function SocialProof() {
           }
           
           .testimonial-slider {
-            min-height: 450px;
-            margin-top: 0rem;
+            height: 550px;
+            margin-top: 1.5rem;
             margin-bottom: 0rem;
           }
 
@@ -348,36 +353,33 @@ export default function SocialProof() {
           }
           
           .card-content { 
-            gap: 1rem;
+            gap: 1.25rem;
             padding: 0 0.5rem;
           }
           .avatar-wrapper { 
-            display: none;
-          }
-          
-          .card-content {
-            padding-top: 0;
-            gap: 1.5rem;
+            width: 70px;
+            height: 70px;
+            margin: 0 auto;
           }
           
           .quote-text { 
-            line-height: 1.4;
-            font-size: 0.875rem;
+            line-height: 1.5;
+            font-size: 1rem;
           }
           
           .author-name {
-            font-size: 0.75rem;
+            font-size: 0.9rem;
           }
           
           .author-role {
-            font-size: 0.65rem;
+            font-size: 0.8rem;
           }
           
           .slider-controls { 
-            margin-top: 1.5rem;
+            position: absolute;
+            bottom: 0;
             transform: scale(0.5);
             transform-origin: center;
-            margin-bottom: -1rem;
           }
         }
 
