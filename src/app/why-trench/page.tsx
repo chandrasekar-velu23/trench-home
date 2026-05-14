@@ -127,7 +127,7 @@ export default function WhyTrenchPage() {
               <div className="wt-mv-item">
                 <span className="wt-mv-label">Vision</span>
                 <p className="wt-mv-statement">
-                  A world where security teams operate without cognitive overload.
+                  A world where security teams are decisive at machine speed without cognitive overload.
                 </p>
               </div>
             </ScrollReveal>
@@ -285,7 +285,7 @@ export default function WhyTrenchPage() {
       <section className="content-block wt-section careers-section">
         <div className="container-wide text-center">
           <ScrollReveal direction="up">
-            <h2 className="wt-careers-title">The foundation needs the right hands.</h2>
+            <h3 className="wt-careers-title">The foundation needs the right hands.</h3>
             <span className="wt-eyebrow" style={{ justifyContent: "center", marginBottom: "0.5rem" }}>JOIN THE TRENCH</span>
             <p className="wt-careers-text">
               Write us at{" "}

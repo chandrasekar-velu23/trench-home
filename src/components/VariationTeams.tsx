@@ -11,27 +11,27 @@ import React, { useState, useEffect, useRef } from 'react';
 
 // Teams visual tokens — light mode
 const TT = {
-  bg:        '#ffffff',
-  bgDeep:    '#f8f9fa',
-  text:      '#213547',
-  textDim:   '#6b7280',
-  textMute:  '#9ca3af',
-  line:      'rgba(0,0,0,0.08)',
-  lineHi:    'rgba(0,0,0,0.14)',
-  accent:    '#5B5FC7', // Teams purple
-  ok:        '#10b981',
-  alert:     '#ef4444',
-  cyan:      '#06b6d4',
+  bg: '#ffffff',
+  bgDeep: '#f8f9fa',
+  text: '#213547',
+  textDim: '#6b7280',
+  textMute: '#9ca3af',
+  line: 'rgba(0,0,0,0.08)',
+  lineHi: 'rgba(0,0,0,0.14)',
+  accent: '#5B5FC7', // Teams purple
+  ok: '#10b981',
+  alert: '#ef4444',
+  cyan: '#06b6d4',
 
   // Teams chrome — light mode
-  teamsBg:    '#ffffff',
+  teamsBg: '#ffffff',
   teamsPanel: '#f5f5f5',
-  teamsCard:  '#ffffff',
-  teamsLine:  '#e1e1e1',
-  teamsText:  '#242424',
-  teamsDim:   '#616161',
-  teamsPurple:'#5B5FC7',
-  teamsPurpleHi:'#4F52B2',
+  teamsCard: '#ffffff',
+  teamsLine: '#e1e1e1',
+  teamsText: '#242424',
+  teamsDim: '#616161',
+  teamsPurple: '#5B5FC7',
+  teamsPurpleHi: '#4F52B2',
   teamsGreen: '#10b981',
 };
 
@@ -52,19 +52,19 @@ const AvatarT: React.FC<AvatarProps> = ({ name, color, size = 36, bot }) => (
     fontFamily: 'Inter, system-ui, sans-serif',
   }}>
     {bot ? (
-      <svg width={size*0.5} height={size*0.5} viewBox="0 0 24 24" fill="none">
-        <rect x="4" y="7" width="16" height="13" rx="3" fill="none" stroke="#fff" strokeWidth="1.6"/>
-        <circle cx="9" cy="13" r="1.4" fill="#fff"/>
-        <circle cx="15" cy="13" r="1.4" fill="#fff"/>
-        <path d="M12 4 V7" stroke="#fff" strokeWidth="1.6" strokeLinecap="round"/>
-        <circle cx="12" cy="3.5" r="1.1" fill="#fff"/>
+      <svg width={size * 0.5} height={size * 0.5} viewBox="0 0 24 24" fill="none">
+        <rect x="4" y="7" width="16" height="13" rx="3" fill="none" stroke="#fff" strokeWidth="1.6" />
+        <circle cx="9" cy="13" r="1.4" fill="#fff" />
+        <circle cx="15" cy="13" r="1.4" fill="#fff" />
+        <path d="M12 4 V7" stroke="#fff" strokeWidth="1.6" strokeLinecap="round" />
+        <circle cx="12" cy="3.5" r="1.1" fill="#fff" />
       </svg>
-    ) : name.split(' ').map(n => n[0]).slice(0,2).join('')}
+    ) : name.split(' ').map(n => n[0]).slice(0, 2).join('')}
     {!bot && <div style={{
       position: 'absolute', right: -1, bottom: -1,
-      width: size*0.3, height: size*0.3, borderRadius: '50%',
+      width: size * 0.3, height: size * 0.3, borderRadius: '50%',
       background: TT.teamsGreen, border: `2px solid ${TT.teamsBg}`,
-    }}/>}
+    }} />}
   </div>
 );
 
@@ -88,7 +88,7 @@ const StepBadgeT: React.FC<StepBadgeProps> = ({ n, active, done }) => (
     transition: 'all .25s',
   }}>
     {done ? (
-      <svg width="11" height="11" viewBox="0 0 12 12"><path d="M2 6 L5 9 L10 3" stroke="#fff" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"/></svg>
+      <svg width="11" height="11" viewBox="0 0 12 12"><path d="M2 6 L5 9 L10 3" stroke="#fff" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" /></svg>
     ) : n}
   </div>
 );
@@ -167,7 +167,7 @@ const TeamsMsg: React.FC<TeamsMsgProps> = ({ avatar, name, role, time, badge, ch
       <div style={{
         position: 'absolute', left: -22, top: 0, bottom: 0, width: 2,
         background: TT.teamsLine, borderRadius: 1,
-      }}/>
+      }} />
     )}
     {avatar}
     <div style={{ flex: 1, minWidth: 0 }}>
@@ -207,11 +207,11 @@ const TypingT: React.FC<{ name: string }> = ({ name }) => (
     fontSize: 12, color: TT.teamsDim, padding: '4px 0 4px 48px',
   }}>
     <div style={{ display: 'flex', gap: 3 }}>
-      {[0,1,2].map(i => (
+      {[0, 1, 2].map(i => (
         <span key={i} style={{
           width: 5, height: 5, borderRadius: '50%', background: TT.teamsDim,
-          animation: `tdot 1.2s ${i*0.15}s infinite ease-in-out`,
-        }}/>
+          animation: `tdot 1.2s ${i * 0.15}s infinite ease-in-out`,
+        }} />
       ))}
     </div>
     <span><b style={{ color: TT.teamsText }}>{name}</b> is typing…</span>
@@ -219,12 +219,12 @@ const TypingT: React.FC<{ name: string }> = ({ name }) => (
 );
 
 // Icons
-const BellIcon = () => <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>;
-const ChatIcon = () => <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>;
-const PeopleIcon = () => <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>;
-const CalendarIcon = () => <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>;
-const PhoneIcon = () => <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>;
-const FolderIcon = () => <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>;
+const BellIcon = () => <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9" /><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0" /></svg>;
+const ChatIcon = () => <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" /></svg>;
+const PeopleIcon = () => <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg>;
+const CalendarIcon = () => <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2" /><line x1="16" y1="2" x2="16" y2="6" /><line x1="8" y1="2" x2="8" y2="6" /><line x1="3" y1="10" x2="21" y2="10" /></svg>;
+const PhoneIcon = () => <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg>;
+const FolderIcon = () => <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z" /></svg>;
 
 const VariationTeams: React.FC = () => {
   const [timeMs, setTimeMs] = useState(0);
@@ -251,17 +251,17 @@ const VariationTeams: React.FC = () => {
 
   const r1 = reveal(phase, 0.02, 0.10);
   const r1_visible = r1 * (1 - reveal(phase, 0.22, 0.24)); // Fade out before step 2
-  
+
   const r2attn = reveal(phase, 0.18, 0.22);
   const r2 = reveal(phase, 0.24, 0.32);
   const r2_visible = r2 * (1 - reveal(phase, 0.50, 0.52)); // Fade out before step 3
-  
+
   const r2reply = reveal(phase, 0.40, 0.46);
   const r2reply_visible = r2reply * (1 - reveal(phase, 0.50, 0.52)); // Fade out with r2
-  
+
   const r3 = reveal(phase, 0.52, 0.60);
   const r3_visible = r3 * (1 - reveal(phase, 0.74, 0.78)); // Fade out before step 4
-  
+
   const r3approve = reveal(phase, 0.66, 0.70);
   const r4typing = reveal(phase, 0.72, 0.76);
   const r4 = reveal(phase, 0.78, 0.86);
@@ -282,7 +282,7 @@ const VariationTeams: React.FC = () => {
   return (
     <div style={{
       position: 'relative',
-      width: '100%', 
+      width: '100%',
       minHeight: '400px',
       background: 'transparent',
       overflow: 'hidden',
@@ -297,10 +297,10 @@ const VariationTeams: React.FC = () => {
       <svg style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', opacity: 0.4 }}>
         <defs>
           <pattern id="gridT" width="40" height="40" patternUnits="userSpaceOnUse">
-            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(0,0,0,0.04)" strokeWidth="1"/>
+            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(0,0,0,0.04)" strokeWidth="1" />
           </pattern>
         </defs>
-        <rect width="100%" height="100%" fill="url(#gridT)"/>
+        <rect width="100%" height="100%" fill="url(#gridT)" />
       </svg>
 
       <div style={{
@@ -319,18 +319,18 @@ const VariationTeams: React.FC = () => {
           gap: 20,
           padding: isClient && window.innerWidth > 768 ? '0' : '0 8px',
         }}>
-          <div style={{
+          {/* <div style={{
             fontSize: 13, letterSpacing: '0.22em', textTransform: 'uppercase',
             color: TT.textDim, fontWeight: 500,
             fontFamily: 'var(--font-secondary)',
-          }}>Integrations · Microsoft Teams</div>
+          }}>Integrations · Microsoft Teams</div> */}
 
           <h2 style={{
             margin: 0, fontSize: 'clamp(28px, 3.5vw, 48px)', fontWeight: 500, lineHeight: 1.05,
             letterSpacing: '-0.02em', color: TT.text, textWrap: 'balance',
             fontFamily: 'var(--font-primary)',
           }}>
-            Insider risk, contained<br/>
+            Insider risk, contained<br />
             before <span style={{ color: TT.teamsPurple }}>coffee gets cold.</span>
           </h2>
 
@@ -345,10 +345,10 @@ const VariationTeams: React.FC = () => {
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: 12, marginTop: 4 }}>
             {[
-              { n: 1, t: 'Detect',     d: 'DLP + UEBA correlate a bulk download anomaly.' },
-              { n: 2, t: 'Verify',     d: 'Trench AI checks intent with the data owner.' },
-              { n: 3, t: 'Approve',    d: 'Engineer green-lights containment in one tap.' },
-              { n: 4, t: 'Contain',    d: 'Endpoint quarantined, DLP block live, ticket filed.' },
+              { n: 1, t: 'Detect', d: 'DLP + UEBA correlate a bulk download anomaly.' },
+              { n: 2, t: 'Verify', d: 'Trench AI checks intent with the data owner.' },
+              { n: 3, t: 'Approve', d: 'Engineer green-lights containment in one tap.' },
+              { n: 4, t: 'Contain', d: 'Endpoint quarantined, DLP block live, ticket filed.' },
             ].map(s => {
               const isActive = activeStep === s.n;
               const isDone = doneStep >= s.n;
@@ -358,7 +358,7 @@ const VariationTeams: React.FC = () => {
                   opacity: isActive || isDone ? 1 : 0.5,
                   transition: 'opacity .3s',
                 }}>
-                  <StepBadgeT n={s.n} active={isActive && !isDone} done={isDone}/>
+                  <StepBadgeT n={s.n} active={isActive && !isDone} done={isDone} />
                   <div>
                     <div style={{
                       fontSize: 15, fontWeight: 600, color: TT.text,
@@ -369,7 +369,7 @@ const VariationTeams: React.FC = () => {
                       {isActive && !isDone && <span style={{
                         width: 6, height: 6, borderRadius: '50%', background: TT.teamsPurple,
                         animation: 'tpulse 1.2s ease-in-out infinite',
-                      }}/>}
+                      }} />}
                     </div>
                     <div style={{ fontSize: 13.5, color: TT.textDim, marginTop: 2, fontFamily: 'var(--font-secondary)' }}>{s.d}</div>
                   </div>
@@ -399,7 +399,7 @@ const VariationTeams: React.FC = () => {
             padding: '14px 0', gap: 4,
           }}>
             {[
-              { i: <BellIcon />,  l: 'Activity' },
+              { i: <BellIcon />, l: 'Activity' },
               { i: <ChatIcon />, l: 'Chat' },
               { i: <PeopleIcon />, l: 'Teams', active: true },
               { i: <CalendarIcon />, l: 'Calendar' },
@@ -418,7 +418,7 @@ const VariationTeams: React.FC = () => {
                 {it.active && <div style={{
                   position: 'absolute', left: 0, top: 8, bottom: 8, width: 3,
                   background: TT.teamsPurple, borderRadius: 2,
-                }}/>}
+                }} />}
                 <span>{it.i}</span>
                 <span>{it.l}</span>
               </div>
@@ -492,7 +492,7 @@ const VariationTeams: React.FC = () => {
               </div>
               <div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: 14, fontSize: 11, color: TT.teamsDim }}>
                 <span style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
-                  <span style={{ width: 6, height: 6, borderRadius: '50%', background: TT.teamsGreen }}/>
+                  <span style={{ width: 6, height: 6, borderRadius: '50%', background: TT.teamsGreen }} />
                   Trench AI · connected
                 </span>
               </div>
@@ -500,8 +500,8 @@ const VariationTeams: React.FC = () => {
 
             {/* messages container with fixed height */}
             <div ref={scrollRef} style={{
-              flex: 1, 
-              overflow: 'hidden', 
+              flex: 1,
+              overflow: 'hidden',
               padding: '14px 16px',
               position: 'relative',
               scrollBehavior: 'smooth',
@@ -512,7 +512,7 @@ const VariationTeams: React.FC = () => {
                 {/* STEP 4 — done */}
                 {r4 > 0 && (
                   <TeamsMsg
-                    avatar={<AvatarT name="Trench" color="#1A1D21" bot/>}
+                    avatar={<AvatarT name="Trench" color="#1A1D21" bot />}
                     name="Trench AI"
                     time="2:18 PM"
                     badge={{ text: 'STEP 4 · CONTAINED', bg: `${TT.ok}15`, fg: TT.ok }}
@@ -527,11 +527,11 @@ const VariationTeams: React.FC = () => {
                     <TeamsCard accent={TT.ok} title="DLP-2914 · Resolved">
                       <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr auto', columnGap: 14, rowGap: 7, fontSize: 12 }}>
                         {[
-                          ['Endpoint quarantined',  'WIN-JPARK-04 · isolated',           '✓'],
-                          ['Sessions revoked',      'AWS · Okta · 14 active tokens',     '✓'],
-                          ['DLP egress block live', 'Purview policy DLP-2914-BLK',       '✓'],
-                          ['Evidence preserved',    'CloudTrail snapshot · 30d',         '✓'],
-                          ['Incident filed',        'INC-2914 · ServiceNow',             '↗'],
+                          ['Endpoint quarantined', 'WIN-JPARK-04 · isolated', '✓'],
+                          ['Sessions revoked', 'AWS · Okta · 14 active tokens', '✓'],
+                          ['DLP egress block live', 'Purview policy DLP-2914-BLK', '✓'],
+                          ['Evidence preserved', 'CloudTrail snapshot · 30d', '✓'],
+                          ['Incident filed', 'INC-2914 · ServiceNow', '↗'],
                         ].map(([k, v, t], i) => (
                           <React.Fragment key={i}>
                             <span style={{ color: TT.teamsDim }}>{k}</span>
@@ -550,14 +550,14 @@ const VariationTeams: React.FC = () => {
                 {/* typing for step 4 */}
                 {r4typing > 0 && r4 === 0 && (
                   <div style={{ opacity: r4typing, transition: 'opacity .3s' }}>
-                    <TypingT name="Trench AI"/>
+                    <TypingT name="Trench AI" />
                   </div>
                 )}
 
                 {/* STEP 3 — engineer approval */}
                 {r3_visible > 0 && (
                   <TeamsMsg
-                    avatar={<AvatarT name="Trench" color="#1A1D21" bot/>}
+                    avatar={<AvatarT name="Trench" color="#1A1D21" bot />}
                     name="Trench AI"
                     time="2:16 PM"
                     badge={{ text: 'STEP 3 · APPROVE', bg: `${TT.teamsPurple}15`, fg: TT.teamsPurple }}
@@ -583,17 +583,17 @@ const VariationTeams: React.FC = () => {
                     >
                       <div style={{ display: 'flex', flexDirection: 'column', gap: 7, fontSize: 12, color: '#242424' }}>
                         {[
-                          ['Quarantine endpoint',          'WIN-JPARK-04 · Defender for Endpoint'],
-                          ['Revoke AWS + Okta sessions',   'jordan.park · all regions'],
-                          ['Apply DLP egress block',       'Purview policy · Dropbox + personal email'],
-                          ['Preserve forensic evidence',   'snapshot bucket access logs · 30 days'],
+                          ['Quarantine endpoint', 'WIN-JPARK-04 · Defender for Endpoint'],
+                          ['Revoke AWS + Okta sessions', 'jordan.park · all regions'],
+                          ['Apply DLP egress block', 'Purview policy · Dropbox + personal email'],
+                          ['Preserve forensic evidence', 'snapshot bucket access logs · 30 days'],
                         ].map(([label, sub], i) => (
                           <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 10 }}>
                             <span style={{
                               width: 12, height: 12, borderRadius: 2,
                               border: `1px solid ${TT.teamsLine}`, marginTop: 2,
                               flexShrink: 0,
-                            }}/>
+                            }} />
                             <div>
                               <div style={{ fontWeight: 500 }}>{label}</div>
                               <div style={{ fontSize: 11, color: TT.teamsDim, marginTop: 1 }}>{sub}</div>
@@ -608,7 +608,7 @@ const VariationTeams: React.FC = () => {
                 {/* user reply */}
                 {r2reply_visible > 0 && (
                   <TeamsMsg
-                    avatar={<AvatarT name="Priya Shah" color="#A4373A"/>}
+                    avatar={<AvatarT name="Priya Shah" color="#A4373A" />}
                     name="Priya Shah"
                     role="Data Owner · Customer Platform"
                     time="2:16 PM"
@@ -632,7 +632,7 @@ const VariationTeams: React.FC = () => {
                 {/* STEP 2 — verify with data owner */}
                 {r2_visible > 0 && (
                   <TeamsMsg
-                    avatar={<AvatarT name="Trench" color="#1A1D21" bot/>}
+                    avatar={<AvatarT name="Trench" color="#1A1D21" bot />}
                     name="Trench AI"
                     time="2:15 PM"
                     badge={{ text: 'STEP 2 · VERIFY', bg: `${TT.cyan}15`, fg: TT.cyan }}
@@ -659,14 +659,14 @@ const VariationTeams: React.FC = () => {
                 {/* typing for step 2 */}
                 {r2attn > 0 && r2 === 0 && (
                   <div style={{ opacity: r2attn, transition: 'opacity .3s' }}>
-                    <TypingT name="Trench AI"/>
+                    <TypingT name="Trench AI" />
                   </div>
                 )}
 
                 {/* STEP 1 — detection */}
                 {r1_visible > 0 && (
                   <TeamsMsg
-                    avatar={<AvatarT name="Trench" color="#1A1D21" bot/>}
+                    avatar={<AvatarT name="Trench" color="#1A1D21" bot />}
                     name="Trench AI"
                     role="Bot · posted in Incidents"
                     time="2:14 PM"
@@ -699,12 +699,12 @@ const VariationTeams: React.FC = () => {
                 position: 'absolute', left: 0, right: 0, top: 0, height: 24,
                 background: `linear-gradient(180deg, ${TT.teamsBg}, transparent)`,
                 pointerEvents: 'none',
-              }}/>
+              }} />
               <div style={{
                 position: 'absolute', left: 0, right: 0, bottom: 0, height: 40,
                 background: `linear-gradient(0deg, ${TT.teamsBg}, transparent)`,
                 pointerEvents: 'none',
-              }}/>
+              }} />
             </div>
 
             {/* composer - fixed at bottom */}

@@ -13,8 +13,8 @@ export default function Footer() {
           <Image
             src="/logo/trench-logo.png"
             alt="Trench Logo"
-            width={160}
-            height={32}
+            width={176}
+            height={35}
             className="footer-logo-img"
           />
           <div className="footer-certs">
@@ -23,22 +23,22 @@ export default function Footer() {
               <Image
                 src="/certificates/AICPA SOC.svg"
                 alt="AICPA SOC"
-                width={77}
-                height={77}
+                width={85}
+                height={85}
                 className="footer-cert-badge"
               />
               <Image
                 src="/certificates/GDPR.svg"
                 alt="GDPR"
-                width={95}
-                height={95}
+                width={105}
+                height={105}
                 className="footer-cert-badge"
               />
               <Image
                 src="/certificates/ISO.svg"
                 alt="ISO"
-                width={77}
-                height={77}
+                width={85}
+                height={85}
                 className="footer-cert-badge"
               />
             </div>
@@ -81,6 +81,29 @@ export default function Footer() {
               </address>
             </div>
           </div>
+        </div>
+        <div className="footer-bottom-logos">
+          <Image
+            src="/awards/ISV-Partner-logo-new.png"
+            alt="microsoft-ISV"
+            width={132}
+            height={29}
+            className="footer-partner-badge"
+          />
+          <Image
+            src="/awards/Logo_IAA.png"
+            alt="Indian Achievers Award"
+            width={88}
+            height={44}
+            className="footer-partner-badge"
+          />
+          <Image
+            src="/awards/CySecK Logo PNG@900x.png"
+            alt="CySecK"
+            width={88}
+            height={44}
+            className="footer-partner-badge"
+          />
         </div>
       </div>
 
@@ -137,8 +160,9 @@ export default function Footer() {
         }
 
         .footer-logo-img {
-          height: 32px;
+          height: 35.2px;
           width: auto;
+          max-width: 100%;
           object-fit: contain;
           display: block;
         }
@@ -167,8 +191,9 @@ export default function Footer() {
         }
 
         .footer-cert-badge {
-          height: 64px;
+          height: 70.4px;
           width: auto;
+          max-width: 100%;
           object-fit: contain;
           opacity: 0.7;
           transition: opacity 0.25s ease, transform 0.25s ease;
@@ -179,6 +204,32 @@ export default function Footer() {
           opacity: 1;
           transform: scale(1.06);
           filter: grayscale(0%);
+        }
+
+        .footer-partner-badge {
+          height: auto;
+          width: auto;
+          max-height: 44px;
+          max-width: 100%;
+          object-fit: contain;
+          opacity: 0.7;
+          transition: opacity 0.25s ease, transform 0.25s ease;
+        }
+
+        .footer-partner-badge:hover {
+          opacity: 1;
+          transform: scale(1.06);
+        }
+
+        .footer-bottom-logos {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 0.5rem;
+          margin-top: 0.5rem;
+          padding-top: 0.5rem;
+          width: 100%;
+          grid-column: 1 / -1;
         }
 
         /* ── Link columns ── */
@@ -282,6 +333,17 @@ export default function Footer() {
           .footer-container {
             background-image: url('/images/footer-ph.png');
           }
+          .footer-bottom-logos {
+            flex-wrap: wrap;
+            gap: 1rem;
+            border-top: none;
+          }
+          .footer-partner-badge {
+            background: #FFFFFF;
+            padding: 0.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+          }
         }
 
         @media (max-width: 520px) {
@@ -304,7 +366,7 @@ export default function Footer() {
             color: #000000;
           }
           .footer-cert-badge {
-            height: 52px;
+            height: 57.2px;
           }
         }
       `}</style>

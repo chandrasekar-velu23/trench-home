@@ -71,16 +71,16 @@ export default function Hero() {
                     Show Me the Platform
                   </Button>
                 </Link>
-                <Link href="/connect">
+                {/* <Link href="/connect">
                   <Button variant="secondary" className="hero-btn-secondary">
                     Take a Tour
-                  </Button>
-                </Link>
+                  </Button> */}
+                {/* </Link> */}
               </div>
             </div>
           </motion.div>
         </div>
-      </div>
+      </div >
       <div className="hero-bottom-fade" />
 
       <style jsx>{`
@@ -307,6 +307,6 @@ export default function Hero() {
         }
 
       `}</style>
-    </section>
+    </section >
   );
 }

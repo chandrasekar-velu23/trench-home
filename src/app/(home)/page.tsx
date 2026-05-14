@@ -57,7 +57,7 @@ export default function Home() {
       </section>
 
       {/* PARTNER BLOCK */}
-      <PartnerSection />
+
 
       {/* HEADLESS SECOPS BLOCK */}
       {/* <section className="content-block-full" style={{ paddingTop: "2rem", paddingBottom: "6rem" }}>
@@ -74,7 +74,7 @@ export default function Home() {
       </div>
 
       {/* AWARD SHOWCASE BLOCK */}
-      <Highlight />
+
 
       {/* FAQ BLOCK */}
       <section className="content-block-full padding-section">

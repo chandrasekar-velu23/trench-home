@@ -31,7 +31,7 @@ export default function CTASection() {
       <div className="container-wide">
         <div className="cta-outer">
           {/* Cloud — Left */}
-          <div 
+          <div
             className={`cta-cloud cta-cloud-left ${isRevealed ? "visible" : "hidden"}`}
             style={{
               transform: `translate(${mousePos.x * -18}px, ${mousePos.y * -10}px)`,
@@ -48,7 +48,7 @@ export default function CTASection() {
           </div>
 
           {/* Cloud — Right (mirrored) */}
-          <div 
+          <div
             className={`cta-cloud cta-cloud-right ${isRevealed ? "visible" : "hidden"}`}
             style={{
               transform: `translate(${mousePos.x * 18}px, ${mousePos.y * -12}px) scaleX(-1)`,
@@ -82,14 +82,14 @@ export default function CTASection() {
                     Show Me the Trench
                   </Button>
                 </Link>
-                <Link href="/connect">
+                {/* <Link href="/connect">
                   <Button
                     variant="secondary"
                     className="cta-btn-secondary"
                   >
                     Take a Tour
                   </Button>
-                </Link>
+                </Link> */}
               </div>
             </div>
           </div>

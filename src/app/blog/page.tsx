@@ -13,57 +13,81 @@ export default function BlogPage() {
     { 
       title: "Trench AI Now Available on Microsoft Marketplace", 
       category: "Product", 
-      date: "May 10, 2026",
+      date: "Apr 2, 2026",
+      image: "/blog cover images/1st_blog_banner.jpg",
       description: "Trench AI is now accessible directly through the Microsoft Marketplace, simplifying procurement.",
       author: { name: "Gurucharan Raghunathan", role: "Cofounder & CEO", avatar: "/team/gurucharan.png" }
     },
     { 
       title: "AI in the Security Operations: Clearing the Clutter", 
       category: "Security", 
-      date: "May 05, 2026",
+      date: "Mar 26, 2026",
+      image: "/blog cover images/2nd_Blog_Banner.jpg",
       description: "Learn how to use AI to filter out noise and focus on critical security alerts.",
       author: { name: "Gurucharan Raghunathan", role: "Cofounder & CEO", avatar: "/team/gurucharan.png" }
     },
     { 
       title: "Launching Trench Agentic Threat Detection Mesh", 
       category: "Technical", 
-      date: "Apr 28, 2026",
+      date: "Jan 5, 2026",
+      image: "/blog cover images/3rd_Blog_Banner.png",
       description: "Watch the demo of our new agentic threat detection mesh in action.",
       author: { name: "Gurucharan Raghunathan", role: "Cofounder & CEO", avatar: "/team/gurucharan.png" }
     },
     { 
       title: "Launching “Real-time data safety” in AI-native Security Operations", 
       category: "Product", 
-      date: "Apr 20, 2026",
+      date: "Oct 7, 2025",
+      image: "/blog cover images/4th_blog_banner.jpg",
       description: "Ensuring data safety in real-time is critical for modern SOCs. Here is how we do it.",
       author: { name: "Gurucharan Raghunathan", role: "Cofounder & CEO", avatar: "/team/gurucharan.png" }
     },
     { 
       title: "How Modern CISOs Demonstrate Real ROI with AI-Native SOC Platforms", 
       category: "Trends", 
-      date: "Apr 15, 2026",
+      date: "Sep 19, 2025",
+      image: "/blog cover images/5th_Blog_Image.jpg",
       description: "A guide for CISOs to measure and present the ROI of AI security tools.",
       author: { name: "Gurucharan Raghunathan", role: "Cofounder & CEO", avatar: "/team/gurucharan.png" }
     },
     { 
       title: "Optimizing Your AI-SOC: A Practical Guide to Offensive Validation and Tuning", 
       category: "Technical", 
-      date: "Apr 08, 2026",
+      date: "Sep 16, 2025",
+      image: "/blog cover images/6th_Blog_Banner.png",
       description: "Practical steps to tune your AI-SOC for maximum efficiency and accuracy.",
       author: { name: "Gurucharan Raghunathan", role: "Cofounder & CEO", avatar: "/team/gurucharan.png" }
     },
     { 
       title: "Why Mid-Sized Companies Struggle with SOC Automation (And How to Fix It)", 
       category: "Trends", 
-      date: "Mar 30, 2026",
+      date: "Aug 10, 2025",
+      image: "/blog cover images/7th_Blog_banner.png",
       description: "Common pitfalls in SOC automation for mid-sized companies and solutions.",
       author: { name: "Gurucharan Raghunathan", role: "Cofounder & CEO", avatar: "/team/gurucharan.png" }
     },
     { 
       title: "Unlocking the Power of AI for MSSPs", 
       category: "MSSP", 
-      date: "Mar 25, 2026",
+      date: "Jun 17, 2025",
+      image: "/blog cover images/8th_Blog_Banner3.png",
       description: "How Managed Security Service Providers can leverage AI to scale their operations.",
+      author: { name: "Gurucharan Raghunathan", role: "Cofounder & CEO", avatar: "/team/gurucharan.png" }
+    },
+    { 
+      title: "Modernizing SOC using Agentic AI", 
+      category: "Technical", 
+      date: "Jun 13, 2025",
+      image: "/blog cover images/9th_Blog_Banner.jpg",
+      description: "Discover how Agentic AI is transforming Security Operations Centers by automating complex workflows.",
+      author: { name: "Gurucharan Raghunathan", role: "Cofounder & CEO", avatar: "/team/gurucharan.png" }
+    },
+    { 
+      title: "Why should you enable AI in your SOC?", 
+      category: "Trends", 
+      date: "May 23, 2025",
+      image: "/blog cover images/10th_Blog_Banner.jpg",
+      description: "Understand the key benefits of integrating artificial intelligence into your Security Operations Center.",
       author: { name: "Gurucharan Raghunathan", role: "Cofounder & CEO", avatar: "/team/gurucharan.png" }
     },
   ];
@@ -147,8 +171,12 @@ export default function BlogPage() {
                   height: '100%'
                 }}>
                   {/* Image Area */}
-                  <div style={{ height: '200px', background: '#F1F5F9', overflow: 'hidden' }}>
-                     <div style={{ width: '100%', height: '100%', background: 'linear-gradient(45deg, #0D41E1 0%, #E0E7FF 100%)', opacity: 0.1 }}></div>
+                  <div style={{ height: '200px', background: '#F1F5F9', overflow: 'hidden', position: 'relative' }}>
+                    {post.image ? (
+                      <Image src={post.image} alt={post.title} fill style={{ objectFit: 'cover' }} />
+                    ) : (
+                      <div style={{ width: '100%', height: '100%', background: 'linear-gradient(45deg, #0D41E1 0%, #E0E7FF 100%)', opacity: 0.1 }}></div>
+                    )}
                   </div>
                   
                   {/* Content Area */}

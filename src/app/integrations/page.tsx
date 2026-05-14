@@ -151,8 +151,8 @@ const DEPLOY_OPTIONS: DeployOption[] = [
     label: "Cloud Hosted",
     tag: "SaaS",
     icon: (
-      <svg viewBox="0 0 32 32" fill="none" style={{width:28,height:28}}>
-        <path d="M8 22a6 6 0 01-.5-12A8 8 0 0124 14h1a5 5 0 010 10H8z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+      <svg viewBox="0 0 32 32" fill="none" style={{ width: 28, height: 28 }}>
+        <path d="M8 22a6 6 0 01-.5-12A8 8 0 0124 14h1a5 5 0 010 10H8z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
     ),
     headline: "We manage everything.",
@@ -165,10 +165,10 @@ const DEPLOY_OPTIONS: DeployOption[] = [
     label: "Bring Your Own Database",
     tag: "BYODB",
     icon: (
-      <svg viewBox="0 0 32 32" fill="none" style={{width:28,height:28}}>
-        <ellipse cx="16" cy="9" rx="10" ry="4" stroke="currentColor" strokeWidth="1.8"/>
-        <path d="M6 9v7c0 2.21 4.48 4 10 4s10-1.79 10-4V9" stroke="currentColor" strokeWidth="1.8"/>
-        <path d="M6 16v7c0 2.21 4.48 4 10 4s10-1.79 10-4v-7" stroke="currentColor" strokeWidth="1.8"/>
+      <svg viewBox="0 0 32 32" fill="none" style={{ width: 28, height: 28 }}>
+        <ellipse cx="16" cy="9" rx="10" ry="4" stroke="currentColor" strokeWidth="1.8" />
+        <path d="M6 9v7c0 2.21 4.48 4 10 4s10-1.79 10-4V9" stroke="currentColor" strokeWidth="1.8" />
+        <path d="M6 16v7c0 2.21 4.48 4 10 4s10-1.79 10-4v-7" stroke="currentColor" strokeWidth="1.8" />
       </svg>
     ),
     headline: "Your data. Your control.",
@@ -180,10 +180,10 @@ const DEPLOY_OPTIONS: DeployOption[] = [
     label: "Bring Your Own Cloud",
     tag: "BYOC",
     icon: (
-      <svg viewBox="0 0 32 32" fill="none" style={{width:28,height:28}}>
-        <rect x="4" y="10" width="24" height="16" rx="3" stroke="currentColor" strokeWidth="1.8"/>
-        <path d="M10 10V8a6 6 0 0112 0v2" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/>
-        <circle cx="16" cy="18" r="2.5" stroke="currentColor" strokeWidth="1.8"/>
+      <svg viewBox="0 0 32 32" fill="none" style={{ width: 28, height: 28 }}>
+        <rect x="4" y="10" width="24" height="16" rx="3" stroke="currentColor" strokeWidth="1.8" />
+        <path d="M10 10V8a6 6 0 0112 0v2" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+        <circle cx="16" cy="18" r="2.5" stroke="currentColor" strokeWidth="1.8" />
       </svg>
     ),
     headline: "Deploy inside your cloud.",
@@ -195,10 +195,10 @@ const DEPLOY_OPTIONS: DeployOption[] = [
     label: "On-Premise",
     tag: "ON-PREM",
     icon: (
-      <svg viewBox="0 0 32 32" fill="none" style={{width:28,height:28}}>
-        <rect x="4" y="14" width="24" height="14" rx="2" stroke="currentColor" strokeWidth="1.8"/>
-        <path d="M10 14V10a6 6 0 0112 0v4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/>
-        <circle cx="16" cy="21" r="2" fill="currentColor"/>
+      <svg viewBox="0 0 32 32" fill="none" style={{ width: 28, height: 28 }}>
+        <rect x="4" y="14" width="24" height="14" rx="2" stroke="currentColor" strokeWidth="1.8" />
+        <path d="M10 14V10a6 6 0 0112 0v4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+        <circle cx="16" cy="21" r="2" fill="currentColor" />
       </svg>
     ),
     headline: "Nothing leaves your environment.",
@@ -259,15 +259,15 @@ const LLM_OPTIONS: LLMOption[] = [
     id: "custom",
     name: "Custom LLM",
     by: "Your Model",
-    color: "#FF3B81",
+    color: "#0D41E1",
     bg: "#FFFFFF",
-    tag: "Enterprise",
+    tag: "Coming Soon",
     desc: "Running a private or fine-tuned model? Trench supports custom LLM endpoints for specific compliance or data residency requirements.",
     icon: (
-      <svg viewBox="0 0 40 40" fill="none" style={{width:36,height:36}}>
-        <circle cx="20" cy="20" r="18" fill="#FF3B81" fillOpacity="0.12"/>
-        <rect x="13" y="13" width="14" height="14" rx="3" stroke="#FF3B81" strokeWidth="1.8"/>
-        <path d="M17 20h6M20 17v6" stroke="#FF3B81" strokeWidth="1.8" strokeLinecap="round"/>
+      <svg viewBox="0 0 40 40" fill="none" style={{ width: 36, height: 36 }}>
+        <circle cx="20" cy="20" r="18" fill="#0D41E1" fillOpacity="0.12" />
+        <rect x="13" y="13" width="14" height="14" rx="3" stroke="#0D41E1" strokeWidth="1.8" />
+        <path d="M17 20h6M20 17v6" stroke="#0D41E1" strokeWidth="1.8" strokeLinecap="round" />
       </svg>
     ),
   },

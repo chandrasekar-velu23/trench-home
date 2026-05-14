@@ -41,7 +41,8 @@
 
 .wt-manifesto-title {
   font-family: var(--font-primary);
-  font-size: clamp(2.16rem, 4.8vw, 3rem); /* Increased 20% from 1.8-2.5 */
+  font-size: clamp(2.16rem, 4.8vw, 3rem);
+  /* Increased 20% from 1.8-2.5 */
   font-weight: 900;
   line-height: 1.2;
   letter-spacing: -0.02em;
@@ -62,7 +63,8 @@
 }
 
 .wt-manifesto-para {
-  font-size: clamp(1.2rem, 2.4vw, 1.38rem); /* Increased 20% from 1-1.15 */
+  font-size: clamp(1.2rem, 2.4vw, 1.38rem);
+  /* Increased 20% from 1-1.15 */
   font-weight: 500;
   line-height: 1.6;
   color: var(--color-neutral-700);
@@ -146,7 +148,8 @@
 }
 
 .cofounder-photo-wrap-refined {
-  width: 144px; /* Increased 20% from 120 */
+  width: 144px;
+  /* Increased 20% from 120 */
   height: 144px;
   border-radius: 50%;
   overflow: hidden;
@@ -208,7 +211,8 @@
   grid-template-columns: repeat(6, 1fr);
   gap: 2rem;
   justify-items: center;
-  max-width: 1000px; /* Wider to accommodate text better */
+  max-width: 1000px;
+  /* Wider to accommodate text better */
   margin: 0 auto;
 }
 
@@ -220,7 +224,8 @@
 }
 
 .member-photo-wrap-refined {
-  width: 96px; /* Increased 20% from 80 */
+  width: 96px;
+  /* Increased 20% from 80 */
   height: 96px;
   border-radius: 50%;
   overflow: hidden;
@@ -240,7 +245,8 @@
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
-  align-items: center; /* Center items in flex column */
+  align-items: center;
+  /* Center items in flex column */
 }
 
 .member-name-refined {
@@ -305,7 +311,7 @@
 
 .wt-careers-title {
   font-family: var(--font-primary);
-  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+  font-size: clamp(2rem, 2.5vw, 1.5rem);
   font-weight: 800;
   color: var(--color-neutral-800);
   margin-bottom: 1.5rem;
@@ -338,28 +344,28 @@
   .wt-section {
     padding: 3.5rem 0;
   }
-  
+
   .wt-manifesto-title {
     margin-bottom: 2rem;
   }
-  
+
   .wt-mv-clean {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
-  
+
   .cofounder-card-refined {
     flex-direction: column;
     align-items: center;
     text-align: center;
     padding: 1.5rem;
   }
-  
+
   .team-members-grid-refined {
     grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
   }
-  
+
   .wt-values-grid-new {
     grid-template-columns: 1fr;
     gap: 1.5rem;
