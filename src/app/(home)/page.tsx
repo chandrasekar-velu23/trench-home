@@ -12,10 +12,10 @@ import SiemRibbon from "@/components/sections/SiemRibbon";
 import CustomerSection from "@/components/sections/CustomerSection";
 import CTASection from "@/components/sections/CTASection";
 import Collaborations from "@/components/Collaborations";
-import Highlight from "@/components/sections/Highlight";
-import PartnerSection from "@/components/PartnerSection";
-import { TweaksPanel } from "@/components/tweaks-panel";
-import VariationSlack from "@/components/variation-slack";
+// import Highlight from "@/components/sections/Highlight";
+// import PartnerSection from "@/components/PartnerSection";
+// import { TweaksPanel } from "@/components/tweaks-panel";
+// import VariationSlack from "@/components/variation-slack";
 
 export default function Home() {
   return (
