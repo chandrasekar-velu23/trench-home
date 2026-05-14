@@ -69,7 +69,7 @@ export default function SocialProof() {
       <div className="testimonial-container">
         <ScrollReveal direction="up" className="text-center" distance={40} style={{ marginBottom: "0rems" }}>
 
-          <h2 className="title-lg" style={{ fontSize: "250%" }}>​Loved by Practitioners & Security Leaders</h2>
+          <h2 className="title-lg" style={{ fontSize: "250%", textAlign: "center" }}>Loved by Practitioners<br />& Security Leaders</h2>
         </ScrollReveal>
 
 
@@ -142,8 +142,8 @@ export default function SocialProof() {
 
       <style jsx>{`
         .social-proof-section {
-          padding: 0.5rem 0 1.5rem;
-          background: linear-gradient(to bottom, transparent 0%, transparent 50%, white 50%, white 100%);
+          padding: 0.4rem 0 1.5rem;
+          background: transparent;
           display: flex;
           flex-direction: column;
           align-items: center;
@@ -174,8 +174,6 @@ export default function SocialProof() {
           align-items: center;
         }
 
-
-
         .testimonial-slider {
           width: 100%;
           display: flex;
@@ -184,7 +182,7 @@ export default function SocialProof() {
           position: relative;
           min-height: 400px;
           justify-content: center;
-          margin-top: 1rem;
+          margin-top: 0.5rem;
         }
 
         .testimonial-card {
@@ -322,8 +320,8 @@ export default function SocialProof() {
 
         @media (max-width: 768px) {
           .social-proof-section {
-            padding: 1rem 0;
-            background: linear-gradient(to bottom, transparent 0%, transparent 50%, white 50%, white 100%);
+            padding: 0.8rem 0 1rem;
+            background: transparent;
           }
           
           .section-divider-wrapper {

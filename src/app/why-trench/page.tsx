@@ -6,6 +6,7 @@ import "./why-trench.css";
 import { Trophy, Layers, Network, Users } from "lucide-react";
 import ScrollReveal from "@/components/animations/ScrollReveal";
 import TextReveal from "@/components/animations/TextReveal";
+import BrandBanner from "@/components/BrandBanner";
 import CTASection from "@/components/sections/CTASection";
 
 const COFOUNDERS = [
@@ -20,7 +21,7 @@ const COFOUNDERS = [
     name: "Michael Wilson",
     role: "Cofounder & CTO",
     desc: "Scaled networks at Radware, Avaya and Nortel. Knows what ground-up architecture looks like. Building it again for security operations.",
-    img: "/team/michael.jpg",
+    img: "/team/Michael.jpg",
     linkedin: "https://www.linkedin.com/in/michael-wilson-rebello-b719a86/",
   },
 ];
@@ -82,7 +83,7 @@ export default function WhyTrenchPage() {
               style={{ justifyContent: "center", width: "100%" }}
             />
             <h1 className="wt-manifesto-title">You cannot patch your way out of a design flaw.</h1>
-            
+
             <div className="wt-manifesto-content">
               <ScrollReveal delay={0.2} direction="up">
                 <p className="wt-manifesto-para">
@@ -212,7 +213,7 @@ export default function WhyTrenchPage() {
           </ScrollReveal>
 
           <div className="team-members-grid-refined">
-            {SUB_TEAMS.flatMap(team => 
+            {SUB_TEAMS.flatMap(team =>
               team.members.map(m => ({ ...m, role: team.title.replace(/s$/, '') }))
             ).map((m, i) => (
               <ScrollReveal key={m.name} direction="up" delay={i * 0.1} className="member-card-refined">
@@ -279,7 +280,7 @@ export default function WhyTrenchPage() {
           </div>
         </div>
       </section>
-
+      <BrandBanner />
       {/* ── SECTION 5: CAREERS (Centered Layout) ── */}
       <section className="content-block wt-section careers-section">
         <div className="container-wide text-center">
@@ -288,8 +289,8 @@ export default function WhyTrenchPage() {
             <span className="wt-eyebrow" style={{ justifyContent: "center", marginBottom: "0.5rem" }}>JOIN THE TRENCH</span>
             <p className="wt-careers-text">
               Write us at{" "}
-              <a href="mailto:careers@trenchsecurity.ai" className="wt-email-link">
-                careers@trenchsecurity.ai
+              <a href="mailto:career@trenchsecurity.ai" className="wt-email-link">
+                career@trenchsecurity.ai
               </a>
               .
             </p>

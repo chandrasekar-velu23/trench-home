@@ -66,11 +66,15 @@ export default function PartnerSection() {
 
         @media (max-width: 768px) {
           .partner-section {
-            padding: 3rem 1rem;
+            padding: 2.4rem 1rem;
           }
 
           .logo-wrapper {
-            padding: 1.5rem 2rem;
+            padding: 1.2rem 1.6rem;
+          }
+
+          .partner-logo {
+            max-width: 160px;
           }
         }
       `}</style>

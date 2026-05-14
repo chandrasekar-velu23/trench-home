@@ -100,7 +100,7 @@ export default function Hero() {
           right: 0;
           height: 250px;
           background: linear-gradient(to top, #ffffff 0%, rgba(255,255,255,0.85) 25%, rgba(255,255,255,0.5) 50%, rgba(255,255,255,0.15) 75%, transparent 100%);
-          z-index: 1;
+          z-index: 20;
           pointer-events: none;
         }
 
@@ -205,7 +205,7 @@ export default function Hero() {
           font-size: clamp(2.2rem, 5vw, 3.8rem);
           font-weight: 900;
           line-height: 1.05;
-          color: #0D41E1;
+          color: #ffffff;
           margin: 0;
           letter-spacing: -0.04em;
         }
@@ -213,10 +213,11 @@ export default function Hero() {
         .hero-subtitle {
           font-size: 1.25rem;
           line-height: 1.6;
-          color: #334155;
+          color: #ffffff;
           max-width: 640px;
           margin: 0;
           font-weight: 500;
+          text-align: center;
         }
 
         .hero-button-group {
@@ -275,7 +276,7 @@ export default function Hero() {
             font-size: 12px;
           }
           .hero-title-override {
-            font-size: 1.2rem !important;
+            font-size: 1.44rem !important;
             text-align: center;
             line-height: 1.15;
           }
@@ -283,7 +284,7 @@ export default function Hero() {
             font-size: 0.75rem;
             text-align: center;
             margin: 0 auto;
-            color: rgba(255,255,255,0.9);
+            color: #ffffff;
             max-width: 100%;
           }
           .hero-button-group {
@@ -294,8 +295,8 @@ export default function Hero() {
           }
           :global(.hero-btn-primary),
           :global(.hero-btn-secondary) {
-            width: 180px !important;
-            height: 46px !important;
+            width: 162px !important;
+            height: 41px !important;
           }
           :global(.hero-btn-primary .button-text),
           :global(.hero-btn-secondary .button-text) {
