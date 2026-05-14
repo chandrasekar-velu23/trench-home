@@ -371,7 +371,7 @@ const VariationSlack: React.FC = () => {
           margin: 0, fontSize: 'clamp(12px, 1.5vw, 16px)', lineHeight: 1.55, color: TD.textDim, maxWidth: '100%',
           fontFamily: 'var(--font-secondary)',
         }}>
-          Trench AI runs the loop end-to-end in Slack — detect, verify with the user,
+          Trench runs the loop end-to-end in Slack, detect, verify with the user,
           get engineer approval, and confirm remediation. No tab-switching, no console hopping.
         </p>
 
@@ -379,7 +379,7 @@ const VariationSlack: React.FC = () => {
         <div style={{ display: 'flex', flexDirection: 'column', gap: 12, marginTop: 4 }}>
           {[
             { n: 1, t: 'Detect',   d: 'Suspicious sign-in flagged with full context.' },
-            { n: 2, t: 'Verify',   d: 'Trench AI asks the impacted user — in DM.' },
+            { n: 2, t: 'Verify',   d: 'Trench asks the impacted user, in DM.' },
             { n: 3, t: 'Approve',  d: 'Security engineer is paged for one-click approval.' },
             { n: 4, t: 'Remediate',d: 'Tokens revoked, sessions killed, ticket closed.' },
           ].map(s => {
@@ -427,23 +427,23 @@ const VariationSlack: React.FC = () => {
         {/* sidebar */}
         <div style={{
           width: isClient && window.innerWidth > 768 ? 140 : 0,
-          background: '#f8f9fa',
-          borderRight: isClient && window.innerWidth > 768 ? `1px solid ${TD.slackLine}` : 'none',
+          background: '#3F0E40', // Classic Slack purple
+          borderRight: isClient && window.innerWidth > 768 ? `1px solid rgba(255,255,255,0.1)` : 'none',
           padding: '12px 0', 
           display: isClient && window.innerWidth > 768 ? 'flex' : 'none',
           flexDirection: 'column', 
           gap: 2,
           fontSize: 12,
-          color: '#6b7280',
+          color: 'rgba(255,255,255,0.7)',
         }}>
-          <div style={{ padding: '0 12px 10px', borderBottom: `1px solid ${TD.slackLine}` }}>
-            <div style={{ fontWeight: 700, color: TD.text, fontSize: 12, letterSpacing: '-0.01em' }}>Trench Security</div>
-            <div style={{ fontSize: 10, color: TD.textDim, marginTop: 2, display: 'flex', alignItems: 'center', gap: 4 }}>
-              <span style={{ width: 6, height: 6, borderRadius: '50%', background: TD.slackGreen }}/>
+          <div style={{ padding: '0 12px 10px', borderBottom: `1px solid rgba(255,255,255,0.1)` }}>
+            <div style={{ fontWeight: 700, color: '#ffffff', fontSize: 12, letterSpacing: '-0.01em' }}>Trench</div>
+            <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.5)', marginTop: 2, display: 'flex', alignItems: 'center', gap: 4 }}>
+              <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#2BAC76' }}/>
               you
             </div>
           </div>
-          <div style={{ padding: '10px 12px 4px', fontSize: 10, color: TD.textMute, letterSpacing: '0.04em', textTransform: 'uppercase' }}>Channels</div>
+          <div style={{ padding: '10px 12px 4px', fontSize: 10, color: 'rgba(255,255,255,0.5)', letterSpacing: '0.04em', textTransform: 'uppercase' }}>Channels</div>
           {[
             { n: 'general', un: false },
             { n: 'sec-ops', active: true, un: true },
@@ -453,15 +453,16 @@ const VariationSlack: React.FC = () => {
           ].map((c, i) => (
             <div key={i} style={{
               padding: '3px 12px', display: 'flex', alignItems: 'center', gap: 6,
-              background: c.active ? TD.slackBlue : 'transparent',
-              color: c.active ? '#fff' : c.un ? TD.text : TD.textDim,
-              fontWeight: c.un ? 700 : 400,
+              background: c.active ? '#1164A3' : 'transparent', // Slack blue for active
+              color: c.active ? '#fff' : 'rgba(255,255,255,0.7)',
+              fontWeight: c.active || c.un ? 700 : 400,
               fontSize: 11,
+              cursor: 'pointer'
             }}>
-              <span style={{ opacity: 0.7 }}>#</span>
+              <span style={{ opacity: 0.5 }}>#</span>
               {isClient && window.innerWidth > 768 ? c.n : c.n === 'sec-ops' ? '#sec' : c.n.charAt(0)}
               {c.un && !c.active && <span style={{
-                marginLeft: 'auto', background: TD.alert, color: '#fff',
+                marginLeft: 'auto', background: '#E01E5A', color: '#fff',
                 fontSize: 10, fontWeight: 700, padding: '0 5px', borderRadius: 8,
               }}>1</span>}
             </div>
@@ -473,7 +474,7 @@ const VariationSlack: React.FC = () => {
               background: TD.accent,
               display: 'grid', placeItems: 'center', fontSize: 9, fontWeight: 700, color: '#fff',
             }}>T</span>
-            {isClient && window.innerWidth > 768 ? 'Trench AI' : 'T'}
+            {isClient && window.innerWidth > 768 ? 'Trench' : 'T'}
           </div>
         </div>
 
@@ -495,7 +496,7 @@ const VariationSlack: React.FC = () => {
             <div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: 14, fontSize: 12, color: TD.slackDim }}>
               <span style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
                 <span style={{ width: 6, height: 6, borderRadius: '50%', background: TD.slackGreen }}/>
-                Trench AI · live
+                Trench · live
               </span>
             </div>
           </div>
@@ -514,7 +515,7 @@ const VariationSlack: React.FC = () => {
               {/* STEP 1 — detection */}
               <SlackMsg
                 avatar={<Avatar name="Trench" color="#1A1D21" bot/>}
-                name="Trench AI"
+                name="Trench"
                 badge={{ text: 'APP', bg: `${TD.accent}33`, fg: TD.accent }}
                 time="10:42 AM"
                 opacity={r1}
@@ -536,12 +537,12 @@ const VariationSlack: React.FC = () => {
 
               {/* STEP 2 — typing then user verify request (shown as a quoted DM relay) */}
               <div style={{ opacity: r2attn, transition: 'opacity .08s cubic-bezier(.3,.7,.4,1)' }}>
-                <Typing name="Trench AI"/>
+                <Typing name="Trench"/>
               </div>
 
               <SlackMsg
                 avatar={<Avatar name="Trench" color="#1A1D21" bot/>}
-                name="Trench AI"
+                name="Trench"
                 badge={{ text: 'STEP 2 · VERIFY', bg: `${TD.cyan}22`, fg: TD.cyan }}
                 time="10:43 AM"
                 opacity={r2}
@@ -550,7 +551,7 @@ const VariationSlack: React.FC = () => {
                 <div>Sent a verification DM to <Mention color={TD.slackBlue}>maya.chen</Mention>:</div>
                 <Attachment accent={TD.cyan}>
                   <div style={{ fontSize: 12.5, color: TD.slackDim, marginBottom: 6 }}>↳ DM to @maya.chen</div>
-                  <div>Hey Maya — we noticed a sign-in to your account from <b style={{ color: TD.text }}>Lagos, NG</b> on an unmanaged device a few minutes ago. Was that you?</div>
+                  <div>Hey Maya, we noticed a sign-in to your account from <b style={{ color: TD.text }}>Lagos, NG</b> on an unmanaged device a few minutes ago. Was that you?</div>
                   <ActionRow>
                     <SBtn>👍 Yes, it's me</SBtn>
                     <SBtn danger>🚫 Not me</SBtn>
@@ -570,7 +571,7 @@ const VariationSlack: React.FC = () => {
                 <Attachment accent={TD.alert}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                     <span style={{ fontSize: 18 }}>🚫</span>
-                    <span><b style={{ color: TD.alert }}>Not me</b> — I'm in Berlin, on my laptop right now.</span>
+                    <span><b style={{ color: TD.alert }}>Not me</b>, I'm in Berlin, on my laptop right now.</span>
                   </div>
                 </Attachment>
               </SlackMsg>
@@ -578,14 +579,14 @@ const VariationSlack: React.FC = () => {
               {/* STEP 3 — engineer approval */}
               <SlackMsg
                 avatar={<Avatar name="Trench" color="#1A1D21" bot/>}
-                name="Trench AI"
+                name="Trench"
                 badge={{ text: 'STEP 3 · APPROVE', bg: `${TD.accent}33`, fg: TD.accent }}
                 time="10:44 AM"
                 opacity={r3}
                 translate={(1 - r3) * 8}
               >
                 <div>
-                  User confirmed compromise. <Mention color={TD.accent}>on-call-secops</Mention> — proposed remediation ready for approval:
+                  User confirmed compromise. <Mention color={TD.accent}>on-call-secops</Mention>. Proposed remediation ready for approval:
                 </div>
                 <Attachment accent={TD.accent}>
                   <div style={{ fontSize: 13, fontWeight: 600, color: TD.text, marginBottom: 6 }}>
@@ -619,19 +620,19 @@ const VariationSlack: React.FC = () => {
 
               {/* STEP 4 — remediation done */}
               <div style={{ opacity: r4typing, transition: 'opacity .08s cubic-bezier(.3,.7,.4,1)' }}>
-                <Typing name="Trench AI"/>
+                <Typing name="Trench"/>
               </div>
 
               <SlackMsg
                 avatar={<Avatar name="Trench" color="#1A1D21" bot/>}
-                name="Trench AI"
+                name="Trench"
                 badge={{ text: 'STEP 4 · DONE', bg: `${TD.ok}22`, fg: TD.ok }}
                 time="10:45 AM"
                 opacity={r4}
                 translate={(1 - r4) * 8}
               >
                 <div>
-                  ✅ <b style={{ color: TD.text }}>Remediation complete</b> — account secured in 3m 12s.
+                  ✅ <b style={{ color: TD.text }}>Remediation complete</b>. Account secured in 3m 12s.
                 </div>
                 <Attachment accent={TD.ok}>
                   <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr auto', columnGap: 14, rowGap: 6, fontSize: 12.5 }}>

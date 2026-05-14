@@ -56,25 +56,24 @@ export default function Hero() {
               </div>
 
               <h1 className="title-lg hero-title-override">
-                One AI Platform for <br className="hide-mobile" /> Cloud-Native Security Teams
+                The New Operating System for  <br className="hide-mobile" /> Security Operations.
               </h1>
             </div>
 
             <div className="hero-bottom-group">
               <p className="hero-subtitle">
-                Ingest every signal, detect every threat, and respond at machine
-                speed, while your coffee is still hot.
+                An Agentic platform that does what your SIEM can't and your SOC never gets to, automatically.
               </p>
 
               <div className="hero-button-group">
                 <Link href="/connect">
                   <Button className="hero-btn-primary">
-                    Get a Demo
+                    Show Me the Platform
                   </Button>
                 </Link>
                 <Link href="/connect">
                   <Button variant="secondary" className="hero-btn-secondary">
-                    Let's Talk
+                    Take a Tour
                   </Button>
                 </Link>
               </div>
@@ -291,8 +290,17 @@ export default function Hero() {
             flex-direction: column;
             width: 100%;
             gap: 0.75rem;
-            align-items: stretch;
-            max-width: 220px;
+            align-items: center;
+          }
+          :global(.hero-btn-primary),
+          :global(.hero-btn-secondary) {
+            width: 180px !important;
+            height: 46px !important;
+          }
+          :global(.hero-btn-primary .button-text),
+          :global(.hero-btn-secondary .button-text) {
+            font-size: 11px !important;
+            letter-spacing: 1px !important;
           }
           .hide-mobile { display: none; }
         }

@@ -336,3 +336,245 @@
     white-space: nowrap;
   }
 }
+
+/* ── Deployment Section ── */
+.deploy-section {
+  padding: 80px 0;
+  max-width: 100%;
+}
+
+.deploy-container {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+.deploy-header {
+  margin-bottom: 48px;
+}
+
+.deploy-eyebrow {
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: var(--color-neutral-500);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.deploy-title {
+  font-family: var(--font-primary);
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 700;
+  color: var(--color-primary-100);
+  margin: 0 0 14px;
+  line-height: 1.2;
+  letter-spacing: -0.5px;
+}
+
+.deploy-subtitle {
+  font-size: 17px;
+  color: var(--color-neutral-500);
+  margin: 0;
+  max-width: 520px;
+  line-height: 1.6;
+}
+
+.deploy-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+
+.deploy-tab-btn {
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.18s;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1.5px solid var(--color-neutral-200);
+  background: var(--color-neutral-100);
+  color: var(--color-neutral-500);
+}
+
+.deploy-tab-btn.active {
+  border-color: var(--color-primary-100);
+  background: rgba(13, 65, 225, 0.05);
+  color: var(--color-primary-100);
+}
+
+.deploy-card {
+  border: 1.5px solid var(--color-primary-100);
+  border-radius: 16px;
+  padding: 40px 44px;
+  background: linear-gradient(135deg, #F8FAFF 0%, #EEF2FF 100%);
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+  position: relative;
+  overflow: hidden;
+}
+
+.deploy-card-accent {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 180px;
+  height: 180px;
+  background: radial-gradient(circle at top right, rgba(13, 65, 225, 0.1), transparent);
+  border-radius: 0 16px 0 0;
+}
+
+.deploy-card-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 14px;
+  background: #fff;
+  border: 1.5px solid var(--color-neutral-200);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary-100);
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(13, 65, 225, 0.08);
+}
+
+.deploy-card-content {
+  flex: 1;
+}
+
+.deploy-card-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.deploy-card-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--color-neutral-700);
+  margin: 0;
+}
+
+.deploy-card-badge {
+  background: var(--color-primary-100);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 3px 10px;
+  border-radius: 100px;
+}
+
+.deploy-card-headline {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-primary-100);
+  margin: 0 0 10px;
+}
+
+.deploy-card-body {
+  font-size: 15px;
+  color: var(--color-neutral-600);
+  margin: 0;
+  line-height: 1.65;
+  max-width: 560px;
+}
+
+.deploy-divider {
+  border-top: 1px solid var(--color-neutral-200);
+  margin-bottom: 80px;
+}
+
+.llm-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.llm-card {
+  border-radius: 14px;
+  padding: 28px 24px;
+  position: relative;
+  transition: transform 0.18s, box-shadow 0.18s;
+  cursor: default;
+  background: #fff;
+  border: 1.5px solid var(--color-neutral-200);
+}
+
+.llm-card:hover {
+  transform: translateY(-3px);
+}
+
+.llm-card-tag {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 2px 8px;
+  border-radius: 100px;
+}
+
+.llm-card-icon {
+  margin-bottom: 16px;
+}
+
+.llm-card-name {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-neutral-700);
+  margin-bottom: 2px;
+}
+
+.llm-card-by {
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  letter-spacing: 0.5px;
+  color: var(--color-neutral-600);
+}
+
+.llm-card-desc {
+  font-size: 13.5px;
+  color: var(--color-neutral-600);
+  margin: 0;
+  line-height: 1.6;
+}
+
+.llm-footer {
+  text-align: center;
+  padding: 28px 32px;
+  background: var(--color-primary-100);
+  border-radius: 14px;
+}
+
+.llm-footer-text {
+  font-size: 24px;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin: 0;
+  letter-spacing: -0.2px;
+}
+
+@media (max-width: 768px) {
+  .deploy-card {
+    flex-direction: column;
+    padding: 30px;
+    gap: 20px;
+  }
+  
+  .deploy-container {
+    padding: 0 20px;
+  }
+}

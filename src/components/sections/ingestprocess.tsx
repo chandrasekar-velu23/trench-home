@@ -166,7 +166,6 @@ export default function IngestProcess() {
                 @media (max-width: 768px) {
                     .ingest-wrap {
                         padding: 0.5rem 1rem;
-                        max-height: 80px;
                     }
                 }
 

@@ -7,7 +7,7 @@ export default function SiemRibbon() {
     <section className="siem-ribbon">
       <div className="container-wide">
         <p className="siem-text">
-          <span>AI for </span>
+          <span>AI built for </span>
           <span className="text-highlight">Actionability</span>
           <span>, not just Visibility.</span>
         </p>

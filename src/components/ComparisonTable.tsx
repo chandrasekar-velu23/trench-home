@@ -13,18 +13,18 @@ const comparisonData = [
     trench: "Every signal. Every source. Unified and searchable from day one.",
   },
   {
-    id: "detection",
-    feature: "Detection",
+    id: "velocity",
+    feature: "Velocity",
     legacy: "Static rules written months ago. Misses what didn't exist yesterday.",
     bolted: "AI layer on top of bad data. Garbage in, garbage out.",
     trench: "Agents that continuously hunt, adapt, and detect in real time.",
   },
   {
-    id: "response",
-    feature: "Response",
+    id: "actionability",
+    feature: "Actionability",
     legacy: "Manual investigation. Days to close. Your team drowns in alerts.",
     bolted: "Automates Tier 1. Everything else still lands on your team.",
-    trench: "Agents that investigate, correlate, and respond end to end. Minutes, not days.",
+    trench: "Agents that investigate, correlate and respond end to end, in minutes.",
   },
 ];
 
@@ -36,12 +36,12 @@ const cards = [
   },
   {
     key: "bolted" as const,
-    label: "Bolted AISOC",
+    label: "Bolted AI SOC Tools",
     sentiment: "neutral",
   },
   {
     key: "trench" as const,
-    label: "Trench AI Platform",
+    label: "Trench",
     sentiment: "positive",
     featured: true,
   },
@@ -203,7 +203,7 @@ export default function ComparisonTable() {
 
   const handleTabClick = (i: number) => {
     setActiveIndex(i);
-    startAutoPlay(); // Reset timer on click
+    // Timer is handled by onMouseEnter/onMouseLeave
   };
 
   const scroll = (direction: "left" | "right") => {
@@ -218,7 +218,13 @@ export default function ComparisonTable() {
 
 
       {/* ── Tab selector ── */}
-      <div className="ct-tabs" role="tablist" aria-label="Comparison category">
+      <div 
+        className="ct-tabs" 
+        role="tablist" 
+        aria-label="Comparison category"
+        onMouseEnter={stopAutoPlay}
+        onMouseLeave={startAutoPlay}
+      >
         {comparisonData.map((item, i) => {
           const TabIcon = tabIcons[i];
           const isActive = activeIndex === i;
@@ -252,6 +258,8 @@ export default function ComparisonTable() {
                   key={card.key}
                   className={`ct-platform-section ${card.featured ? "ct-platform-section--featured" : ""}`}
                   style={{ borderColor: cfg.borderColor }}
+                  onMouseEnter={stopAutoPlay}
+                  onMouseLeave={startAutoPlay}
                 >
                   {/* Platform Header */}
                   <div className="ct-platform-header">
@@ -485,7 +493,7 @@ export default function ComparisonTable() {
         }
 
         .ct-platform-section--featured {
-          background: rgba(13, 65, 225, 0.05);
+          background: rgba(13, 65, 225, 0.1);
           border-width: 1.5px;
         }
 
@@ -734,8 +742,8 @@ export default function ComparisonTable() {
           .ct-platform-header {
             flex-direction: column;
             align-items: flex-start;
-            gap: 1rem;
-            margin-bottom: 1rem;
+            gap: 0.35rem;
+            margin-bottom: 0.75rem;
           }
 
           .ct-platform-title {
@@ -744,7 +752,7 @@ export default function ComparisonTable() {
           }
 
           .ct-platform-content {
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
           }
 
           .ct-platform-text {
@@ -753,7 +761,7 @@ export default function ComparisonTable() {
           }
 
           .ct-platform-footer {
-            margin-top: 1rem;
+            margin-top: 0.5rem;
           }
 
           .ct-badge {

@@ -12,10 +12,10 @@ import RespondProcess from "./sections/respondprocess";
 const steps = [
   {
     step: "Step 1",
-    title: "Ingest",
+    title: "Unify",
     subtitle: "Connect everything. Miss nothing.",
-    description: "Trench connects to every log source, tool, and data stream across your stack — cloud, endpoint, identity, network, and SaaS. No agents to deploy. No data duplication. Clean, normalized, and ready for detection from day one.",
-    badges: ["20+ native integrations", "Agentless connector-based setup", "Auto-normalized, enriched, and searchable"],
+    description: "Trench connects to every log source, tool and data stream across your stack, cloud, endpoint, identity, network and SaaS. No agents to deploy. No data duplication. Clean, normalized and ready for detection from day one.",
+    badges: ["Native integrations across your entire stack", "Agentless connector-based setup", "Auto-normalized, enriched, and searchable"],
     image: "/steps/investigate.svg",
     Component: IngestProcess
   },
@@ -23,8 +23,8 @@ const steps = [
     step: "Step 2",
     title: "Detect",
     subtitle: "Detection driven by intent, not just rules.",
-    description: "Trench’s Intent Graph continuously maps attacker behavior, correlates signals across your entire data footprint, and auto-generates detections aligned to real-world threats.",
-    badges: ["Detects based on attacker behavior, not signatures", "Real-time threat correlation across your stack", "MITRE ATT&CK aligned and continuously updated"],
+    description: "Trench's Intent Graph continuously maps attacker behavior, correlates signals across your entire data footprint and auto-generates detections aligned to real-world threats, not static rules written last quarter.",
+    badges: ["Intent Graph detects based on attacker behavior, not signatures", "Real-time threat correlation across your stack", "MITRE ATT&CK aligned. Always current."],
     image: "/steps/detect.svg",
     Component: DetectionProcess
   },
@@ -32,8 +32,8 @@ const steps = [
     step: "Step 3",
     title: "Respond",
     subtitle: "From alert to closed in minutes.",
-    description: "When a threat is detected, Trench agents automatically investigate, correlate context, and trigger response workflows — so your team reviews decisions, not alerts.",
-    badges: ["Automated investigation and triage", "End-to-end response workflows", "Focus on decisions, not busywork"],
+    description: "When a threat is detected, Trench agents automatically investigate, correlate context and trigger response workflows. Your team gets actionable outcomes inside their collaboration tools. No context switching. No cognitive overload.",
+    badges: ["Automated investigation and triage", "Decisions delivered to your collaboration tools", "Your team focuses on decisions. Not busywork."],
     image: "/steps/respond.svg",
     Component: RespondProcess
   }
@@ -48,7 +48,7 @@ export default function ProcessSteps() {
     stopAutoPlay();
     intervalRef.current = window.setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % steps.length);
-    }, 2500); // Auto play every 2.5 seconds
+    }, 5000); // Auto play every 5 seconds
   };
 
   const stopAutoPlay = () => {
@@ -64,17 +64,17 @@ export default function ProcessSteps() {
 
   const handleTabClick = (i: number) => {
     setActiveIndex(i);
-    startAutoPlay(); // Reset timer on click
+    // Timer is handled by onMouseEnter/onMouseLeave
   };
 
   return (
-    <div className="process-wrapper">
+    <div className="process-wrapper" onMouseEnter={stopAutoPlay} onMouseLeave={startAutoPlay}>
       <div className="section-header">
         <ScrollReveal direction="up" distance={30}>
-          <span className="eyebrow">ONE PLATFORM. ZERO BLIND SPOTS. TOTAL CONTROL.</span>
-          <TextReveal text="How Trench Works." as="h1" className="title-lg" />
+          <span className="eyebrow">FROM COGNITIVE OVERLOAD TO COGNITIVE HARMONY.</span>
+          <TextReveal text="Introducing Headless SecOps." as="h1" className="title-lg" />
           <p className="sub-headline" style={{ textTransform: 'uppercase', letterSpacing: '2px', fontSize: '13px', fontWeight: 600 }}>
-            THREE STEPS. FULLY AUTOMATED. ALWAYS ON.
+            No alerts. No rules. No dashboards. Your SecOps, inside your collaboration tools.
           </p>
         </ScrollReveal>
       </div>
@@ -105,7 +105,7 @@ export default function ProcessSteps() {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.1 }}
+              transition={{ duration: 0.05 }}
               style={{ width: "100%", height: "100%", display: "flex", alignItems: "stretch" }}
             >
               {activeStep.Component ? (
@@ -120,7 +120,7 @@ export default function ProcessSteps() {
         {/* Content Layer */}
         <div className="content-container">
           <div className="step-indicator">
-            {activeStep.step.toUpperCase()} — {activeStep.title.toUpperCase()}
+            {activeStep.step.toUpperCase()}, {activeStep.title.toUpperCase()}
           </div>
 
           <AnimatePresence mode="wait">
@@ -129,7 +129,7 @@ export default function ProcessSteps() {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -20 }}
-              transition={{ duration: 0.1 }}
+              transition={{ duration: 0.05 }}
             >
               <h3 className="headline" style={{ marginBottom: "1rem" }}>{activeStep.subtitle}</h3>
               <p className="body-text-p" style={{ marginBottom: "2rem" }}>{activeStep.description}</p>
@@ -167,7 +167,7 @@ export default function ProcessSteps() {
       <style jsx>{`
         .process-wrapper {
           width: 100%;
-          padding: 8rem 0;
+          padding: 2rem 0;
           display: flex;
           flex-direction: column;
         }
@@ -333,7 +333,7 @@ export default function ProcessSteps() {
           :global(.title-lg) { font-size: 1.5rem; }
           .sub-headline { font-size: 11px; }
           .main-grid-layout { gap: 1.5rem; padding: 0 1rem; }
-          .visual-card-container { height: 250px; }
+          .visual-card-container { height: auto; min-height: auto; }
           .tab-button { padding: 0.5rem; font-size: 10px; }
           .tab-number { font-size: 16px; }
           .step-indicator { font-size: 12px; margin-bottom: 1rem; }

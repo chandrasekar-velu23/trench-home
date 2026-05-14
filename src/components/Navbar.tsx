@@ -11,7 +11,8 @@ import "./Navbar.css";
 const navLinks = [
   { name: "Home", href: "/" },
   { name: "Why Trench?", href: "/why-trench" },
-  { name: "Integrations", href: "/integrations" }
+  { name: "Integrations", href: "/integrations" },
+  { name: "Blog", href: "/blog" }
 ];
 
 export default function Navbar() {
@@ -179,7 +180,7 @@ export default function Navbar() {
                 className="mobile-cta-container"
               >
                 <Link href="/connect" onClick={() => setMobileMenuOpen(false)}>
-                  <Button style={{ width: "100%" }}>
+                  <Button>
                     Book a Demo
                   </Button>
                 </Link>

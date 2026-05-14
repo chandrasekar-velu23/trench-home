@@ -9,28 +9,28 @@ import ScrollReveal from "./animations/ScrollReveal";
 const testimonials = [
   {
     id: 1,
-    quote: "The agentic approach from Trench AI delivers proactive detection engineering in real-time. Rather than relying on static rulesets in an AI-powered threat landscape, their platform orchestrates autonomous, context-rich detections and accelerates the threat intelligence to high fidelity rule literally in minutes.",
+    quote: "Trench does in minutes what legacy SIEM teams spend weeks trying to do. Real-time detection built ground up for how threats actually move today, not patched together, purpose-built.",
     author: "Srikanth Devarajan",
     role: "Ex-VP & GM, Zscaler",
     avatar: "/social/SD.png"
   },
   {
     id: 2,
-    quote: "What impressed me most is Trench’s clarity of vision,  building unique AI systemic thinking that actually solve detection problems and reduce real threat response times, not just automate for the sake of it. The team combines deep domain expertise with pragmatic execution, which is rare in today’s noisy cybersecurity market.",
+    quote: "What sets Trench apart is systems thinking applied to a hard problem, building a unified platform that actually reduces response times, not just automating for the sake of it. Rare clarity of vision in a noisy market.",
     author: "Deepak Kothule",
     role: "VP - Engineering Leader, Ex-FICO, Ex-Symantec",
     avatar: "/social/DK.png"
   },
   {
     id: 3,
-    quote: "Trench AI is a game-changer for modern Security teams, its speed, precision, and AI-powered detections drastically cut through noise from the source and accelerate threat response. An innovative application of AI to solve hard detection problem in SOC",
+    quote: "Finally a platform built ground up for lean security teams. Trench gives a small team the detection power of an enterprise SOC, without the complexity, without the overhead.",
     author: "Senthil Kumar Iyyappan",
-    role: "CISO - Ocrolus, Ex-Freshworks",
+    role: "CISO, Ocrolus, Ex-Freshworks",
     avatar: "/social/SKI.png"
   },
   {
     id: 4,
-    quote: "Trench Security's agentic detection system model for threat detection and response is a paradigm shift. Its regulated AI-powered LLM engine, combined with a visionary team and a progressive learning mindset, sets it apart in today’s evolving cyber defense landscape. SOC teams have already started experiencing MTTD for real-time intelligence in minutes from days/weeks. The solution’s seamless compatibility with multi-vendor security monitoring tools, such as EDR, SIEM, and CSPM makes it both flexible and future-ready",
+    quote: "Trench is a foundational transformation in how security operations work. A real unified platform, not bolted-on AI, that reasons about threats across your entire stack. This is what modern SecOps should look like.",
     author: "Subhro Banerjee",
     role: "Senior Global IT Security Leader | Lifescience MNC",
     avatar: "/social/SB.png"
@@ -74,7 +74,7 @@ export default function SocialProof() {
 
 
         <div className="testimonial-slider">
-          <AnimatePresence mode="popLayout" initial={false}>
+          <AnimatePresence mode="wait" initial={false}>
             <motion.div
               key={current.id}
               initial={{ opacity: 0, scale: 0.95, y: 10 }}
@@ -87,9 +87,8 @@ export default function SocialProof() {
                 <div className="avatar-wrapper">
                   <Image
                     src={current.avatar}
-                    alt={current.author}
-                    width={120}
-                    height={120}
+                    alt={current.author ?? "Testimonial"}
+                    fill
                     className="avatar-img"
                     quality={90}
                   />
@@ -100,7 +99,9 @@ export default function SocialProof() {
                 </blockquote>
 
                 <div className="author-info">
-                  <span className="author-name fw-bold">{current.author},</span>
+                  {current.author && (
+                    <span className="author-name fw-bold">{current.author},</span>
+                  )}
                   <span className="author-role text-small">{current.role}</span>
                 </div>
               </div>
@@ -141,12 +142,12 @@ export default function SocialProof() {
 
       <style jsx>{`
         .social-proof-section {
-          padding: 1rem 0 2rem;
+          padding: 0.5rem 0 1.5rem;
           background: linear-gradient(to bottom, transparent 0%, transparent 50%, white 50%, white 100%);
           display: flex;
           flex-direction: column;
           align-items: center;
-          margin-top: 1rem;
+          margin-top: 0;
           position: relative;
           z-index: 5;
           margin-bottom: 0;
@@ -181,9 +182,9 @@ export default function SocialProof() {
           flex-direction: column;
           align-items: center;
           position: relative;
-          height: 450px;
+          min-height: 400px;
           justify-content: center;
-          margin-top: 1.5rem;
+          margin-top: 1rem;
         }
 
         .testimonial-card {
@@ -211,9 +212,13 @@ export default function SocialProof() {
           height: 120px;
           flex-shrink: 0;
           margin: 0 auto;
+          position: relative;
+          border-radius: 50%;
+          overflow: hidden;
+          filter: grayscale(100%);
         }
 
-        .avatar-img {
+        .avatar-img, .avatar-wrapper img {
           width: 100%;
           height: 100%;
           object-fit: cover;
@@ -322,11 +327,10 @@ export default function SocialProof() {
           }
           
           .section-divider-wrapper {
-            margin-bottom: 2rem;
-            transform: scale(0.5);
+            margin-bottom: 0.5rem;
+            transform: scale(0.6);
             transform-origin: top center;
             margin-top: -1rem;
-            margin-bottom: 0rem;
           }
           
           .testimonial-container {
@@ -337,15 +341,14 @@ export default function SocialProof() {
           }
           
           .testimonial-container h2 {
-            font-size: 1.5rem !important;
+            font-size: 1.3rem !important;
             text-align: center;
-            margin-bottom: 0rem;
+            margin-bottom: 0.5rem;
           }
           
           .testimonial-slider {
-            height: 550px;
-            margin-top: 1.5rem;
-            margin-bottom: 0rem;
+            min-height: 400px;
+            margin-top: 0;
           }
 
           .testimonial-card {
@@ -357,8 +360,8 @@ export default function SocialProof() {
             padding: 0 0.5rem;
           }
           .avatar-wrapper { 
-            width: 70px;
-            height: 70px;
+            width: 80px;
+            height: 80px;
             margin: 0 auto;
           }
           
@@ -375,10 +378,8 @@ export default function SocialProof() {
             font-size: 0.8rem;
           }
           
-          .slider-controls { 
-            position: absolute;
-            bottom: 0;
-            transform: scale(0.5);
+          .controls-relative {
+            transform: scale(0.6);
             transform-origin: center;
           }
         }

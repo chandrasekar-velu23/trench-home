@@ -3,8 +3,8 @@
 import React, { useState, useRef, useCallback, useEffect } from "react";
 import Image from "next/image";
 import "./integrations.css";
-import VariationSlack from "@/components/variation-slack";
-import { TweaksPanel } from "@/components/tweaks-panel";
+// import VariationSlack from "@/components/variation-slack";
+// import { TweaksPanel } from "@/components/tweaks-panel";
 
 /* ─────────────────────────────────────────
    DATA
@@ -131,6 +131,263 @@ function MeshLines({ nodes, hoveredId }: { nodes: NodeRef[]; hoveredId: string |
 }
 
 /* ─────────────────────────────────────────
+   DEPLOYMENT SECTION
+───────────────────────────────────────── */
+
+interface DeployOption {
+  id: string;
+  label: string;
+  tag: string;
+  icon: React.ReactNode;
+  headline: string;
+  body: string;
+  badge: string | null;
+  badgeColor?: string;
+}
+
+const DEPLOY_OPTIONS: DeployOption[] = [
+  {
+    id: "saas",
+    label: "Cloud Hosted",
+    tag: "SaaS",
+    icon: (
+      <svg viewBox="0 0 32 32" fill="none" style={{width:28,height:28}}>
+        <path d="M8 22a6 6 0 01-.5-12A8 8 0 0124 14h1a5 5 0 010 10H8z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+      </svg>
+    ),
+    headline: "We manage everything.",
+    body: "Fastest setup, lowest maintenance, fully operational within 2 weeks. Ideal for teams who want to move fast without infrastructure overhead.",
+    badge: "Recommended",
+    badgeColor: "#0F40DC",
+  },
+  {
+    id: "byodb",
+    label: "Bring Your Own Database",
+    tag: "BYODB",
+    icon: (
+      <svg viewBox="0 0 32 32" fill="none" style={{width:28,height:28}}>
+        <ellipse cx="16" cy="9" rx="10" ry="4" stroke="currentColor" strokeWidth="1.8"/>
+        <path d="M6 9v7c0 2.21 4.48 4 10 4s10-1.79 10-4V9" stroke="currentColor" strokeWidth="1.8"/>
+        <path d="M6 16v7c0 2.21 4.48 4 10 4s10-1.79 10-4v-7" stroke="currentColor" strokeWidth="1.8"/>
+      </svg>
+    ),
+    headline: "Your data. Your control.",
+    body: "Use your own data infrastructure. Full data ownership with Trench's detection and response layer sitting on top of your existing database.",
+    badge: null,
+  },
+  {
+    id: "byoc",
+    label: "Bring Your Own Cloud",
+    tag: "BYOC",
+    icon: (
+      <svg viewBox="0 0 32 32" fill="none" style={{width:28,height:28}}>
+        <rect x="4" y="10" width="24" height="16" rx="3" stroke="currentColor" strokeWidth="1.8"/>
+        <path d="M10 10V8a6 6 0 0112 0v2" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/>
+        <circle cx="16" cy="18" r="2.5" stroke="currentColor" strokeWidth="1.8"/>
+      </svg>
+    ),
+    headline: "Deploy inside your cloud.",
+    body: "Deploy Trench inside your own AWS, GCP or Azure account. Ideal for teams with data sovereignty and compliance requirements.",
+    badge: null,
+  },
+  {
+    id: "onprem",
+    label: "On-Premise",
+    tag: "ON-PREM",
+    icon: (
+      <svg viewBox="0 0 32 32" fill="none" style={{width:28,height:28}}>
+        <rect x="4" y="14" width="24" height="14" rx="2" stroke="currentColor" strokeWidth="1.8"/>
+        <path d="M10 14V10a6 6 0 0112 0v4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/>
+        <circle cx="16" cy="21" r="2" fill="currentColor"/>
+      </svg>
+    ),
+    headline: "Nothing leaves your environment.",
+    body: "Fully on-premise deployment for teams with the strictest security and regulatory requirements. Total isolation, total control.",
+    badge: null,
+  },
+];
+
+interface LLMOption {
+  id: string;
+  name: string;
+  by: string;
+  color: string;
+  bg: string;
+  tag: string | null;
+  desc: string;
+  icon: React.ReactNode;
+}
+
+const LLM_OPTIONS: LLMOption[] = [
+  {
+    id: "claude",
+    name: "Claude",
+    by: "Anthropic",
+    color: "#FFB547",
+    bg: "#FFFFFF",
+    tag: "Default",
+    desc: "Trench's recommended default. Best-in-class reasoning for complex threat investigation and intent analysis.",
+    icon: (
+      <Image src="/integrations/claude-color.png" alt="Claude" width={36} height={36} style={{ objectFit: "contain" }} />
+    ),
+  },
+  {
+    id: "gpt",
+    name: "GPT",
+    by: "OpenAI",
+    color: "#34E1FF",
+    bg: "#FFFFFF",
+    tag: null,
+    desc: "Connect your existing OpenAI deployment. Full support for GPT-4 and above.",
+    icon: (
+      <Image src="/integrations/chatgpt.png" alt="GPT" width={36} height={36} style={{ objectFit: "contain" }} />
+    ),
+  },
+  {
+    id: "gemini",
+    name: "Gemini",
+    by: "Google",
+    color: "#0D41E1",
+    bg: "#FFFFFF",
+    tag: null,
+    desc: "Native integration with Google's frontier model. Ideal for teams already in the Google Cloud ecosystem.",
+    icon: (
+      <Image src="/integrations/gemini-logo-icon.webp" alt="Gemini" width={36} height={36} style={{ objectFit: "contain" }} />
+    ),
+  },
+  {
+    id: "custom",
+    name: "Custom LLM",
+    by: "Your Model",
+    color: "#FF3B81",
+    bg: "#FFFFFF",
+    tag: "Enterprise",
+    desc: "Running a private or fine-tuned model? Trench supports custom LLM endpoints for specific compliance or data residency requirements.",
+    icon: (
+      <svg viewBox="0 0 40 40" fill="none" style={{width:36,height:36}}>
+        <circle cx="20" cy="20" r="18" fill="#FF3B81" fillOpacity="0.12"/>
+        <rect x="13" y="13" width="14" height="14" rx="3" stroke="#FF3B81" strokeWidth="1.8"/>
+        <path d="M17 20h6M20 17v6" stroke="#FF3B81" strokeWidth="1.8" strokeLinecap="round"/>
+      </svg>
+    ),
+  },
+];
+
+function DeploymentSection() {
+  const [activeDeploy, setActiveDeploy] = useState("saas");
+  const active = DEPLOY_OPTIONS.find(d => d.id === activeDeploy);
+
+  return (
+    <div className="deploy-section">
+      <div className="deploy-container">
+
+        {/* ── DEPLOYMENT OPTIONS ── */}
+        <div style={{ marginBottom: 96 }}>
+          <div className="deploy-header">
+            <div className="deploy-eyebrow">DEPLOY YOUR WAY.</div>
+            <h2 className="deploy-title">
+              Trench fits your stack.<br />Not the other way around.
+            </h2>
+            <p className="deploy-subtitle">
+              Every security team is different. Trench is built to meet you where you are, on your terms.
+            </p>
+          </div>
+
+          <div className="deploy-tabs">
+            {DEPLOY_OPTIONS.map(opt => (
+              <button
+                key={opt.id}
+                onClick={() => setActiveDeploy(opt.id)}
+                className={`deploy-tab-btn ${activeDeploy === opt.id ? "active" : ""}`}
+              >
+                <span style={{ opacity: activeDeploy === opt.id ? 1 : 0.5 }}>{opt.icon}</span>
+                <span>{opt.tag}</span>
+              </button>
+            ))}
+          </div>
+
+          {active && (
+            <div className="deploy-card">
+              <div className="deploy-card-accent" />
+              <div className="deploy-card-icon">
+                {active.icon}
+              </div>
+              <div className="deploy-card-content">
+                <div className="deploy-card-title-wrap">
+                  <h3 className="deploy-card-title">{active.label}</h3>
+                  {active.badge && (
+                    <span className="deploy-card-badge">{active.badge}</span>
+                  )}
+                </div>
+                <p className="deploy-card-headline">{active.headline}</p>
+                <p className="deploy-card-body">{active.body}</p>
+              </div>
+            </div>
+          )}
+        </div>
+
+        <div className="deploy-divider" />
+
+        {/* ── BRING YOUR OWN LLM ── */}
+        <div>
+          <div className="deploy-header">
+            <div className="deploy-eyebrow">YOUR AI. YOUR CHOICE.</div>
+            <h2 className="deploy-title">
+              Bring the frontier AI model<br />your team trusts.
+            </h2>
+            <p className="deploy-subtitle">
+              Trench is model-agnostic. Connect the frontier AI model your team already uses and let Trench&apos;s agents do the rest.
+            </p>
+          </div>
+
+          <div className="llm-grid">
+            {LLM_OPTIONS.map(llm => (
+              <div
+                key={llm.id}
+                className="llm-card"
+                style={{
+                  borderColor: `${llm.color}30`,
+                  background: llm.bg,
+                }}
+                onMouseEnter={e => {
+                  e.currentTarget.style.transform = "translateY(-3px)";
+                  e.currentTarget.style.boxShadow = `0 8px 24px ${llm.color}20`;
+                }}
+                onMouseLeave={e => {
+                  e.currentTarget.style.transform = "translateY(0)";
+                  e.currentTarget.style.boxShadow = "none";
+                }}
+              >
+                {llm.tag && (
+                  <span className="llm-card-tag" style={{ background: llm.color }}>
+                    {llm.tag}
+                  </span>
+                )}
+                <div className="llm-card-icon">{llm.icon}</div>
+                <div className="llm-card-name">{llm.name}</div>
+                <div className="llm-card-by">
+                  {llm.by}
+                </div>
+                <p className="llm-card-desc">{llm.desc}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="llm-footer">
+            <p className="llm-footer-text">
+              Your infrastructure.{" "}
+              <span>Your AI.</span>{" "}
+              <span>Your Trench.</span>
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  );
+}
+
+/* ─────────────────────────────────────────
    MAIN PAGE
 ───────────────────────────────────────── */
 export default function IntegrationsPage() {
@@ -174,14 +431,16 @@ export default function IntegrationsPage() {
 
   return (
     <main className="page-main overflow-hidden">
-      <TweaksPanel title="Settings">
+
+      <div className="container-wide">
+        {/* <TweaksPanel title="Settings">
         <div style={{ padding: "8px 14px", color: "var(--color-neutral-500)" }}>
           Settings will appear here
         </div>
       </TweaksPanel>
       <div className="container-wide">
         
-        <VariationSlack />
+        <VariationSlack /> */}
 
         {/* ── Hero ── */}
         <div className="int-hero">
@@ -253,35 +512,39 @@ export default function IntegrationsPage() {
 
       </div>
 
-      {/* ── Floating tooltip ── */}
-      {tooltip && (() => {
-        const isMobile = typeof window !== "undefined" && window.innerWidth <= 768;
-        const posStyle = isMobile
-          ? {}  // CSS handles bottom-sheet positioning
-          : {
-            left: Math.min(tooltip.x, window.innerWidth - 316),
-            top: Math.max(8, tooltip.y - 8),
-          };
-        return (
-          <div className="int-tooltip visible" style={posStyle}>
-            <div className="int-tooltip-logo-wrap">
-              <Image
-                src={tooltip.item.logo}
-                alt={tooltip.item.name}
-                width={44}
-                height={44}
-                className="int-tooltip-logo"
-                quality={95}
-              />
-            </div>
-            <div className="int-tooltip-name">{tooltip.item.name}</div>
-            <div className="int-tooltip-badge">{CATEGORIES.find(c => c.id === tooltip.item.cat)?.label}</div>
-            <p className="int-tooltip-desc">{tooltip.item.desc}</p>
-            <div className="int-tooltip-footer">↗ How Trench integrates</div>
-          </div>
-        );
-      })()}
+      <DeploymentSection />
 
-    </main>
+      {/* ── Floating tooltip ── */}
+      {
+        tooltip && (() => {
+          const isMobile = typeof window !== "undefined" && window.innerWidth <= 768;
+          const posStyle = isMobile
+            ? {}  // CSS handles bottom-sheet positioning
+            : {
+              left: Math.min(tooltip.x, window.innerWidth - 316),
+              top: Math.max(8, tooltip.y - 8),
+            };
+          return (
+            <div className="int-tooltip visible" style={posStyle}>
+              <div className="int-tooltip-logo-wrap">
+                <Image
+                  src={tooltip.item.logo}
+                  alt={tooltip.item.name}
+                  width={44}
+                  height={44}
+                  className="int-tooltip-logo"
+                  quality={95}
+                />
+              </div>
+              <div className="int-tooltip-name">{tooltip.item.name}</div>
+              <div className="int-tooltip-badge">{CATEGORIES.find(c => c.id === tooltip.item.cat)?.label}</div>
+              <p className="int-tooltip-desc">{tooltip.item.desc}</p>
+              <div className="int-tooltip-footer">↗ How Trench integrates</div>
+            </div>
+          );
+        })()
+      }
+
+    </main >
   );
 }

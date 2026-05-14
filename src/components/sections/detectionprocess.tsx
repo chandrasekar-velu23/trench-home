@@ -155,7 +155,7 @@ export default function DetectionProcess() {
                     border: 1px solid #E2E8F0;
                     box-shadow: 0 4px 32px rgba(13, 65, 225, 0.07);
                     overflow: hidden;
-                    min-height: 400px;
+                    min-height: 200px;
                     padding: 0;
                 }
 
@@ -165,8 +165,8 @@ export default function DetectionProcess() {
                         width: 100%;
                         padding: 0.5rem 1rem;
                         margin-top: -10px;
-                        margin-bottm: 0px
-                        max-height: 80px;
+                        margin-bottom: 0px;
+                        min-height: auto;
                     }
                 }
 

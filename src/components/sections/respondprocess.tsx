@@ -192,7 +192,6 @@ export default function RespondProcess() {
                 @media (max-width: 768px) {
                     .respond-wrap {
                         padding: 0.5rem 1rem;
-                        max-height: 80px;
                     }
                 }
 

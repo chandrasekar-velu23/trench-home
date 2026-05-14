@@ -241,10 +241,17 @@ export default function CTASection() {
             flex-direction: column;
             width: 100%;
             gap: 0.75rem;
+            align-items: center;
           }
           :global(.cta-btn-primary),
           :global(.cta-btn-secondary) {
-            width: 100% !important;
+            width: 180px !important;
+            height: 46px !important;
+          }
+          :global(.cta-btn-primary .button-text),
+          :global(.cta-btn-secondary .button-text) {
+            font-size: 11px !important;
+            letter-spacing: 1px !important;
           }
           .cta-cloud {
             width: 120px;
