@@ -67,13 +67,14 @@ export default function Home() {
       </section> */}
 
       {/* CTA BLOCK */}
-      <CTASection />
+
 
       <div className="container-wide">
         <Collaborations />
       </div>
 
-      {/* AWARD SHOWCASE BLOCK */}
+
+      <CTASection />
 
 
       {/* FAQ BLOCK */}

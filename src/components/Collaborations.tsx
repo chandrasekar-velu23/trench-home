@@ -3,9 +3,10 @@
 import React, { useState } from 'react';
 import VariationSlack from './variation-slack';
 import VariationTeams from './VariationTeams';
+import VariationClaude from './VariationClaude';
 
 const Collaborations: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<'slack' | 'teams'>('slack');
+  const [activeTab, setActiveTab] = useState<'slack' | 'teams' | 'claude'>('slack');
 
   return (
     <div style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '60px 0' }}>
@@ -14,7 +15,7 @@ const Collaborations: React.FC = () => {
         <div style={{
           fontSize: '12px',
           fontWeight: 600,
-          color: '#0D41E1',
+          color: '#532455',
           textTransform: 'uppercase',
           letterSpacing: '0.1em',
           marginBottom: '12px',
@@ -30,7 +31,7 @@ const Collaborations: React.FC = () => {
           lineHeight: 1.2,
           fontFamily: 'var(--font-primary)'
         }}>
-          A full investigation, inside the thread.
+          We bring SecOps to where you work.
         </h2>
         <p style={{
           fontSize: 'clamp(14px, 2vw, 18px)',
@@ -38,14 +39,14 @@ const Collaborations: React.FC = () => {
           lineHeight: 1.6,
           fontFamily: 'var(--font-secondary)'
         }}>
-          From detection to remediation, inside one Slack or Teams thread.
+          From detection to remediation, inside Slack, Teams or Claude.
         </p>
       </div>
 
       {/* Tabs */}
-      <div style={{ 
-        display: 'flex', 
-        gap: '8px', 
+      <div style={{
+        display: 'flex',
+        gap: '8px',
         marginBottom: '32px',
         background: '#F3F4F6',
         padding: '6px',
@@ -59,16 +60,16 @@ const Collaborations: React.FC = () => {
             padding: '10px 24px',
             borderRadius: '8px',
             border: 'none',
-            background: activeTab === 'slack' ? '#0D41E1' : 'transparent',
+            background: activeTab === 'slack' ? '#532455' : 'transparent',
             color: activeTab === 'slack' ? '#fff' : '#4B5563',
             fontWeight: 600,
             fontSize: '14px',
             cursor: 'pointer',
             transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
-            boxShadow: activeTab === 'slack' ? '0 2px 4px rgba(13, 65, 225, 0.2)' : 'none'
+            boxShadow: activeTab === 'slack' ? '0 2px 4px rgba(83, 36, 85, 0.2)' : 'none'
           }}
         >
-          Slack View
+          Slack
         </button>
         <button
           onClick={() => setActiveTab('teams')}
@@ -85,17 +86,32 @@ const Collaborations: React.FC = () => {
             boxShadow: activeTab === 'teams' ? '0 2px 4px rgba(79, 70, 229, 0.2)' : 'none'
           }}
         >
-          Teams View
+          Teams
+        </button>
+        <button
+          onClick={() => setActiveTab('claude')}
+          style={{
+            padding: '10px 24px',
+            borderRadius: '8px',
+            border: 'none',
+            background: activeTab === 'claude' ? '#D96B43' : 'transparent',
+            color: activeTab === 'claude' ? '#fff' : '#4B5563',
+            fontWeight: 600,
+            fontSize: '14px',
+            cursor: 'pointer',
+            transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
+            boxShadow: activeTab === 'claude' ? '0 2px 4px rgba(217, 107, 67, 0.2)' : 'none'
+          }}
+        >
+          Claude
         </button>
       </div>
 
       {/* Content */}
       <div style={{ width: '100%' }}>
-        {activeTab === 'slack' ? (
-          <VariationSlack />
-        ) : (
-          <VariationTeams />
-        )}
+        {activeTab === 'slack' && <VariationSlack />}
+        {activeTab === 'teams' && <VariationTeams />}
+        {activeTab === 'claude' && <VariationClaude />}
       </div>
     </div>
   );

@@ -26,8 +26,8 @@ const space = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Trench | AI-Native Security Platform",
-  description: "One AI Platform for Cloud-Native Security Teams.",
+  title: "Trench | The New OS for Agentic SecOps",
+  description: "Trench is the new operating system for security operations. An agentic platform that does what your SIEM can't and your SOC never gets to, automatically.",
 };
 
 export default function RootLayout({

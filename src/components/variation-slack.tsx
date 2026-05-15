@@ -105,7 +105,7 @@ const TD: TokenColors = {
   text: '#213547',
   textDim: '#6b7280',
   textMute: '#9ca3af',
-  accent: '#0D41E1',
+  accent: '#532455',
   ok: '#10b981',
   alert: '#ef4444',
   cyan: '#06b6d4',
@@ -115,7 +115,7 @@ const TD: TokenColors = {
   slackLine: '#e5e7eb',
   slackText: '#374151',
   slackDim: '#6b7280',
-  slackBlue: '#0D41E1',
+  slackBlue: '#532455',
   slackGreen: '#10b981',
 };
 
