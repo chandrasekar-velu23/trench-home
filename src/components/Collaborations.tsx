@@ -12,33 +12,13 @@ const Collaborations: React.FC = () => {
     <div style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '60px 0' }}>
       {/* Header */}
       <div style={{ textAlign: 'center', marginBottom: '40px', maxWidth: '800px', padding: '0 20px' }}>
-        <div style={{
-          fontSize: '12px',
-          fontWeight: 600,
-          color: '#532455',
-          textTransform: 'uppercase',
-          letterSpacing: '0.1em',
-          marginBottom: '12px',
-          fontFamily: 'var(--font-secondary)'
-        }}>
+        <div className="eyebrow" style={{ justifyContent: 'center' }}>
           HOW TRENCH WORKS INSIDE COLLABORATION
         </div>
-        <h2 style={{
-          fontSize: 'clamp(28px, 4vw, 42px)',
-          fontWeight: 700,
-          color: '#111827',
-          marginBottom: '16px',
-          lineHeight: 1.2,
-          fontFamily: 'var(--font-primary)'
-        }}>
+        <h2 className="title-lg" style={{ marginBottom: '16px' }}>
           We bring SecOps to where you work.
         </h2>
-        <p style={{
-          fontSize: 'clamp(14px, 2vw, 18px)',
-          color: '#4B5563',
-          lineHeight: 1.6,
-          fontFamily: 'var(--font-secondary)'
-        }}>
+        <p className="body-lead" style={{ margin: '0 auto' }}>
           From detection to remediation, inside Slack, Teams or Claude.
         </p>
       </div>
