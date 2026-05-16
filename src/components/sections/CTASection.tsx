@@ -79,7 +79,7 @@ export default function CTASection() {
               <div className="cta-actions">
                 <Link href="/connect">
                   <Button className="cta-btn-primary">
-                    Show Me the Trench
+                    Dig In
                   </Button>
                 </Link>
                 {/* <Link href="/connect">
@@ -221,14 +221,17 @@ export default function CTASection() {
 
         @media (max-width: 640px) {
           .cta-section {
-            padding: 3rem 0;
+            padding: 2rem 0;
           }
           .cta-card {
             padding: 1.75rem 1rem;
           }
+          .cta-content {
+            gap: 1.5rem;
+          }
           .cta-eyebrow {
             font-size: 0.6rem;
-            margin-bottom: 0.75rem;
+            margin-bottom: 0.5rem;
           }
           .cta-title {
             font-size: 1.2rem;
@@ -240,13 +243,13 @@ export default function CTASection() {
           .cta-actions {
             flex-direction: column;
             width: 100%;
-            gap: 0.75rem;
+            gap: 0.5rem;
             align-items: center;
           }
           :global(.cta-btn-primary),
           :global(.cta-btn-secondary) {
-            width: 180px !important;
-            height: 46px !important;
+            width: 150px !important;
+            height: 40px !important;
           }
           :global(.cta-btn-primary .button-text),
           :global(.cta-btn-secondary .button-text) {

@@ -26,22 +26,26 @@ const COFOUNDERS = [
   },
 ];
 
-const SUB_TEAMS = [
+const ADVISORS = [
   {
-    title: "AI Researchers",
-    members: [
-      { name: "Guru Raghav Saravanan", img: "/team/gururaghav.jpg", linkedin: "#" },
-      { name: "Harish Narayan", img: "/team/harish.jpg", linkedin: "#" },
-    ],
+    name: "Srikanth Devarajan",
+    role: "Ex-VP, GM, Zscaler (Founding Architect)",
+    img: "/Advisor/SD.png",
   },
   {
-    title: "Detection Engineers",
-    members: [
-      { name: "Hari Prasath Selvan", img: "/team/hari.png", linkedin: "#" },
-      { name: "Dinesh Kumar V", img: "/team/Dinesh.jpg", linkedin: "#" },
-      { name: "Anusha Pejathaya", img: "/team/anu.jpg", linkedin: "#" },
-      { name: "Sheikha Batha", img: "/team/sheikha.jpg", linkedin: "#" },
-    ],
+    name: "Vishal Gautam",
+    role: "Director, AI & Cyber Threat Research Center - India, ZScaler",
+    img: "/Advisor/vishal Gautham.png",
+  },
+  {
+    name: "Senthilkumar Iyappan",
+    role: "Chief Information Security Officer (CISO), Ocrolus",
+    img: "/Advisor/SKI.png",
+  },
+  {
+    name: "UVL Narayana",
+    role: "Head of Global Customer Success (Ex-Splunk)",
+    img: "/Advisor/UVL Narayana.png",
   },
 ];
 
@@ -127,7 +131,7 @@ export default function WhyTrenchPage() {
               <div className="wt-mv-item">
                 <span className="wt-mv-label">Vision</span>
                 <p className="wt-mv-statement">
-                  A world where security teams are decisive at machine speed without cognitive overload.
+                  A world where security teams are decisive at machine speed with cognitive harmony.
                 </p>
               </div>
             </ScrollReveal>
@@ -198,14 +202,14 @@ export default function WhyTrenchPage() {
             ))}
           </div>
 
-          {/* Diggers Section */}
+          {/* Advisors Section */}
           <ScrollReveal
             direction="up"
             className="text-center"
             style={{ marginBottom: "2rem", marginTop: "4rem" }}
           >
             <TextReveal
-              text="THE TRENCH DIGGERS"
+              text="TRENCH ADVISORS"
               as="h3"
               className="wt-eyebrow"
               style={{ justifyContent: "center", width: "100%" }}
@@ -213,11 +217,9 @@ export default function WhyTrenchPage() {
           </ScrollReveal>
 
           <div className="team-members-grid-refined">
-            {SUB_TEAMS.flatMap(team =>
-              team.members.map(m => ({ ...m, role: team.title.replace(/s$/, '') }))
-            ).map((m, i) => (
+            {ADVISORS.map((m, i) => (
               <ScrollReveal key={m.name} direction="up" delay={i * 0.1} className="member-card-refined">
-                <a href={m.linkedin} target="_blank" rel="noopener noreferrer" className="member-link-refined">
+                <div className="member-link-refined" style={{ cursor: "default", textDecoration: "none" }}>
                   <div className="member-photo-wrap-refined">
                     <Image
                       src={m.img}
@@ -232,7 +234,7 @@ export default function WhyTrenchPage() {
                     <h4 className="member-name-refined">{m.name}</h4>
                     <p className="member-role-refined">{m.role}</p>
                   </div>
-                </a>
+                </div>
               </ScrollReveal>
             ))}
           </div>

@@ -116,7 +116,7 @@ export default function Navbar() {
           <div className="nav-actions d-flex items-center">
             <Link href="/connect" className="hide-mobile">
               <Button>
-                Book a Demo
+                Get Started
               </Button>
             </Link>
 

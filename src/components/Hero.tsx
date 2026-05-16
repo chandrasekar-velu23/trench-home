@@ -68,7 +68,7 @@ export default function Hero() {
               <div className="hero-button-group">
                 <Link href="/connect">
                   <Button className="hero-btn-primary">
-                    Show Me the Platform
+                    Explore Trench
                   </Button>
                 </Link>
                 {/* <Link href="/connect">
