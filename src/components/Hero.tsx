@@ -47,7 +47,8 @@ export default function Hero() {
           <motion.div
             className="hero-glass-card"
             initial={{ opacity: 0, x: 50, y: 20 }}
-            animate={{ opacity: 1, x: 0, y: 0 }}
+            whileInView={{ opacity: 1, x: 0, y: 0 }}
+            viewport={{ once: true }}
             transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
           >
             <div className="hero-top-group">

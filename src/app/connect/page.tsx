@@ -131,7 +131,8 @@ export default function ConnectPage() {
 
   const fade = (delay = 0) => ({
     initial: { opacity: 0, y: 15 },
-    animate: { opacity: 1, y: 0 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true, margin: "-10%" as const },
     transition: { duration: 0.4, delay, ease: [0.22, 1, 0.36, 1] as const },
   });
 
@@ -193,7 +194,8 @@ export default function ConnectPage() {
           <motion.div
             className="connect-card"
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-10%" }}
             transition={{ duration: 0.45, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
           >
             {isSuccess ? (

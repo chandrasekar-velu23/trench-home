@@ -1022,6 +1022,10 @@ h6,
   font-weight: 700;
 }
 
+.blog-post-prose a strong {
+  color: inherit;
+}
+
 .blog-post-prose a {
   color: #0D41E1;
   font-weight: 700;

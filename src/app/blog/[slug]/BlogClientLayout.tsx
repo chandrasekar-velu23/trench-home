@@ -431,7 +431,7 @@ export default function BlogClientLayout({ post, relatedPosts }: BlogClientLayou
                     <label style={{ display: "block", fontSize: "0.85rem", fontWeight: 700, color: "#475569", marginBottom: "0.5rem" }}>Your Name</label>
                     <input 
                       type="text" 
-                      placeholder="e.g. John Doe"
+                      placeholder="Enter your name"
                       value={newName}
                       onChange={(e) => setNewName(e.target.value)}
                       required
@@ -441,6 +441,7 @@ export default function BlogClientLayout({ post, relatedPosts }: BlogClientLayou
                         borderRadius: "10px",
                         border: "1px solid #E2E8F0",
                         fontSize: "0.9rem",
+                        fontFamily: "inherit",
                         outline: "none",
                         transition: "border 0.2s"
                       }}
@@ -450,7 +451,7 @@ export default function BlogClientLayout({ post, relatedPosts }: BlogClientLayou
                   <div>
                     <label style={{ display: "block", fontSize: "0.85rem", fontWeight: 700, color: "#475569", marginBottom: "0.5rem" }}>Your Comment</label>
                     <textarea 
-                      placeholder="Join the discussion... share your thoughts or ask a question."
+                      placeholder="Write a comment..."
                       value={newText}
                       onChange={(e) => setNewText(e.target.value)}
                       required
@@ -461,6 +462,7 @@ export default function BlogClientLayout({ post, relatedPosts }: BlogClientLayou
                         borderRadius: "10px",
                         border: "1px solid #E2E8F0",
                         fontSize: "0.9rem",
+                        fontFamily: "inherit",
                         outline: "none",
                         resize: "vertical",
                         transition: "border 0.2s"
