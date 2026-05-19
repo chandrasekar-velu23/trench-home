@@ -42,6 +42,17 @@ export default function Footer() {
                 className="footer-cert-badge"
               />
             </div>
+            <div className="footer-support-item" style={{ marginTop: "1.5rem" }}>
+              <h5 className="address-label">Support:</h5>
+              <address className="footer-address">
+                <p>Reach out to us at</p>
+                <p>
+                  <a href="mailto:ask@trenchsecurity.ai" className="footer-contact-link">
+                    ask@trenchsecurity.ai
+                  </a>
+                </p>
+              </address>
+            </div>
           </div>
         </div>
 
@@ -79,17 +90,6 @@ export default function Footer() {
               <address className="footer-address">
                 <p>Trench Security Inc</p>
                 <p>16192 Coastal Highway, Lewes, DE 19958</p>
-              </address>
-            </div>
-            <div className="address-item">
-              <h5 className="address-label">Support:</h5>
-              <address className="footer-address">
-                <p>Reach out to us at</p>
-                <p>
-                  <a href="mailto:ask@trenchsecurity.ai" className="footer-contact-link">
-                    ask@trenchsecurity.ai
-                  </a>
-                </p>
               </address>
             </div>
           </div>
@@ -160,19 +160,19 @@ export default function Footer() {
 
         .footer-content {
           display: grid;
-          grid-template-columns: 1.2fr 0.8fr 0.8fr 3fr;
+          grid-template-columns: repeat(4, 1fr);
           gap: 2.5rem;
           width: 100%;
           max-width: 1200px;
           margin: 0 auto;
           position: relative;
           z-index: 10;
-          background: rgba(255, 255, 255, 0.45); /* Premium light frosted neutral glass */
+          background: rgba(255, 255, 255, 0.65); /* Premium light frosted neutral glass */
           backdrop-filter: blur(20px);
           -webkit-backdrop-filter: blur(20px);
           padding: 2.5rem 3rem;
           border-radius: 24px;
-          border: 1px solid rgba(255, 255, 255, 0.4);
+          border: 1px solid rgba(255, 255, 255, 0.6);
           box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
         }
 
@@ -293,9 +293,8 @@ export default function Footer() {
 
         .addresses-container {
           display: flex;
-          flex-direction: row;
-          gap: 2rem;
-          flex-wrap: wrap;
+          flex-direction: column;
+          gap: 1.5rem;
         }
 
         .address-item {
@@ -427,9 +426,6 @@ export default function Footer() {
             grid-template-columns: 1fr;
             gap: 1.75rem;
             padding: 2rem 1.5rem;
-            background: transparent;
-            border: none;
-            backdrop-filter: none;
           }
           .footer-address p {
             color: #000000;
