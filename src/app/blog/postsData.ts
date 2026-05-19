@@ -24,12 +24,12 @@ export const postsData: BlogPost[] = [
     "title": "Trench AI Now Available on Microsoft Marketplace",
     "category": "Product",
     "date": "Apr 2, 2026",
-    "image": "/blog cover images/1st_blog_banner.jpg",
+    "image": "/blog cover images/1st_blog_banner.webp",
     "description": "Trench AI is now accessible directly through the Microsoft Marketplace, simplifying procurement.",
     "author": {
       "name": "Team Trench",
       "role": "",
-      "avatar": "/logo/Icon.png"
+      "avatar": "/logo/Icon.webp"
     },
     "canonical": "https://www.trenchsecurity.ai/post/trench-ai-now-available-on-microsoft-marketplace",
     "publishedTime": "2026-04-02T09:00:00.000Z",
@@ -51,12 +51,12 @@ export const postsData: BlogPost[] = [
     "title": "AI in the Security Operations: Clearing the Clutter",
     "category": "Security",
     "date": "Mar 26, 2026",
-    "image": "/blog cover images/2nd_Blog_Banner.jpg",
+    "image": "/blog cover images/2nd_Blog_Banner.webp",
     "description": "&#009;In the last two years, there has been significant noise around AISOC or getting AI into the SOC or Security Operations Center. Everyone in the security ecosystem (founders, investors, buyers, and service providers) is trying to share their perspective. Some are optimistic. Some are skeptical. Some are simply riding the wave. The result?A multi-layered clutter of narratives: \u2022 SOAR is dead \u2022 XDR is dead \u2022 MDR is dying \u2022 SIEM is dead \u2022 AISOC is also deadEvery few months, another obituary gets wri",
     "author": {
       "name": "Gurucharan Raghunathan",
       "role": "Cofounder & CEO",
-      "avatar": "/team/gurucharan.png"
+      "avatar": "/team/gurucharan.webp"
     },
     "canonical": "https://www.trenchsecurity.ai/post/ai-in-the-security-operations-clearing-the-clutter",
     "publishedTime": "2026-03-26T15:26:30.634Z",
@@ -158,12 +158,12 @@ export const postsData: BlogPost[] = [
     "title": "How Modern CISOs Demonstrate Real ROI with AI-Native SOC Platforms",
     "category": "Trends",
     "date": "Sep 19, 2025",
-    "image": "/blog cover images/5th_Blog_Image.jpg",
+    "image": "/blog cover images/5th_Blog_Image.webp",
     "description": "Organizations have invested heavily in security tools such as email gateways, EDR, SIEM, XDR, SOAR, CSPM, WAF, IDS/IPS, SASE yet many Security Operations Centers (SOCs), especially those with lean teams, struggle to demonstrate measurable ROI from these tools. CISOs face mounting pressure from leadership to prove security effectiveness with clear business outcomes, not just technical alerts and incident counts.While traditional Managed Security Service Providers (MSSPs) and even some Managed Det",
     "author": {
       "name": "Team Trench",
       "role": "",
-      "avatar": "/logo/Icon.png"
+      "avatar": "/logo/Icon.webp"
     },
     "canonical": "https://www.trenchsecurity.ai/post/how-modern-cisos-demonstrate-real-roi-with-ai-native-soc-platforms",
     "publishedTime": "2025-09-19T15:23:20.968Z",
@@ -205,12 +205,12 @@ export const postsData: BlogPost[] = [
     "title": "Launching Trench Agentic Threat Detection Mesh",
     "category": "Technical",
     "date": "Jan 5, 2026",
-    "image": "/blog cover images/3rd_Blog_Banner.png",
+    "image": "/blog cover images/3rd_Blog_Banner.webp",
     "description": "Velocity, not data volume, is now your biggest security risk.For years, cybersecurity has been treated as a data problem,\u00a0collect more logs, store more telemetry, search harder. That model no longer works. In the AI era, attacks execute at machine speed, while detection still runs on human time. The real cyber risk today isn\u2019t lack of data, it\u2019s detection latency.Attacks are deployed in MinutesThe industry is losing ground because the Attack Opportunity\u00a0(Zero-day vulnerabilities) and Threat Inte",
     "author": {
       "name": "Trench Technical Team",
       "role": "",
-      "avatar": "/logo/Icon.png"
+      "avatar": "/logo/Icon.webp"
     },
     "canonical": "https://www.trenchsecurity.ai/post/launching-trench-agentic-threat-detection-mesh",
     "publishedTime": "2026-01-05T03:14:04.249Z",
@@ -248,12 +248,12 @@ export const postsData: BlogPost[] = [
     "title": "Launching \u201cReal-time data safety\u201d in AI-native Security Operations",
     "category": "Product",
     "date": "Oct 7, 2025",
-    "image": "/blog cover images/4th_blog_banner.jpg",
+    "image": "/blog cover images/4th_blog_banner.webp",
     "description": "In today\u2019s rapidly evolving cybersecurity landscape, protecting sensitive customer information while leveraging the powerful capabilities of large language models (LLMs) has become a critical challenge. To address this, Trench Security is proud to announce a groundbreaking feature \u2014 \u201cReal-time data Safety\u201d \u2014 that ensures no personally identifiable information (PII) from customer security data is ever sent directly to LLMs.Our new PII data safety feature anonymizes and obfuscates sensitive data b",
     "author": {
       "name": "Team Trench",
       "role": "",
-      "avatar": "/logo/Icon.png"
+      "avatar": "/logo/Icon.webp"
     },
     "canonical": "https://www.trenchsecurity.ai/post/launching-real-time-data-safety-in-ai-native-security-operations",
     "publishedTime": "2025-10-07T04:37:37.414Z",
@@ -291,12 +291,12 @@ export const postsData: BlogPost[] = [
     "title": "Modernizing SOC using Agentic AI",
     "category": "Technical",
     "date": "Jun 13, 2025",
-    "image": "/blog cover images/9th_Blog_Banner.jpg",
+    "image": "/blog cover images/9th_Blog_Banner.webp",
     "description": "Security Operations Centers (SOCs) are the nerve centers of modern cybersecurity, responsible for detecting, investigating, and responding to threats. As cyber threats grow in scale and sophistication, traditional SOC automation\u2014relying on static playbooks and scripts\u2014struggles to keep pace.\u00a0Enter AI agentic automation: a new paradigm where AI agents independently reason, adapt, and execute security tasks, reducing human workload and accelerating response. In an era where adversaries are moving ",
     "author": {
       "name": "Trench Technical Team",
       "role": "",
-      "avatar": "/logo/Icon.png"
+      "avatar": "/logo/Icon.webp"
     },
     "canonical": "https://www.trenchsecurity.ai/post/modernizing-soc-using-agentic-ai",
     "publishedTime": "2025-06-13T16:31:53.659Z",
@@ -326,12 +326,12 @@ export const postsData: BlogPost[] = [
     "title": "Optimizing Your AI-SOC: A Practical Guide to Offensive Validation and Tuning",
     "category": "Technical",
     "date": "Sep 16, 2025",
-    "image": "/blog cover images/6th_Blog_Banner.png",
+    "image": "/blog cover images/6th_Blog_Banner.webp",
     "description": "Mid-sized SOC teams often deploy AISOC platform for better security posture, but don\u2019t always know how to truly measure and optimize these systems. Here is a concise guide for defenders on using offensive security (red/purple team) methods\u2014plus an actionable, 6-week plan\u2014to maximize AI-driven SOC automation and response.Where Mid-Sized SOCs Fall Short with AISOC \u2022 Alert Overload:\u00a0Analysts face thousands of daily alerts, most of which are false positives, leading to alert fatigue and slow inciden",
     "author": {
       "name": "Trench Technical Team",
       "role": "",
-      "avatar": "/logo/Icon.png"
+      "avatar": "/logo/Icon.webp"
     },
     "canonical": "https://www.trenchsecurity.ai/post/optimizing-your-ai-soc-a-practical-guide-to-offensive-validation-and-tuning",
     "publishedTime": "2025-09-16T02:52:10.881Z",
@@ -393,12 +393,12 @@ export const postsData: BlogPost[] = [
     "title": "Unlocking the Power of AI for MSSPs",
     "category": "MSSP",
     "date": "Jun 17, 2025",
-    "image": "/blog cover images/8th_Blog_Banner3.png",
+    "image": "/blog cover images/8th_Blog_Banner3.webp",
     "description": "Elevate Your SOC-as-a-Service &amp; MDR OfferingsThe managed security services market is more competitive than ever. MSSPs are under constant pressure to deliver exceptional service, maintain healthy margins, and differentiate their offerings\u2014all while battling alert overload, talent shortages, and rising operational costs. Traditional approaches, such as simply hiring more analysts, are no longer sustainable. AI-enabled SOC platforms are rapidly emerging as the solution MSSPs need to transform thei",
     "author": {
       "name": "Team Trench",
       "role": "",
-      "avatar": "/logo/Icon.png"
+      "avatar": "/logo/Icon.webp"
     },
     "canonical": "https://www.trenchsecurity.ai/post/unlocking-the-power-of-ai-for-mssps",
     "publishedTime": "2025-06-16T21:35:08.882Z",
@@ -436,12 +436,12 @@ export const postsData: BlogPost[] = [
     "title": "Why Mid-Sized Companies Struggle with SOC Automation (And How to Fix It)",
     "category": "Trends",
     "date": "Aug 10, 2025",
-    "image": "/blog cover images/7th_Blog_banner.png",
+    "image": "/blog cover images/7th_Blog_banner.webp",
     "description": "Mid-sized organizations face a cybersecurity paradox: they're attractive targets for cybercriminals yet lack the resources for enterprise-grade security. Traditional SOC or MDR solutions don't fit their needs, creating dangerous gaps in the current Security Operations workflows &amp; vanilla automations.\u00a0\u00a0The Mid-Market Security CrisisMid-sized organizations (500-5,000 employees) face critical security challenges that keep executives awake at night:1. Resource Constraints: 61% lack dedicated cyberse",
     "author": {
       "name": "Team Trench",
       "role": "",
-      "avatar": "/logo/Icon.png"
+      "avatar": "/logo/Icon.webp"
     },
     "canonical": "https://www.trenchsecurity.ai/post/why-mid-sized-companies-struggle-with-soc-automation-and-how-to-fix-it",
     "publishedTime": "2025-08-10T07:03:20.434Z",
@@ -495,12 +495,12 @@ export const postsData: BlogPost[] = [
     "title": "Why should you enable AI in your SOC?",
     "category": "Trends",
     "date": "May 23, 2025",
-    "image": "/blog cover images/10th_Blog_Banner.jpg",
+    "image": "/blog cover images/10th_Blog_Banner.webp",
     "description": "Current Problem:Security Operations Centers (SOCs) are facing a crisis. Analysts are drowning in a relentless wave of alerts-most of which are false positives, repetitive, or lack the necessary context for quick resolution. This constant barrage leads to burnout, missed threats, and operational inefficiencies that leave organizations exposed.How Alert Fatigue Impacting SOC Performance? \u2022 Security analysts spend more time sifting through endless alerts than actively defending against real threats",
     "author": {
       "name": "Team Trench",
       "role": "",
-      "avatar": "/logo/Icon.png"
+      "avatar": "/logo/Icon.webp"
     },
     "canonical": "https://www.trenchsecurity.ai/post/why-should-you-enable-ai-in-your-soc",
     "publishedTime": "2025-05-23T06:00:41.505Z",

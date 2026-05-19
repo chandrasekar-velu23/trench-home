@@ -38,7 +38,7 @@ export default function CTASection() {
             }}
           >
             <Image
-              src="/images/clouds.png"
+              src="/images/clouds.webp"
               alt=""
               width={340}
               height={200}
@@ -55,7 +55,7 @@ export default function CTASection() {
             }}
           >
             <Image
-              src="/images/clouds.png"
+              src="/images/clouds.webp"
               alt=""
               width={340}
               height={200}

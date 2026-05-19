@@ -13,8 +13,8 @@ export default function BlogPage() {
 
   const filteredPosts = postsData.filter(post => {
     const matchesFilter = activeFilter === "All" || post.category === activeFilter;
-    const matchesSearch = post.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                          post.description.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesSearch = post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      post.description.toLowerCase().includes(searchQuery.toLowerCase());
     return matchesFilter && matchesSearch;
   });
 
@@ -26,7 +26,7 @@ export default function BlogPage() {
         <ScrollReveal direction="up" className="text-center">
           <TextReveal text="Blog" as="h1" className="title-lg" delay={0.2} style={{ justifyContent: "center", width: "100%" }} />
           <p className="body-lead" style={{ maxWidth: '800px', margin: '2rem auto' }}>
-            Latest thoughts on AI security, cloud-native defense, and the evolution of the modern SOC.
+            For security champions and leaders who think differently about defense.
           </p>
         </ScrollReveal>
 
@@ -79,10 +79,10 @@ export default function BlogPage() {
             {filteredPosts.map((post, i) => (
               <ScrollReveal key={i} delay={i * 0.05} direction="up">
                 <Link href={`/blog/${post.slug}`} style={{ textDecoration: 'none', height: '100%', display: 'block' }}>
-                  <article style={{ 
-                    cursor: 'pointer', 
-                    background: '#FFFFFF', 
-                    borderRadius: '20px', 
+                  <article style={{
+                    cursor: 'pointer',
+                    background: '#FFFFFF',
+                    borderRadius: '20px',
                     border: '1px solid #E2E8F0',
                     overflow: 'hidden',
                     display: 'flex',
@@ -98,13 +98,13 @@ export default function BlogPage() {
                         <div style={{ width: '100%', height: '100%', background: 'linear-gradient(45deg, #0D41E1 0%, #E0E7FF 100%)', opacity: 0.1 }}></div>
                       )}
                     </div>
-                    
+
                     {/* Content Area */}
                     <div style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
                       <span style={{ fontSize: '0.85rem', color: '#64748B', marginBottom: '0.5rem' }}>{post.date}</span>
                       <h3 className="title-sm" style={{ marginBottom: '0.75rem', transition: 'color 0.2s', fontSize: '1.15rem' }}>{post.title}</h3>
                       <p style={{ fontSize: '0.9rem', color: '#475569', marginBottom: '1.5rem', lineHeight: '1.5' }} dangerouslySetInnerHTML={{ __html: post.description.replace(/<[^>]+>/g, "").substring(0, 120) + "..." }} />
-                      
+
                       {/* Author */}
                       <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginTop: 'auto', marginBottom: '1.5rem' }}>
                         {post.author.avatar ? (
@@ -123,14 +123,14 @@ export default function BlogPage() {
                           )}
                         </div>
                       </div>
-                      
+
                       {/* Footer */}
                       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid #F1F5F9', paddingTop: '1rem' }}>
-                        <span style={{ 
-                          fontSize: '0.75rem', 
-                          fontWeight: 700, 
-                          textTransform: 'uppercase', 
-                          color: '#0D41E1', 
+                        <span style={{
+                          fontSize: '0.75rem',
+                          fontWeight: 700,
+                          textTransform: 'uppercase',
+                          color: '#0D41E1',
                           letterSpacing: '0.05em',
                           background: '#E0E7FF',
                           padding: '0.25rem 0.75rem',

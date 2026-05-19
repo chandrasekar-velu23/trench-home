@@ -11,7 +11,7 @@ export default function Footer() {
         {/* Column 1 — Brand + Certs */}
         <div className="footer-col footer-brand-col">
           <Image
-            src="/logo/trench-logo.png"
+            src="/logo/trench-logo.webp"
             alt="Trench Logo"
             width={176}
             height={35}
@@ -103,14 +103,14 @@ export default function Footer() {
             className="footer-partner-badge"
           />
           <Image
-            src="/awards/Logo_IAA.png"
+            src="/awards/Logo_IAA.webp"
             alt="Indian Achievers Award"
             width={88}
             height={44}
             className="footer-partner-badge"
           />
           <Image
-            src="/awards/CySecK Logo PNG@900x.png"
+            src="/awards/CySecK Logo PNG@900x.webp"
             alt="CySecK"
             width={88}
             height={44}
@@ -135,7 +135,7 @@ export default function Footer() {
           position: relative;
           width: 100%;
           min-height: auto;
-          background-image: url('/images/footer.png');
+          background-image: url('/images/footer.webp');
           background-size: cover;
           background-position: center bottom;
           background-repeat: no-repeat;
@@ -398,7 +398,7 @@ export default function Footer() {
 
         @media (max-width: 768px) {
           .footer-container {
-            background-image: url('/images/footer-ph.png');
+            background-image: url('/images/footer-ph.webp');
           }
           .footer-bottom-logos {
             flex-wrap: wrap;

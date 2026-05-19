@@ -55,10 +55,10 @@ const INTEGRATIONS: Integration[] = [
   // SIEM
   { id: "sentinel", name: "Microsoft Sentinel", cat: "siem", logo: "/integrations/microsoft sentinel.png", desc: "Trench sits alongside Sentinel, enriching raw log queries with AI reasoning and automated response — eliminating manual analyst triage cycles." },
   { id: "elastic", name: "Elastic Security", cat: "siem", logo: "/integrations/elastic.png", desc: "Trench ingests Elastic detection engine alerts and auto-prioritises them using behavioural baselines, reducing alert fatigue by over 80%." },
-  { id: "anivilogic", name: "Anvilogic", cat: "siem", logo: "/integrations/AnviLogic.png", desc: "Trench amplifies Anvilogic detection stories with external threat intel and automated Tier-1 response, shrinking time-to-resolution dramatically." },
+  { id: "anivilogic", name: "Anvilogic", cat: "siem", logo: "/integrations/AnviLogic.webp", desc: "Trench amplifies Anvilogic detection stories with external threat intel and automated Tier-1 response, shrinking time-to-resolution dramatically." },
   { id: "sumologic", name: "Sumo Logic", cat: "siem", logo: "/integrations/sumo logic.png", desc: "Trench normalises Sumo Logic queries and correlates log data with endpoint and identity telemetry, eliminating silos across your security data lake." },
-  { id: "splunk", name: "Splunk", cat: "siem", logo: "/integrations/Splunk_logo.png", desc: "Trench layers AI-native detection on top of Splunk's raw search, converting SPL alerts into prioritised incidents with automated enrichment and response." },
-  { id: "hunters", name: "Hunters", cat: "siem", logo: "/integrations/Hunters H Logo.png", desc: "Trench integrates with Hunters SOC platform to accelerate investigation by mapping every lead to full attack context and triggering containment automatically." },
+  { id: "splunk", name: "Splunk", cat: "siem", logo: "/integrations/Splunk_logo.webp", desc: "Trench layers AI-native detection on top of Splunk's raw search, converting SPL alerts into prioritised incidents with automated enrichment and response." },
+  { id: "hunters", name: "Hunters", cat: "siem", logo: "/integrations/Hunters H Logo.webp", desc: "Trench integrates with Hunters SOC platform to accelerate investigation by mapping every lead to full attack context and triggering containment automatically." },
   { id: "def-email", name: "Defender for Identity", cat: "siem", logo: "/integrations/Microsoft defender.png", desc: "Trench links Defender for Identity anomalies with Sentinel incidents and endpoint alerts to surface Active Directory attack chains in real time." },
 
   // Email

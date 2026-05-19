@@ -14,14 +14,14 @@ const COFOUNDERS = [
     name: "Gurucharan Raghunathan",
     role: "Cofounder & CEO",
     desc: "Built products at Microsoft and Radware. Saw the systems design problem in security up close. Built Trench to fix it.",
-    img: "/team/gurucharan.png",
+    img: "/team/gurucharan.webp",
     linkedin: "https://www.linkedin.com/in/gurucharanraghunathan/",
   },
   {
     name: "Michael Wilson",
     role: "Cofounder & CTO",
     desc: "Scaled networks at Radware, Avaya and Nortel. Knows what ground-up architecture looks like. Building it again for security operations.",
-    img: "/team/Michael.jpg",
+    img: "/team/Michael.webp",
     linkedin: "https://www.linkedin.com/in/michael-wilson-rebello-b719a86/",
   },
 ];
@@ -30,22 +30,22 @@ const ADVISORS = [
   {
     name: "Srikanth Devarajan",
     role: "Ex-VP, GM, Zscaler (Founding Architect)",
-    img: "/Advisor/SD.png",
+    img: "/Advisor/SD.webp",
   },
   {
     name: "Vishal Gautam",
     role: "Director, AI & Cyber Threat Research Center - India, ZScaler",
-    img: "/Advisor/vishal Gautham.png",
+    img: "/Advisor/vishal Gautham.webp",
   },
   {
     name: "Senthilkumar Iyappan",
     role: "Chief Information Security Officer (CISO), Ocrolus",
-    img: "/Advisor/SKI.png",
+    img: "/Advisor/SKI.webp",
   },
   {
     name: "UVL Narayana",
     role: "Head of Global Customer Success (Ex-Splunk)",
-    img: "/Advisor/UVL Narayana.png",
+    img: "/Advisor/UVL Narayana.webp",
   },
 ];
 
@@ -101,7 +101,7 @@ export default function WhyTrenchPage() {
               </ScrollReveal>
               <ScrollReveal delay={0.6} direction="up">
                 <p className="wt-manifesto-para">
-                  We are not adding AI to a broken pipeline. We are building AI system the system itself, with Actionability as the first principle.
+                  We are not adding AI to a broken pipeline. We are building AI system with Actionability as the first principle.
                 </p>
               </ScrollReveal>
               <ScrollReveal delay={0.8} direction="up">

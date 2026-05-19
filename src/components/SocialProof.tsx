@@ -12,28 +12,28 @@ const testimonials = [
     quote: "Trench does in minutes what legacy SIEM teams spend weeks trying to do. Real-time detection built ground up for how threats actually move today, not patched together, purpose-built.",
     author: "Srikanth Devarajan",
     role: "Ex-VP & GM, Zscaler",
-    avatar: "/social/SD.png"
+    avatar: "/social/SD.webp"
   },
   {
     id: 2,
     quote: "What sets Trench apart is systems thinking applied to a hard problem, building a unified platform that actually reduces response times, not just automating for the sake of it. Rare clarity of vision in a noisy market.",
     author: "Deepak Kothule",
     role: "VP - Engineering Leader, Ex-FICO, Ex-Symantec",
-    avatar: "/social/DK.png"
+    avatar: "/social/DK.webp"
   },
   {
     id: 3,
     quote: "Finally a platform built ground up for lean security teams. Trench gives a small team the detection power of an enterprise SOC, without the complexity, without the overhead.",
     author: "Senthil Kumar Iyyappan",
     role: "CISO, Ocrolus, Ex-Freshworks",
-    avatar: "/social/SKI.png"
+    avatar: "/social/SKI.webp"
   },
   {
     id: 4,
     quote: "Trench is a foundational transformation in how security operations work. A real unified platform, not bolted-on AI, that reasons about threats across your entire stack. This is what modern SecOps should look like.",
     author: "Subhro Banerjee",
     role: "Senior Global IT Security Leader | Lifescience MNC",
-    avatar: "/social/SB.png"
+    avatar: "/social/SB.webp"
   },
 ];
 
@@ -43,13 +43,13 @@ export default function SocialProof() {
   const next = () => setIndex((prev) => (prev + 1) % testimonials.length);
   const prev = () => setIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
 
-  // Auto-slide every 2 seconds
+  // Auto-slide every 4 seconds, resetting when index changes
   useEffect(() => {
     const timer = setInterval(() => {
       setIndex((prev) => (prev + 1) % testimonials.length);
-    }, 2000);
+    }, 4000);
     return () => clearInterval(timer);
-  }, []);
+  }, [index]);
 
   const current = testimonials[index];
 
