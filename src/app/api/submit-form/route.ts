@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest, NextResponse, after } from 'next/server';
 
 // Google Sheets API configuration
 const SHEET_ID = process.env.NEXT_PUBLIC_GOOGLE_SHEET_ID;
@@ -94,42 +94,35 @@ export async function POST(request: NextRequest) {
       timestamp: new Date().toISOString()
     };
 
-    // Forward to the combined Google Apps Script Webhook
-    try {
-      const result = await appendToGoogleAppsScript(formData);
-      
-      if (result.status === 'success') {
-        // Log backup verification
-        await sendEmailNotification(formData);
-        
-        return NextResponse.json({
-          status: 'success',
-          message: 'Form submitted successfully',
-          timestamp: new Date().toISOString()
-        });
-      } else {
-        throw new Error(result.message || 'Submission failed');
-      }
-    } catch (scriptError) {
-      console.error('Google Apps Script error:', scriptError);
-      
-      // Secondary fallback (e.g. backup local email triggers)
+    // Forward to the combined Google Apps Script Webhook in the background
+    after(async () => {
       try {
-        await sendEmailNotification(formData);
+        const result = await appendToGoogleAppsScript(formData);
         
-        return NextResponse.json({
-          status: 'success',
-          message: 'Form submitted (backup fallback active)',
-          timestamp: new Date().toISOString()
-        });
-      } catch (emailError) {
-        console.error('API backup failure:', emailError);
-        return NextResponse.json({
-          status: 'error',
-          message: 'Failed to submit form. Please try again later.'
-        }, { status: 500 });
+        if (result.status === 'success') {
+          // Log backup verification
+          await sendEmailNotification(formData);
+        } else {
+          console.warn('Google Apps Script submission returned non-success:', result.message);
+          await sendEmailNotification(formData);
+        }
+      } catch (scriptError) {
+        console.error('Google Apps Script background error:', scriptError);
+        
+        // Secondary fallback (e.g. backup local email triggers)
+        try {
+          await sendEmailNotification(formData);
+        } catch (emailError) {
+          console.error('API backup background failure:', emailError);
+        }
       }
-    }
+    });
+
+    return NextResponse.json({
+      status: 'success',
+      message: 'Form submitted successfully',
+      timestamp: new Date().toISOString()
+    });
 
   } catch (error) {
     console.error('API route error:', error);

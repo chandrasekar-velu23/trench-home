@@ -137,9 +137,9 @@ export default function ForMSSPsPage() {
   };
 
   const fade = (delay = 0) => ({
-    initial: { opacity: 0, y: 20 },
+    initial: { opacity: 0, y: 15 },
     animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.55, delay, ease: [0.22, 1, 0.36, 1] as const },
+    transition: { duration: 0.4, delay, ease: [0.22, 1, 0.36, 1] as const },
   });
 
   return (
@@ -162,7 +162,7 @@ export default function ForMSSPsPage() {
               </p>
             </motion.div>
 
-            <motion.div className="mssp-props" {...fade(0.1)}>
+            <motion.div className="mssp-props" {...fade(0.05)}>
               {VALUE_PROPS.map((p, i) => (
                 <div className="mssp-prop" key={i}>
                   <div className="mssp-prop-icon">{p.icon}</div>
@@ -181,7 +181,7 @@ export default function ForMSSPsPage() {
             </motion.div>
 
             {/* Compliance badges */}
-            <motion.div className="mssp-trust" {...fade(0.2)}>
+            <motion.div className="mssp-trust" {...fade(0.1)}>
               <span className="mssp-trust-label">Compliance &amp; Security</span>
               <div className="mssp-trust-items">
                 {COMPLIANCE_BADGES.map(b => (
@@ -202,20 +202,81 @@ export default function ForMSSPsPage() {
           {/* ── RIGHT: Form Card ── */}
           <motion.div
             className="mssp-card"
-            initial={{ opacity: 0, y: 32 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.45, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
           >
             {isSuccess ? (
-              <div className="mssp-success">
-                <div className="mssp-success-icon">
-                  <IconSuccess />
+              <motion.div
+                className="mssp-success"
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+              >
+                {/* Brand Badge */}
+                <div className="mssp-success-badge">
+                  <span className="mssp-success-pulse-dot" />
+                  MSSP Partnership Initialized
                 </div>
-                <h3 className="mssp-success-title">Welcome to the Trench.</h3>
+
+                {/* Animated Glowing Success Icon */}
+                <div className="mssp-success-glow-wrapper">
+                  <div className="mssp-success-icon-ring" />
+                  <div className="mssp-success-icon-ring mssp-success-icon-ring--delay" />
+                  <div className="mssp-success-brand-icon">
+                    <IconSuccess />
+                  </div>
+                </div>
+
+                <h3 className="mssp-success-title">Welcome to the Trench</h3>
+                
                 <p className="mssp-success-desc">
-                  Our partner team will reach out within one business day.
+                  Your partner application has been routed directly to our MSSP enablement team:
                 </p>
-              </div>
+
+                {/* Terminal SecOps Live Status Block */}
+                <div className="mssp-success-terminal">
+                  <div className="terminal-header">
+                    <span className="terminal-dot terminal-dot--red" />
+                    <span className="terminal-dot terminal-dot--yellow" />
+                    <span className="terminal-dot terminal-dot--green" />
+                    <span className="terminal-title">trench-partner-init.sh</span>
+                  </div>
+                  <div className="terminal-body">
+                    <div className="terminal-line"><span className="terminal-prompt">$</span> partner-onboard --verbose</div>
+                    <div className="terminal-line terminal-line--success">✓ Secure channel handshake complete</div>
+                    <div className="terminal-line terminal-line--info">⚙ Assigning Partner Director & margin tier matrix</div>
+                    <div className="terminal-line terminal-line--blink">█ Status: Awaiting partner direct call link...</div>
+                  </div>
+                </div>
+
+                {/* What's Next Steps list */}
+                <div className="mssp-success-steps">
+                  <div className="mssp-success-step">
+                    <div className="step-num">01</div>
+                    <div className="step-content">
+                      <div className="step-title">Co-Sell Enablement Pack</div>
+                      <div className="step-text">Receive client-facing white-label collateral and predictable margin tiers.</div>
+                    </div>
+                  </div>
+                  <div className="mssp-success-step">
+                    <div className="step-num">02</div>
+                    <div className="step-content">
+                      <div className="step-title">2-Week Deploy POC</div>
+                      <div className="step-text">Try out Trench inside your own security operations environment or for a test client.</div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Action button */}
+                <a href="/why-trench" className="mssp-success-action-btn">
+                  See the Platform in Action
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12" />
+                    <polyline points="12 5 19 12 12 19" />
+                  </svg>
+                </a>
+              </motion.div>
             ) : (
               <>
                 <h2 className="mssp-form-title">Let us build this together.</h2>

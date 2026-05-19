@@ -130,9 +130,9 @@ export default function ConnectPage() {
   };
 
   const fade = (delay = 0) => ({
-    initial: { opacity: 0, y: 20 },
+    initial: { opacity: 0, y: 15 },
     animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.55, delay, ease: [0.22, 1, 0.36, 1] as const },
+    transition: { duration: 0.4, delay, ease: [0.22, 1, 0.36, 1] as const },
   });
 
   return (
@@ -156,7 +156,7 @@ export default function ConnectPage() {
               </p>
             </motion.div>
 
-            <motion.div className="connect-props" {...fade(0.1)}>
+            <motion.div className="connect-props" {...fade(0.05)}>
               {PROPS.map((p, i) => (
                 <div className="connect-prop" key={i}>
                   <div className={`connect-prop-icon ${p.cls}`}>{p.icon}</div>
@@ -171,7 +171,7 @@ export default function ConnectPage() {
               </p>
             </motion.div>
 
-            <motion.div className="connect-trust" {...fade(0.2)}>
+            <motion.div className="connect-trust" {...fade(0.1)}>
               <span className="connect-trust-label">Certified &amp; Compliant</span>
               <div className="connect-trust-items">
                 {CERT_BADGES.map(b => (
@@ -192,20 +192,81 @@ export default function ConnectPage() {
           {/* ── RIGHT: Form Card ── */}
           <motion.div
             className="connect-card"
-            initial={{ opacity: 0, y: 32 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.45, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
           >
             {isSuccess ? (
-              <div className="connect-success">
-                <div className="connect-success-icon">
-                  <IconSuccess />
+              <motion.div
+                className="connect-success"
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+              >
+                {/* Brand Badge */}
+                <div className="connect-success-badge">
+                  <span className="connect-success-pulse-dot" />
+                  Secure Connection Initialized
                 </div>
-                <div className="connect-success-title">Welcome to the Trench.</div>
+
+                {/* Animated Glowing Success Icon */}
+                <div className="connect-success-glow-wrapper">
+                  <div className="connect-success-icon-ring" />
+                  <div className="connect-success-icon-ring connect-success-icon-ring--delay" />
+                  <div className="connect-success-brand-icon">
+                    <IconSuccess />
+                  </div>
+                </div>
+
+                <div className="connect-success-title">Welcome to the Trench</div>
+                
                 <p className="connect-success-desc">
-                  Our team will reach out within one business day.
+                  Your request has bypassed standard triage queues. Here is what we are provisioning for you next:
                 </p>
-              </div>
+
+                {/* Terminal SecOps Live Status Block */}
+                <div className="connect-success-terminal">
+                  <div className="terminal-header">
+                    <span className="terminal-dot terminal-dot--red" />
+                    <span className="terminal-dot terminal-dot--yellow" />
+                    <span className="terminal-dot terminal-dot--green" />
+                    <span className="terminal-title">trench-secops.sh</span>
+                  </div>
+                  <div className="terminal-body">
+                    <div className="terminal-line"><span className="terminal-prompt">$</span> trench-init --verbose</div>
+                    <div className="terminal-line terminal-line--success">✓ Verified and logged secure handshake</div>
+                    <div className="terminal-line terminal-line--info">⚙ Allocating custom MITRE ATT&CK gap advisor</div>
+                    <div className="terminal-line terminal-line--blink">█ Status: Listening on security channel...</div>
+                  </div>
+                </div>
+
+                {/* What's Next Steps list */}
+                <div className="connect-success-steps">
+                  <div className="connect-success-step">
+                    <div className="step-num">01</div>
+                    <div className="step-content">
+                      <div className="step-title">Custom MITRE ATT&CK Map</div>
+                      <div className="step-text">We map your tech stack to pinpoint exactly where your current SIEM leaves you exposed.</div>
+                    </div>
+                  </div>
+                  <div className="connect-success-step">
+                    <div className="step-num">02</div>
+                    <div className="step-content">
+                      <div className="step-title">Agentless SecOps Demo</div>
+                      <div className="step-text">No ripping or replacing. We'll show you detections in your real tools inside 48 hours.</div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Action button */}
+                <a href="/why-trench" className="connect-success-action-btn">
+                  Explore Why Trench
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12" />
+                    <polyline points="12 5 19 12 12 19" />
+                  </svg>
+                </a>
+              </motion.div>
             ) : (
               <>
                 <div className="connect-form-title">Get Started</div>

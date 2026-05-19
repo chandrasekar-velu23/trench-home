@@ -352,34 +352,218 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 4rem 1.5rem;
+  padding: 1rem 0.25rem;
 }
 
-.mssp-success-icon {
-  width: 72px;
-  height: 72px;
-  border-radius: 50%;
-  background: rgba(13, 65, 225, 0.08);
+/* Branded Pulsing Badge */
+.mssp-success-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   color: var(--color-primary-100);
+  background: rgba(13, 65, 225, 0.06);
+  padding: 0.45rem 1rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(13, 65, 225, 0.15);
+  margin-bottom: 1.75rem;
+  box-shadow: 0 4px 12px rgba(13, 65, 225, 0.05);
+}
+.mssp-success-pulse-dot {
+  width: 6px;
+  height: 6px;
+  background: #34e1ff; /* Accent Cyan */
+  border-radius: 50%;
+  box-shadow: 0 0 0 0 rgba(52, 225, 255, 0.7);
+  animation: mssp-pulse-dot 1.5s infinite;
+}
+@keyframes mssp-pulse-dot {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(52, 225, 255, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 6px rgba(52, 225, 255, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(52, 225, 255, 0);
+  }
+}
+
+/* Glowing Success Icon */
+.mssp-success-glow-wrapper {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  margin-bottom: 1.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 2rem;
+}
+.mssp-success-brand-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-primary-100) 0%, #1e5cff 100%);
+  color: var(--color-text-inverse);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 25px rgba(13, 65, 225, 0.35);
+  z-index: 2;
+}
+.mssp-success-icon-ring {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  width: 64px;
+  height: 64px;
+  border: 1px solid var(--color-primary-100);
+  border-radius: 50%;
+  opacity: 0.6;
+  animation: mssp-ripple 2s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+  z-index: 1;
+}
+.mssp-success-icon-ring--delay {
+  animation-delay: 0.8s;
+}
+@keyframes mssp-ripple {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
 }
 
 .mssp-success-title {
   font-family: var(--font-primary);
-  font-size: 1.5rem;
-  font-weight: 800;
+  font-size: 1.6rem;
+  font-weight: 900;
   color: var(--color-text-secondary);
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.02em;
+}
+.mssp-success-desc {
+  font-size: 0.9rem;
+  color: var(--color-neutral-500);
+  line-height: 1.6;
+  max-width: 380px;
+  margin-bottom: 1.75rem;
 }
 
-.mssp-success-desc {
+/* SecOps live-log terminal mockup */
+.mssp-success-terminal {
+  width: 100%;
+  background: #0f172a; /* Slate 900 dark theme */
+  border-radius: 14px;
+  border: 1px solid #1e293b;
+  padding: 1rem 1.25rem;
+  text-align: left;
+  margin-bottom: 2rem;
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.05), 0 12px 32px rgba(0, 0, 0, 0.15);
+}
+.mssp-success-terminal .terminal-header {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #1e293b;
+}
+.mssp-success-terminal .terminal-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+.mssp-success-terminal .terminal-dot--red    { background: #ef4444; }
+.mssp-success-terminal .terminal-dot--yellow { background: #eab308; }
+.mssp-success-terminal .terminal-dot--green  { background: #22c55e; }
+.mssp-success-terminal .terminal-title {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.7rem;
+  color: #64748b;
+  margin-left: auto;
+  font-weight: 600;
+}
+.mssp-success-terminal .terminal-body {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.78rem;
+  line-height: 1.6;
+  color: #cbd5e1;
+}
+.mssp-success-terminal .terminal-prompt {
+  color: var(--color-primary-200);
+  margin-right: 0.4rem;
+  font-weight: 700;
+}
+.mssp-success-terminal .terminal-line--success { color: #4ade80; }
+.mssp-success-terminal .terminal-line--info    { color: #38bdf8; }
+.mssp-success-terminal .terminal-line--blink {
+  display: flex;
+  align-items: center;
+}
+.mssp-success-terminal .terminal-line--blink::after {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 12px;
+  background: #cbd5e1;
+  margin-left: 0.2rem;
+  animation: caret-blink-mssp 1s steps(2, start) infinite;
+}
+@keyframes caret-blink-mssp { to { visibility: hidden; } }
+
+/* roadmap list items */
+.mssp-success-steps {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  text-align: left;
+  margin-bottom: 2.25rem;
+  padding: 0 0.5rem;
+}
+.mssp-success-step {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+/* brand action button */
+.mssp-success-action-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: var(--color-cta-primary);
+  color: var(--color-text-inverse);
+  padding: 0.85rem 1.75rem;
+  border-radius: 12px;
+  font-family: var(--font-primary);
   font-size: 0.95rem;
-  color: var(--color-neutral-500);
-  line-height: 1.7;
-  max-width: 360px;
+  font-weight: 800;
+  text-decoration: none;
+  width: 100%;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+.mssp-success-action-btn:hover {
+  background: var(--color-cta-primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(13, 65, 225, 0.25);
+}
+.mssp-success-action-btn svg {
+  transition: transform 0.2s ease;
+}
+.mssp-success-action-btn:hover svg {
+  transform: translateX(3px);
 }
 
 /* Loading spinner animation */
