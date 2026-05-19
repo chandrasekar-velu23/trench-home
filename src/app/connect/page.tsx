@@ -48,9 +48,24 @@ const IconSuccess = () => (
 );
 
 const PROPS = [
-  { icon: <IconDemo />, cls: "connect-prop-icon--blue", title: "Custom Demo", desc: "Get a tailored walkthrough of the platform based on your stack and threat model." },
-  { icon: <IconShield />, cls: "connect-prop-icon--indigo", title: "Security Assessment", desc: "Understand your coverage gaps and see how Trench maps to MITRE ATT&CK." },
-  { icon: <IconPricing />, cls: "connect-prop-icon--green", title: "Pricing & Deployment", desc: "Discuss agentless setup options and transparent, predictable pricing models." },
+  {
+    icon: <IconDemo />,
+    cls: "connect-prop-icon--blue",
+    title: "See It In Your Environment",
+    desc: "Not a generic demo. A walkthrough built around your stack, your tools and the threats your team faces every day."
+  },
+  {
+    icon: <IconShield />,
+    cls: "connect-prop-icon--indigo",
+    title: "Understand Your Detection Gap",
+    desc: "We map your current coverage against MITRE ATT&CK and show you exactly where your SIEM and SOC are leaving you exposed."
+  },
+  {
+    icon: <IconPricing />,
+    cls: "connect-prop-icon--green",
+    title: "Operational In 2 Weeks",
+    desc: "Agentless setup. No ripping and replacing. Most teams see their first detections within 48 hours of connecting their first data source."
+  },
 ];
 
 const CERT_BADGES = [
@@ -74,13 +89,11 @@ export default function ConnectPage() {
       
       // Collect form fields
       const data = {
-        firstName: formData.get('firstName') as string,
-        lastName: formData.get('lastName') as string,
+        fullName: formData.get('fullName') as string,
         email: formData.get('email') as string,
-        company: formData.get('company') as string,
         teamSize: formData.get('teamSize') as string,
         intent: formData.get('intent') as string,
-        message: formData.get('message') as string
+        message: (formData.get('message') as string) || ''
       };
       
       // Send to our API route
@@ -130,17 +143,16 @@ export default function ConnectPage() {
           {/* ── LEFT: Copy ── */}
           <div className="connect-left">
             <motion.div {...fade(0)}>
-              {/* <p className="connect-eyebrow">
+              <p className="connect-eyebrow">
                 <span className="connect-eyebrow-dot" />
-                Book a Demo
-              </p> */}
+                YOU FOUND YOUR MODERN TRENCH.
+              </p>
               <h1 className="connect-title">
-                Ready to secure<br />
-                <span>your stack?</span>
+                Every castle needs a Trench.<br />
+                <span>Yours starts here.</span>
               </h1>
               <p className="connect-subtitle">
-                See how Trench can help your team unify data, automate investigations,
-                and close threats in minutes — not days.
+                You cannot run a modern security operation on a legacy system. Let us show you what the new operating system looks like for your stack.
               </p>
             </motion.div>
 
@@ -154,6 +166,9 @@ export default function ConnectPage() {
                   </div>
                 </div>
               ))}
+              <p className="connect-reassurance">
+                Built for lean security teams. No lengthy procurement. No enterprise overhead.
+              </p>
             </motion.div>
 
             <motion.div className="connect-trust" {...fade(0.2)}>
@@ -186,79 +201,82 @@ export default function ConnectPage() {
                 <div className="connect-success-icon">
                   <IconSuccess />
                 </div>
-                <div className="connect-success-title">Request Received!</div>
+                <div className="connect-success-title">Welcome to the Trench.</div>
                 <p className="connect-success-desc">
-                  Thank you for your interest in Trench. One of our security specialists
-                  will be in touch within one business day.
+                  Our team will reach out within one business day.
                 </p>
-                <button
-                  className="connect-submit"
-                  onClick={() => setIsSuccess(false)}
-                  style={{ width: "auto", padding: "0.75rem 2rem" }}
-                >
-                  Submit Another Request
-                </button>
               </div>
             ) : (
               <>
-                <div className="connect-form-title">Get in Touch</div>
+                <div className="connect-form-title">Get Started</div>
                 <p className="connect-form-sub">Fill out the form and we'll reach out to you shortly.</p>
 
                 <form onSubmit={handleSubmit}>
-                  {/* Name row */}
-                  <div className="connect-row">
-                    <div className="connect-field">
-                      <label htmlFor="firstName" className="connect-label">First Name <span>*</span></label>
-                      <input type="text" id="firstName" name="firstName" required className="connect-input" autoComplete="given-name" />
-                    </div>
-                    <div className="connect-field">
-                      <label htmlFor="lastName" className="connect-label">Last Name <span>*</span></label>
-                      <input type="text" id="lastName" name="lastName" required className="connect-input" autoComplete="family-name" />
-                    </div>
+                  {/* Full Name */}
+                  <div className="connect-field">
+                    <label htmlFor="fullName" className="connect-label">Full Name <span>*</span></label>
+                    <input
+                      type="text"
+                      id="fullName"
+                      name="fullName"
+                      required
+                      placeholder="Your name"
+                      className="connect-input"
+                      autoComplete="name"
+                    />
                   </div>
 
                   {/* Email */}
                   <div className="connect-field">
                     <label htmlFor="email" className="connect-label">Work Email <span>*</span></label>
-                    <input type="email" id="email" name="email" required className="connect-input" autoComplete="work email" />
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      required
+                      placeholder="you@company.com"
+                      className="connect-input"
+                      autoComplete="email"
+                    />
                   </div>
 
-                  {/* Company + Team size */}
-                  <div className="connect-row">
-                    <div className="connect-field">
-                      <label htmlFor="company" className="connect-label">Company</label>
-                      <input type="text" id="company" name="company" className="connect-input" autoComplete="organization" />
-                    </div>
-                    <div className="connect-field">
-                      <label htmlFor="teamSize" className="connect-label">Team Size</label>
-                      <select id="teamSize" name="teamSize" className="connect-select" defaultValue="">
-                        <option value="" disabled>Select…</option>
-                        <option>1–10</option>
-                        <option>11–50</option>
-                        <option>51–200</option>
-                        <option>201–500</option>
-                        <option>500+</option>
-                      </select>
-                    </div>
-                  </div>
-
-                  {/* Intent */}
+                  {/* Team Size */}
                   <div className="connect-field">
-                    <label htmlFor="intent" className="connect-label">What are you looking for? <span>*</span></label>
-                    <select id="intent" name="intent" required className="connect-select" defaultValue="">
+                    <label htmlFor="teamSize" className="connect-label">Security Team Size <span>*</span></label>
+                    <select id="teamSize" name="teamSize" required className="connect-select" defaultValue="">
                       <option value="" disabled>Select…</option>
-                      <option>Custom Demo</option>
-                      <option>Security Assessment</option>
-                      <option>Pricing & Deployment</option>
-                      <option>Partnership</option>
-                      <option>Other</option>
+                      <option value="Just me">Just me</option>
+                      <option value="2-5 people">2-5 people</option>
+                      <option value="6-15 people">6-15 people</option>
+                      <option value="15+ people">15+ people</option>
                     </select>
                   </div>
 
-                  {/* Message */}
+                  {/* What brings you here? (Intent) */}
                   <div className="connect-field">
-                    <label htmlFor="message" className="connect-label">How can we help? <span>*</span></label>
-                    <textarea id="message" name="message" required className="connect-textarea" />
+                    <label htmlFor="intent" className="connect-label">What brings you here? <span>*</span></label>
+                    <select id="intent" name="intent" required className="connect-select" defaultValue="">
+                      <option value="" disabled>Select…</option>
+                      <option value="We are drowning in alerts and missing threats">We are drowning in alerts and missing threats</option>
+                      <option value="Our SIEM is too expensive and too slow">Our SIEM is too expensive and too slow</option>
+                      <option value="We need enterprise-grade detection with a lean team">We need enterprise-grade detection with a lean team</option>
+                      <option value="We want to see Headless SecOps in action">We want to see Headless SecOps in action</option>
+                      <option value="Poor outcomes from our Managed Service Provider">Poor outcomes from our Managed Service Provider</option>
+                      <option value="Something else">Something else</option>
+                    </select>
+                  </div>
+
+                  {/* Message (optional) */}
+                  <div className="connect-field">
+                    <label htmlFor="message" className="connect-label">
+                      Anything you want us to know before we talk? <span style={{ fontWeight: 400, opacity: 0.6 }}>(optional)</span>
+                    </label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      placeholder="Your stack, biggest pain point, or anything specific you want to see in the demo."
+                      className="connect-textarea"
+                    />
                   </div>
 
                   <button type="submit" disabled={isSubmitting} className="connect-submit">
@@ -270,15 +288,20 @@ export default function ConnectPage() {
                     ) : (
                       <>
                         <IconSend />
-                        Get in Touch
+                        Show Me Trench
                       </>
                     )}
                   </button>
 
+                  <p className="connect-support-helper">
+                    For support, reach out to us at <a href="mailto:ask@trenchsecurity.ai">ask@trenchsecurity.ai</a>
+                  </p>
+
                   <p className="connect-legal">
                     <IconLock />
                     By submitting, you agree to our{" "}
-                    <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.
+                    <a href="https://compliance.trenchsecurity.ai/" target="_blank" rel="noopener noreferrer">Terms of Service</a> and{" "}
+                    <a href="https://compliance.trenchsecurity.ai/" target="_blank" rel="noopener noreferrer">Privacy Policy</a>.
                   </p>
                 </form>
               </>

@@ -11,6 +11,7 @@ import "./Navbar.css";
 const navLinks = [
   { name: "Home", href: "/" },
   { name: "Why Trench?", href: "/why-trench" },
+  { name: "For MSSPs", href: "/for-mssps" },
   { name: "Integrations", href: "/integrations" },
   { name: "Blog", href: "/blog" }
 ];
@@ -93,7 +94,7 @@ export default function Navbar() {
               src="/logo/trench-logo.png"
               alt="Trench Logo"
               width={160}
-              height={38}
+              height={32}
               priority
               className="logo-img transition-transform duration-300"
             />

@@ -115,6 +115,18 @@
   color: var(--color-neutral-500);
 }
 
+.connect-reassurance {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--color-neutral-600);
+  margin-top: 1.5rem;
+  padding: 0.75rem 1rem;
+  background: rgba(13, 65, 225, 0.03);
+  border-radius: 12px;
+  border-left: 3px solid var(--color-primary-100);
+  line-height: 1.5;
+}
+
 /* Trust badges */
 .connect-trust {
   display: flex;
@@ -284,6 +296,23 @@
 }
 .connect-submit:active:not(:disabled) { transform: translateY(0); }
 .connect-submit:disabled { opacity: 0.7; cursor: not-allowed; }
+
+.connect-support-helper {
+  font-size: 0.85rem;
+  color: var(--color-neutral-500);
+  text-align: center;
+  margin-top: 1.5rem;
+  line-height: 1.5;
+}
+.connect-support-helper a {
+  color: var(--color-primary-100);
+  text-decoration: none;
+  font-weight: 600;
+  transition: text-decoration 0.2s ease;
+}
+.connect-support-helper a:hover {
+  text-decoration: underline;
+}
 
 .connect-legal {
   font-size: 0.73rem;

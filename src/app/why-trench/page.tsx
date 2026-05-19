@@ -101,7 +101,7 @@ export default function WhyTrenchPage() {
               </ScrollReveal>
               <ScrollReveal delay={0.6} direction="up">
                 <p className="wt-manifesto-para">
-                  We are not adding AI to a broken pipeline. We are rebuilding the system itself, with Actionability as the first principle.
+                  We are not adding AI to a broken pipeline. We are building AI system the system itself, with Actionability as the first principle.
                 </p>
               </ScrollReveal>
               <ScrollReveal delay={0.8} direction="up">

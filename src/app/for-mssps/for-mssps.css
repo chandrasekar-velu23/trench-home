@@ -1,0 +1,450 @@
+/* ── For MSSPs Page Refined Styles ── */
+
+.mssp-page {
+  min-height: 100vh;
+  padding: 8rem 0 6rem;
+  position: relative;
+  overflow: hidden;
+  background: var(--color-neutral-100);
+}
+
+/* Premium radial gradient backgrounds */
+.mssp-page::before,
+.mssp-page::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+.mssp-page::before {
+  width: 800px;
+  height: 800px;
+  top: -250px;
+  right: -150px;
+  background: radial-gradient(ellipse, rgba(13, 65, 225, 0.08) 0%, transparent 70%);
+}
+.mssp-page::after {
+  width: 600px;
+  height: 600px;
+  bottom: -200px;
+  left: -200px;
+  background: radial-gradient(ellipse, rgba(13, 65, 225, 0.06) 0%, transparent 70%);
+}
+
+.mssp-inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 6rem;
+  align-items: start;
+}
+
+/* ── LEFT COLUMN ── */
+.mssp-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.mssp-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-primary-100);
+  margin-bottom: 1.5rem;
+}
+
+.mssp-eyebrow-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-primary-100);
+  flex-shrink: 0;
+}
+
+.mssp-title {
+  font-family: var(--font-primary);
+  font-size: clamp(2rem, 4.5vw, 3.4rem);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--color-text-primary);
+  margin-bottom: 1.5rem;
+}
+
+.mssp-title span {
+  color: var(--color-primary-100);
+}
+
+.mssp-subtitle {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--color-neutral-500);
+  max-width: 580px;
+  margin-bottom: 3.5rem;
+}
+
+/* Value Props Grid */
+.mssp-props {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.mssp-prop {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+}
+
+.mssp-prop-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: rgba(13, 65, 225, 0.06);
+  color: var(--color-primary-100);
+  transition: transform 0.25s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.mssp-prop:hover .mssp-prop-icon {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.mssp-prop-title {
+  font-family: var(--font-primary);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-text-secondary);
+  margin-bottom: 0.35rem;
+}
+
+.mssp-prop-title span {
+  color: var(--color-primary-100);
+}
+
+.mssp-prop-desc {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--color-neutral-500);
+}
+
+/* Reassurance Section */
+.mssp-reassurance {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-neutral-600);
+  margin-top: 2rem;
+  padding: 1rem 1.25rem;
+  background: rgba(13, 65, 225, 0.03);
+  border-radius: 12px;
+  border-left: 3px solid var(--color-primary-100);
+  line-height: 1.6;
+}
+
+/* Trust & Compliance Section */
+.mssp-trust {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 3.5rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--color-border-default);
+}
+
+.mssp-trust-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-neutral-400);
+  white-space: nowrap;
+}
+
+.mssp-trust-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+}
+
+.mssp-cert-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border-default);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  transition: transform 0.25s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.25s ease;
+  cursor: default;
+}
+
+.mssp-cert-badge:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(13, 65, 225, 0.08);
+}
+
+.mssp-cert-img {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+/* ── RIGHT COLUMN — FORM CARD ── */
+.mssp-card {
+  background: var(--color-bg-secondary);
+  border-radius: 24px;
+  border: 1px solid var(--color-border-default);
+  box-shadow: 0 32px 64px -16px rgba(13, 65, 225, 0.1), 0 4px 24px rgba(0, 0, 0, 0.03);
+  padding: 3rem;
+  position: sticky;
+  top: 8rem;
+}
+
+.mssp-form-title {
+  font-family: var(--font-primary);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--color-text-secondary);
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
+}
+
+.mssp-form-sub {
+  font-size: 0.9rem;
+  color: var(--color-neutral-500);
+  margin-bottom: 2.25rem;
+}
+
+/* Form Inputs */
+.mssp-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.mssp-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--color-neutral-600);
+  letter-spacing: 0.03em;
+}
+
+.mssp-label span {
+  color: var(--color-secondary-magenta);
+  margin-left: 2px;
+}
+
+.mssp-input,
+.mssp-textarea {
+  width: 100%;
+  padding: 0.85rem 1.1rem;
+  border-radius: 12px;
+  border: 1.5px solid var(--color-neutral-200);
+  background: var(--color-neutral-100);
+  font-size: 0.92rem;
+  color: var(--color-text-secondary);
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  font-family: inherit;
+}
+
+.mssp-input:focus,
+.mssp-textarea:focus {
+  border-color: var(--color-primary-100);
+  box-shadow: 0 0 0 3.5px rgba(13, 65, 225, 0.08);
+  background: var(--color-bg-secondary);
+}
+
+.mssp-textarea {
+  resize: none;
+  min-height: 120px;
+  line-height: 1.6;
+}
+
+/* Submit Button */
+.mssp-submit {
+  width: 100%;
+  margin-top: 1.75rem;
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  border: none;
+  background: var(--color-cta-primary);
+  color: var(--color-text-inverse);
+  font-family: var(--font-primary);
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.2s ease, background 0.2s ease, opacity 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+}
+
+.mssp-submit:hover:not(:disabled) {
+  background: var(--color-cta-primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(13, 65, 225, 0.25);
+}
+
+.mssp-submit:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.mssp-submit:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Legal Disclaimer */
+.mssp-support-helper {
+  font-size: 0.85rem;
+  color: var(--color-neutral-500);
+  text-align: center;
+  margin-top: 1.5rem;
+  line-height: 1.5;
+}
+.mssp-support-helper a {
+  color: var(--color-primary-100);
+  text-decoration: none;
+  font-weight: 600;
+  transition: text-decoration 0.2s ease;
+}
+.mssp-support-helper a:hover {
+  text-decoration: underline;
+}
+
+.mssp-legal {
+  font-size: 0.75rem;
+  color: var(--color-neutral-400);
+  text-align: center;
+  margin-top: 1.25rem;
+  line-height: 1.6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+}
+
+.mssp-legal a {
+  color: var(--color-primary-100);
+  text-decoration: underline;
+  text-underline-offset: 2.5px;
+  font-weight: 600;
+}
+
+/* Success State Renders */
+.mssp-success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 4rem 1.5rem;
+}
+
+.mssp-success-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: rgba(13, 65, 225, 0.08);
+  color: var(--color-primary-100);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.mssp-success-title {
+  font-family: var(--font-primary);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--color-text-secondary);
+  margin-bottom: 1rem;
+}
+
+.mssp-success-desc {
+  font-size: 0.95rem;
+  color: var(--color-neutral-500);
+  line-height: 1.7;
+  max-width: 360px;
+}
+
+/* Loading spinner animation */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.mssp-spinner {
+  width: 20px;
+  height: 20px;
+  border: 2.5px solid rgba(255, 255, 255, 0.3);
+  border-top-color: var(--color-text-inverse);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  flex-shrink: 0;
+}
+
+/* ── RESPONSIVE MEDIA QUERIES ── */
+@media (max-width: 1100px) {
+  .mssp-inner {
+    gap: 4rem;
+  }
+  .mssp-card {
+    padding: 2.5rem;
+  }
+}
+
+@media (max-width: 991px) {
+  .mssp-page {
+    padding: 7rem 0 5rem;
+  }
+  .mssp-inner {
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+  }
+  .mssp-card {
+    position: static;
+    border-radius: 20px;
+    padding: 2.25rem;
+  }
+  .mssp-subtitle {
+    margin-bottom: 2.5rem;
+  }
+  .mssp-trust {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-top: 3rem;
+    padding-top: 2rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .mssp-page {
+    padding: 6.5rem 0 4rem;
+  }
+  .mssp-card {
+    padding: 1.75rem;
+  }
+  .mssp-title {
+    font-size: 2.2rem;
+  }
+  .mssp-success {
+    padding: 3rem 0.5rem;
+  }
+}

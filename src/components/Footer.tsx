@@ -48,22 +48,23 @@ export default function Footer() {
         {/* Column 2 — Legal */}
         <div className="footer-col link-column">
           <h4 className="footer-heading">Legal</h4>
-          <Link href="#">Privacy policy</Link>
-          <Link href="#">Cookies notice</Link>
-          <Link href="#">Trust center</Link>
+          <a href="https://compliance.trenchsecurity.ai/" target="_blank" rel="noopener noreferrer">Privacy policy</a>
+          <a href="https://compliance.trenchsecurity.ai/" target="_blank" rel="noopener noreferrer">Cookies notice</a>
+          <a href="https://compliance.trenchsecurity.ai/" target="_blank" rel="noopener noreferrer">Trust center</a>
         </div>
 
         {/* Column 3 — Platform */}
         <div className="footer-col link-column">
           <h4 className="footer-heading">Platform</h4>
           <Link href="/why-trench">Why Trench?</Link>
+          <Link href="/for-mssps">For MSSPs</Link>
           <Link href="/integrations">Integrations</Link>
           <Link href="/how-it-works">How it works?</Link>
         </div>
 
-        {/* Column 4 — Address */}
+        {/* Column 4 — Address & Contact */}
         <div className="footer-col address-column">
-          <h4 className="footer-heading">Address</h4>
+          <h4 className="footer-heading">Address & Contact</h4>
           <div className="addresses-container">
             <div className="address-item">
               <h5 className="address-label">India Office:</h5>
@@ -78,6 +79,17 @@ export default function Footer() {
               <address className="footer-address">
                 <p>Trench Security Inc</p>
                 <p>16192 Coastal Highway, Lewes, DE 19958</p>
+              </address>
+            </div>
+            <div className="address-item">
+              <h5 className="address-label">Support:</h5>
+              <address className="footer-address">
+                <p>Reach out to us at</p>
+                <p>
+                  <a href="mailto:ask@trenchsecurity.ai" className="footer-contact-link">
+                    ask@trenchsecurity.ai
+                  </a>
+                </p>
               </address>
             </div>
           </div>
@@ -105,13 +117,24 @@ export default function Footer() {
             className="footer-partner-badge"
           />
         </div>
+        <div className="footer-bottom-bar">
+          <span className="copyright">© 2026 Trench Security, Inc.</span>
+          <div className="bottom-links">
+            <a href="https://compliance.trenchsecurity.ai/" target="_blank" rel="noopener noreferrer" className="bottom-link">
+              Security & Trust Center
+            </a>
+            <a href="https://compliance.trenchsecurity.ai/" target="_blank" rel="noopener noreferrer" className="bottom-link">
+              Terms of Service
+            </a>
+          </div>
+        </div>
       </div>
 
       <style jsx>{`
         .footer-container {
           position: relative;
           width: 100%;
-          min-height: 80vh;
+          min-height: auto;
           background-image: url('/images/footer.png');
           background-size: cover;
           background-position: center bottom;
@@ -119,7 +142,7 @@ export default function Footer() {
           display: flex;
           flex-direction: column;
           justify-content: flex-end;
-          padding: 2rem 10% 2rem;
+          padding: 5rem 10% 2.5rem; /* Snug bottom padding and elegant top padding */
           color: #1E293B;
           margin-top: 0;
         }
@@ -144,12 +167,13 @@ export default function Footer() {
           margin: 0 auto;
           position: relative;
           z-index: 10;
-          background: rgba(255, 255, 255, 0.85);
-          backdrop-filter: blur(14px);
+          background: rgba(255, 255, 255, 0.45); /* Premium light frosted neutral glass */
+          backdrop-filter: blur(20px);
+          -webkit-backdrop-filter: blur(20px);
           padding: 2.5rem 3rem;
-          border-radius: 20px;
-          border: 1px solid rgba(13, 65, 225, 0.1);
-          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+          border-radius: 24px;
+          border: 1px solid rgba(255, 255, 255, 0.4);
+          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
         }
 
         /* ── Brand column ── */
@@ -180,8 +204,8 @@ export default function Footer() {
           font-weight: 800;
           text-transform: uppercase;
           letter-spacing: 0.12em;
-          color: var(--color-primary-100, #0D41E1);
-          opacity: 0.6;
+          color: #334155; /* Neutral dark Slate 700 */
+          opacity: 0.8;
         }
 
         .footer-certs-badges {
@@ -239,7 +263,7 @@ export default function Footer() {
           text-transform: uppercase;
           letter-spacing: 0.1em;
           margin-bottom: 0.75rem;
-          color: var(--color-primary-100, #0D41E1);
+          color: var(--color-primary-100, #0D41E1); /* Brand primary blue color only */
         }
 
         .link-column {
@@ -251,13 +275,14 @@ export default function Footer() {
         .link-column :global(a) {
           font-size: 0.9rem;
           font-weight: 600;
-          color: #475569;
+          color: #1e293b; /* High-contrast neutral Slate 800 */
           text-decoration: none;
-          transition: color 0.2s ease;
+          transition: all 0.2s ease;
         }
 
         .link-column :global(a:hover) {
-          color: #0D41E1;
+          color: #0f172a; /* Solid neutral dark Slate 900 */
+          text-decoration: underline;
         }
 
         /* ── Address column ── */
@@ -284,8 +309,8 @@ export default function Footer() {
           text-transform: uppercase;
           letter-spacing: 0.05em;
           margin-bottom: 0.5rem;
-          color: var(--color-primary-100, #0D41E1);
-          opacity: 0.8;
+          color: #1e293b; /* Solid neutral dark Slate 800 */
+          opacity: 0.9;
         }
 
         .footer-address {
@@ -298,9 +323,51 @@ export default function Footer() {
         .footer-address p {
           font-size: 0.85rem;
           font-weight: 500;
-          color: #475569;
+          color: #1e293b; /* High-contrast Slate 800 */
           margin: 0;
           line-height: 1.4;
+        }
+
+        .footer-contact-link {
+          color: #0f172a; /* Solid neutral dark Slate 900 */
+          text-decoration: underline;
+          font-weight: 700;
+          transition: color 0.2s ease;
+        }
+
+        .footer-contact-link:hover {
+          color: #475569; /* Slate 600 */
+        }
+
+        .footer-bottom-bar {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          width: 100%;
+          grid-column: 1 / -1;
+          border-top: 1px solid rgba(15, 23, 42, 0.08); /* Pure neutral Slate border */
+          padding-top: 1.5rem;
+          margin-top: 1rem;
+          font-size: 0.85rem;
+          color: #1e293b; /* High-contrast Slate 800 */
+          font-weight: 500;
+        }
+
+        .bottom-links {
+          display: flex;
+          gap: 1.5rem;
+        }
+
+        .bottom-link {
+          color: #1e293b; /* High-contrast Slate 800 */
+          text-decoration: underline;
+          text-underline-offset: 3px;
+          transition: color 0.2s ease;
+          font-weight: 600;
+        }
+
+        .bottom-link:hover {
+          color: #0f172a; /* Solid neutral Slate 900 */
         }
 
         /* ── Responsive ── */
@@ -310,7 +377,7 @@ export default function Footer() {
           }
           .address-column {
             grid-column: 1 / -1;
-            border-top: 1px solid rgba(13, 65, 225, 0.05);
+            border-top: 1px solid rgba(15, 23, 42, 0.05); /* Pure neutral border */
             padding-top: 1.5rem;
           }
         }
@@ -343,6 +410,11 @@ export default function Footer() {
             padding: 0.5rem;
             border-radius: 8px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+          }
+          .footer-bottom-bar {
+            flex-direction: column;
+            gap: 1rem;
+            text-align: center;
           }
         }
 

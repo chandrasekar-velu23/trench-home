@@ -49,9 +49,15 @@ export async function POST(request: NextRequest) {
     // Parse the request body
     const body = await request.json();
     
-    // Validate required fields
-    const requiredFields = ['firstName', 'lastName', 'email', 'intent', 'message'];
-    const missingFields = requiredFields.filter(field => !body[field] || body[field].trim() === '');
+    // Determine category based on context (MSSP if companyName is present, Connect otherwise)
+    const category = body.companyName ? 'MSSP' : 'Connect';
+    
+    // Validate required fields depending on the form category
+    const requiredFields = category === 'MSSP' 
+      ? ['fullName', 'email', 'companyName'] 
+      : ['fullName', 'email', 'teamSize', 'intent'];
+      
+    const missingFields = requiredFields.filter(field => !body[field] || String(body[field]).trim() === '');
     
     if (missingFields.length > 0) {
       return NextResponse.json({
@@ -69,18 +75,31 @@ export async function POST(request: NextRequest) {
       }, { status: 400 });
     }
 
-    // Add metadata
+    // Extract first and last name parts for spreadsheet compatibility
+    const nameParts = (body.fullName || '').trim().split(/\s+/);
+    const firstName = nameParts[0] || '';
+    const lastName = nameParts.slice(1).join(' ') || '';
+
+    // Standardize variables to match target spreadsheet columns
     const formData = {
-      ...body,
+      category,
+      firstName,
+      lastName,
+      fullName: body.fullName,
+      email: body.email,
+      company: body.companyName || body.company || '',
+      teamSize: body.teamSize || 'MSSP Partner',
+      intent: body.intent || 'MSSP Partnership',
+      message: body.message || '',
       timestamp: new Date().toISOString()
     };
 
-    // Try to submit to Google Apps Script
+    // Forward to the combined Google Apps Script Webhook
     try {
       const result = await appendToGoogleAppsScript(formData);
       
       if (result.status === 'success') {
-        // Send backup email notification
+        // Log backup verification
         await sendEmailNotification(formData);
         
         return NextResponse.json({
@@ -94,18 +113,17 @@ export async function POST(request: NextRequest) {
     } catch (scriptError) {
       console.error('Google Apps Script error:', scriptError);
       
-      // Try to send email as backup
+      // Secondary fallback (e.g. backup local email triggers)
       try {
         await sendEmailNotification(formData);
         
         return NextResponse.json({
           status: 'success',
-          message: 'Form submitted (email backup)',
+          message: 'Form submitted (backup fallback active)',
           timestamp: new Date().toISOString()
         });
       } catch (emailError) {
-        console.error('Email backup also failed:', emailError);
-        
+        console.error('API backup failure:', emailError);
         return NextResponse.json({
           status: 'error',
           message: 'Failed to submit form. Please try again later.'

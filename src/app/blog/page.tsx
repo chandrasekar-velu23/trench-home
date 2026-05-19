@@ -2,97 +2,16 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import ScrollReveal from "@/components/animations/ScrollReveal";
 import TextReveal from "@/components/animations/TextReveal";
+import { postsData } from "./postsData";
 
 export default function BlogPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [activeFilter, setActiveFilter] = useState("All");
 
-  const posts = [
-    { 
-      title: "Trench AI Now Available on Microsoft Marketplace", 
-      category: "Product", 
-      date: "Apr 2, 2026",
-      image: "/blog cover images/1st_blog_banner.jpg",
-      description: "Trench AI is now accessible directly through the Microsoft Marketplace, simplifying procurement.",
-      author: { name: "Gurucharan Raghunathan", role: "Cofounder & CEO", avatar: "/team/gurucharan.png" }
-    },
-    { 
-      title: "AI in the Security Operations: Clearing the Clutter", 
-      category: "Security", 
-      date: "Mar 26, 2026",
-      image: "/blog cover images/2nd_Blog_Banner.jpg",
-      description: "Learn how to use AI to filter out noise and focus on critical security alerts.",
-      author: { name: "Gurucharan Raghunathan", role: "Cofounder & CEO", avatar: "/team/gurucharan.png" }
-    },
-    { 
-      title: "Launching Trench Agentic Threat Detection Mesh", 
-      category: "Technical", 
-      date: "Jan 5, 2026",
-      image: "/blog cover images/3rd_Blog_Banner.png",
-      description: "Watch the demo of our new agentic threat detection mesh in action.",
-      author: { name: "Gurucharan Raghunathan", role: "Cofounder & CEO", avatar: "/team/gurucharan.png" }
-    },
-    { 
-      title: "Launching “Real-time data safety” in AI-native Security Operations", 
-      category: "Product", 
-      date: "Oct 7, 2025",
-      image: "/blog cover images/4th_blog_banner.jpg",
-      description: "Ensuring data safety in real-time is critical for modern SOCs. Here is how we do it.",
-      author: { name: "Gurucharan Raghunathan", role: "Cofounder & CEO", avatar: "/team/gurucharan.png" }
-    },
-    { 
-      title: "How Modern CISOs Demonstrate Real ROI with AI-Native SOC Platforms", 
-      category: "Trends", 
-      date: "Sep 19, 2025",
-      image: "/blog cover images/5th_Blog_Image.jpg",
-      description: "A guide for CISOs to measure and present the ROI of AI security tools.",
-      author: { name: "Gurucharan Raghunathan", role: "Cofounder & CEO", avatar: "/team/gurucharan.png" }
-    },
-    { 
-      title: "Optimizing Your AI-SOC: A Practical Guide to Offensive Validation and Tuning", 
-      category: "Technical", 
-      date: "Sep 16, 2025",
-      image: "/blog cover images/6th_Blog_Banner.png",
-      description: "Practical steps to tune your AI-SOC for maximum efficiency and accuracy.",
-      author: { name: "Gurucharan Raghunathan", role: "Cofounder & CEO", avatar: "/team/gurucharan.png" }
-    },
-    { 
-      title: "Why Mid-Sized Companies Struggle with SOC Automation (And How to Fix It)", 
-      category: "Trends", 
-      date: "Aug 10, 2025",
-      image: "/blog cover images/7th_Blog_banner.png",
-      description: "Common pitfalls in SOC automation for mid-sized companies and solutions.",
-      author: { name: "Gurucharan Raghunathan", role: "Cofounder & CEO", avatar: "/team/gurucharan.png" }
-    },
-    { 
-      title: "Unlocking the Power of AI for MSSPs", 
-      category: "MSSP", 
-      date: "Jun 17, 2025",
-      image: "/blog cover images/8th_Blog_Banner3.png",
-      description: "How Managed Security Service Providers can leverage AI to scale their operations.",
-      author: { name: "Gurucharan Raghunathan", role: "Cofounder & CEO", avatar: "/team/gurucharan.png" }
-    },
-    { 
-      title: "Modernizing SOC using Agentic AI", 
-      category: "Technical", 
-      date: "Jun 13, 2025",
-      image: "/blog cover images/9th_Blog_Banner.jpg",
-      description: "Discover how Agentic AI is transforming Security Operations Centers by automating complex workflows.",
-      author: { name: "Gurucharan Raghunathan", role: "Cofounder & CEO", avatar: "/team/gurucharan.png" }
-    },
-    { 
-      title: "Why should you enable AI in your SOC?", 
-      category: "Trends", 
-      date: "May 23, 2025",
-      image: "/blog cover images/10th_Blog_Banner.jpg",
-      description: "Understand the key benefits of integrating artificial intelligence into your Security Operations Center.",
-      author: { name: "Gurucharan Raghunathan", role: "Cofounder & CEO", avatar: "/team/gurucharan.png" }
-    },
-  ];
-
-  const filteredPosts = posts.filter(post => {
+  const filteredPosts = postsData.filter(post => {
     const matchesFilter = activeFilter === "All" || post.category === activeFilter;
     const matchesSearch = post.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
                           post.description.toLowerCase().includes(searchQuery.toLowerCase());
@@ -102,10 +21,9 @@ export default function BlogPage() {
   const filters = ["All", "Product", "Security", "Technical", "Trends", "MSSP"];
 
   return (
-    <main className="page-main overflow-hidden">
+    <main className="page-main overflow-hidden" style={{ background: "#F8FAFC" }}>
       <div className="container-wide">
         <ScrollReveal direction="up" className="text-center">
-          <TextReveal text="Insights" as="h3" className="eyebrow" style={{ justifyContent: "center", width: "100%" }} />
           <TextReveal text="Blog" as="h1" className="title-lg" delay={0.2} style={{ justifyContent: "center", width: "100%" }} />
           <p className="body-lead" style={{ maxWidth: '800px', margin: '2rem auto' }}>
             Latest thoughts on AI security, cloud-native defense, and the evolution of the modern SOC.
@@ -160,66 +78,71 @@ export default function BlogPage() {
           <div className="grid-3" style={{ gap: '2.5rem' }}>
             {filteredPosts.map((post, i) => (
               <ScrollReveal key={i} delay={i * 0.05} direction="up">
-                <article style={{ 
-                  cursor: 'pointer', 
-                  background: '#FFFFFF', 
-                  borderRadius: '20px', 
-                  border: '1px solid #E2E8F0',
-                  overflow: 'hidden',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  height: '100%'
-                }}>
-                  {/* Image Area */}
-                  <div style={{ height: '200px', background: '#F1F5F9', overflow: 'hidden', position: 'relative' }}>
-                    {post.image ? (
-                      <Image src={post.image} alt={post.title} fill style={{ objectFit: 'cover' }} />
-                    ) : (
-                      <div style={{ width: '100%', height: '100%', background: 'linear-gradient(45deg, #0D41E1 0%, #E0E7FF 100%)', opacity: 0.1 }}></div>
-                    )}
-                  </div>
-                  
-                  {/* Content Area */}
-                  <div style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
-                    <span style={{ fontSize: '0.85rem', color: '#64748B', marginBottom: '0.5rem' }}>{post.date}</span>
-                    <h3 className="title-sm" style={{ marginBottom: '0.75rem', transition: 'color 0.2s', fontSize: '1.15rem' }}>{post.title}</h3>
-                    <p style={{ fontSize: '0.9rem', color: '#475569', marginBottom: '1.5rem', lineHeight: '1.5' }}>{post.description}</p>
-                    
-                    {/* Author */}
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginTop: 'auto', marginBottom: '1.5rem' }}>
-                      {post.author.avatar ? (
-                        <div style={{ width: '32px', height: '32px', borderRadius: '50%', overflow: 'hidden' }}>
-                          <Image src={post.author.avatar} alt={post.author.name} width={32} height={32} style={{ objectFit: 'cover' }} />
-                        </div>
+                <Link href={`/blog/${post.slug}`} style={{ textDecoration: 'none', height: '100%', display: 'block' }}>
+                  <article style={{ 
+                    cursor: 'pointer', 
+                    background: '#FFFFFF', 
+                    borderRadius: '20px', 
+                    border: '1px solid #E2E8F0',
+                    overflow: 'hidden',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    height: '100%',
+                    transition: 'all 0.25s ease-out'
+                  }} className="blog-card">
+                    {/* Image Area */}
+                    <div style={{ height: '200px', background: '#F1F5F9', overflow: 'hidden', position: 'relative' }}>
+                      {post.image ? (
+                        <Image src={post.image} alt={post.title} fill style={{ objectFit: 'cover' }} />
                       ) : (
-                        <div style={{ width: '32px', height: '32px', borderRadius: '50%', background: '#0D41E1', color: '#FFFFFF', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700, fontSize: '0.8rem' }}>
-                          {post.author.name.split(' ').map(n => n[0]).join('')}
-                        </div>
+                        <div style={{ width: '100%', height: '100%', background: 'linear-gradient(45deg, #0D41E1 0%, #E0E7FF 100%)', opacity: 0.1 }}></div>
                       )}
-                      <div>
-                        <div style={{ fontSize: '0.85rem', fontWeight: 700, color: '#0F172A' }}>{post.author.name}</div>
-                        <div style={{ fontSize: '0.75rem', color: '#64748B' }}>{post.author.role}</div>
+                    </div>
+                    
+                    {/* Content Area */}
+                    <div style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
+                      <span style={{ fontSize: '0.85rem', color: '#64748B', marginBottom: '0.5rem' }}>{post.date}</span>
+                      <h3 className="title-sm" style={{ marginBottom: '0.75rem', transition: 'color 0.2s', fontSize: '1.15rem' }}>{post.title}</h3>
+                      <p style={{ fontSize: '0.9rem', color: '#475569', marginBottom: '1.5rem', lineHeight: '1.5' }} dangerouslySetInnerHTML={{ __html: post.description.replace(/<[^>]+>/g, "").substring(0, 120) + "..." }} />
+                      
+                      {/* Author */}
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginTop: 'auto', marginBottom: '1.5rem' }}>
+                        {post.author.avatar ? (
+                          <div style={{ width: '32px', height: '32px', borderRadius: '50%', overflow: 'hidden', position: 'relative' }}>
+                            <Image src={post.author.avatar} alt={post.author.name} fill style={{ objectFit: 'cover' }} />
+                          </div>
+                        ) : (
+                          <div style={{ width: '32px', height: '32px', borderRadius: '50%', background: '#0D41E1', color: '#FFFFFF', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700, fontSize: '0.8rem' }}>
+                            {post.author.name.split(' ').map(n => n[0]).join('')}
+                          </div>
+                        )}
+                        <div>
+                          <div style={{ fontSize: '0.85rem', fontWeight: 700, color: '#0F172A' }}>{post.author.name}</div>
+                          {post.author.role && (
+                            <div style={{ fontSize: '0.75rem', color: '#64748B' }}>{post.author.role}</div>
+                          )}
+                        </div>
+                      </div>
+                      
+                      {/* Footer */}
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid #F1F5F9', paddingTop: '1rem' }}>
+                        <span style={{ 
+                          fontSize: '0.75rem', 
+                          fontWeight: 700, 
+                          textTransform: 'uppercase', 
+                          color: '#0D41E1', 
+                          letterSpacing: '0.05em',
+                          background: '#E0E7FF',
+                          padding: '0.25rem 0.75rem',
+                          borderRadius: '100px'
+                        }}>
+                          {post.category}
+                        </span>
+                        <span style={{ color: '#0D41E1', fontWeight: 700 }} className="arrow">→</span>
                       </div>
                     </div>
-                    
-                    {/* Footer */}
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid #F1F5F9', paddingTop: '1rem' }}>
-                      <span style={{ 
-                        fontSize: '0.75rem', 
-                        fontWeight: 700, 
-                        textTransform: 'uppercase', 
-                        color: '#0D41E1', 
-                        letterSpacing: '0.05em',
-                        background: '#E0E7FF',
-                        padding: '0.25rem 0.75rem',
-                        borderRadius: '100px'
-                      }}>
-                        {post.category}
-                      </span>
-                      <span style={{ color: '#0D41E1', fontWeight: 700 }}>→</span>
-                    </div>
-                  </div>
-                </article>
+                  </article>
+                </Link>
               </ScrollReveal>
             ))}
           </div>
@@ -230,6 +153,21 @@ export default function BlogPage() {
           )}
         </section>
       </div>
+
+      <style jsx global>{`
+        .blog-card:hover {
+          transform: translateY(-6px);
+          box-shadow: 0 12px 30px rgba(13, 65, 225, 0.08);
+          border-color: #0D41E1 !important;
+        }
+        .blog-card:hover .arrow {
+          transform: translateX(4px);
+        }
+        .arrow {
+          transition: transform 0.2s;
+        }
+      `}</style>
     </main>
   );
 }
+
