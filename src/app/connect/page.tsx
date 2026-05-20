@@ -77,6 +77,7 @@ const CERT_BADGES = [
 export default function ConnectPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [emailError, setEmailError] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -88,9 +89,20 @@ export default function ConnectPage() {
       const formData = new FormData(form);
       
       // Collect form fields
+      const email = formData.get('email') as string;
+      const freeProviders = ['gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com', 'icloud.com', 'aol.com', 'protonmail.com', 'zoho.com'];
+      const domain = email.split('@')[1]?.toLowerCase();
+      
+      if (domain && freeProviders.includes(domain)) {
+        setEmailError("Please provide an official company email. Personal emails are not allowed.");
+        setIsSubmitting(false);
+        return;
+      }
+      setEmailError("");
+
       const data = {
         fullName: formData.get('fullName') as string,
-        email: formData.get('email') as string,
+        email: email,
         teamSize: formData.get('teamSize') as string,
         intent: formData.get('intent') as string,
         message: (formData.get('message') as string) || ''
@@ -223,51 +235,9 @@ export default function ConnectPage() {
                 <div className="connect-success-title">Welcome to the Trench</div>
                 
                 <p className="connect-success-desc">
-                  Your request has bypassed standard triage queues. Here is what we are provisioning for you next:
+                  Every castle needs a Trench. Yours is on its way.
                 </p>
 
-                {/* Terminal SecOps Live Status Block */}
-                <div className="connect-success-terminal">
-                  <div className="terminal-header">
-                    <span className="terminal-dot terminal-dot--red" />
-                    <span className="terminal-dot terminal-dot--yellow" />
-                    <span className="terminal-dot terminal-dot--green" />
-                    <span className="terminal-title">trench-secops.sh</span>
-                  </div>
-                  <div className="terminal-body">
-                    <div className="terminal-line"><span className="terminal-prompt">$</span> trench-init --verbose</div>
-                    <div className="terminal-line terminal-line--success">✓ Verified and logged secure handshake</div>
-                    <div className="terminal-line terminal-line--info">⚙ Allocating custom MITRE ATT&CK gap advisor</div>
-                    <div className="terminal-line terminal-line--blink">█ Status: Listening on security channel...</div>
-                  </div>
-                </div>
-
-                {/* What's Next Steps list */}
-                <div className="connect-success-steps">
-                  <div className="connect-success-step">
-                    <div className="step-num">01</div>
-                    <div className="step-content">
-                      <div className="step-title">Custom MITRE ATT&CK Map</div>
-                      <div className="step-text">We map your tech stack to pinpoint exactly where your current SIEM leaves you exposed.</div>
-                    </div>
-                  </div>
-                  <div className="connect-success-step">
-                    <div className="step-num">02</div>
-                    <div className="step-content">
-                      <div className="step-title">Agentless SecOps Demo</div>
-                      <div className="step-text">No ripping or replacing. We'll show you detections in your real tools inside 48 hours.</div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Action button */}
-                <a href="/why-trench" className="connect-success-action-btn">
-                  Explore Why Trench
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                    <line x1="5" y1="12" x2="19" y2="12" />
-                    <polyline points="12 5 19 12 12 19" />
-                  </svg>
-                </a>
               </motion.div>
             ) : (
               <>
@@ -300,7 +270,18 @@ export default function ConnectPage() {
                       placeholder="you@company.com"
                       className="connect-input"
                       autoComplete="email"
+                      onChange={(e) => {
+                        if (emailError) {
+                          const domain = e.target.value.split('@')[1]?.toLowerCase();
+                          const freeProviders = ['gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com', 'icloud.com', 'aol.com', 'protonmail.com', 'zoho.com'];
+                          if (!freeProviders.includes(domain)) {
+                            setEmailError("");
+                          }
+                        }
+                      }}
+                      style={emailError ? { borderColor: '#ef4444' } : {}}
                     />
+                    {emailError && <div style={{ color: '#ef4444', fontSize: '0.85rem', marginTop: '0.5rem' }}>{emailError}</div>}
                   </div>
 
                   {/* Team Size */}

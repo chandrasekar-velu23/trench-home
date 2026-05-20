@@ -91,6 +91,7 @@ const COMPLIANCE_BADGES = [
 export default function ForMSSPsPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [emailError, setEmailError] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -100,9 +101,20 @@ export default function ForMSSPsPage() {
       const form = e.target as HTMLFormElement;
       const formData = new FormData(form);
 
+      const email = formData.get("email") as string;
+      const freeProviders = ['gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com', 'icloud.com', 'aol.com', 'protonmail.com', 'zoho.com'];
+      const domain = email.split('@')[1]?.toLowerCase();
+      
+      if (domain && freeProviders.includes(domain)) {
+        setEmailError("Please provide an official company email. Personal emails are not allowed.");
+        setIsSubmitting(false);
+        return;
+      }
+      setEmailError("");
+
       const data = {
         fullName: formData.get("fullName") as string,
-        email: formData.get("email") as string,
+        email: email,
         companyName: formData.get("companyName") as string,
         message: (formData.get("message") as string) || ""
       };
@@ -233,51 +245,9 @@ export default function ForMSSPsPage() {
                 <h3 className="mssp-success-title">Welcome to the Trench</h3>
                 
                 <p className="mssp-success-desc">
-                  Your partner application has been routed directly to our MSSP enablement team:
+                  Every castle needs a Trench. Yours is on its way.
                 </p>
 
-                {/* Terminal SecOps Live Status Block */}
-                <div className="mssp-success-terminal">
-                  <div className="terminal-header">
-                    <span className="terminal-dot terminal-dot--red" />
-                    <span className="terminal-dot terminal-dot--yellow" />
-                    <span className="terminal-dot terminal-dot--green" />
-                    <span className="terminal-title">trench-partner-init.sh</span>
-                  </div>
-                  <div className="terminal-body">
-                    <div className="terminal-line"><span className="terminal-prompt">$</span> partner-onboard --verbose</div>
-                    <div className="terminal-line terminal-line--success">✓ Secure channel handshake complete</div>
-                    <div className="terminal-line terminal-line--info">⚙ Assigning Partner Director & margin tier matrix</div>
-                    <div className="terminal-line terminal-line--blink">█ Status: Awaiting partner direct call link...</div>
-                  </div>
-                </div>
-
-                {/* What's Next Steps list */}
-                <div className="mssp-success-steps">
-                  <div className="mssp-success-step">
-                    <div className="step-num">01</div>
-                    <div className="step-content">
-                      <div className="step-title">Co-Sell Enablement Pack</div>
-                      <div className="step-text">Receive client-facing white-label collateral and predictable margin tiers.</div>
-                    </div>
-                  </div>
-                  <div className="mssp-success-step">
-                    <div className="step-num">02</div>
-                    <div className="step-content">
-                      <div className="step-title">2-Week Deploy POC</div>
-                      <div className="step-text">Try out Trench inside your own security operations environment or for a test client.</div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Action button */}
-                <a href="/why-trench" className="mssp-success-action-btn">
-                  See the Platform in Action
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                    <line x1="5" y1="12" x2="19" y2="12" />
-                    <polyline points="12 5 19 12 12 19" />
-                  </svg>
-                </a>
               </motion.div>
             ) : (
               <>
@@ -310,7 +280,18 @@ export default function ForMSSPsPage() {
                       placeholder="you@company.com"
                       className="mssp-input"
                       autoComplete="email"
+                      onChange={(e) => {
+                        if (emailError) {
+                          const domain = e.target.value.split('@')[1]?.toLowerCase();
+                          const freeProviders = ['gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com', 'icloud.com', 'aol.com', 'protonmail.com', 'zoho.com'];
+                          if (!freeProviders.includes(domain)) {
+                            setEmailError("");
+                          }
+                        }
+                      }}
+                      style={emailError ? { borderColor: '#ef4444' } : {}}
                     />
+                    {emailError && <div style={{ color: '#ef4444', fontSize: '0.85rem', marginTop: '0.5rem' }}>{emailError}</div>}
                   </div>
 
                   {/* Company Name */}
