@@ -50,22 +50,6 @@ export default function Section3Visual() {
       gap: 40,
     }}>
 
-      {/* Header */}
-      <div style={{ textAlign: "center", marginBottom: 0, maxWidth: 560 }}>
-        <div style={{ fontSize: 10, letterSpacing: "0.2em", color: "#94A3B8", textTransform: "uppercase", marginBottom: 12, fontWeight: 700 }}>
-          In Practice
-        </div>
-        <div style={{ fontSize: 20, fontWeight: 800, color: "#0F172A", letterSpacing: "-0.02em", lineHeight: 1.3, marginBottom: 14, fontFamily: "var(--font-primary)" }}>
-          SecOps inside where<br />your team already works.
-        </div>
-        <div style={{ fontSize: 12, color: "#64748B", lineHeight: 1.85, maxWidth: 480, margin: "0 auto" }}>
-          The three modes don't live in a diagram. They run in production — inside the tools
-          your team already uses every day. Each scenario below shows a different mode
-          in action: a threat verified and closed, a false positive suppressed before
-          anyone was paged, and a hunt that surfaced what passive monitoring missed entirely.
-        </div>
-      </div>
-
       {/* Mode legend */}
       <div style={{
         display: "flex", gap: 20, marginBottom: 0,
@@ -84,8 +68,8 @@ export default function Section3Visual() {
           <div key={i} style={{ display: "flex", alignItems: "center", gap: 7 }}>
             <div style={{ width: 8, height: 8, borderRadius: "50%", background: m.color, flexShrink: 0 }} />
             <div>
-              <div style={{ fontSize: 10, fontWeight: 700, color: "#0F172A", letterSpacing: "-0.01em" }}>{m.label}</div>
-              <div style={{ fontSize: 9, color: "#64748B" }}>{m.sub}</div>
+              <div style={{ fontSize: 12, fontWeight: 700, color: "#0F172A", letterSpacing: "-0.01em" }}>{m.label}</div>
+              <div style={{ fontSize: 10.8, color: "#64748B" }}>{m.sub}</div>
             </div>
           </div>
         ))}
@@ -126,7 +110,7 @@ export default function Section3Visual() {
               display: "flex", alignItems: "center", gap: 8,
               padding: "10px 4px",
               background: "transparent", border: "none",
-              cursor: "pointer", fontSize: 13,
+              cursor: "pointer", fontSize: 15.6,
               fontFamily: "var(--font-secondary), 'DM Mono', monospace",
               fontWeight: activeTab === tab.id ? 700 : 500,
               color: activeTab === tab.id ? "#0F172A" : "#94A3B8",
@@ -146,7 +130,7 @@ export default function Section3Visual() {
             paddingRight: 4, marginBottom: 6
           }}>
             <div style={{
-              fontSize: 10, letterSpacing: "0.05em", textTransform: "uppercase",
+              fontSize: 12, letterSpacing: "0.05em", textTransform: "uppercase",
               color: activeData.modeColor,
               background: activeData.modeColor + "15",
               padding: "5px 10px", borderRadius: 4,
@@ -159,7 +143,7 @@ export default function Section3Visual() {
 
         {/* Scenario subtitle */}
         <div style={{
-          padding: "16px 4px 12px 4px", fontSize: 11,
+          padding: "16px 4px 12px 4px", fontSize: 13.2,
           color: "#64748B",
         }}>
           {activeData.scenario}
@@ -189,8 +173,8 @@ function FlowStrip({ nodes, time }: { nodes: any[], time: string }) {
         {nodes.map((node, i) => (
           <div key={i} style={{ display: "flex", alignItems: "center", flex: 1 }}>
             <div style={{ flex: 1, background: node.color, padding: "9px 7px", textAlign: "center", borderRadius: "4px" }}>
-              <div style={{ fontSize: 10, fontWeight: 700, color: node.text }}>{node.label}</div>
-              <div style={{ fontSize: 8, color: node.text + "99", lineHeight: 1.5, marginTop: 2 }}>{node.sub}</div>
+              <div style={{ fontSize: 12, fontWeight: 700, color: node.text }}>{node.label}</div>
+              <div style={{ fontSize: 9.6, color: node.text + "99", lineHeight: 1.5, marginTop: 2 }}>{node.sub}</div>
             </div>
             {i < nodes.length - 1 && (
               <svg width="14" height="8" viewBox="0 0 14 8" fill="none" style={{ flexShrink: 0, margin: "0 2px" }}>
@@ -204,7 +188,7 @@ function FlowStrip({ nodes, time }: { nodes: any[], time: string }) {
         <div style={{ height: "100%", width: "100%", background: `linear-gradient(to right, ${nodes.map(n => n.text).join(", ")})`, borderRadius: 2 }}/>
       </div>
       <div style={{ display: "flex", justifyContent: "flex-end" }}>
-        <span style={{ fontSize: 8.5, color: "#0F172A", fontWeight: 700, letterSpacing: "0.05em" }}>{time}</span>
+        <span style={{ fontSize: 10.2, color: "#0F172A", fontWeight: 700, letterSpacing: "0.05em" }}>{time}</span>
       </div>
     </div>
   );
@@ -215,7 +199,7 @@ function SlackMock() {
   return (
     <div>
       <div style={{ background: "#3F0B40", padding: "10px 16px", display: "flex", alignItems: "center", gap: 8 }}>
-        <TrafficLights /><div style={{ fontSize: 10, color: "rgba(255,255,255,0.6)", marginLeft: 6 }}>#sec-ops · Live security operations</div>
+        <TrafficLights /><div style={{ fontSize: 12, color: "rgba(255,255,255,0.6)", marginLeft: 6 }}>#sec-ops · Live security operations</div>
       </div>
       <div style={{ background: "#FFFFFF", padding: "18px 16px", display: "flex", flexDirection: "column", gap: 16 }}>
         <BotMsg step="DETECT" stepColor="#E11D48" time="10:42 AM">
@@ -231,17 +215,17 @@ function SlackMock() {
             Hey Maya — sign-in from <strong>Lagos, NG</strong> on an unmanaged device. Was that you?
             <PillRow items={["👍 Yes", "🚫 Not me"]} activeIndex={1} />
           </QuoteBlock>
-          <div style={{ fontSize: 11, color: "#0D41E1", fontWeight: 700, marginTop: 8 }}>🚫 Maya Chen: "Not me. I'm in Berlin."</div>
+          <div style={{ fontSize: 13.2, color: "#0D41E1", fontWeight: 700, marginTop: 8 }}>🚫 Maya Chen: "Not me. I'm in Berlin."</div>
         </BotMsg>
 
         <BotMsg step="APPROVE" stepColor="#0D41E1" time="10:44 AM">
-          <div style={{ fontSize: 11, color: "#475569", marginBottom: 8 }}>Compromise confirmed. <BrandText>@on-call-secops</BrandText> — 3 actions staged:</div>
+          <div style={{ fontSize: 13.2, color: "#475569", marginBottom: 8 }}>Compromise confirmed. <BrandText>@on-call-secops</BrandText> — 3 actions staged:</div>
           <ActionList items={["Revoke all active Okta sessions", "Force MFA re-enrollment + password reset", "Block source IP 102.89.34.221"]} />
           <div style={{ marginTop: 10 }}><DarkBtn>✓ Approve all</DarkBtn></div>
         </BotMsg>
 
         <BotMsg step="DONE ✓" stepColor="#10B981" time="10:45 AM">
-          <div style={{ fontSize: 12, fontWeight: 700, color: "#0D41E1", marginBottom: 8 }}>✅ Account secured in <span style={{ background: "#F0FDF4", padding: "1px 5px", borderRadius: 3, color: "#059669" }}>3m 12s</span></div>
+          <div style={{ fontSize: 14.4, fontWeight: 700, color: "#0D41E1", marginBottom: 8 }}>✅ Account secured in <span style={{ background: "#F0FDF4", padding: "1px 5px", borderRadius: 3, color: "#059669" }}>3m 12s</span></div>
           <ResultTable rows={[["Okta sessions revoked","12 sessions"],["MFA re-enrollment forced","next sign-in"],["Source IP blocked","102.89.34.221"],["Incident filed","INC-2148 · Jira"]]} />
         </BotMsg>
       </div>
@@ -254,7 +238,7 @@ function TeamsMock() {
   return (
     <div>
       <div style={{ background: "#F8FAFC", borderBottom: "1px solid #E2E8F0", padding: "10px 16px", display: "flex", alignItems: "center", gap: 8 }}>
-        <TrafficLights /><div style={{ fontSize: 10, color: "#64748B", marginLeft: 6, fontWeight: 600 }}>Security Operations · General</div>
+        <TrafficLights /><div style={{ fontSize: 12, color: "#64748B", marginLeft: 6, fontWeight: 600 }}>Security Operations · General</div>
       </div>
       <div style={{ background: "#FFFFFF", padding: "18px 16px", display: "flex", flexDirection: "column", gap: 16 }}>
 
@@ -267,7 +251,7 @@ function TeamsMock() {
         </BotMsg>
 
         <BotMsg step="CORRELATE" stepColor="#0EA5E9" time="02:17 AM" teamsColor="#4F52B2">
-          <div style={{ fontSize: 11, color: "#475569", lineHeight: 1.7, marginBottom: 8 }}>
+          <div style={{ fontSize: 13.2, color: "#475569", lineHeight: 1.7, marginBottom: 8 }}>
             Matched against scheduled job registry:
           </div>
           <div style={{
@@ -275,7 +259,7 @@ function TeamsMock() {
             borderLeft: "3px solid #0EA5E9",
             borderRadius: 4, padding: "10px 12px",
           }}>
-            <div style={{ fontSize: 11, fontWeight: 700, color: "#0369A1", marginBottom: 6 }}>📋 Scheduled Job Match</div>
+            <div style={{ fontSize: 13.2, fontWeight: 700, color: "#0369A1", marginBottom: 6 }}>📋 Scheduled Job Match</div>
             <DataRow label="Job" value="nightly-data-sync-v2" />
             <DataRow label="Schedule" value="02:15 AM UTC · daily" />
             <DataRow label="Owner" value="data-engineering@company.com" />
@@ -285,15 +269,15 @@ function TeamsMock() {
         </BotMsg>
 
         <BotMsg step="AUTO-CLOSED" stepColor="#10B981" time="02:17 AM" teamsColor="#4F52B2">
-          <div style={{ fontSize: 12, fontWeight: 700, color: "#059669", marginBottom: 8 }}>
+          <div style={{ fontSize: 14.4, fontWeight: 700, color: "#059669", marginBottom: 8 }}>
             ✅ False positive confirmed · Auto-suppressed
           </div>
           <div style={{
             background: "#F0FDF4", border: "1px solid #BBF7D0",
-            borderRadius: 4, padding: "10px 12px", fontSize: 11, color: "#166534", marginBottom: 10,
+            borderRadius: 4, padding: "10px 12px", fontSize: 13.2, color: "#166534", marginBottom: 10,
           }}>
             No action required. Alert suppressed automatically.<br />
-            <span style={{ fontSize: 10, color: "#4ADE80" }}>Zero UI mode · your team was not paged.</span>
+            <span style={{ fontSize: 12, color: "#4ADE80" }}>Zero UI mode · your team was not paged.</span>
           </div>
           <ResultTable rows={[["Alert classified","False positive · 98.4% confidence"],["Action taken","None · auto-suppressed"],["Rule updated","Pattern added to allowlist"],["Incident","Not filed · FP log updated"]]} accentColor="#059669" />
           <Muted style={{ marginTop: 8 }}>⏰ Your team slept undisturbed. Next alert will be real.</Muted>
@@ -309,7 +293,7 @@ function ClaudeMock() {
   return (
     <div>
       <div style={{ background: "#D97757", padding: "10px 16px", display: "flex", alignItems: "center", gap: 8 }}>
-        <TrafficLights /><div style={{ fontSize: 10, color: "rgba(255,255,255,0.6)", marginLeft: 6 }}>Claude · Trench Security Operations</div>
+        <TrafficLights /><div style={{ fontSize: 12, color: "rgba(255,255,255,0.6)", marginLeft: 6 }}>Claude · Trench Security Operations</div>
       </div>
       <div style={{ background: "#F8FAFC", padding: "18px 16px", display: "flex", flexDirection: "column", gap: 14 }}>
 
@@ -318,10 +302,10 @@ function ClaudeMock() {
 
         {/* Claude thinking */}
         <ClaudeMsg>
-          <div style={{ fontSize: 11, color: "#475569", lineHeight: 1.7, marginBottom: 10 }}>
+          <div style={{ fontSize: 13.2, color: "#475569", lineHeight: 1.7, marginBottom: 10 }}>
             Querying across <strong style={{ color: "#0F172A" }}>Okta</strong>, <strong style={{ color: "#0F172A" }}>Active Directory</strong>, <strong style={{ color: "#0F172A" }}>CrowdStrike</strong>, and <strong style={{ color: "#0F172A" }}>CloudTrail</strong> for the 7-day window. Looking for account-hopping, privilege escalation, and off-hours anomalies.
           </div>
-          <div style={{ background: "#0F172A", borderRadius: 4, padding: "10px 12px", fontFamily: "monospace", fontSize: 10, color: "#4ADE80", lineHeight: 1.8 }}>
+          <div style={{ background: "#0F172A", borderRadius: 4, padding: "10px 12px", fontFamily: "monospace", fontSize: 12, color: "#4ADE80", lineHeight: 1.8 }}>
             <div style={{ color: "#64748B", marginBottom: 4 }}>// querying log sources</div>
             <div>→ Okta auth logs <span style={{ color: "#FBBF24" }}>168,420 events</span> ingested</div>
             <div>→ AD sign-in logs <span style={{ color: "#FBBF24" }}>94,112 events</span> ingested</div>
@@ -333,7 +317,7 @@ function ClaudeMock() {
 
         {/* Claude findings with visualization */}
         <ClaudeMsg>
-          <div style={{ fontSize: 11, fontWeight: 700, color: "#0F172A", marginBottom: 12 }}>
+          <div style={{ fontSize: 13.2, fontWeight: 700, color: "#0F172A", marginBottom: 12 }}>
             🔍 Lateral movement pattern detected — 3 findings:
           </div>
 
@@ -353,10 +337,10 @@ function ClaudeMock() {
                 background: f.color + "08",
               }}>
                 <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 4 }}>
-                  <div style={{ fontSize: 11, fontWeight: 700, color: "#0F172A" }}>{f.n}. {f.title}</div>
-                  <div style={{ fontSize: 8, color: f.color, background: f.color + "15", padding: "2px 6px", borderRadius: 3, letterSpacing: "0.1em", fontWeight: 700 }}>{f.severity}</div>
+                  <div style={{ fontSize: 13.2, fontWeight: 700, color: "#0F172A" }}>{f.n}. {f.title}</div>
+                  <div style={{ fontSize: 9.6, color: f.color, background: f.color + "15", padding: "2px 6px", borderRadius: 3, letterSpacing: "0.1em", fontWeight: 700 }}>{f.severity}</div>
                 </div>
-                <div style={{ fontSize: 10, color: "#64748B" }}>{f.detail}</div>
+                <div style={{ fontSize: 12, color: "#64748B" }}>{f.detail}</div>
               </div>
             ))}
           </div>
@@ -367,7 +351,7 @@ function ClaudeMock() {
 
         {/* Claude recommendation */}
         <ClaudeMsg>
-          <div style={{ fontSize: 11, color: "#475569", lineHeight: 1.7, marginBottom: 10 }}>
+          <div style={{ fontSize: 13.2, color: "#475569", lineHeight: 1.7, marginBottom: 10 }}>
             <strong style={{ color: "#0F172A" }}>src-host-42</strong> last seen <strong style={{ color: "#E11D48" }}>14 minutes ago</strong> — still active. I recommend immediate action:
           </div>
           <ActionList items={["Isolate src-host-42 from the network now", "Revoke sessions for dev-user-09 and svc-admin", "Preserve CloudTrail + CrowdStrike logs for forensics"]} />
@@ -400,7 +384,7 @@ function LateralMovementGraph() {
 
   return (
     <div style={{ background: "#0F172A", borderRadius: 6, padding: "16px 12px", marginBottom: 4 }}>
-      <div style={{ fontSize: 8, color: "#64748B", letterSpacing: "0.15em", textTransform: "uppercase", marginBottom: 10, fontWeight: 700 }}>
+      <div style={{ fontSize: 9.6, color: "#64748B", letterSpacing: "0.15em", textTransform: "uppercase", marginBottom: 10, fontWeight: 700 }}>
         Lateral movement · Tue 02:34–02:47 AM
       </div>
       <svg width="100%" height="130" viewBox="0 0 460 130" style={{ overflow: "visible" }}>
@@ -445,12 +429,12 @@ function BotMsg({ step, stepColor, time, teamsColor, children }: any) {
   const bg = teamsColor || "#0F172A";
   return (
     <div style={{ display: "flex", gap: 10 }}>
-      <div style={{ width: 28, height: 28, borderRadius: 6, background: bg, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 10, color: "#fff", fontWeight: 800, flexShrink: 0 }}>T</div>
+      <div style={{ width: 28, height: 28, borderRadius: 6, background: bg, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 12, color: "#fff", fontWeight: 800, flexShrink: 0 }}>T</div>
       <div style={{ flex: 1 }}>
         <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 6 }}>
-          <span style={{ fontSize: 12, fontWeight: 800, color: "#0F172A" }}>Trench</span>
-          <span style={{ fontSize: 8, color: "#fff", background: stepColor, padding: "2px 7px", borderRadius: 3, letterSpacing: "0.1em", fontWeight: 700 }}>{step}</span>
-          <span style={{ fontSize: 10, color: "#94A3B8" }}>{time}</span>
+          <span style={{ fontSize: 14.4, fontWeight: 800, color: "#0F172A" }}>Trench</span>
+          <span style={{ fontSize: 9.6, color: "#fff", background: stepColor, padding: "2px 7px", borderRadius: 3, letterSpacing: "0.1em", fontWeight: 700 }}>{step}</span>
+          <span style={{ fontSize: 12, color: "#94A3B8" }}>{time}</span>
         </div>
         {children}
       </div>
@@ -461,7 +445,7 @@ function BotMsg({ step, stepColor, time, teamsColor, children }: any) {
 function ClaudeMsg({ children }: any) {
   return (
     <div style={{ display: "flex", gap: 10 }}>
-      <div style={{ width: 28, height: 28, borderRadius: "50%", background: "#D97757", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 10, color: "#fff", fontWeight: 800, flexShrink: 0 }}>C</div>
+      <div style={{ width: 28, height: 28, borderRadius: "50%", background: "#D97757", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 12, color: "#fff", fontWeight: 800, flexShrink: 0 }}>C</div>
       <div style={{ flex: 1, background: "#FFFFFF", border: "1px solid #E2E8F0", borderRadius: "0 8px 8px 8px", padding: "12px 14px" }}>
         {children}
       </div>
@@ -472,10 +456,10 @@ function ClaudeMsg({ children }: any) {
 function UserMsg({ children }: any) {
   return (
     <div style={{ display: "flex", gap: 10, justifyContent: "flex-end" }}>
-      <div style={{ background: "#0F172A", borderRadius: "8px 0 8px 8px", padding: "10px 14px", maxWidth: "72%", fontSize: 11, color: "#FFFFFF", lineHeight: 1.6 }}>
+      <div style={{ background: "#0F172A", borderRadius: "8px 0 8px 8px", padding: "10px 14px", maxWidth: "72%", fontSize: 13.2, color: "#FFFFFF", lineHeight: 1.6 }}>
         {children}
       </div>
-      <div style={{ width: 28, height: 28, borderRadius: "50%", background: "#E2E8F0", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 10, color: "#64748B", fontWeight: 800, flexShrink: 0 }}>U</div>
+      <div style={{ width: 28, height: 28, borderRadius: "50%", background: "#E2E8F0", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 12, color: "#64748B", fontWeight: 800, flexShrink: 0 }}>U</div>
     </div>
   );
 }
@@ -490,7 +474,7 @@ function TrafficLights() {
 
 function DataRow({ label, value, alert }: any) {
   return (
-    <div style={{ display: "flex", gap: 12, fontSize: 11, marginBottom: 4 }}>
+    <div style={{ display: "flex", gap: 12, fontSize: 13.2, marginBottom: 4 }}>
       <span style={{ color: "#94A3B8", minWidth: 72, flexShrink: 0 }}>{label}</span>
       <span style={{ color: alert ? "#E11D48" : "#475569", fontWeight: alert ? 700 : 500 }}>{value}</span>
     </div>
@@ -499,7 +483,7 @@ function DataRow({ label, value, alert }: any) {
 
 function QuoteBlock({ children, accent }: any) {
   return (
-    <div style={{ background: "#F8FAFC", borderLeft: `3px solid ${accent || "#0D41E1"}`, padding: "8px 10px", fontSize: 11, color: "#475569", lineHeight: 1.6 }}>
+    <div style={{ background: "#F8FAFC", borderLeft: `3px solid ${accent || "#0D41E1"}`, padding: "8px 10px", fontSize: 13.2, color: "#475569", lineHeight: 1.6 }}>
       {children}
     </div>
   );
@@ -511,7 +495,7 @@ function PillRow({ items, activeIndex }: any) {
       {items.map((item: any, i: number) => (
         <div key={i} style={{
           padding: "4px 10px", border: `1px solid ${i === activeIndex ? "#0D41E1" : "#E2E8F0"}`,
-          borderRadius: 4, fontSize: 10, fontWeight: 600,
+          borderRadius: 4, fontSize: 12, fontWeight: 600,
           color: i === activeIndex ? "#0D41E1" : "#64748B",
           background: i === activeIndex ? "#E0E7FF" : "#FFFFFF",
         }}>{item}</div>
@@ -524,7 +508,7 @@ function ActionList({ items }: any) {
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 5 }}>
       {items.map((item: any, i: number) => (
-        <div key={i} style={{ display: "flex", gap: 8, fontSize: 11, color: "#475569" }}>
+        <div key={i} style={{ display: "flex", gap: 8, fontSize: 13.2, color: "#475569" }}>
           <span style={{ color: "#94A3B8", flexShrink: 0 }}>{i + 1}.</span>{item}
         </div>
       ))}
@@ -537,8 +521,8 @@ function ResultTable({ rows, accentColor }: any) {
   return (
     <div>
       {rows.map(([l, v]: any, i: number) => (
-        <div key={i} style={{ display: "flex", justifyContent: "space-between", fontSize: 11, color: "#475569", borderBottom: "1px solid #F8FAFC", padding: "5px 0" }}>
-          <span>{l}</span><span style={{ color, fontSize: 10, fontWeight: 600 }}>✓ {v}</span>
+        <div key={i} style={{ display: "flex", justifyContent: "space-between", fontSize: 13.2, color: "#475569", borderBottom: "1px solid #F8FAFC", padding: "5px 0" }}>
+          <span>{l}</span><span style={{ color, fontSize: 12, fontWeight: 600 }}>✓ {v}</span>
         </div>
       ))}
     </div>
@@ -546,7 +530,7 @@ function ResultTable({ rows, accentColor }: any) {
 }
 
 function Bold({ children }: any) {
-  return <div style={{ fontSize: 12, fontWeight: 700, color: "#0F172A", marginBottom: 8 }}>{children}</div>;
+  return <div style={{ fontSize: 14.4, fontWeight: 700, color: "#0F172A", marginBottom: 8 }}>{children}</div>;
 }
 
 function BrandText({ children }: any) {
@@ -554,12 +538,12 @@ function BrandText({ children }: any) {
 }
 
 function Muted({ children, style }: any) {
-  return <div style={{ fontSize: 10, color: "#94A3B8", marginTop: 8, fontStyle: "italic", ...style }}>{children}</div>;
+  return <div style={{ fontSize: 12, color: "#94A3B8", marginTop: 8, fontStyle: "italic", ...style }}>{children}</div>;
 }
 
 function DarkBtn({ children }: any) {
   return (
-    <button style={{ background: "#0D41E1", color: "#FFFFFF", border: "none", borderRadius: 4, padding: "8px 14px", fontSize: 11, fontFamily: "var(--font-secondary), 'DM Mono', monospace", fontWeight: 700, cursor: "pointer", letterSpacing: "0.04em" }}>
+    <button style={{ background: "#0D41E1", color: "#FFFFFF", border: "none", borderRadius: 4, padding: "8px 14px", fontSize: 13.2, fontFamily: "var(--font-secondary), 'DM Mono', monospace", fontWeight: 700, cursor: "pointer", letterSpacing: "0.04em" }}>
       {children}
     </button>
   );
@@ -567,7 +551,7 @@ function DarkBtn({ children }: any) {
 
 function GhostBtn({ children }: any) {
   return (
-    <button style={{ background: "transparent", color: "#64748B", border: "1px solid #E2E8F0", borderRadius: 4, padding: "8px 14px", fontSize: 11, fontFamily: "var(--font-secondary), 'DM Mono', monospace", cursor: "pointer", fontWeight: 600 }}>
+    <button style={{ background: "transparent", color: "#64748B", border: "1px solid #E2E8F0", borderRadius: 4, padding: "8px 14px", fontSize: 13.2, fontFamily: "var(--font-secondary), 'DM Mono', monospace", cursor: "pointer", fontWeight: 600 }}>
       {children}
     </button>
   );
