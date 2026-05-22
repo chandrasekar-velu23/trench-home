@@ -389,7 +389,7 @@ export default function BlogClientLayout({ post, relatedPosts }: BlogClientLayou
             {post.image && (
               <div style={{ 
                 width: "100%", 
-                height: "clamp(200px, 35vh, 420px)", 
+                aspectRatio: "16/9", 
                 borderRadius: "16px", 
                 overflow: "hidden", 
                 position: "relative", 
@@ -397,7 +397,7 @@ export default function BlogClientLayout({ post, relatedPosts }: BlogClientLayou
                 boxShadow: "0 10px 30px rgba(0, 0, 0, 0.03)",
                 border: "1px solid #E2E8F0"
               }}>
-                <Image src={post.image} alt={post.title} fill style={{ objectFit: "contain", background: "#FFFFFF" }} priority />
+                <Image src={post.image} alt={post.title} fill style={{ objectFit: "cover" }} priority />
               </div>
             )}
 
@@ -405,8 +405,13 @@ export default function BlogClientLayout({ post, relatedPosts }: BlogClientLayou
             <article 
               ref={articleRef} 
               className="blog-post-prose"
+              suppressHydrationWarning
             >
-              {cleanBody.split(/(<!-- INJECT_HEADLESS_SECOPS_DIAGRAM -->|<!-- INJECT_SECTION3_VISUAL -->)/g).map((part, index) => {
+              {cleanBody
+                .replace(/<p[^>]*>\s*(<!-- INJECT_HEADLESS_SECOPS_DIAGRAM -->)\s*<\/p>/g, "$1")
+                .replace(/<p[^>]*>\s*(<!-- INJECT_SECTION3_VISUAL -->)\s*<\/p>/g, "$1")
+                .replace(/([\s\S]*)(<img[^>]+>)([\s\S]*)$/, '$1<a href="/connect" style="display:block; cursor:pointer;" class="cta-banner-link">$2</a>$3')
+                .split(/(<!-- INJECT_HEADLESS_SECOPS_DIAGRAM -->|<!-- INJECT_SECTION3_VISUAL -->)/g).map((part, index) => {
                 if (part === '<!-- INJECT_HEADLESS_SECOPS_DIAGRAM -->') {
                   return (
                     <div key={index} style={{ width: '100%', margin: '40px 0', overflowX: 'auto' }}>
@@ -423,7 +428,7 @@ export default function BlogClientLayout({ post, relatedPosts }: BlogClientLayou
                     </ScrollReveal>
                   );
                 }
-                return <div key={index} style={{ width: '100%' }} dangerouslySetInnerHTML={{ __html: part }} />;
+                return <div key={index} style={{ width: '100%' }} dangerouslySetInnerHTML={{ __html: part }} suppressHydrationWarning />;
               })}
             </article>
 
@@ -581,7 +586,7 @@ export default function BlogClientLayout({ post, relatedPosts }: BlogClientLayou
                   }} className="related-card">
                     <Link href={`/blog/${relatedPost.slug}`} style={{ display: "flex", flexDirection: "column", height: "100%" }}>
                       {/* Image */}
-                      <div style={{ height: '180px', background: '#F1F5F9', overflow: 'hidden', position: 'relative' }}>
+                      <div style={{ aspectRatio: '16/9', background: '#F1F5F9', overflow: 'hidden', position: 'relative' }}>
                         {relatedPost.image ? (
                           <Image src={relatedPost.image} alt={relatedPost.title} fill style={{ objectFit: 'cover' }} />
                         ) : (

@@ -12,7 +12,7 @@ export default function HeadlessSecOpsModes() {
       detail: "Detection, enrichment, and low-risk remediation run fully in the background.",
       humanLabel: "No human required",
       visual: (
-        <svg width="60" height="60" viewBox="0 0 56 56" fill="none">
+        <svg width="90" height="90" viewBox="0 0 56 56" fill="none">
           <style>
             {`
               @keyframes pulseCore {
@@ -56,7 +56,7 @@ export default function HeadlessSecOpsModes() {
       detail: "High-signal threats route to Slack, Teams, or Claude, full context, one-click resolution.",
       humanLabel: "Human in the loop",
       visual: (
-        <svg width="60" height="60" viewBox="0 0 56 56" fill="none">
+        <svg width="90" height="90" viewBox="0 0 56 56" fill="none">
           <style>
             {`
               @keyframes chatPop1 {
@@ -115,7 +115,7 @@ export default function HeadlessSecOpsModes() {
       detail: "A dynamic interface assembles around the specific investigation, then dissolves when the decision is made.",
       humanLabel: "Human leads",
       visual: (
-        <svg width="60" height="60" viewBox="0 0 56 56" fill="none">
+        <svg width="90" height="90" viewBox="0 0 56 56" fill="none">
           <style>
             {`
               @keyframes puzzleMove1 {
@@ -197,7 +197,7 @@ export default function HeadlessSecOpsModes() {
       {/* Header */}
       <div style={{ textAlign: "center", marginBottom: 32 }}>
         <div style={{
-          fontSize: 11,
+          fontSize: 13,
           letterSpacing: "0.15em",
           color: brandPrimary,
           textTransform: "uppercase",
@@ -208,7 +208,7 @@ export default function HeadlessSecOpsModes() {
           The Three Modes of Headless SecOps
         </div>
         <div style={{
-          fontSize: 10,
+          fontSize: 12,
           color: brandNeutral,
           letterSpacing: "0.12em",
           textTransform: "uppercase",
@@ -242,17 +242,8 @@ export default function HeadlessSecOpsModes() {
           >
             {/* Visual Column */}
             <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 8, minWidth: 80 }}>
-              <div style={{ height: 60, display: "flex", alignItems: "center", justifyContent: "center" }}>
+              <div style={{ height: 90, display: "flex", alignItems: "center", justifyContent: "center" }}>
                 {mode.visual}
-              </div>
-              <div style={{
-                fontSize: 10,
-                letterSpacing: "0.2em",
-                color: brandPrimary,
-                fontFamily: "var(--font-primary)",
-                fontWeight: 800
-              }}>
-                {mode.number}
               </div>
             </div>
 
@@ -260,7 +251,7 @@ export default function HeadlessSecOpsModes() {
             <div style={{ display: "flex", flexDirection: "column", gap: 6, flexGrow: 1 }}>
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "8px" }}>
                 <div style={{
-                  fontSize: 16,
+                  fontSize: 19,
                   fontWeight: 800,
                   color: "#1E293B",
                   letterSpacing: "-0.02em",
@@ -269,7 +260,7 @@ export default function HeadlessSecOpsModes() {
                   {mode.name}
                 </div>
                 <div style={{
-                  fontSize: 9,
+                  fontSize: 11,
                   letterSpacing: "0.15em",
                   textTransform: "uppercase",
                   color: brandPrimary,
@@ -284,7 +275,7 @@ export default function HeadlessSecOpsModes() {
               </div>
 
               <div style={{
-                fontSize: 13,
+                fontSize: 16,
                 color: "#1E293B",
                 fontWeight: 600,
               }}>
@@ -292,7 +283,7 @@ export default function HeadlessSecOpsModes() {
               </div>
 
               <div style={{
-                fontSize: 13,
+                fontSize: 16,
                 color: brandNeutral,
                 lineHeight: 1.5,
               }}>
@@ -330,7 +321,7 @@ export default function HeadlessSecOpsModes() {
         <div style={{
           display: "flex",
           justifyContent: "space-between",
-          fontSize: 9,
+          fontSize: 11,
           letterSpacing: "0.12em",
           textTransform: "uppercase",
           color: brandNeutral,
@@ -350,7 +341,7 @@ export default function HeadlessSecOpsModes() {
         paddingTop: 16,
         borderTop: "1px solid #E2E8F0",
       }}>
-        <div style={{ fontSize: 9, color: brandNeutral, letterSpacing: "0.14em", fontWeight: 700 }}>
+        <div style={{ fontSize: 11, color: brandNeutral, letterSpacing: "0.14em", fontWeight: 700 }}>
           NO ALERTS &nbsp;·&nbsp; NO DASHBOARDS &nbsp;·&nbsp; NO CONSOLE-HOPPING
         </div>
       </div>

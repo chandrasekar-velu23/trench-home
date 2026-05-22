@@ -1,22 +1,23 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 export default function Section3Visual() {
-  const [activeTab, setActiveTab] = useState("slack");
+  const [activeTab, setActiveTab] = useState("teams");
+  const [isPaused, setIsPaused] = useState(false);
 
   const tabs = [
-    {
-      id: "slack", label: "Slack",
-      scenario: "Suspicious sign-in · Verified & remediated in 3m 12s",
-      mode: "Conversational UX",
-      modeColor: "#3F0B40",
-    },
     {
       id: "teams", label: "Teams",
       scenario: "False positive · Auto-suppressed, team notified",
       mode: "Zero UI",
       modeColor: "#4F52B2",
+    },
+    {
+      id: "slack", label: "Slack",
+      scenario: "Suspicious sign-in · Verified & remediated in 3m 12s",
+      mode: "Conversational UX",
+      modeColor: "#3F0B40",
     },
     {
       id: "claude", label: "Claude",
@@ -28,19 +29,32 @@ export default function Section3Visual() {
 
   const activeData = tabs.find(t => t.id === activeTab) || tabs[0];
 
+  const [readyToSwitch, setReadyToSwitch] = useState(false);
+
+  const handleComplete = () => {
+    setReadyToSwitch(true);
+  };
+
   useEffect(() => {
-    const tabIds = ["slack", "teams", "claude"];
-    const interval = setInterval(() => {
+    if (isPaused || !readyToSwitch) return;
+    
+    const timer = setTimeout(() => {
       setActiveTab((current) => {
+        const tabIds = ["teams", "slack", "claude"];
         const currentIndex = tabIds.indexOf(current);
         return tabIds[(currentIndex + 1) % tabIds.length];
       });
-    }, 5000);
-    return () => clearInterval(interval);
-  }, []);
+      setReadyToSwitch(false); // Reset for the next tab
+    }, 2000); // Wait 2 seconds after the last message before switching
+
+    return () => clearTimeout(timer);
+  }, [isPaused, readyToSwitch]);
 
   return (
-    <div style={{
+    <div 
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+      style={{
       fontFamily: "var(--font-secondary), 'DM Mono', 'Courier New', monospace",
       display: "flex",
       flexDirection: "column",
@@ -50,30 +64,7 @@ export default function Section3Visual() {
       gap: 40,
     }}>
 
-      {/* Mode legend */}
-      <div style={{
-        display: "flex", gap: 20, marginBottom: 0,
-        padding: "12px 20px",
-        border: "1px solid #E2E8F0",
-        borderRadius: 6,
-        background: "#F8FAFC",
-        flexWrap: "wrap",
-        justifyContent: "center"
-      }}>
-        {[
-          { label: "Zero UI", sub: "System acts autonomously", color: "#64748B" },
-          { label: "Conversational UX", sub: "Human approves in-thread", color: "#0D41E1" },
-          { label: "On-Demand Context", sub: "Human investigates on demand", color: "#0F172A" },
-        ].map((m, i) => (
-          <div key={i} style={{ display: "flex", alignItems: "center", gap: 7 }}>
-            <div style={{ width: 8, height: 8, borderRadius: "50%", background: m.color, flexShrink: 0 }} />
-            <div>
-              <div style={{ fontSize: 12, fontWeight: 700, color: "#0F172A", letterSpacing: "-0.01em" }}>{m.label}</div>
-              <div style={{ fontSize: 10.8, color: "#64748B" }}>{m.sub}</div>
-            </div>
-          </div>
-        ))}
-      </div>
+
 
       {/* Abstract flow strip — updates per tab */}
       <div style={{ width: "100%", maxWidth: 620, marginBottom: 0 }}>
@@ -106,7 +97,7 @@ export default function Section3Visual() {
       <div style={{ width: "100%", maxWidth: 620 }}>
         <div style={{ display: "flex", gap: 24, borderBottom: "1px solid #E2E8F0", paddingBottom: 0, alignItems: "center" }}>
           {tabs.map((tab) => (
-            <button key={tab.id} onClick={() => setActiveTab(tab.id)} style={{
+            <button key={tab.id} onClick={() => { setActiveTab(tab.id);  }} style={{
               display: "flex", alignItems: "center", gap: 8,
               padding: "10px 4px",
               background: "transparent", border: "none",
@@ -153,11 +144,11 @@ export default function Section3Visual() {
         <div style={{
           border: "1px solid #E2E8F0", borderTop: "none",
           borderRadius: "0 0 8px 8px", overflow: "hidden",
-          boxShadow: "0 4px 24px rgba(0,0,0,0.02)",
+          boxShadow: "0 4px 24px rgba(0,0,0,0.02)", height: 550, display: "flex", flexDirection: "column"
         }}>
-          {activeTab === "slack" && <SlackMock />}
-          {activeTab === "teams" && <TeamsMock />}
-          {activeTab === "claude" && <ClaudeMock />}
+          {activeTab === "slack" && <SlackMock isPaused={isPaused} onComplete={handleComplete} />}
+          {activeTab === "teams" && <TeamsMock isPaused={isPaused} onComplete={handleComplete} />}
+          {activeTab === "claude" && <ClaudeMock isPaused={isPaused} onComplete={handleComplete} />}
         </div>
       </div>
 
@@ -194,179 +185,325 @@ function FlowStrip({ nodes, time }: { nodes: any[], time: string }) {
   );
 }
 
-// ─── SLACK: Suspicious sign-in ─────────────────────────────────────
-function SlackMock() {
+// ─── MESSAGE WINDOW COMPONENT ──────────────────────────────────────
+function MessageWindow({ header, messages, inputPlaceholder, bg = "#FFFFFF", inputBg = "#FFFFFF", interval = 600, isPaused, onComplete }: {
+  header: React.ReactNode;
+  messages: React.ReactNode[];
+  inputPlaceholder: string;
+  bg?: string;
+  inputBg?: string;
+  interval?: number;
+  isPaused: boolean;
+  onComplete?: () => void;
+}) {
+  const [current, setCurrent] = useState(0);
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [completed, setCompleted] = useState(false);
+
+  useEffect(() => {
+    setCurrent(0);
+    setCompleted(false);
+  }, [messages]);
+
+  // Handle completion safely outside the state updater
+  useEffect(() => {
+    if (completed || isPaused) return;
+    if (current === messages.length - 1) {
+      // Small delay before marking as complete to let the last animation finish
+      const timeout = setTimeout(() => {
+        setCompleted(true);
+        if (onComplete) onComplete();
+      }, 500);
+      return () => clearTimeout(timeout);
+    }
+  }, [current, messages.length, completed, isPaused, onComplete]);
+
+  // Handle message increment interval
+  useEffect(() => {
+    if (completed || current >= messages.length - 1) return;
+    
+    // Slow down to 1500ms when hovered (isPaused), otherwise use normal fast interval
+    const activeInterval = isPaused ? 1500 : interval;
+    
+    const timer = setInterval(() => {
+      setCurrent(c => {
+        if (c < messages.length - 1) {
+          return c + 1;
+        }
+        return c;
+      });
+    }, activeInterval);
+    return () => clearInterval(timer);
+  }, [messages.length, interval, completed, isPaused, current]);
+
+  // Auto-scroll logic
+  useEffect(() => {
+    if (scrollRef.current) {
+      const scrollTimeout = setTimeout(() => {
+        if (scrollRef.current) {
+          scrollRef.current.scrollTo({
+            top: scrollRef.current.scrollHeight,
+            behavior: 'smooth'
+          });
+        }
+      }, 50);
+      return () => clearTimeout(scrollTimeout);
+    }
+  }, [current]);
+
   return (
-    <div>
-      <div style={{ background: "#3F0B40", padding: "10px 16px", display: "flex", alignItems: "center", gap: 8 }}>
-        <TrafficLights /><div style={{ fontSize: 12, color: "rgba(255,255,255,0.6)", marginLeft: 6 }}>#sec-ops · Live security operations</div>
+    <div style={{ background: bg, display: "flex", flexDirection: "column", flex: 1, height: "100%", borderRadius: "0 0 8px 8px" }}>
+      {header}
+      <div 
+        ref={scrollRef}
+        className="hide-scrollbar"
+        style={{ 
+          flex: 1, 
+          padding: "24px 20px", 
+          display: "flex", 
+          flexDirection: "column",
+          gap: 24,
+          overflowY: "auto",
+          scrollbarWidth: "none",
+          msOverflowStyle: "none",
+        }}
+      >
+        {messages.map((msg, index) => {
+          if (index > current) return null;
+          return (
+            <div key={index} style={{ 
+              animation: "messageFadeInUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards",
+              willChange: "transform, opacity"
+            }}>
+              {msg}
+            </div>
+          );
+        })}
       </div>
-      <div style={{ background: "#FFFFFF", padding: "18px 16px", display: "flex", flexDirection: "column", gap: 16 }}>
-        <BotMsg step="DETECT" stepColor="#E11D48" time="10:42 AM">
-          <Bold>🚨 Suspicious sign-in detected · <BrandText>@maya.chen</BrandText></Bold>
-          <DataRow label="Location" value="Lagos, NG · impossible travel from Berlin (4 min ago)" alert />
-          <DataRow label="Device" value="Unmanaged · new fingerprint" alert />
-          <DataRow label="Risk" value="HIGH · 0.91" alert />
-          <Muted>Reaching out to @maya.chen in DM to verify…</Muted>
-        </BotMsg>
-
-        <BotMsg step="VERIFY" stepColor="#F59E0B" time="10:43 AM">
-          <QuoteBlock accent="#0D41E1">
-            Hey Maya — sign-in from <strong>Lagos, NG</strong> on an unmanaged device. Was that you?
-            <PillRow items={["👍 Yes", "🚫 Not me"]} activeIndex={1} />
-          </QuoteBlock>
-          <div style={{ fontSize: 13.2, color: "#0D41E1", fontWeight: 700, marginTop: 8 }}>🚫 Maya Chen: "Not me. I'm in Berlin."</div>
-        </BotMsg>
-
-        <BotMsg step="APPROVE" stepColor="#0D41E1" time="10:44 AM">
-          <div style={{ fontSize: 13.2, color: "#475569", marginBottom: 8 }}>Compromise confirmed. <BrandText>@on-call-secops</BrandText> — 3 actions staged:</div>
-          <ActionList items={["Revoke all active Okta sessions", "Force MFA re-enrollment + password reset", "Block source IP 102.89.34.221"]} />
-          <div style={{ marginTop: 10 }}><DarkBtn>✓ Approve all</DarkBtn></div>
-        </BotMsg>
-
-        <BotMsg step="DONE ✓" stepColor="#10B981" time="10:45 AM">
-          <div style={{ fontSize: 14.4, fontWeight: 700, color: "#0D41E1", marginBottom: 8 }}>✅ Account secured in <span style={{ background: "#F0FDF4", padding: "1px 5px", borderRadius: 3, color: "#059669" }}>3m 12s</span></div>
-          <ResultTable rows={[["Okta sessions revoked","12 sessions"],["MFA re-enrollment forced","next sign-in"],["Source IP blocked","102.89.34.221"],["Incident filed","INC-2148 · Jira"]]} />
-        </BotMsg>
+      <div style={{ padding: "12px 16px", background: inputBg, borderTop: "1px solid #F1F5F9" }}>
+        <div style={{ 
+          background: "#FFFFFF", border: "1px solid #E2E8F0", borderRadius: 24, 
+          padding: "8px 16px", display: "flex", justifyContent: "space-between", alignItems: "center" 
+        }}>
+          <div style={{ color: "#94A3B8", fontSize: 13.2 }}>{inputPlaceholder}</div>
+          <div style={{ display: "flex", alignItems: "center", gap: 4, color: "#CBD5E1", fontSize: 12 }}>
+            <span style={{ fontFamily: "sans-serif" }}>⌘</span> K
+          </div>
+        </div>
       </div>
+      <style dangerouslySetInnerHTML={{__html: `
+        @keyframes messageFadeInUp {
+          0% { opacity: 0; transform: translateY(12px); }
+          100% { opacity: 1; transform: translateY(0); }
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+      `}} />
     </div>
   );
+}
+
+// ─── SLACK: Suspicious sign-in ─────────────────────────────────────
+function SlackMock({ isPaused, onComplete }: { isPaused: boolean; onComplete: () => void }) {
+  const header = (
+    <div style={{ background: "#3F0B40", padding: "16px 20px", display: "flex", alignItems: "center", gap: 8 }}>
+      <TrafficLights /><div style={{ fontSize: 12, color: "rgba(255,255,255,0.6)", marginLeft: 6, fontWeight: 600 }}>#sec-ops · Live security operations</div>
+    </div>
+  );
+
+  const messages = [
+    <BotMsg step="DETECT" stepColor="#E11D48" time="10:42 AM">
+      <Bold>🚨 Suspicious sign-in detected · <BrandText>@maya.chen</BrandText></Bold>
+      <DataRow label="Location" value="Lagos, NG · impossible travel from Berlin (4 min ago)" alert />
+      <DataRow label="Device" value="Unmanaged · new fingerprint" alert />
+      <DataRow label="Risk" value="HIGH · 0.91" alert />
+      <Muted>Reaching out to @maya.chen in DM to verify…</Muted>
+    </BotMsg>,
+
+    <BotMsg step="VERIFY" stepColor="#F59E0B" time="10:43 AM">
+      <QuoteBlock accent="#0D41E1">
+        Hey Maya — sign-in from <strong>Lagos, NG</strong> on an unmanaged device. Was that you?
+        <PillRow items={["👍 Yes", "🚫 Not me"]} activeIndex={1} />
+      </QuoteBlock>
+      <div style={{ fontSize: 13.2, color: "#0D41E1", fontWeight: 700, marginTop: 8 }}>🚫 Maya Chen: "Not me. I'm in Berlin."</div>
+    </BotMsg>,
+
+    <BotMsg step="APPROVE" stepColor="#0D41E1" time="10:44 AM">
+      <div style={{ fontSize: 13.2, color: "#475569", marginBottom: 8 }}>Compromise confirmed. <BrandText>@on-call-secops</BrandText> — 3 actions staged:</div>
+      <ActionList items={["Revoke all active Okta sessions", "Force MFA re-enrollment + password reset", "Block source IP 102.89.34.221"]} />
+      <div style={{ marginTop: 10 }}><DarkBtn>✓ Approve all</DarkBtn></div>
+    </BotMsg>,
+
+    <BotMsg step="DONE ✓" stepColor="#10B981" time="10:45 AM">
+      <div style={{ fontSize: 14.4, fontWeight: 700, color: "#0D41E1", marginBottom: 8 }}>✅ Account secured in <span style={{ background: "#F0FDF4", padding: "1px 5px", borderRadius: 3, color: "#059669" }}>3m 12s</span></div>
+      <ResultTable rows={[["Okta sessions revoked","12 sessions"],["MFA re-enrollment forced","next sign-in"],["Source IP blocked","102.89.34.221"],["Incident filed","INC-2148 · Jira"]]} />
+    </BotMsg>
+  ];
+
+  return <MessageWindow header={header} messages={messages} inputPlaceholder="Message #sec-ops..." bg="#FFFFFF" isPaused={isPaused} onComplete={onComplete} interval={300} />;
 }
 
 // ─── TEAMS: False positive auto-closure ───────────────────────────
-function TeamsMock() {
-  return (
-    <div>
-      <div style={{ background: "#F8FAFC", borderBottom: "1px solid #E2E8F0", padding: "10px 16px", display: "flex", alignItems: "center", gap: 8 }}>
-        <TrafficLights /><div style={{ fontSize: 12, color: "#64748B", marginLeft: 6, fontWeight: 600 }}>Security Operations · General</div>
-      </div>
-      <div style={{ background: "#FFFFFF", padding: "18px 16px", display: "flex", flexDirection: "column", gap: 16 }}>
-
-        <BotMsg step="DETECT" stepColor="#F59E0B" time="02:17 AM" teamsColor="#4F52B2">
-          <Bold>⚠️ Anomalous API activity · <span style={{ color: "#4F52B2" }}>svc-data-pipeline</span></Bold>
-          <DataRow label="Source" value="CloudTrail · S3 bucket enumeration" />
-          <DataRow label="Volume" value="847 API calls in 90s · 12× baseline" alert />
-          <DataRow label="Time" value="02:17 AM · outside business hours" alert />
-          <Muted>Cross-referencing against known activity patterns…</Muted>
-        </BotMsg>
-
-        <BotMsg step="CORRELATE" stepColor="#0EA5E9" time="02:17 AM" teamsColor="#4F52B2">
-          <div style={{ fontSize: 13.2, color: "#475569", lineHeight: 1.7, marginBottom: 8 }}>
-            Matched against scheduled job registry:
-          </div>
-          <div style={{
-            background: "#F8FAFC", border: "1px solid #E0E7FF",
-            borderLeft: "3px solid #0EA5E9",
-            borderRadius: 4, padding: "10px 12px",
-          }}>
-            <div style={{ fontSize: 13.2, fontWeight: 700, color: "#0369A1", marginBottom: 6 }}>📋 Scheduled Job Match</div>
-            <DataRow label="Job" value="nightly-data-sync-v2" />
-            <DataRow label="Schedule" value="02:15 AM UTC · daily" />
-            <DataRow label="Owner" value="data-engineering@company.com" />
-            <DataRow label="Last run" value="Yesterday · 02:15 AM · identical pattern" />
-          </div>
-          <Muted style={{ marginTop: 8 }}>Confidence: 98.4% · Classifying as false positive…</Muted>
-        </BotMsg>
-
-        <BotMsg step="AUTO-CLOSED" stepColor="#10B981" time="02:17 AM" teamsColor="#4F52B2">
-          <div style={{ fontSize: 14.4, fontWeight: 700, color: "#059669", marginBottom: 8 }}>
-            ✅ False positive confirmed · Auto-suppressed
-          </div>
-          <div style={{
-            background: "#F0FDF4", border: "1px solid #BBF7D0",
-            borderRadius: 4, padding: "10px 12px", fontSize: 13.2, color: "#166534", marginBottom: 10,
-          }}>
-            No action required. Alert suppressed automatically.<br />
-            <span style={{ fontSize: 12, color: "#4ADE80" }}>Zero UI mode · your team was not paged.</span>
-          </div>
-          <ResultTable rows={[["Alert classified","False positive · 98.4% confidence"],["Action taken","None · auto-suppressed"],["Rule updated","Pattern added to allowlist"],["Incident","Not filed · FP log updated"]]} accentColor="#059669" />
-          <Muted style={{ marginTop: 8 }}>⏰ Your team slept undisturbed. Next alert will be real.</Muted>
-        </BotMsg>
-
-      </div>
+function TeamsMock({ isPaused, onComplete }: { isPaused: boolean; onComplete: () => void }) {
+  const header = (
+    <div style={{ background: "#4F52B2", padding: "16px 20px", display: "flex", alignItems: "center", gap: 8 }}>
+      <TrafficLights /><div style={{ fontSize: 12, color: "#FFFFFF", marginLeft: 6, fontWeight: 600 }}>Security Operations · General</div>
     </div>
   );
+
+  const messages = [
+    <BotMsg step="DETECT" stepColor="#F59E0B" time="02:17 AM" teamsColor="#4F52B2">
+      <Bold>⚠️ Anomalous API activity · <span style={{ color: "#4F52B2" }}>svc-data-pipeline</span></Bold>
+      <DataRow label="Source" value="CloudTrail · S3 bucket enumeration" />
+      <DataRow label="Volume" value="847 API calls in 90s · 12× baseline" alert />
+      <DataRow label="Time" value="02:17 AM · outside business hours" alert />
+      <Muted>Cross-referencing against known activity patterns…</Muted>
+    </BotMsg>,
+
+    <BotMsg step="CORRELATE" stepColor="#0EA5E9" time="02:17 AM" teamsColor="#4F52B2">
+      <div style={{ fontSize: 13.2, color: "#475569", lineHeight: 1.7, marginBottom: 8 }}>
+        Matched against scheduled job registry:
+      </div>
+      <div style={{
+        background: "#F8FAFC", border: "1px solid #E0E7FF",
+        borderLeft: "3px solid #0EA5E9",
+        borderRadius: 4, padding: "10px 12px",
+      }}>
+        <div style={{ fontSize: 13.2, fontWeight: 700, color: "#0369A1", marginBottom: 6 }}>📋 Scheduled Job Match</div>
+        <DataRow label="Job" value="nightly-data-sync-v2" />
+        <DataRow label="Schedule" value="02:15 AM UTC · daily" />
+        <DataRow label="Owner" value="data-engineering@company.com" />
+        <DataRow label="Last run" value="Yesterday · 02:15 AM · identical pattern" />
+      </div>
+      <Muted style={{ marginTop: 8 }}>Confidence: 98.4% · Classifying as false positive…</Muted>
+    </BotMsg>,
+
+    <BotMsg step="AUTO-CLOSED" stepColor="#10B981" time="02:17 AM" teamsColor="#4F52B2">
+      <div style={{ fontSize: 14.4, fontWeight: 700, color: "#059669", marginBottom: 8 }}>
+        ✅ False positive confirmed · Auto-suppressed
+      </div>
+      <div style={{
+        background: "#F0FDF4", border: "1px solid #BBF7D0",
+        borderRadius: 4, padding: "10px 12px", fontSize: 13.2, color: "#166534", marginBottom: 10,
+      }}>
+        No action required. Alert suppressed automatically.<br />
+        <span style={{ fontSize: 12, color: "#4ADE80" }}>Zero UI mode · your team was not paged.</span>
+      </div>
+      <ResultTable rows={[["Alert classified","False positive · 98.4% confidence"],["Action taken","None · auto-suppressed"],["Rule updated","Pattern added to allowlist"],["Incident","Not filed · FP log updated"]]} accentColor="#059669" />
+      <Muted style={{ marginTop: 8 }}>⏰ Your team slept undisturbed. Next alert will be real.</Muted>
+    </BotMsg>
+  ];
+
+  return <MessageWindow header={header} messages={messages} inputPlaceholder="Reply to thread..." bg="#FFFFFF" isPaused={isPaused} onComplete={onComplete} interval={300} />;
 }
 
 // ─── CLAUDE: Threat hunt with visualization ────────────────────────
-function ClaudeMock() {
-  return (
-    <div>
-      <div style={{ background: "#D97757", padding: "10px 16px", display: "flex", alignItems: "center", gap: 8 }}>
-        <TrafficLights /><div style={{ fontSize: 12, color: "rgba(255,255,255,0.6)", marginLeft: 6 }}>Claude · Trench Security Operations</div>
-      </div>
-      <div style={{ background: "#F8FAFC", padding: "18px 16px", display: "flex", flexDirection: "column", gap: 14 }}>
-
-        {/* User query */}
-        <UserMsg>Hunt for lateral movement patterns across all identities in the last 7 days. Focus on off-hours activity.</UserMsg>
-
-        {/* Claude thinking */}
-        <ClaudeMsg>
-          <div style={{ fontSize: 13.2, color: "#475569", lineHeight: 1.7, marginBottom: 10 }}>
-            Querying across <strong style={{ color: "#0F172A" }}>Okta</strong>, <strong style={{ color: "#0F172A" }}>Active Directory</strong>, <strong style={{ color: "#0F172A" }}>CrowdStrike</strong>, and <strong style={{ color: "#0F172A" }}>CloudTrail</strong> for the 7-day window. Looking for account-hopping, privilege escalation, and off-hours anomalies.
-          </div>
-          <div style={{ background: "#0F172A", borderRadius: 4, padding: "10px 12px", fontFamily: "monospace", fontSize: 12, color: "#4ADE80", lineHeight: 1.8 }}>
-            <div style={{ color: "#64748B", marginBottom: 4 }}>// querying log sources</div>
-            <div>→ Okta auth logs <span style={{ color: "#FBBF24" }}>168,420 events</span> ingested</div>
-            <div>→ AD sign-in logs <span style={{ color: "#FBBF24" }}>94,112 events</span> ingested</div>
-            <div>→ CrowdStrike telemetry <span style={{ color: "#FBBF24" }}>312,088 events</span> ingested</div>
-            <div>→ CloudTrail <span style={{ color: "#FBBF24" }}>47,331 events</span> ingested</div>
-            <div style={{ color: "#4ADE80", marginTop: 4 }}>✓ Correlation complete · 3 anomalies surfaced</div>
-          </div>
-        </ClaudeMsg>
-
-        {/* Claude findings with visualization */}
-        <ClaudeMsg>
-          <div style={{ fontSize: 13.2, fontWeight: 700, color: "#0F172A", marginBottom: 12 }}>
-            🔍 Lateral movement pattern detected — 3 findings:
-          </div>
-
-          {/* Lateral movement graph */}
-          <LateralMovementGraph />
-
-          <div style={{ marginTop: 14, display: "flex", flexDirection: "column", gap: 8 }}>
-            {[
-              { n: "01", title: "Account hop · svc-admin → dev-user-09", detail: "Tue 02:34 AM · same source IP · 4 min apart", severity: "HIGH", color: "#E11D48" },
-              { n: "02", title: "Privilege escalation · dev-user-09 → root", detail: "Tue 02:38 AM · via sudo · CloudTrail confirms", severity: "CRITICAL", color: "#DC2626" },
-              { n: "03", title: "Unusual S3 access · 3 buckets in 8 min", detail: "Tue 02:39–02:47 AM · production data buckets", severity: "HIGH", color: "#E11D48" },
-            ].map((f) => (
-              <div key={f.n} style={{
-                border: `1px solid ${f.color}22`,
-                borderLeft: `3px solid ${f.color}`,
-                borderRadius: 4, padding: "10px 12px",
-                background: f.color + "08",
-              }}>
-                <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 4 }}>
-                  <div style={{ fontSize: 13.2, fontWeight: 700, color: "#0F172A" }}>{f.n}. {f.title}</div>
-                  <div style={{ fontSize: 9.6, color: f.color, background: f.color + "15", padding: "2px 6px", borderRadius: 3, letterSpacing: "0.1em", fontWeight: 700 }}>{f.severity}</div>
-                </div>
-                <div style={{ fontSize: 12, color: "#64748B" }}>{f.detail}</div>
-              </div>
-            ))}
-          </div>
-        </ClaudeMsg>
-
-        {/* User followup */}
-        <UserMsg>Is src-host-42 still active? What should I do?</UserMsg>
-
-        {/* Claude recommendation */}
-        <ClaudeMsg>
-          <div style={{ fontSize: 13.2, color: "#475569", lineHeight: 1.7, marginBottom: 10 }}>
-            <strong style={{ color: "#0F172A" }}>src-host-42</strong> last seen <strong style={{ color: "#E11D48" }}>14 minutes ago</strong> — still active. I recommend immediate action:
-          </div>
-          <ActionList items={["Isolate src-host-42 from the network now", "Revoke sessions for dev-user-09 and svc-admin", "Preserve CloudTrail + CrowdStrike logs for forensics"]} />
-          <div style={{ marginTop: 12, display: "flex", gap: 8 }}>
-            <DarkBtn>Execute all three</DarkBtn>
-            <GhostBtn>Show full timeline</GhostBtn>
-          </div>
-        </ClaudeMsg>
-
-      </div>
+function ClaudeMock({ isPaused, onComplete }: { isPaused: boolean; onComplete: () => void }) {
+  const header = (
+    <div style={{ 
+      display: "flex", justifyContent: "space-between", alignItems: "center", 
+      padding: "16px 20px", borderBottom: "1px solid #E5E5E5", background: "#FAF9F6" 
+    }}>
+      <div style={{ fontSize: 14.4, fontWeight: 700, color: "#1A1A1A" }}>Trench Assistant</div>
+      <div style={{ fontSize: 12, color: "#666666" }}>Model: Claude-3-Sonnet</div>
     </div>
   );
+
+  const messages = [
+    <div style={{ display: "flex", gap: 12, justifyContent: "flex-end" }}>
+      <div style={{ background: "#0F172A", borderRadius: "12px 12px 0 12px", padding: "12px 16px", maxWidth: "80%", fontSize: 14.4, color: "#FFFFFF", lineHeight: 1.5 }}>
+        Hunt for lateral movement patterns across all identities in the last 7 days. Focus on off-hours activity.
+      </div>
+      <div style={{ width: 32, height: 32, borderRadius: "50%", background: "#E2E8F0", display: "flex", alignItems: "center", justifyContent: "center", color: "#64748B", fontWeight: 600, fontSize: 14.4, flexShrink: 0 }}>U</div>
+    </div>,
+
+    <div style={{ display: "flex", gap: 12 }}>
+      <div style={{ width: 32, height: 32, borderRadius: "50%", background: "#D97757", display: "flex", alignItems: "center", justifyContent: "center", color: "white", fontWeight: 600, fontSize: 14.4, flexShrink: 0 }}>C</div>
+      <div style={{ flex: 1, background: "#FFFFFF", border: "1px solid #E5E5E5", borderRadius: "0 12px 12px 12px", padding: "16px" }}>
+        <div style={{ fontSize: 13.2, color: "#475569", lineHeight: 1.7, marginBottom: 12 }}>
+          Querying across <strong style={{ color: "#0F172A" }}>Okta</strong>, <strong style={{ color: "#0F172A" }}>Active Directory</strong>, <strong style={{ color: "#0F172A" }}>CrowdStrike</strong>, and <strong style={{ color: "#0F172A" }}>CloudTrail</strong> for the 7-day window. Looking for account-hopping, privilege escalation, and off-hours anomalies.
+        </div>
+        <div style={{ background: "#0F172A", borderRadius: 6, padding: "12px 14px", fontFamily: "monospace", fontSize: 12, color: "#4ADE80", lineHeight: 1.8 }}>
+          <div style={{ color: "#64748B", marginBottom: 4 }}>// querying log sources</div>
+          <div>→ Okta auth logs <span style={{ color: "#FBBF24" }}>168,420 events</span> ingested</div>
+          <div>→ AD sign-in logs <span style={{ color: "#FBBF24" }}>94,112 events</span> ingested</div>
+          <div>→ CrowdStrike telemetry <span style={{ color: "#FBBF24" }}>312,088 events</span> ingested</div>
+          <div>→ CloudTrail <span style={{ color: "#FBBF24" }}>47,331 events</span> ingested</div>
+          <div style={{ color: "#4ADE80", marginTop: 4 }}>✓ Correlation complete · 3 anomalies surfaced</div>
+        </div>
+        
+        <div style={{ fontSize: 13.2, fontWeight: 700, color: "#0F172A", margin: "20px 0 12px 0" }}>
+          🔍 Lateral movement pattern detected — 3 findings:
+        </div>
+        
+        <LateralMovementGraph />
+
+        <div style={{ marginTop: 16, display: "flex", flexDirection: "column", gap: 10 }}>
+          {[
+            { n: "01", title: "Account hop · svc-admin → dev-user-09", detail: "Tue 02:34 AM · same source IP · 4 min apart", severity: "HIGH", color: "#E11D48" },
+            { n: "02", title: "Privilege escalation · dev-user-09 → root", detail: "Tue 02:38 AM · via sudo · CloudTrail confirms", severity: "CRITICAL", color: "#DC2626" },
+            { n: "03", title: "Unusual S3 access · 3 buckets in 8 min", detail: "Tue 02:39–02:47 AM · production data buckets", severity: "HIGH", color: "#E11D48" },
+          ].map((f) => (
+            <div key={f.n} style={{
+              border: `1px solid ${f.color}22`,
+              borderLeft: `3px solid ${f.color}`,
+              borderRadius: 6, padding: "12px 14px",
+              background: f.color + "08",
+            }}>
+              <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 4 }}>
+                <div style={{ fontSize: 13.2, fontWeight: 700, color: "#0F172A" }}>{f.n}. {f.title}</div>
+                <div style={{ fontSize: 9.6, color: f.color, background: f.color + "15", padding: "2px 6px", borderRadius: 3, letterSpacing: "0.1em", fontWeight: 700 }}>{f.severity}</div>
+              </div>
+              <div style={{ fontSize: 12, color: "#64748B" }}>{f.detail}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>,
+
+    <div style={{ display: "flex", gap: 12, justifyContent: "flex-end" }}>
+      <div style={{ background: "#0F172A", borderRadius: "12px 12px 0 12px", padding: "12px 16px", maxWidth: "80%", fontSize: 14.4, color: "#FFFFFF", lineHeight: 1.5 }}>
+        Is src-host-42 still active? What should I do?
+      </div>
+      <div style={{ width: 32, height: 32, borderRadius: "50%", background: "#E2E8F0", display: "flex", alignItems: "center", justifyContent: "center", color: "#64748B", fontWeight: 600, fontSize: 14.4, flexShrink: 0 }}>U</div>
+    </div>,
+
+    <div style={{ display: "flex", gap: 12 }}>
+      <div style={{ width: 32, height: 32, borderRadius: "50%", background: "#D97757", display: "flex", alignItems: "center", justifyContent: "center", color: "white", fontWeight: 600, fontSize: 14.4, flexShrink: 0 }}>C</div>
+      <div style={{ flex: 1, background: "#FFFFFF", border: "1px solid #E5E5E5", borderRadius: "0 12px 12px 12px", padding: "16px" }}>
+        <div style={{ fontSize: 13.2, color: "#475569", lineHeight: 1.7, marginBottom: 12 }}>
+          <strong style={{ color: "#0F172A", fontFamily: "monospace" }}>src-host-42</strong> last seen <strong style={{ color: "#E11D48" }}>14 minutes ago</strong> — still active. I recommend immediate action:
+        </div>
+        
+        <div style={{ display: "flex", flexDirection: "column", gap: 8, marginBottom: 16 }}>
+          {[
+            "Isolate src-host-42 from the network now",
+            "Revoke sessions for dev-user-09 and svc-admin",
+            "Preserve CloudTrail + CrowdStrike logs for forensics"
+          ].map((item, i) => (
+            <div key={i} style={{ display: "flex", gap: 8, fontSize: 13.2, color: "#475569" }}>
+              <span style={{ color: "#94A3B8", flexShrink: 0 }}>{i + 1}.</span>{item}
+            </div>
+          ))}
+        </div>
+
+        <div style={{ display: "flex", gap: 12 }}>
+          <div style={{ background: "#0F172A", color: "#FFFFFF", padding: "8px 16px", borderRadius: 4, fontSize: 13.2, fontWeight: 600, cursor: "pointer" }}>
+            Execute all three
+          </div>
+          <div style={{ background: "#FFFFFF", color: "#64748B", border: "1px solid #E2E8F0", padding: "8px 16px", borderRadius: 4, fontSize: 13.2, fontWeight: 600, cursor: "pointer" }}>
+            Show full timeline
+          </div>
+        </div>
+      </div>
+    </div>
+  ];
+
+  return <MessageWindow header={header} messages={messages} inputPlaceholder="Message Trench Assistant..." bg="#FAF9F6" inputBg="#FAF9F6" interval={300} isPaused={isPaused} onComplete={onComplete} />;
 }
 
-// ─── LATERAL MOVEMENT VISUALIZATION ────────────────────────────────
+
 function LateralMovementGraph() {
   const nodes = [
     { id: "entry", label: "src-host-42", sub: "Entry point", x: 40, y: 60, color: "#E11D48", size: 28 },

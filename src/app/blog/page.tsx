@@ -91,7 +91,7 @@ export default function BlogPage() {
                     transition: 'all 0.25s ease-out'
                   }} className="blog-card">
                     {/* Image Area */}
-                    <div style={{ height: '200px', background: '#F1F5F9', overflow: 'hidden', position: 'relative' }}>
+                    <div style={{ aspectRatio: '16/9', background: '#F1F5F9', overflow: 'hidden', position: 'relative' }}>
                       {post.image ? (
                         <Image src={post.image} alt={post.title} fill style={{ objectFit: 'cover' }} />
                       ) : (

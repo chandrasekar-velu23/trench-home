@@ -1040,10 +1040,10 @@ h6,
 
 .blog-post-image {
   position: relative;
-  width: 100%;
+  width: 75%;
   border-radius: 16px;
   overflow: hidden;
-  margin: 3rem 0;
+  margin: 3rem auto;
   border: 1px solid rgba(0, 0, 0, 0.05);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
 }
@@ -1059,8 +1059,14 @@ h6,
   width: 100%;
   height: auto;
   display: block;
-  max-height: 480px;
-  object-fit: cover;
+}
+
+.cta-banner-link {
+  transition: transform 0.2s ease-out, filter 0.2s ease-out;
+}
+.cta-banner-link:hover {
+  transform: translateY(-4px);
+  filter: brightness(1.05);
 }
 
 /* Animations */
