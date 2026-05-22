@@ -34,7 +34,6 @@ yarn-error.log*
 .env*
 
 *.pdf
-*.txt
 # vercel
 .vercel
 
@@ -45,7 +44,6 @@ next-env.d.ts
 
 *.md
 *.pdf
-*.txt
 *.js
 *.json
 *.gs

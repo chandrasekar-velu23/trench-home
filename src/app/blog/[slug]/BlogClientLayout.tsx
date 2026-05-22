@@ -14,6 +14,8 @@ import {
 } from "lucide-react";
 import ScrollReveal from "@/components/animations/ScrollReveal";
 import { BlogPost } from "../postsData";
+import HeadlessSecOpsModes from "@/components/HeadlessSecOpsModes";
+import Section3Visual from "@/components/Section3Visual";
 
 interface BlogClientLayoutProps {
   post: BlogPost;
@@ -402,9 +404,28 @@ export default function BlogClientLayout({ post, relatedPosts }: BlogClientLayou
             {/* The Rendered HTML Blog Content */}
             <article 
               ref={articleRef} 
-              dangerouslySetInnerHTML={{ __html: cleanBody }} 
               className="blog-post-prose"
-            />
+            >
+              {cleanBody.split(/(<!-- INJECT_HEADLESS_SECOPS_DIAGRAM -->|<!-- INJECT_SECTION3_VISUAL -->)/g).map((part, index) => {
+                if (part === '<!-- INJECT_HEADLESS_SECOPS_DIAGRAM -->') {
+                  return (
+                    <div key={index} style={{ width: '100%', margin: '40px 0', overflowX: 'auto' }}>
+                      <HeadlessSecOpsModes />
+                    </div>
+                  );
+                }
+                if (part === '<!-- INJECT_SECTION3_VISUAL -->') {
+                  return (
+                    <ScrollReveal key={index}>
+                      <div style={{ width: '100%', margin: '40px 0', overflowX: 'auto' }}>
+                        <Section3Visual />
+                      </div>
+                    </ScrollReveal>
+                  );
+                }
+                return <div key={index} style={{ width: '100%' }} dangerouslySetInnerHTML={{ __html: part }} />;
+              })}
+            </article>
 
             {/* Custom Interactive Section: Likes & Share Widgets Removed */}
 

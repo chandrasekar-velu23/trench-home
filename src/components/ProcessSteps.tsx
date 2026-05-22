@@ -72,7 +72,7 @@ export default function ProcessSteps() {
       <div className="section-header">
         <ScrollReveal direction="up" distance={30}>
           <span className="eyebrow">FROM COGNITIVE OVERLOAD TO COGNITIVE HARMONY.</span>
-          <TextReveal text="Introducing Headless SecOps." as="h1" className="title-lg" />
+          <TextReveal text="Introducing Headless SecOps." as="h2" className="title-lg" />
           <p className="sub-headline" style={{ textTransform: 'uppercase', letterSpacing: '2px', fontSize: '13px', fontWeight: 600 }}>
             No alerts. No rules. No dashboards. Your SecOps, inside your collaboration tools.
           </p>

@@ -39,7 +39,7 @@ export default function CTASection() {
           >
             <Image
               src="/images/clouds.webp"
-              alt=""
+              alt="Trench SecOps Decorative Cloud Background"
               width={340}
               height={200}
               className="cta-cloud-img"
@@ -56,7 +56,7 @@ export default function CTASection() {
           >
             <Image
               src="/images/clouds.webp"
-              alt=""
+              alt="Trench SecOps Decorative Cloud Background Mirror"
               width={340}
               height={200}
               className="cta-cloud-img"
@@ -155,7 +155,7 @@ export default function CTASection() {
         .cta-content {
           display: flex;
           align-items: center;
-          justify-content: space-between;
+          
           gap: 3rem;
           position: relative;
           z-index: 2;
