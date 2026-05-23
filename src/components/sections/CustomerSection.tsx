@@ -34,7 +34,7 @@ export default function CustomerSection() {
           <div className="customer-card">
             <div className="logo-wrapper">
               <Image 
-                src="/customers/ocrolus-logo%201.png" 
+                src="/customers/ocrolus-logo-1.png" 
                 alt="Ocrolus" 
                 width={108} 
                 height={30} 

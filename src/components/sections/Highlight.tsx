@@ -16,7 +16,7 @@ const highlights = [
   },
   {
     id: 2,
-    logo: "/awards/CySecK Logo PNG@900x.webp",
+    logo: "/awards/CySecK-Logo-PNG@900x.webp",
     title: "H.A.C.K Cohort-5 Startup",
     subtitle: "Trench was selected as part of the H.A.C.K Cohort-5 acceleration journey supporting cybersecurity innovation and scalable security solutions.",
     bg: "#FFFFFF"

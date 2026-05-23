@@ -69,7 +69,7 @@ const PROPS = [
 ];
 
 const CERT_BADGES = [
-  { src: "/certificates/AICPA SOC.svg", alt: "AICPA SOC 2 Type II" },
+  { src: "/certificates/AICPA-SOC.svg", alt: "AICPA SOC 2 Type II" },
   { src: "/certificates/GDPR.svg", alt: "GDPR Compliant" },
   { src: "/certificates/ISO.svg", alt: "ISO 27001" },
 ];

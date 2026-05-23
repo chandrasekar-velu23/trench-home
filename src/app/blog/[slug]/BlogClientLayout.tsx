@@ -288,7 +288,7 @@ export default function BlogClientLayout({ post, relatedPosts }: BlogClientLayou
                 fontWeight: 700,
                 fontSize: "0.8rem",
                 transition: "all 0.2s"
-              }} className="hover-share-btn" title="Share Article">
+              }} className="hover-share-btn" title="Share Article" suppressHydrationWarning>
                 <Share2 size={14} /> Share
               </button>
             </div>
@@ -359,6 +359,7 @@ export default function BlogClientLayout({ post, relatedPosts }: BlogClientLayou
                   onClick={() => setIsMobileTocOpen(!isMobileTocOpen)}
                   className="mobile-toc-toggle"
                   type="button"
+                  suppressHydrationWarning
                 >
                   <span>Table of Contents</span>
                   <span style={{ 
@@ -472,6 +473,7 @@ export default function BlogClientLayout({ post, relatedPosts }: BlogClientLayou
                         transition: "border 0.2s"
                       }}
                       className="form-input"
+                      suppressHydrationWarning
                     />
                   </div>
                   <div>
@@ -494,6 +496,7 @@ export default function BlogClientLayout({ post, relatedPosts }: BlogClientLayou
                         transition: "border 0.2s"
                       }}
                       className="form-input"
+                      suppressHydrationWarning
                     />
                   </div>
                 </div>
@@ -512,6 +515,7 @@ export default function BlogClientLayout({ post, relatedPosts }: BlogClientLayou
                     transition: "background-color 0.2s"
                   }}
                   className="submit-btn"
+                  suppressHydrationWarning
                 >
                   Post Comment
                 </button>

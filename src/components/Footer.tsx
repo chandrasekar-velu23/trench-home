@@ -21,7 +21,7 @@ export default function Footer() {
             <span className="footer-certs-label">Certified</span>
             <div className="footer-certs-badges">
               <Image
-                src="/certificates/AICPA SOC.svg"
+                src="/certificates/AICPA-SOC.svg"
                 alt="AICPA SOC"
                 width={85}
                 height={85}
@@ -110,7 +110,7 @@ export default function Footer() {
             className="footer-partner-badge"
           />
           <Image
-            src="/awards/CySecK Logo PNG@900x.webp"
+            src="/awards/CySecK-Logo-PNG@900x.webp"
             alt="CySecK"
             width={88}
             height={44}

@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://www.trenchsecurity.ai"),
 
   title: {
-    default: "Trench | The New OS for Agentic SecOps",
+    default: "Trench | Agentic OS for Actionable SecOps",
     template: "%s | Trench Security",
   },
 
@@ -80,7 +80,7 @@ export const metadata: Metadata = {
   },
 
   openGraph: {
-    title: "Trench | The New OS for Agentic SecOps",
+    title: "Trench | Agentic OS for Actionable SecOps",
     description:
       "Trench is the new operating system for security operations. An agentic platform that does what your SIEM can't and your SOC never gets to, automatically.",
     url: "https://www.trenchsecurity.ai",
@@ -100,7 +100,7 @@ export const metadata: Metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: "Trench | The New OS for Agentic SecOps",
+    title: "Trench | Agentic OS for Actionable SecOps",
     description:
       "Trench is the new operating system for security operations. An agentic platform that does what your SIEM can't and your SOC never gets to, automatically.",
     images: ["/logo/trench-logo.png"],

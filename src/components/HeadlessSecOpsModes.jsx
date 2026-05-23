@@ -214,7 +214,7 @@ export default function HeadlessSecOpsModes() {
           textTransform: "uppercase",
           fontWeight: 600
         }}>
-          Zero UI &nbsp;·&nbsp; Conversational UX &nbsp;·&nbsp; On-Demand Context
+          Agentic OS for Actionable SecOps
         </div>
       </div>
 

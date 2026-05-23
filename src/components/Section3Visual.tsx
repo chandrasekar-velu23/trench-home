@@ -707,7 +707,7 @@ function TabIcon({ id, active }: any) {
   const getIcon = () => {
     switch (id) {
       case "slack": return "/integrations/slack.png";
-      case "teams": return "/integrations/microsoft teams.png";
+      case "teams": return "/integrations/microsoft-teams.png";
       case "claude": return "/integrations/claude-color.png";
       default: return "";
     }

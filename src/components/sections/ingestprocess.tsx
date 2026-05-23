@@ -116,7 +116,7 @@ export default function IngestProcess() {
                     fontFamily="'Poppins', sans-serif" fontWeight="800" letterSpacing="1">
                     DATA LAKE
                 </text>
-                <image href="/steps/datalake%201.webp"
+                <image href="/steps/datalake-1.webp"
                     x="430" y="155" width="202" height="130"
                     preserveAspectRatio="xMidYMid meet" />
 

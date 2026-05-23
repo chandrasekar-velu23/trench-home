@@ -35,7 +35,7 @@ const ADVISORS = [
   {
     name: "Vishal Gautam",
     role: "Director, AI & Cyber Threat Research Center - India, ZScaler",
-    img: "/Advisor/vishal Gautham.webp",
+    img: "/Advisor/vishal-Gautham.webp",
   },
   {
     name: "Senthilkumar Iyappan",
@@ -45,7 +45,7 @@ const ADVISORS = [
   {
     name: "UVL Narayana",
     role: "Head of Global Customer Success (Ex-Splunk)",
-    img: "/Advisor/UVL Narayana.webp",
+    img: "/Advisor/UVL-Narayana.webp",
   },
 ];
 

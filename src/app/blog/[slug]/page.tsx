@@ -27,12 +27,12 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
     title: `${post.title} | Trench Security Blog`,
     description: cleanDescription,
     alternates: {
-      canonical: post.canonical || `https://www.trenchsecurity.ai/blog/${slug}`
+      canonical: `https://www.trenchsecurity.ai/blog/${slug}`
     },
     openGraph: {
       title: post.title,
       description: cleanDescription,
-      url: post.canonical || `https://www.trenchsecurity.ai/blog/${slug}`,
+      url: `https://www.trenchsecurity.ai/blog/${slug}`,
       siteName: "Trench Security",
       type: "article",
       publishedTime: post.publishedTime,
@@ -100,7 +100,7 @@ export default async function BlogPostPage({ params }: { params: Params }) {
     "description": post.description.replace(/<[^>]+>/g, "").substring(0, 160).trim(),
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": post.canonical || `https://www.trenchsecurity.ai/blog/${slug}`
+      "@id": `https://www.trenchsecurity.ai/blog/${slug}`
     }
   };
 

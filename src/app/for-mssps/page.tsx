@@ -83,7 +83,7 @@ const VALUE_PROPS = [
 ];
 
 const COMPLIANCE_BADGES = [
-  { src: "/certificates/AICPA SOC.svg", alt: "SOC 2 Type II" },
+  { src: "/certificates/AICPA-SOC.svg", alt: "SOC 2 Type II" },
   { src: "/certificates/GDPR.svg", alt: "GDPR Compliant" },
   { src: "/certificates/ISO.svg", alt: "ISO 27001" }
 ];
