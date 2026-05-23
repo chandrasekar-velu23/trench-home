@@ -24,7 +24,7 @@ export const postsData: BlogPost[] = [
     "category": "Product",
     "date": "May 21, 2026",
     "image": "/blog-cover-images/Headless-SecOps-for-the-Agentic-World.png",
-    "description": "No alerts. No dashboards. Just decisions that matter. Alert fatigue is the symptom. Cognitive overload is the disease. It is not the volume of alerts that breaks people  it is the architecture that makes every single alert a fresh cognitive task with no system support behind it.",
+    "description": "No alerts. No dashboards. Just decisions that matter. Alert fatigue is the symptom. Cognitive overload is the disease. Headless SecOps is the cure.",
     "author": {
       "name": "Gurucharan R",
       "role": "Cofounder & CEO",
@@ -116,7 +116,7 @@ export const postsData: BlogPost[] = [
     "category": "Security",
     "date": "Mar 26, 2026",
     "image": "/blog-cover-images/2nd_Blog_Banner.webp",
-    "description": "&#009;In the last two years, there has been significant noise around AISOC or getting AI into the SOC or Security Operations Center. Everyone in the security ecosystem (founders, investors, buyers, and service providers) is trying to share their perspective. Some are optimistic. Some are skeptical. Some are simply riding the wave. The result?A multi-layered clutter of narratives: \u2022 SOAR is dead \u2022 XDR is dead \u2022 MDR is dying \u2022 SIEM is dead \u2022 AISOC is also deadEvery few months, another obituary gets wri",
+    "description": "The AISOC narrative is cluttered with obituaries for SIEM, SOAR, and XDR. Cut through the noise and discover the real architectural foundation needed for AI.",
     "author": {
       "name": "Gurucharan R",
       "role": "Cofounder & CEO",
@@ -222,7 +222,7 @@ export const postsData: BlogPost[] = [
     "category": "Trends",
     "date": "Sep 19, 2025",
     "image": "/blog-cover-images/5th_Blog_Image.webp",
-    "description": "Organizations have invested heavily in security tools such as email gateways, EDR, SIEM, XDR, SOAR, CSPM, WAF, IDS/IPS, SASE yet many Security Operations Centers (SOCs), especially those with lean teams, struggle to demonstrate measurable ROI from these tools. CISOs face mounting pressure from leadership to prove security effectiveness with clear business outcomes, not just technical alerts and incident counts.While traditional Managed Security Service Providers (MSSPs) and even some Managed Det",
+    "description": "CISOs face mounting pressure to prove security ROI. Discover how AI-native SOC platforms empower lean teams to deliver rapid, measurable business outcomes.",
     "author": {
       "name": "Team Trench",
       "role": "",
@@ -268,7 +268,7 @@ export const postsData: BlogPost[] = [
     "category": "Technical",
     "date": "Jan 5, 2026",
     "image": "/blog-cover-images/3rd_Blog_Banner.webp",
-    "description": "Velocity, not data volume, is now your biggest security risk.For years, cybersecurity has been treated as a data problem,\u00a0collect more logs, store more telemetry, search harder. That model no longer works. In the AI era, attacks execute at machine speed, while detection still runs on human time. The real cyber risk today isn\u2019t lack of data, it\u2019s detection latency.Attacks are deployed in MinutesThe industry is losing ground because the Attack Opportunity\u00a0(Zero-day vulnerabilities) and Threat Inte",
+    "description": "Velocity, not data volume, is your biggest security risk. Discover how Agentic Threat Detection Mesh closes the latency gap and outpaces AI-driven threats.",
     "author": {
       "name": "Trench Technical Team",
       "role": "",
@@ -310,7 +310,7 @@ export const postsData: BlogPost[] = [
     "category": "Product",
     "date": "Oct 7, 2025",
     "image": "/blog-cover-images/4th_blog_banner.webp",
-    "description": "In today\u2019s rapidly evolving cybersecurity landscape, protecting sensitive customer information while leveraging the powerful capabilities of large language models (LLMs) has become a critical challenge. To address this, Trench Security is proud to announce a groundbreaking feature \u2014 \u201cReal-time data Safety\u201d \u2014 that ensures no personally identifiable information (PII) from customer security data is ever sent directly to LLMs.Our new PII data safety feature anonymizes and obfuscates sensitive data b",
+    "description": "Leverage the power of large language models without compromising privacy. Discover our new Real-time Data Safety feature for completely secure AI operations.",
     "author": {
       "name": "Team Trench",
       "role": "",
@@ -340,7 +340,7 @@ export const postsData: BlogPost[] = [
     "category": "Technical",
     "date": "Jun 13, 2025",
     "image": "/blog-cover-images/9th_Blog_Banner.webp",
-    "description": "Security Operations Centers (SOCs) are the nerve centers of modern cybersecurity, responsible for detecting, investigating, and responding to threats. As cyber threats grow in scale and sophistication, traditional SOC automation\u2014relying on static playbooks and scripts\u2014struggles to keep pace.\u00a0Enter AI agentic automation: a new paradigm where AI agents independently reason, adapt, and execute security tasks, reducing human workload and accelerating response. In an era where adversaries are moving ",
+    "description": "Traditional SOC automation is struggling. Discover AI agentic automation: a paradigm where AI agents reason to reduce human workload and accelerate response.",
     "author": {
       "name": "Trench Technical Team",
       "role": "",
@@ -374,7 +374,7 @@ export const postsData: BlogPost[] = [
     "category": "Technical",
     "date": "Sep 16, 2025",
     "image": "/blog-cover-images/6th_Blog_Banner.webp",
-    "description": "Mid-sized SOC teams often deploy AISOC platform for better security posture, but don\u2019t always know how to truly measure and optimize these systems. Here is a concise guide for defenders on using offensive security (red/purple team) methods\u2014plus an actionable, 6-week plan\u2014to maximize AI-driven SOC automation and response.Where Mid-Sized SOCs Fall Short with AISOC \u2022 Alert Overload:\u00a0Analysts face thousands of daily alerts, most of which are false positives, leading to alert fatigue and slow inciden",
+    "description": "A concise guide for mid-sized SOC teams on using offensive security methods and a 6-week plan to maximize and optimize AI-driven SOC automation and response.",
     "author": {
       "name": "Trench Technical Team",
       "role": "",
@@ -440,7 +440,7 @@ export const postsData: BlogPost[] = [
     "category": "MSSP",
     "date": "Jun 17, 2025",
     "image": "/blog-cover-images/8th_Blog_Banner3.webp",
-    "description": "Elevate Your SOC-as-a-Service &amp; MDR OfferingsThe managed security services market is more competitive than ever. MSSPs are under constant pressure to deliver exceptional service, maintain healthy margins, and differentiate their offerings\u2014all while battling alert overload, talent shortages, and rising operational costs. Traditional approaches, such as simply hiring more analysts, are no longer sustainable. AI-enabled SOC platforms are rapidly emerging as the solution MSSPs need to transform thei",
+    "description": "The managed security services market is extremely competitive. Discover how AI-enabled SOC platforms help MSSPs transform their offerings and scale rapidly.",
     "author": {
       "name": "Team Trench",
       "role": "",
@@ -482,7 +482,7 @@ export const postsData: BlogPost[] = [
     "category": "Trends",
     "date": "Aug 10, 2025",
     "image": "/blog-cover-images/7th_Blog_banner.webp",
-    "description": "Mid-sized organizations face a cybersecurity paradox: they're attractive targets for cybercriminals yet lack the resources for enterprise-grade security. Traditional SOC or MDR solutions don't fit their needs, creating dangerous gaps in the current Security Operations workflows &amp; vanilla automations.\u00a0\u00a0The Mid-Market Security CrisisMid-sized organizations (500-5,000 employees) face critical security challenges that keep executives awake at night:1. Resource Constraints: 61% lack dedicated cyberse",
+    "description": "Mid-sized organizations are attractive targets but lack resources for enterprise security. Learn how to fix dangerous gaps in your security operations today.",
     "author": {
       "name": "Team Trench",
       "role": "",
@@ -540,7 +540,7 @@ export const postsData: BlogPost[] = [
     "category": "Trends",
     "date": "May 23, 2025",
     "image": "/blog-cover-images/10th_Blog_Banner.webp",
-    "description": "Current Problem:Security Operations Centers (SOCs) are facing a crisis. Analysts are drowning in a relentless wave of alerts-most of which are false positives, repetitive, or lack the necessary context for quick resolution. This constant barrage leads to burnout, missed threats, and operational inefficiencies that leave organizations exposed.How Alert Fatigue Impacting SOC Performance? \u2022 Security analysts spend more time sifting through endless alerts than actively defending against real threats",
+    "description": "Security analysts are drowning in false positives and alert fatigue. Learn why enabling AI in your SOC is the definitive solution to prevent missed threats.",
     "author": {
       "name": "Team Trench",
       "role": "",

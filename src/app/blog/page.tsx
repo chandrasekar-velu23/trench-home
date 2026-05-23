@@ -7,6 +7,25 @@ import ScrollReveal from "@/components/animations/ScrollReveal";
 import TextReveal from "@/components/animations/TextReveal";
 import { postsData } from "./postsData";
 
+const LinkedinIcon = ({ size = 24, color = "currentColor", ...props }: any) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke={color}
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    {...props}
+  >
+    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+    <rect width="4" height="12" x="2" y="9" />
+    <circle cx="4" cy="4" r="2" />
+  </svg>
+);
+
 export default function BlogPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [activeFilter, setActiveFilter] = useState("All");
@@ -103,7 +122,7 @@ export default function BlogPage() {
                     <div style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
                       <span style={{ fontSize: '0.85rem', color: '#64748B', marginBottom: '0.5rem' }}>{post.date}</span>
                       <h3 className="title-sm" style={{ marginBottom: '0.75rem', transition: 'color 0.2s', fontSize: '1.15rem' }}>{post.title}</h3>
-                      <p style={{ fontSize: '0.9rem', color: '#475569', marginBottom: '1.5rem', lineHeight: '1.5' }} dangerouslySetInnerHTML={{ __html: post.description.replace(/<[^>]+>/g, "").substring(0, 120) + "..." }} />
+                      <p style={{ fontSize: '0.9rem', color: '#475569', marginBottom: '1.5rem', lineHeight: '1.5' }} dangerouslySetInnerHTML={{ __html: post.description.replace(/<[^>]+>/g, "") }} />
 
                       {/* Author */}
                       <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginTop: 'auto', marginBottom: '1.5rem' }}>
@@ -117,7 +136,21 @@ export default function BlogPage() {
                           </div>
                         )}
                         <div>
-                          <div style={{ fontSize: '0.85rem', fontWeight: 700, color: '#0F172A' }}>{post.author.name}</div>
+                          <div style={{ fontSize: '0.85rem', fontWeight: 700, color: '#0F172A', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                            {post.author.name}
+                            {post.author.name === "Gurucharan R" && (
+                              <Link 
+                                href="https://www.linkedin.com/in/gurucharanraghunathan/" 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                title="If Headless SecOps sparked a question or a thought, Gurucharan would love to hear it. Connect with him on LinkedIn"
+                                onClick={(e) => e.stopPropagation()}
+                                style={{ display: 'inline-flex', color: '#64748B', transition: 'color 0.2s' }}
+                              >
+                                <LinkedinIcon size={14} />
+                              </Link>
+                            )}
+                          </div>
                           {post.author.role && (
                             <div style={{ fontSize: '0.75rem', color: '#64748B' }}>{post.author.role}</div>
                           )}

@@ -12,6 +12,25 @@ import {
   Calendar,
   Clock
 } from "lucide-react";
+
+const LinkedinIcon = ({ size = 24, color = "currentColor", ...props }: any) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke={color}
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    {...props}
+  >
+    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+    <rect width="4" height="12" x="2" y="9" />
+    <circle cx="4" cy="4" r="2" />
+  </svg>
+);
 import ScrollReveal from "@/components/animations/ScrollReveal";
 import { BlogPost } from "../postsData";
 import HeadlessSecOpsModes from "@/components/HeadlessSecOpsModes";
@@ -167,8 +186,11 @@ export default function BlogClientLayout({ post, relatedPosts }: BlogClientLayou
     }, 3000);
   };
 
-  // Strip the first image container to avoid duplicate cover/body images
-  const cleanBody = post.body.replace(/<div class="blog-post-image">[\s\S]*?<\/div>/, "");
+  // Strip the first image container to avoid duplicate cover/body images, and remove the outer blog-post-body wrapper that breaks when split
+  const cleanBody = post.body
+    .replace(/<div class="blog-post-image">[\s\S]*?<\/div>/, "")
+    .replace(/<div class="blog-post-body">/, "")
+    .replace(/<\/div>\s*$/, "");
 
   return (
     <main className="page-main" style={{ background: "#F8FAFC" }}>
@@ -260,7 +282,20 @@ export default function BlogClientLayout({ post, relatedPosts }: BlogClientLayou
                 )}
               </div>
               <div>
-                <div style={{ fontWeight: 800, color: "#0F172A", fontSize: "1rem" }}>{post.author.name}</div>
+                <div style={{ fontWeight: 800, color: "#0F172A", fontSize: "1rem", display: "flex", alignItems: "center", gap: "0.5rem" }}>
+                  {post.author.name}
+                  {post.author.name === "Gurucharan R" && (
+                    <Link 
+                      href="https://www.linkedin.com/in/gurucharanraghunathan/" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      title="If Headless SecOps sparked a question or a thought, Gurucharan would love to hear it. Connect with him on LinkedIn"
+                      style={{ display: "inline-flex", color: "#64748B", transition: "color 0.2s" }}
+                    >
+                      <LinkedinIcon size={16} />
+                    </Link>
+                  )}
+                </div>
                 {post.author.role && (
                   <div style={{ fontSize: "0.85rem", color: "#64748B" }}>{post.author.role}</div>
                 )}
@@ -405,7 +440,7 @@ export default function BlogClientLayout({ post, relatedPosts }: BlogClientLayou
             {/* The Rendered HTML Blog Content */}
             <article 
               ref={articleRef} 
-              className="blog-post-prose"
+              className="blog-post-prose blog-post-body"
               suppressHydrationWarning
             >
               {cleanBody
