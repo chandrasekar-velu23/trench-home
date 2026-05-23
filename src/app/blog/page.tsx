@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import ScrollReveal from "@/components/animations/ScrollReveal";
 import TextReveal from "@/components/animations/TextReveal";
 import { postsData } from "./postsData";
@@ -27,6 +28,7 @@ const LinkedinIcon = ({ size = 24, color = "currentColor", ...props }: any) => (
 );
 
 export default function BlogPage() {
+  const router = useRouter();
   const [searchQuery, setSearchQuery] = useState("");
   const [activeFilter, setActiveFilter] = useState("All");
 
@@ -97,8 +99,9 @@ export default function BlogPage() {
           <div className="grid-3" style={{ gap: '2.5rem' }}>
             {filteredPosts.map((post, i) => (
               <ScrollReveal key={i} delay={i * 0.05} direction="up">
-                <Link href={`/blog/${post.slug}`} style={{ textDecoration: 'none', height: '100%', display: 'block' }}>
-                  <article style={{
+                  <article 
+                    onClick={() => router.push(`/blog/${post.slug}`)}
+                    style={{
                     cursor: 'pointer',
                     background: '#FFFFFF',
                     borderRadius: '20px',
@@ -175,7 +178,6 @@ export default function BlogPage() {
                       </div>
                     </div>
                   </article>
-                </Link>
               </ScrollReveal>
             ))}
           </div>
