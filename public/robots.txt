@@ -1,4 +1,9 @@
+# *
 User-agent: *
 Allow: /
 
+# Host
+Host: https://www.trenchsecurity.ai
+
+# Sitemaps
 Sitemap: https://www.trenchsecurity.ai/sitemap.xml

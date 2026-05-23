@@ -45,7 +45,7 @@ export default function Section3Visual() {
         return tabIds[(currentIndex + 1) % tabIds.length];
       });
       setReadyToSwitch(false); // Reset for the next tab
-    }, 2000); // Wait 2 seconds after the last message before switching
+    }, 4000); // Wait 4 seconds after the last message before switching
 
     return () => clearTimeout(timer);
   }, [isPaused, readyToSwitch]);
@@ -186,18 +186,27 @@ function FlowStrip({ nodes, time }: { nodes: any[], time: string }) {
 }
 
 // ─── MESSAGE WINDOW COMPONENT ──────────────────────────────────────
-function MessageWindow({ header, messages, inputPlaceholder, bg = "#FFFFFF", inputBg = "#FFFFFF", interval = 600, isPaused, onComplete }: {
+function MessageWindow({
+  header,
+  messages,
+  inputPlaceholder,
+  bg = "#F8FAFC",
+  inputBg = "#FFFFFF",
+  interval = 800,
+  isPaused,
+  onComplete,
+}: {
   header: React.ReactNode;
   messages: React.ReactNode[];
   inputPlaceholder: string;
   bg?: string;
   inputBg?: string;
   interval?: number;
-  isPaused: boolean;
+  isPaused?: boolean;
   onComplete?: () => void;
 }) {
-  const [current, setCurrent] = useState(0);
   const scrollRef = useRef<HTMLDivElement>(null);
+  const [current, setCurrent] = useState(0);
   const [completed, setCompleted] = useState(false);
 
   useEffect(() => {
@@ -207,23 +216,26 @@ function MessageWindow({ header, messages, inputPlaceholder, bg = "#FFFFFF", inp
 
   // Handle completion safely outside the state updater
   useEffect(() => {
-    if (completed || isPaused) return;
-    if (current === messages.length - 1) {
-      // Small delay before marking as complete to let the last animation finish
+    if (completed) return;
+    if (current >= messages.length - 1) {
       const timeout = setTimeout(() => {
         setCompleted(true);
         if (onComplete) onComplete();
       }, 500);
       return () => clearTimeout(timeout);
     }
-  }, [current, messages.length, completed, isPaused, onComplete]);
+  }, [current, messages.length, completed, onComplete]);
+
+  // Handle hover completion (instantly show all messages if hovered)
+  useEffect(() => {
+    if (isPaused && !completed) {
+      setCurrent(messages.length - 1);
+    }
+  }, [isPaused, completed, messages.length]);
 
   // Handle message increment interval
   useEffect(() => {
-    if (completed || current >= messages.length - 1) return;
-    
-    // Slow down to 1500ms when hovered (isPaused), otherwise use normal fast interval
-    const activeInterval = isPaused ? 1500 : interval;
+    if (completed || isPaused || current >= messages.length - 1) return;
     
     const timer = setInterval(() => {
       setCurrent(c => {
@@ -232,13 +244,13 @@ function MessageWindow({ header, messages, inputPlaceholder, bg = "#FFFFFF", inp
         }
         return c;
       });
-    }, activeInterval);
+    }, interval);
     return () => clearInterval(timer);
   }, [messages.length, interval, completed, isPaused, current]);
 
   // Auto-scroll logic
   useEffect(() => {
-    if (scrollRef.current) {
+    if (scrollRef.current && !isPaused) {
       const scrollTimeout = setTimeout(() => {
         if (scrollRef.current) {
           scrollRef.current.scrollTo({
@@ -249,23 +261,20 @@ function MessageWindow({ header, messages, inputPlaceholder, bg = "#FFFFFF", inp
       }, 50);
       return () => clearTimeout(scrollTimeout);
     }
-  }, [current]);
+  }, [current, isPaused]);
 
   return (
     <div style={{ background: bg, display: "flex", flexDirection: "column", flex: 1, height: "100%", borderRadius: "0 0 8px 8px" }}>
       {header}
       <div 
         ref={scrollRef}
-        className="hide-scrollbar"
         style={{ 
           flex: 1, 
           padding: "24px 20px", 
           display: "flex", 
           flexDirection: "column",
           gap: 24,
-          overflowY: "auto",
-          scrollbarWidth: "none",
-          msOverflowStyle: "none",
+          overflowY: "auto"
         }}
       >
         {messages.map((msg, index) => {
@@ -305,7 +314,7 @@ function MessageWindow({ header, messages, inputPlaceholder, bg = "#FFFFFF", inp
 }
 
 // ─── SLACK: Suspicious sign-in ─────────────────────────────────────
-function SlackMock({ isPaused, onComplete }: { isPaused: boolean; onComplete: () => void }) {
+function SlackMock({ isPaused, onComplete }: { isPaused?: boolean; onComplete: () => void }) {
   const header = (
     <div style={{ background: "#3F0B40", padding: "16px 20px", display: "flex", alignItems: "center", gap: 8 }}>
       <TrafficLights /><div style={{ fontSize: 12, color: "rgba(255,255,255,0.6)", marginLeft: 6, fontWeight: 600 }}>#sec-ops · Live security operations</div>
@@ -341,11 +350,11 @@ function SlackMock({ isPaused, onComplete }: { isPaused: boolean; onComplete: ()
     </BotMsg>
   ];
 
-  return <MessageWindow header={header} messages={messages} inputPlaceholder="Message #sec-ops..." bg="#FFFFFF" isPaused={isPaused} onComplete={onComplete} interval={300} />;
+  return <MessageWindow header={header} messages={messages} inputPlaceholder="Message #sec-ops..." bg="#FFFFFF" isPaused={isPaused} interval={500} onComplete={onComplete} />;
 }
 
 // ─── TEAMS: False positive auto-closure ───────────────────────────
-function TeamsMock({ isPaused, onComplete }: { isPaused: boolean; onComplete: () => void }) {
+function TeamsMock({ isPaused, onComplete }: { isPaused?: boolean; onComplete: () => void }) {
   const header = (
     <div style={{ background: "#4F52B2", padding: "16px 20px", display: "flex", alignItems: "center", gap: 8 }}>
       <TrafficLights /><div style={{ fontSize: 12, color: "#FFFFFF", marginLeft: 6, fontWeight: 600 }}>Security Operations · General</div>
@@ -395,11 +404,11 @@ function TeamsMock({ isPaused, onComplete }: { isPaused: boolean; onComplete: ()
     </BotMsg>
   ];
 
-  return <MessageWindow header={header} messages={messages} inputPlaceholder="Reply to thread..." bg="#FFFFFF" isPaused={isPaused} onComplete={onComplete} interval={300} />;
+  return <MessageWindow header={header} messages={messages} inputPlaceholder="Type a new message..." bg="#F8FAFC" isPaused={isPaused} interval={500} onComplete={onComplete} />;
 }
 
 // ─── CLAUDE: Threat hunt with visualization ────────────────────────
-function ClaudeMock({ isPaused, onComplete }: { isPaused: boolean; onComplete: () => void }) {
+function ClaudeMock({ isPaused, onComplete }: { isPaused?: boolean; onComplete: () => void }) {
   const header = (
     <div style={{ 
       display: "flex", justifyContent: "space-between", alignItems: "center", 
@@ -500,7 +509,7 @@ function ClaudeMock({ isPaused, onComplete }: { isPaused: boolean; onComplete: (
     </div>
   ];
 
-  return <MessageWindow header={header} messages={messages} inputPlaceholder="Message Trench Assistant..." bg="#FAF9F6" inputBg="#FAF9F6" interval={300} isPaused={isPaused} onComplete={onComplete} />;
+  return <MessageWindow header={header} messages={messages} inputPlaceholder="Message Trench Assistant..." bg="#FAF9F6" inputBg="#FAF9F6" isPaused={isPaused} interval={500} onComplete={onComplete} />;
 }
 
 
