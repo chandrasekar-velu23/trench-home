@@ -468,7 +468,57 @@ export default function BlogClientLayout({ post, relatedPosts }: BlogClientLayou
               })}
             </article>
 
-            {/* Custom Interactive Section: Likes & Share Widgets Removed */}
+            {/* Master CTA — inline within blog content, above comments */}
+            {post.slug !== "introducing-headless-secops-for-the-agentic-world" &&
+              post.slug !== "ai-in-the-security-operations-clearing-the-clutter" && (
+              <div style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                gap: "2rem",
+                flexWrap: "wrap",
+                background: "linear-gradient(135deg, #0A2FA8 0%, #0D41E1 60%, #1254F8 100%)",
+                borderRadius: "16px",
+                padding: "2.25rem 3rem",
+                marginTop: "3rem",
+                marginBottom: "0.5rem",
+                boxShadow: "0 10px 30px rgba(13, 65, 225, 0.25)",
+              }}>
+                <h3 style={{
+                  fontSize: "clamp(1.35rem, 3.5vw, 1.85rem)",
+                  fontWeight: 800,
+                  color: "#FFFFFF",
+                  letterSpacing: "-0.02em",
+                  fontFamily: "var(--font-primary)",
+                  lineHeight: 1.3,
+                  margin: 0,
+                }}>
+                  Agentic OS for Actionable SecOps
+                </h3>
+                <Link
+                  href="/"
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: "0.5rem",
+                    background: "#FFFFFF",
+                    color: "#0D41E1",
+                    fontWeight: 800,
+                    fontSize: "1rem",
+                    padding: "0.85rem 1.75rem",
+                    borderRadius: "8px",
+                    textDecoration: "none",
+                    whiteSpace: "nowrap",
+                    flexShrink: 0,
+                    transition: "all 0.2s ease",
+                    fontFamily: "var(--font-primary)",
+                  }}
+                  className="master-cta-btn"
+                >
+                  Explore Trench →
+                </Link>
+              </div>
+            )}
 
             {/* Custom Interactive Section: Comments Module */}
             <section style={{ marginTop: "4rem" }}>

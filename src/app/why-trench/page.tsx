@@ -1,5 +1,4 @@
-"use client";
-
+import type { Metadata } from "next";
 import React from "react";
 import Image from "next/image";
 import "./why-trench.css";
@@ -8,6 +7,14 @@ import ScrollReveal from "@/components/animations/ScrollReveal";
 import TextReveal from "@/components/animations/TextReveal";
 import BrandBanner from "@/components/BrandBanner";
 import CTASection from "@/components/sections/CTASection";
+
+export const metadata: Metadata = {
+  title: "Why Trench | Trench Security",
+  description: "Security Operations is a systems design problem. Not a monitoring problem. Learn why we built Trench to fix it.",
+  alternates: {
+    canonical: "https://www.trenchsecurity.ai/why-trench",
+  },
+};
 
 const COFOUNDERS = [
   {

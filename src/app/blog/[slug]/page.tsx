@@ -3,7 +3,15 @@ import { Metadata } from "next";
 import { postsData } from "../postsData";
 import BlogClientLayout from "./BlogClientLayout";
 
+const BASE_URL = "https://www.trenchsecurity.ai";
+
 type Params = Promise<{ slug: string }>;
+
+// Ensure image URL is always absolute for OG/Twitter cards and JSON-LD
+function absoluteUrl(path: string): string {
+  if (path.startsWith("http://") || path.startsWith("https://")) return path;
+  return `${BASE_URL}${path.startsWith("/") ? "" : "/"}${path}`;
+}
 
 // Generate dynamic SEO metadata for each individual post
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
@@ -12,7 +20,8 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   
   if (!post) {
     return {
-      title: "Article Not Found | Trench Security"
+      title: "Article Not Found | Trench Security",
+      robots: { index: false, follow: false }
     };
   }
 
@@ -23,24 +32,38 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
     .substring(0, 160)
     .trim();
 
+  const absoluteImage = absoluteUrl(post.image);
+  const canonicalUrl = `${BASE_URL}/blog/${slug}`;
+
   return {
     title: `${post.title} | Trench Security Blog`,
     description: cleanDescription,
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
+    },
     alternates: {
-      canonical: `https://www.trenchsecurity.ai/blog/${slug}`
+      canonical: canonicalUrl
     },
     openGraph: {
       title: post.title,
       description: cleanDescription,
-      url: `https://www.trenchsecurity.ai/blog/${slug}`,
+      url: canonicalUrl,
       siteName: "Trench Security",
+      locale: "en_US",
       type: "article",
       publishedTime: post.publishedTime,
       modifiedTime: post.modifiedTime,
       authors: [post.author.name],
       images: [
         {
-          url: post.image,
+          url: absoluteImage,
           width: 1200,
           height: 630,
           alt: post.title
@@ -51,7 +74,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
       card: "summary_large_image",
       title: post.title,
       description: cleanDescription,
-      images: [post.image]
+      images: [absoluteImage]
     }
   };
 }
@@ -81,7 +104,7 @@ export default async function BlogPostPage({ params }: { params: Params }) {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     "headline": post.title,
-    "image": post.image,
+    "image": absoluteUrl(post.image),
     "datePublished": post.publishedTime,
     "dateModified": post.modifiedTime,
     "author": {
@@ -100,7 +123,7 @@ export default async function BlogPostPage({ params }: { params: Params }) {
     "description": post.description.replace(/<[^>]+>/g, "").substring(0, 160).trim(),
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": `https://www.trenchsecurity.ai/blog/${slug}`
+      "@id": `${BASE_URL}/blog/${slug}`
     }
   };
 

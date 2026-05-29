@@ -1,5 +1,4 @@
-"use client";
-
+import type { Metadata } from "next";
 import ProcessSteps from "@/components/ProcessSteps";
 import FAQ from "@/components/FAQ";
 import ComparisonTable from "@/components/ComparisonTable";
@@ -12,6 +11,12 @@ import SiemRibbon from "@/components/sections/SiemRibbon";
 import CustomerSection from "@/components/sections/CustomerSection";
 import CTASection from "@/components/sections/CTASection";
 import Collaborations from "@/components/Collaborations";
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: "https://www.trenchsecurity.ai",
+  },
+};
 // import Highlight from "@/components/sections/Highlight";
 // import PartnerSection from "@/components/PartnerSection";
 // import { TweaksPanel } from "@/components/tweaks-panel";

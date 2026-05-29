@@ -1069,6 +1069,22 @@ h6,
   filter: brightness(1.05);
 }
 
+/* Master CTA Banner Responsive */
+.master-cta-grid {
+  grid-template-columns: 1fr auto;
+}
+
+@media (max-width: 768px) {
+  .master-cta-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+.master-cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2) !important;
+}
+
 /* Animations */
 @keyframes slideIn {
   from { transform: translateY(20px); opacity: 0; }

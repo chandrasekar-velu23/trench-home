@@ -1,8 +1,15 @@
-"use client";
-
+import type { Metadata } from "next";
 import ScrollReveal from "@/components/animations/ScrollReveal";
 import TextReveal from "@/components/animations/TextReveal";
 import ProcessSteps from "@/components/ProcessSteps";
+
+export const metadata: Metadata = {
+  title: "How It Works | Trench Security",
+  description: "Trench simplifies security operations by unifying visibility, detection, and response into a single, automated workflow.",
+  alternates: {
+    canonical: "https://www.trenchsecurity.ai/how-it-works",
+  },
+};
 
 export default function HowItWorksPage() {
   return (

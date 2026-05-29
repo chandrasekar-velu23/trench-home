@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { Poppins } from "next/font/google";
-
+import { Analytics } from "@vercel/analytics/next"
 import "./globals.css";
 
 import LenisProvider from "@/components/LenisProvider";
@@ -70,10 +70,6 @@ export const metadata: Metadata = {
     },
   },
 
-  alternates: {
-    canonical: "https://www.trenchsecurity.ai",
-  },
-
   icons: {
     icon: "/favicon.ico",
     apple: "/apple-touch-icon.png",
@@ -118,6 +114,7 @@ export default function RootLayout({
       className={`${bricolage.variable} ${space.variable} ${poppins.variable}`}
       suppressHydrationWarning
     >
+      <Analytics />
       <body
         className="antialiased font-secondary"
         suppressHydrationWarning

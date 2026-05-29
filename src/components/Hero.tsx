@@ -57,7 +57,7 @@ export default function Hero() {
               </div>
 
               <h1 className="title-lg hero-title-override">
-                The New Operating System for  <br className="hide-mobile" /> Security Operations.
+                The Operating System for   <br className="hide-mobile" /> Actionable SecOps.
               </h1>
             </div>
 
