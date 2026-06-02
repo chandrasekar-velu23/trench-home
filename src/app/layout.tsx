@@ -8,6 +8,7 @@ import LenisProvider from "@/components/LenisProvider";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ClickSpark from "@/components/animations/ClickSpark";
+import NavigationLoaderProvider from "@/components/NavigationLoader";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -120,19 +121,21 @@ export default function RootLayout({
         suppressHydrationWarning
       >
         <LenisProvider>
-          <Navbar />
+          <NavigationLoaderProvider>
+            <Navbar />
 
-          <ClickSpark
-            sparkColor="#0D41E1"
-            sparkSize={15}
-            sparkRadius={25}
-            sparkCount={12}
-            duration={500}
-          >
-            {children}
-          </ClickSpark>
+            <ClickSpark
+              sparkColor="#0D41E1"
+              sparkSize={15}
+              sparkRadius={25}
+              sparkCount={12}
+              duration={500}
+            >
+              {children}
+            </ClickSpark>
 
-          <Footer />
+            <Footer />
+          </NavigationLoaderProvider>
         </LenisProvider>
       </body>
     </html>

@@ -29,7 +29,7 @@ export default function Hero() {
         {/* Mobile Background */}
         <div className="mobile-bg hero-bg-image-wrap">
           <Image
-            src="/images/hero ph.png"
+            src="/images/hero-ph.png"
             alt="Trench Guardian Castle Mobile"
             fill
             priority
@@ -320,8 +320,8 @@ export default function Hero() {
           }
           :global(.hero-btn-primary),
           :global(.hero-btn-secondary) {
-            width: 162px !important;
-            height: 41px !important;
+            width: 130px !important;
+            height: 30px !important;
           }
           :global(.hero-btn-primary .button-text),
           :global(.hero-btn-secondary .button-text) {

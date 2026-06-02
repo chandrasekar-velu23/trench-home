@@ -17,7 +17,7 @@ export default function Footer() {
             height={35}
             className="footer-logo-img"
           />
-          <div className="footer-header-badges">
+          <div className="footer-header-badges hide-mobile">
             <span className="footer-header-badge-label">Verified Security & Compliance</span>
             <div className="badge-row">
               <Image
@@ -61,7 +61,7 @@ export default function Footer() {
               </a>
             </div>
             {/* Subtle partners row directly under contact in brand column */}
-            <div className="footer-partners-group-brand">
+            <div className="footer-partners-group-brand hide-mobile">
               <span className="footer-support-label">Partnerships & Awards</span>
               <div className="footer-partners-row">
                 <Image
@@ -125,6 +125,63 @@ export default function Footer() {
                   <p>16192 Coastal Highway, Lewes, DE 19958</p>
                 </address>
               </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile Trust Panel (Visible on mobile only) */}
+        <div className="footer-mobile-trust-panel show-mobile-only">
+          <div className="mobile-trust-group">
+            <span className="mobile-trust-label">Security & Compliance</span>
+            <div className="mobile-trust-badges">
+              <Image
+                src="/certificates/AICPA-SOC.svg"
+                alt="AICPA SOC"
+                width={56}
+                height={56}
+                className="footer-cert-badge-small"
+              />
+              <Image
+                src="/certificates/GDPR.svg"
+                alt="GDPR"
+                width={66}
+                height={66}
+                className="footer-cert-badge-small"
+              />
+              <Image
+                src="/certificates/ISO.svg"
+                alt="ISO"
+                width={56}
+                height={56}
+                className="footer-cert-badge-small"
+              />
+            </div>
+          </div>
+          
+          <div className="mobile-trust-group">
+            <span className="mobile-trust-label">Partnerships & Awards</span>
+            <div className="mobile-trust-badges">
+              <Image
+                src="/awards/ISV-Partner-logo-new.png"
+                alt="microsoft-ISV"
+                width={135}
+                height={30}
+                className="footer-partner-badge-small"
+              />
+              <Image
+                src="/awards/Logo_IAA.webp"
+                alt="Indian Achievers Award"
+                width={84}
+                height={42}
+                className="footer-partner-badge-small"
+              />
+              <Image
+                src="/awards/CySecK-Logo-PNG@900x.webp"
+                alt="CySecK"
+                width={84}
+                height={42}
+                className="footer-partner-badge-small"
+              />
             </div>
           </div>
         </div>
@@ -205,6 +262,10 @@ export default function Footer() {
           border-radius: 24px;
           border: 1px solid rgba(255, 255, 255, 0.6);
           box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
+        }
+
+        .show-mobile-only {
+          display: none !important;
         }
 
         /* ── Header Ribbon (Logo + Certifications) ── */
@@ -511,6 +572,49 @@ export default function Footer() {
         }
 
         @media (max-width: 768px) {
+          .hide-mobile {
+            display: none !important;
+          }
+
+          .show-mobile-only {
+            display: flex !important;
+          }
+
+          .footer-mobile-trust-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            width: 100%;
+            border-top: 1px solid rgba(15, 23, 42, 0.08);
+            padding-top: 1.5rem;
+            margin-top: 0.5rem;
+          }
+
+          .mobile-trust-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.75rem;
+            width: 100%;
+          }
+
+          .mobile-trust-label {
+            font-size: 0.65rem;
+            font-weight: 850;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #475569;
+          }
+
+          .mobile-trust-badges {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.25rem;
+            flex-wrap: wrap;
+            width: 100%;
+          }
+
           .footer-container {
             background-image: url('/images/footer-1-ph.png');
           }
