@@ -74,9 +74,9 @@ export default function Hero() {
                 </Link>
                 {/* <Link href="/connect">
                   <Button variant="secondary" className="hero-btn-secondary">
-                    Take a Tour
-                  </Button> */}
-                {/* </Link> */}
+                    Get a Demo
+                  </Button>
+                </Link> */}
               </div>
             </div>
           </motion.div>
@@ -143,7 +143,7 @@ export default function Hero() {
 
         .hero-content-wrapper {
           position: relative;
-          z-index: 15;
+          z-index: 10;
           width: 100%;
           height: 100%;
           display: flex;
@@ -156,49 +156,52 @@ export default function Hero() {
 
         .hero-container-inner {
           width: 100%;
-          max-width: 1400px;
+          max-width: 1200px; /* Aligned with standard container max-width */
           display: flex;
-          justify-content: center;
+          justify-content: flex-start; /* Aligned left on desktop view */
           align-items: center;
-          margin-top: -20vh;
+          margin-top: -25vh;
+          margin-left: auto;
+          margin-right: auto;
         }
-
 
         .hero-glass-card {
           padding: 0;
-          max-width: 1000px;
+          max-width: 780px; /* Set max-width to not overlap with glowing glass dome on right */
           width: 100%;
-          text-align: center;
+          text-align: left; /* Aligned text left */
           display: flex;
           flex-direction: column;
-          align-items: center;
+          align-items: flex-start; /* Aligned children left */
           gap: 2.5rem;
         }
 
         .hero-top-group {
           display: flex;
           flex-direction: column;
-          align-items: center;
+          align-items: flex-start;
           gap: 1.25rem;
+          width: 100%;
         }
 
         .hero-bottom-group {
           display: flex;
           flex-direction: column;
-          align-items: center;
+          align-items: flex-start;
           gap: 1.5rem;
+          width: 100%;
         }
 
         .hero-title-override {
           margin: 0;
-          text-align: center;
+          text-align: left;
           color: #ffffff;
           text-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
         }
 
         .hero-eyebrow-container {
            margin-bottom: 0.5rem;
-           text-align: center;
+           text-align: left;
            width: 100%;
         }
 
@@ -209,7 +212,7 @@ export default function Hero() {
           letter-spacing: 0.15em;
           color: #ffffff;
           display: block;
-          text-align: center;
+          text-align: left;
         }
 
         .hero-title {
@@ -228,7 +231,7 @@ export default function Hero() {
           max-width: 640px;
           margin: 0;
           font-weight: 500;
-          text-align: center;
+          text-align: left;
         }
 
         .hero-button-group {
@@ -264,12 +267,11 @@ export default function Hero() {
             justify-content: flex-start;
           }
           .hero-container-inner {
-            justify-content: center;
+            justify-content: center !important;
             align-items: center;
             flex: 1;
-            margin-top: 15vh;
+            margin-top: -5vh;
           }
-
 
           .hero-glass-card {
             padding: 0;
@@ -283,26 +285,38 @@ export default function Hero() {
             justify-content: center;
             gap: 1rem;
           }
+          .hero-top-group {
+            align-items: center !important;
+          }
+          .hero-bottom-group {
+            align-items: center !important;
+          }
           .hero-eyebrow {
             font-size: 12px;
+            text-align: center !important;
+          }
+          .hero-eyebrow-container {
+             text-align: center !important;
           }
           .hero-title-override {
             font-size: 1.44rem !important;
-            text-align: center;
+            text-align: center !important;
             line-height: 1.15;
           }
           .hero-subtitle {
             font-size: 0.75rem;
-            text-align: center;
+            text-align: center !important;
             margin: 0 auto;
             color: #ffffff;
             max-width: 100%;
           }
           .hero-button-group {
-            flex-direction: column;
+            flex-direction: row !important;
+            justify-content: center !important;
             width: 100%;
-            gap: 0.75rem;
-            align-items: center;
+            gap: 0.25rem;
+            align-items: center !important;
+            margin-top: -1rem !important;
           }
           :global(.hero-btn-primary),
           :global(.hero-btn-secondary) {
