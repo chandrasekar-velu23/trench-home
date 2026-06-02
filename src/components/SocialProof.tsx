@@ -69,7 +69,7 @@ export default function SocialProof() {
       <div className="testimonial-container">
         <ScrollReveal direction="up" className="text-center" distance={40} style={{ marginBottom: "0rems" }}>
 
-          <h2 className="title-lg" style={{ fontSize: "250%", textAlign: "center" }}>Loved by Practitioners<br />& Security Leaders</h2>
+          <h2 className="title-md text-center">Loved by Practitioners<br />& Security Leaders</h2>
         </ScrollReveal>
 
 
@@ -84,6 +84,7 @@ export default function SocialProof() {
               className="testimonial-card"
             >
               <div className="card-content">
+                {/* Temporarily hide social avatar pictures for future update
                 <div className="avatar-wrapper">
                   <Image
                     src={current.avatar}
@@ -93,6 +94,7 @@ export default function SocialProof() {
                     quality={90}
                   />
                 </div>
+                */}
 
                 <blockquote className="quote-text text-medium">
                   "{current.quote}"
@@ -157,7 +159,7 @@ export default function SocialProof() {
           width: 100%;
           display: flex;
           justify-content: center;
-          margin-bottom: 2rem;
+          margin-bottom: 1rem;
         }
 
         .section-divider-svg {
@@ -174,13 +176,19 @@ export default function SocialProof() {
           align-items: center;
         }
 
+        .testimonial-container h2 {
+          margin-top: 0;
+          margin-bottom: 0.75rem;
+          line-height: 1.2;
+        }
+
         .testimonial-slider {
           width: 100%;
           display: flex;
           flex-direction: column;
           align-items: center;
           position: relative;
-          min-height: 400px;
+          min-height: 260px;
           justify-content: center;
           margin-top: 0.5rem;
         }
@@ -191,7 +199,7 @@ export default function SocialProof() {
           display: flex;
           align-items: center;
           justify-content: center;
-          padding: 2rem 1.5rem;
+          padding: 1.25rem 1.5rem;
         }
 
         .card-content {
@@ -201,7 +209,7 @@ export default function SocialProof() {
           flex-direction: column;
           align-items: center;
           text-align: center;
-          gap: 1rem;
+          gap: 0.75rem;
           max-width: 850px;
         }
 
@@ -234,16 +242,17 @@ export default function SocialProof() {
         .author-info {
           display: flex;
           flex-direction: column;
-          gap: 0.5rem;
+          gap: 0.25rem;
         }
 
         .author-name {
           color: #0D41E1;
-          font-size: 1.15rem;
+          font-size: 1rem;
         }
 
         .author-role {
           color: #888;
+          font-size: 0.875rem;
         }
 
         .slider-controls {
@@ -325,7 +334,7 @@ export default function SocialProof() {
           }
           
           .section-divider-wrapper {
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.25rem;
             transform: scale(0.6);
             transform-origin: top center;
             margin-top: -1rem;
@@ -339,13 +348,13 @@ export default function SocialProof() {
           }
           
           .testimonial-container h2 {
-            font-size: 1.3rem !important;
             text-align: center;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.35rem;
+            margin-top: 0;
           }
           
           .testimonial-slider {
-            min-height: 400px;
+            min-height: 270px;
             margin-top: 0;
           }
 
@@ -354,7 +363,7 @@ export default function SocialProof() {
           }
           
           .card-content { 
-            gap: 1.25rem;
+            gap: 0.75rem;
             padding: 0 0.5rem;
           }
           .avatar-wrapper { 
@@ -365,15 +374,14 @@ export default function SocialProof() {
           
           .quote-text { 
             line-height: 1.5;
-            font-size: 1rem;
           }
           
           .author-name {
-            font-size: 0.9rem;
+            font-size: 0.875rem;
           }
           
           .author-role {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
           }
           
           .controls-relative {

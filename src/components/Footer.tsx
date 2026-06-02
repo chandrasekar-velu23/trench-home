@@ -6,10 +6,10 @@ import Image from "next/image";
 export default function Footer() {
   return (
     <footer className="footer-container">
-      <div className="footer-top-fade" />
+      {/* <div className="footer-top-fade" /> */}
       <div className="footer-content">
-        {/* Column 1 — Brand + Certs */}
-        <div className="footer-col footer-brand-col">
+        {/* Header Row — Logo + Compliance */}
+        <div className="footer-header-row">
           <Image
             src="/logo/trench-logo.webp"
             alt="Trench Logo"
@@ -17,112 +17,126 @@ export default function Footer() {
             height={35}
             className="footer-logo-img"
           />
-          <div className="footer-certs">
-            <span className="footer-certs-label">Certified</span>
-            <div className="footer-certs-badges">
+          <div className="footer-header-badges">
+            <span className="footer-header-badge-label">Verified Security & Compliance</span>
+            <div className="badge-row">
               <Image
                 src="/certificates/AICPA-SOC.svg"
                 alt="AICPA SOC"
-                width={85}
-                height={85}
-                className="footer-cert-badge"
+                width={56}
+                height={56}
+                className="footer-cert-badge-small"
               />
               <Image
                 src="/certificates/GDPR.svg"
                 alt="GDPR"
-                width={105}
-                height={105}
-                className="footer-cert-badge"
+                width={66}
+                height={66}
+                className="footer-cert-badge-small"
               />
               <Image
                 src="/certificates/ISO.svg"
                 alt="ISO"
-                width={85}
-                height={85}
-                className="footer-cert-badge"
+                width={56}
+                height={56}
+                className="footer-cert-badge-small"
               />
             </div>
-            <div className="footer-support-item" style={{ marginTop: "1.5rem" }}>
-              <h5 className="address-label">Support:</h5>
-              <address className="footer-address">
-                <p>Reach out to us at</p>
-                <p>
-                  <a href="mailto:ask@trenchsecurity.ai" className="footer-contact-link">
-                    ask@trenchsecurity.ai
-                  </a>
-                </p>
-              </address>
+          </div>
+        </div>
+
+        <div className="footer-header-divider" />
+
+        {/* 4-Column Grid */}
+        <div className="footer-columns-grid">
+          {/* Column 1 — Brand + Tagline + Partners */}
+          <div className="footer-col footer-brand-col">
+            <p className="footer-brand-desc">
+              The Operating System for Actionable SecOps. Agentic automation built ground up for modern security teams.
+            </p>
+            <div className="footer-support-item">
+              <span className="footer-support-label">Support & Inquiries:</span>
+              <a href="mailto:ask@trenchsecurity.ai" className="footer-contact-link">
+                ask@trenchsecurity.ai
+              </a>
+            </div>
+            {/* Subtle partners row directly under contact in brand column */}
+            <div className="footer-partners-group-brand">
+              <span className="footer-support-label">Partnerships & Awards</span>
+              <div className="footer-partners-row">
+                <Image
+                  src="/awards/ISV-Partner-logo-new.png"
+                  alt="microsoft-ISV"
+                  width={135}
+                  height={30}
+                  className="footer-partner-badge-small"
+                />
+                <Image
+                  src="/awards/Logo_IAA.webp"
+                  alt="Indian Achievers Award"
+                  width={84}
+                  height={42}
+                  className="footer-partner-badge-small"
+                />
+                <Image
+                  src="/awards/CySecK-Logo-PNG@900x.webp"
+                  alt="CySecK"
+                  width={84}
+                  height={42}
+                  className="footer-partner-badge-small"
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Column 2 — Legal */}
+          <div className="footer-col link-column">
+            <h4 className="footer-heading">Legal</h4>
+            <a href="https://compliance.trenchsecurity.ai/" target="_blank" rel="noopener noreferrer">Privacy policy</a>
+            <a href="https://compliance.trenchsecurity.ai/" target="_blank" rel="noopener noreferrer">Cookies notice</a>
+            <a href="https://compliance.trenchsecurity.ai/" target="_blank" rel="noopener noreferrer">Trust center</a>
+          </div>
+
+          {/* Column 3 — Platform */}
+          <div className="footer-col link-column">
+            <h4 className="footer-heading">Platform</h4>
+            <Link href="/why-trench">Why Trench?</Link>
+            <Link href="/for-mssps">For MSSPs</Link>
+            <Link href="/integrations">Integrations</Link>
+            <Link href="/how-it-works">How it works?</Link>
+          </div>
+
+          {/* Column 4 — Address & Contact */}
+          <div className="footer-col address-column">
+            <h4 className="footer-heading">Locations</h4>
+            <div className="addresses-container">
+              <div className="address-item">
+                <h5 className="address-label">India Office:</h5>
+                <address className="footer-address">
+                  <p>Trench Security Private Limited,</p>
+                  <p>4th Flr, TheHub@RaiSerenity, Yelеnahali, Begur,</p>
+                  <p>Bangalore-560068, Karnataka</p>
+                </address>
+              </div>
+              <div className="address-item">
+                <h5 className="address-label">US Office:</h5>
+                <address className="footer-address">
+                  <p>Trench Security Inc</p>
+                  <p>16192 Coastal Highway, Lewes, DE 19958</p>
+                </address>
+              </div>
             </div>
           </div>
         </div>
 
-        {/* Column 2 — Legal */}
-        <div className="footer-col link-column">
-          <h4 className="footer-heading">Legal</h4>
-          <a href="https://compliance.trenchsecurity.ai/" target="_blank" rel="noopener noreferrer">Privacy policy</a>
-          <a href="https://compliance.trenchsecurity.ai/" target="_blank" rel="noopener noreferrer">Cookies notice</a>
-          <a href="https://compliance.trenchsecurity.ai/" target="_blank" rel="noopener noreferrer">Trust center</a>
-        </div>
-
-        {/* Column 3 — Platform */}
-        <div className="footer-col link-column">
-          <h4 className="footer-heading">Platform</h4>
-          <Link href="/why-trench">Why Trench?</Link>
-          <Link href="/for-mssps">For MSSPs</Link>
-          <Link href="/integrations">Integrations</Link>
-          <Link href="/how-it-works">How it works?</Link>
-        </div>
-
-        {/* Column 4 — Address & Contact */}
-        <div className="footer-col address-column">
-          <h4 className="footer-heading">Address & Contact</h4>
-          <div className="addresses-container">
-            <div className="address-item">
-              <h5 className="address-label">India Office:</h5>
-              <address className="footer-address">
-                <p>Trench Security Private Limited,</p>
-                <p>4th Flr, TheHub@RaiSerenity, Khatha No:10, Yelеnahali, Begur,</p>
-                <p>Bangalore South, Bangalore-560068, Karnataka</p>
-              </address>
-            </div>
-            <div className="address-item">
-              <h5 className="address-label">US Office:</h5>
-              <address className="footer-address">
-                <p>Trench Security Inc</p>
-                <p>16192 Coastal Highway, Lewes, DE 19958</p>
-              </address>
-            </div>
-          </div>
-        </div>
-        <div className="footer-bottom-logos">
-          <Image
-            src="/awards/ISV-Partner-logo-new.png"
-            alt="microsoft-ISV"
-            width={132}
-            height={29}
-            className="footer-partner-badge"
-          />
-          <Image
-            src="/awards/Logo_IAA.webp"
-            alt="Indian Achievers Award"
-            width={88}
-            height={44}
-            className="footer-partner-badge"
-          />
-          <Image
-            src="/awards/CySecK-Logo-PNG@900x.webp"
-            alt="CySecK"
-            width={88}
-            height={44}
-            className="footer-partner-badge"
-          />
-        </div>
+        {/* Bottom bar */}
         <div className="footer-bottom-bar">
           <span className="copyright">© 2026 Trench Security, Inc.</span>
           <div className="social-links">
+            <span className="find-us-label">Find us:</span>
             <a href="https://www.linkedin.com/company/trenchsecurity/" target="_blank" rel="noopener noreferrer" className="social-link" aria-label="LinkedIn">
-              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
               </svg>
             </a>
           </div>
@@ -142,10 +156,11 @@ export default function Footer() {
           position: relative;
           width: 100%;
           min-height: auto;
-          background-image: url('/images/footer.webp');
+          background-image: url('/images/footer 1.png');
           background-size: cover;
           background-position: center bottom;
           background-repeat: no-repeat;
+          background-color: #0b1126; /* Deep dark blue to match the rich midnight/space theme */
           display: flex;
           flex-direction: column;
           justify-content: flex-end;
@@ -154,21 +169,30 @@ export default function Footer() {
           margin-top: 0;
         }
 
+        /*
         .footer-top-fade {
           position: absolute;
-          top: 0;
+          top: -2px;
           left: 0;
           right: 0;
-          height: 220px;
-          background: linear-gradient(to bottom, #ffffff 0%, rgba(255,255,255,0.85) 25%, rgba(255,255,255,0.5) 50%, rgba(255,255,255,0.15) 75%, transparent 100%);
+          height: 160px;
+          background: linear-gradient(
+            to bottom,
+            #ffffff 0%,
+            rgba(255, 255, 255, 0.8) 7%,
+            rgba(255, 255, 255, 0.45) 18%,
+            rgba(255, 255, 255, 0.15) 35%,
+            rgba(255, 255, 255, 0.03) 60%,
+            rgba(255, 255, 255, 0) 100%
+          );
           z-index: 1;
           pointer-events: none;
         }
+        */
 
         .footer-content {
-          display: grid;
-          grid-template-columns: repeat(4, 1fr);
-          gap: 2.5rem;
+          display: flex;
+          flex-direction: column;
           width: 100%;
           max-width: 1200px;
           margin: 0 auto;
@@ -183,84 +207,131 @@ export default function Footer() {
           box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
         }
 
-        /* ── Brand column ── */
-        .footer-brand-col {
+        /* ── Header Ribbon (Logo + Certifications) ── */
+        .footer-header-row {
           display: flex;
-          flex-direction: column;
+          justify-content: space-between;
+          align-items: center;
+          width: 100%;
+          gap: 2rem;
+          margin-bottom: 1.25rem;
+        }
+
+        .footer-header-badges {
+          display: flex;
+          align-items: center;
           gap: 1.5rem;
         }
 
-        .footer-logo-img {
-          height: 35.2px;
-          width: auto;
-          max-width: 100%;
-          object-fit: contain;
-          display: block;
-        }
-
-        /* ── Certification badges ── */
-        .footer-certs {
-          display: flex;
-          flex-direction: column;
-          align-items: flex-start;
-          gap: 0.5rem;
-        }
-
-        .footer-certs-label {
-          font-size: 0.65rem;
-          font-weight: 800;
+        .footer-header-badge-label {
+          font-size: 0.625rem;
+          font-weight: 900;
           text-transform: uppercase;
           letter-spacing: 0.12em;
-          color: #334155; /* Neutral dark Slate 700 */
+          color: #334155;
           opacity: 0.8;
+          line-height: 1.35;
+          text-align: right;
+          width: 140px;
         }
 
-        .footer-certs-badges {
+        .badge-row {
           display: flex;
           align-items: center;
-          gap: 0.5rem;
+          gap: 1.25rem;
         }
 
-        .footer-cert-badge {
-          height: 70.4px;
+        .footer-cert-badge-small {
+          height: 48px;
           width: auto;
           max-width: 100%;
           object-fit: contain;
-          opacity: 0.7;
+          opacity: 0.8;
           transition: opacity 0.25s ease, transform 0.25s ease;
-          filter: grayscale(15%);
+          filter: grayscale(10%);
         }
 
-        .footer-cert-badge:hover {
+        .footer-cert-badge-small:hover {
           opacity: 1;
           transform: scale(1.06);
           filter: grayscale(0%);
         }
 
-        .footer-partner-badge {
+        .footer-header-divider {
+          width: 100%;
+          height: 1px;
+          background: rgba(15, 23, 42, 0.08);
+          margin-bottom: 2rem;
+        }
+
+        /* ── 4-Column Grid ── */
+        .footer-columns-grid {
+          display: grid;
+          grid-template-columns: 1.3fr 0.8fr 0.8fr 1.1fr;
+          gap: 2.5rem;
+          width: 100%;
+          margin-bottom: 1rem;
+        }
+
+        /* ── Brand column ── */
+        .footer-brand-col {
+          display: flex;
+          flex-direction: column;
+          gap: 1.25rem;
+        }
+
+        .footer-brand-desc {
+          font-size: 0.85rem;
+          color: #475569;
+          line-height: 1.55;
+          margin: 0;
+          text-align: left;
+        }
+
+        .footer-support-item {
+          display: flex;
+          flex-direction: column;
+          gap: 0.25rem;
+        }
+
+        .footer-support-label {
+          font-size: 0.65rem;
+          font-weight: 850;
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+          color: #1e293b;
+        }
+
+        /* ── Partnerships in Brand Column ── */
+        .footer-partners-group-brand {
+          display: flex;
+          flex-direction: column;
+          gap: 0.5rem;
+          margin-top: 0.75rem;
+          border-top: 1px solid rgba(15, 23, 42, 0.06);
+          padding-top: 1rem;
+        }
+
+        .footer-partners-row {
+          display: flex;
+          align-items: center;
+          gap: 0.85rem;
+          flex-wrap: wrap;
+        }
+
+        .footer-partner-badge-small {
           height: auto;
           width: auto;
-          max-height: 44px;
+          max-height: 42px;
           max-width: 100%;
           object-fit: contain;
-          opacity: 0.7;
+          opacity: 0.75;
           transition: opacity 0.25s ease, transform 0.25s ease;
         }
 
-        .footer-partner-badge:hover {
+        .footer-partner-badge-small:hover {
           opacity: 1;
-          transform: scale(1.06);
-        }
-
-        .footer-bottom-logos {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          gap: 0.5rem;
-          margin-top: 0.5rem;
-          padding-top: 0.5rem;
-          width: 100%;
-          grid-column: 1 / -1;
+          transform: scale(1.05);
         }
 
         /* ── Link columns ── */
@@ -270,7 +341,7 @@ export default function Footer() {
           text-transform: uppercase;
           letter-spacing: 0.1em;
           margin-bottom: 0.75rem;
-          color: var(--color-primary-100, #0D41E1); /* Brand primary blue color only */
+          color: var(--color-primary-100, #0D41E1); /* Brand primary blue */
         }
 
         .link-column {
@@ -282,13 +353,13 @@ export default function Footer() {
         .link-column :global(a) {
           font-size: 0.9rem;
           font-weight: 600;
-          color: #1e293b; /* High-contrast neutral Slate 800 */
+          color: #1e293b; /* Slate 800 */
           text-decoration: none;
           transition: all 0.2s ease;
         }
 
         .link-column :global(a:hover) {
-          color: #0f172a; /* Solid neutral dark Slate 900 */
+          color: #0f172a; /* Slate 900 */
           text-decoration: underline;
         }
 
@@ -301,12 +372,11 @@ export default function Footer() {
         .addresses-container {
           display: flex;
           flex-direction: column;
-          gap: 1.5rem;
+          gap: 1.25rem;
         }
 
         .address-item {
           flex: 1;
-          min-width: 200px;
         }
 
         .address-label {
@@ -314,8 +384,8 @@ export default function Footer() {
           font-weight: 800;
           text-transform: uppercase;
           letter-spacing: 0.05em;
-          margin-bottom: 0.5rem;
-          color: #1e293b; /* Solid neutral dark Slate 800 */
+          margin-bottom: 0.35rem;
+          color: #1e293b;
           opacity: 0.9;
         }
 
@@ -323,39 +393,39 @@ export default function Footer() {
           font-style: normal;
           display: flex;
           flex-direction: column;
-          gap: 0.2rem;
+          gap: 0.15rem;
         }
 
         .footer-address p {
           font-size: 0.85rem;
           font-weight: 500;
-          color: #1e293b; /* High-contrast Slate 800 */
+          color: #1e293b;
           margin: 0;
           line-height: 1.4;
         }
 
         .footer-contact-link {
-          color: #0f172a; /* Solid neutral dark Slate 900 */
+          color: #0f172a;
           text-decoration: underline;
           font-weight: 700;
           transition: color 0.2s ease;
         }
 
         .footer-contact-link:hover {
-          color: #475569; /* Slate 600 */
+          color: #475569;
         }
 
+        /* ── Bottom bar ── */
         .footer-bottom-bar {
           display: flex;
           justify-content: space-between;
           align-items: center;
           width: 100%;
-          grid-column: 1 / -1;
-          border-top: 1px solid rgba(15, 23, 42, 0.08); /* Pure neutral Slate border */
+          border-top: 1px solid rgba(15, 23, 42, 0.08);
           padding-top: 1.5rem;
-          margin-top: 1rem;
+          margin-top: 1.5rem;
           font-size: 0.85rem;
-          color: #1e293b; /* High-contrast Slate 800 */
+          color: #1e293b;
           font-weight: 500;
         }
 
@@ -365,7 +435,7 @@ export default function Footer() {
         }
 
         .bottom-link {
-          color: #1e293b; /* High-contrast Slate 800 */
+          color: #1e293b;
           text-decoration: underline;
           text-underline-offset: 3px;
           transition: color 0.2s ease;
@@ -373,13 +443,20 @@ export default function Footer() {
         }
 
         .bottom-link:hover {
-          color: #0f172a; /* Solid neutral Slate 900 */
+          color: #0f172a;
         }
 
         .social-links {
           display: flex;
           align-items: center;
-          gap: 1rem;
+          gap: 0.5rem;
+        }
+
+        .find-us-label {
+          font-size: 0.8rem;
+          font-weight: 600;
+          color: #475569; /* Slate 600 */
+          margin-right: 0.25rem;
         }
 
         .social-link {
@@ -391,27 +468,26 @@ export default function Footer() {
         }
 
         .social-link:hover {
-          color: #0A66C2; /* Official LinkedIn Blue */
+          color: #0A66C2; /* LinkedIn Blue */
           transform: scale(1.1);
         }
 
         /* ── Responsive ── */
         @media (max-width: 1100px) {
-          .footer-content {
-            grid-template-columns: 1fr 1fr 1fr;
+          .footer-columns-grid {
+            grid-template-columns: 1.3fr 0.9fr 0.9fr;
           }
           .address-column {
             grid-column: 1 / -1;
-            border-top: 1px solid rgba(15, 23, 42, 0.05); /* Pure neutral border */
+            border-top: 1px solid rgba(15, 23, 42, 0.05);
             padding-top: 1.5rem;
           }
         }
 
         @media (max-width: 900px) {
-          .footer-content {
+          .footer-columns-grid {
             grid-template-columns: 1fr 1fr;
             gap: 2rem;
-            padding: 2rem 2rem;
           }
           .footer-brand-col {
             grid-column: 1 / -1;
@@ -419,22 +495,37 @@ export default function Footer() {
           .address-column {
             grid-column: 1 / -1;
           }
+          .footer-header-row {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1.25rem;
+          }
+          .footer-header-badges {
+            width: 100%;
+            justify-content: space-between;
+          }
+          .footer-header-badge-label {
+            text-align: left;
+            width: auto;
+          }
         }
 
         @media (max-width: 768px) {
           .footer-container {
-            background-image: url('/images/footer-ph.webp');
+            background-image: url('/images/footer-1-ph.png');
           }
-          .footer-bottom-logos {
-            flex-wrap: wrap;
-            gap: 1rem;
-            border-top: none;
+          .footer-header-row {
+            align-items: center;
+            text-align: center;
+            margin-bottom: 1.5rem;
           }
-          .footer-partner-badge {
-            background: #FFFFFF;
-            padding: 0.5rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+          .footer-header-badges {
+            flex-direction: column;
+            align-items: center;
+            gap: 0.75rem;
+          }
+          .footer-header-badge-label {
+            text-align: center;
           }
           .footer-bottom-bar {
             flex-direction: column;
@@ -448,10 +539,9 @@ export default function Footer() {
             padding: 4rem 5% 2rem;
             min-height: 60vh;
           }
-          .footer-content {
+          .footer-columns-grid {
             grid-template-columns: 1fr;
             gap: 1.75rem;
-            padding: 2rem 1.5rem;
           }
           .footer-address p {
             color: #000000;
@@ -459,8 +549,8 @@ export default function Footer() {
           .link-column :global(a) {
             color: #000000;
           }
-          .footer-cert-badge {
-            height: 57.2px;
+          .footer-cert-badge-small {
+            height: 40px;
           }
         }
       `}</style>

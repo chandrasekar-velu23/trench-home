@@ -16,7 +16,7 @@ export default function Hero() {
         {/* Desktop Background */}
         <div className="desktop-bg hero-bg-image-wrap">
           <Image
-            src="/images/hero-sample.webp"
+            src="/images/hero.png"
             alt="Trench Guardian Castle"
             fill
             priority
@@ -29,7 +29,7 @@ export default function Hero() {
         {/* Mobile Background */}
         <div className="mobile-bg hero-bg-image-wrap">
           <Image
-            src="/images/Hero-ph-sample.webp"
+            src="/images/hero ph.png"
             alt="Trench Guardian Castle Mobile"
             fill
             priority
@@ -39,7 +39,7 @@ export default function Hero() {
           />
 
         </div>
-        <div className="hero-overlay-sky" />
+        {/* <div className="hero-overlay-sky" /> */}
       </div>
 
       <div className="hero-content-wrapper">
@@ -92,15 +92,24 @@ export default function Hero() {
           min-height: 600px;
           display: flex;
           overflow: hidden;
+          background-color: #0b1126 !important;
         }
 
         .hero-bottom-fade {
           position: absolute;
-          bottom: 0;
+          bottom: -2px;
           left: 0;
           right: 0;
-          height: 250px;
-          background: linear-gradient(to top, #ffffff 0%, rgba(255,255,255,0.85) 25%, rgba(255,255,255,0.5) 50%, rgba(255,255,255,0.15) 75%, transparent 100%);
+          height: 160px;
+          background: linear-gradient(
+            to bottom,
+            rgba(255, 255, 255, 0) 0%,
+            rgba(255, 255, 255, 0.03) 40%,
+            rgba(255, 255, 255, 0.15) 65%,
+            rgba(255, 255, 255, 0.45) 82%,
+            rgba(255, 255, 255, 0.8) 93%,
+            #ffffff 100%
+          );
           z-index: 20;
           pointer-events: none;
         }
@@ -109,6 +118,7 @@ export default function Hero() {
           position: absolute;
           inset: 0;
           z-index: 0;
+          background: transparent !important;
         }
 
         .hero-bg-image-wrap {
@@ -116,21 +126,20 @@ export default function Hero() {
           inset: 0;
           width: 100%;
           height: 100%;
+          background: transparent !important;
         }
 
         .hero-bg-image {
           object-fit: cover !important;
           object-position: center;
+          opacity: 1 !important;
+          mix-blend-mode: normal !important;
         }
 
         .desktop-bg { display: block; }
         .mobile-bg { display: none; }
 
-        .hero-overlay-sky {
-          position: absolute;
-          inset: 0;
-          background: linear-gradient(135deg, rgba(13, 65, 225, 0.05) 0%, transparent 60%);
-        }
+        
 
         .hero-content-wrapper {
           position: relative;
@@ -142,6 +151,7 @@ export default function Hero() {
           align-items: center;
           justify-content: center;
           padding: 4rem 2rem;
+          background: transparent !important;
         }
 
         .hero-container-inner {
