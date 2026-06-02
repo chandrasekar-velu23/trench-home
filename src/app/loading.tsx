@@ -1,30 +1,144 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useRef } from "react";
+
+interface Spark {
+  x: number;
+  y: number;
+  angle: number;
+  startTime: number;
+  color: string;
+  type: "auto" | "click";
+}
 
 export default function Loading() {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const textRef = useRef<HTMLDivElement>(null);
+  const sparksRef = useRef<Spark[]>([]);
+  const lastBurstRef = useRef<number>(0);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    let animationId: number;
+
+    const resizeCanvas = () => {
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = window.innerWidth * dpr;
+      canvas.height = window.innerHeight * dpr;
+      ctx.scale(dpr, dpr);
+    };
+
+    resizeCanvas();
+    window.addEventListener("resize", resizeCanvas);
+
+    const sparkColor = "#0D41E1"; // Primary Brand Blue
+
+    const draw = (timestamp: number) => {
+      ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+
+      const centerX = window.innerWidth / 2;
+      let textX = centerX;
+      let textY = window.innerHeight / 2;
+
+      if (textRef.current) {
+        const rect = textRef.current.getBoundingClientRect();
+        textX = rect.left + rect.width / 2;
+        textY = rect.top + rect.height / 2;
+      }
+
+      // Auto emit delicate sparkles around the loading text every 800ms
+      if (timestamp - lastBurstRef.current > 800) {
+        const count = 6;
+        for (let i = 0; i < count; i++) {
+          const angle = (Math.PI * 2 * i) / count + (Math.random() - 0.5) * 0.4;
+          sparksRef.current.push({
+            x: textX,
+            y: textY,
+            angle,
+            startTime: timestamp,
+            color: sparkColor,
+            type: "auto",
+          });
+        }
+        lastBurstRef.current = timestamp;
+      }
+
+      // Update and draw sparkles
+      sparksRef.current = sparksRef.current.filter((spark) => {
+        const elapsed = timestamp - spark.startTime;
+        const duration = spark.type === "click" ? 500 : 800;
+
+        if (elapsed >= duration) return false;
+
+        const progress = elapsed / duration;
+        // easeOutCubic
+        const eased = 1 - Math.pow(1 - progress, 3);
+
+        const startOffset = spark.type === "auto" ? 35 : 0;
+        const sparkRadius = spark.type === "click" ? 35 : 45;
+        const sparkSize = spark.type === "click" ? 14 : 10;
+
+        const distance = startOffset + eased * sparkRadius;
+        const lineLength = sparkSize * (1 - progress);
+
+        const x1 = spark.x + distance * Math.cos(spark.angle);
+        const y1 = spark.y + distance * Math.sin(spark.angle);
+        const x2 = spark.x + (distance + lineLength) * Math.cos(spark.angle);
+        const y2 = spark.y + (distance + lineLength) * Math.sin(spark.angle);
+
+        ctx.strokeStyle = spark.color;
+        ctx.lineWidth = spark.type === "click" ? 2.5 : 1.5;
+        ctx.lineCap = "round";
+        ctx.beginPath();
+        ctx.moveTo(x1, y1);
+        ctx.lineTo(x2, y2);
+        ctx.stroke();
+
+        return true;
+      });
+
+      animationId = requestAnimationFrame(draw);
+    };
+
+    animationId = requestAnimationFrame(draw);
+
+    return () => {
+      window.removeEventListener("resize", resizeCanvas);
+      cancelAnimationFrame(animationId);
+    };
+  }, []);
+
+  const handleClick = (e: React.MouseEvent) => {
+    const now = performance.now();
+    const count = 12;
+    const sparkColor = "#0D41E1"; // Primary Brand Blue
+
+    for (let i = 0; i < count; i++) {
+      const angle = (Math.PI * 2 * i) / count + (Math.random() - 0.5) * 0.4;
+      sparksRef.current.push({
+        x: e.clientX,
+        y: e.clientY,
+        angle,
+        startTime: now,
+        color: sparkColor,
+        type: "click",
+      });
+    }
+  };
+
   return (
-    <div className="global-loader-container">
-      <div className="loader-card">
-        {/* Pulsing Outer Ring */}
-        <div className="pulse-ring"></div>
-        
-        {/* Futuristic Spinning Segment */}
-        <div className="spinner-segment"></div>
-        
-        {/* Center Tech Core */}
-        <div className="tech-core">
-          <svg className="tech-core-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="#0D41E1" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            <path d="M2 17L12 22L22 17" stroke="#0D41E1" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            <path d="M2 12L12 17L22 12" stroke="#0D41E1" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
+    <div className="global-loader-container" onClick={handleClick}>
+      <canvas ref={canvasRef} className="sparkle-canvas" />
+
+      <div className="loader-wrapper">
+        <div ref={textRef} className="loader-text">
+          loading
         </div>
-      </div>
-      
-      <div className="loader-text-wrapper">
-        <h2 className="loader-title">Securing Terminal</h2>
-        <p className="loader-subtitle">Establishing secure agentic automation...</p>
       </div>
 
       <style jsx global>{`
@@ -34,144 +148,56 @@ export default function Loading() {
           width: 100vw;
           height: 100vh;
           display: flex;
-          flex-direction: column;
           align-items: center;
           justify-content: center;
-          background: radial-gradient(circle at center, #0e1630 0%, #060a17 100%);
+          background-color: rgba(255, 255, 255, 0.85);
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
           z-index: 99999;
-          font-family: var(--font-space-grotesk), sans-serif;
-          color: #ffffff;
           overflow: hidden;
+          cursor: pointer;
         }
 
-        .loader-card {
-          position: relative;
-          width: 100px;
-          height: 100px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          margin-bottom: 2rem;
-        }
-
-        /* Pulsing Outer Ring */
-        .pulse-ring {
-          position: absolute;
-          inset: -10px;
-          border-radius: 50%;
-          border: 2px solid rgba(13, 65, 225, 0.15);
-          animation: core-pulse 2s cubic-bezier(0.16, 1, 0.3, 1) infinite;
-        }
-
-        /* Spinner Segment */
-        .spinner-segment {
+        .sparkle-canvas {
           position: absolute;
           inset: 0;
-          border-radius: 50%;
-          border: 3px solid transparent;
-          border-top-color: #0D41E1;
-          border-right-color: rgba(13, 65, 225, 0.3);
-          animation: tech-spin 1s cubic-bezier(0.55, 0.085, 0.68, 0.53) infinite;
+          width: 100%;
+          height: 100%;
+          pointer-events: none;
+          z-index: 1;
         }
 
-        /* Tech Core Center */
-        .tech-core {
-          position: absolute;
-          width: 50px;
-          height: 50px;
-          background: rgba(255, 255, 255, 0.03);
-          backdrop-filter: blur(8px);
-          -webkit-backdrop-filter: blur(8px);
-          border-radius: 50%;
-          border: 1px solid rgba(255, 255, 255, 0.1);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          box-shadow: 0 0 20px rgba(13, 65, 225, 0.2);
-          animation: core-glow 2s ease-in-out infinite alternate;
-        }
-
-        .tech-core-svg {
-          width: 24px;
-          height: 24px;
-          animation: float-svg 3s ease-in-out infinite;
-        }
-
-        /* Loader Texts */
-        .loader-text-wrapper {
-          text-align: center;
+        .loader-wrapper {
+          position: relative;
           display: flex;
           flex-direction: column;
-          gap: 0.5rem;
-          padding: 0 2rem;
+          align-items: center;
+          justify-content: center;
+          user-select: none;
+          z-index: 2;
         }
 
-        .loader-title {
-          font-family: var(--font-bricolage), sans-serif;
-          font-size: 1.5rem;
-          font-weight: 800;
-          letter-spacing: -0.02em;
-          color: #ffffff;
-          margin: 0;
-          background: linear-gradient(135deg, #ffffff 30%, rgba(255, 255, 255, 0.7) 100%);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-        }
-
-        .loader-subtitle {
-          font-size: 0.875rem;
-          color: #94a3b8;
-          margin: 0;
+        .loader-text {
+          font-family: var(--font-secondary), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+          font-size: 0.85rem;
           font-weight: 500;
-          letter-spacing: 0.05em;
-          text-transform: uppercase;
+          color: #1e293b;
+          letter-spacing: 0.3em;
+          text-transform: lowercase;
+          animation: pulse-text 2.5s ease-in-out infinite;
         }
 
-        /* Animations */
-        @keyframes tech-spin {
-          0% {
-            transform: rotate(0deg);
-          }
-          100% {
-            transform: rotate(360deg);
-          }
-        }
-
-        @keyframes core-pulse {
-          0% {
-            transform: scale(0.85);
-            opacity: 0.8;
-          }
-          50% {
-            transform: scale(1.15);
+        @keyframes pulse-text {
+          0%, 100% {
             opacity: 0.3;
           }
-          100% {
-            transform: scale(0.85);
-            opacity: 0.8;
-          }
-        }
-
-        @keyframes core-glow {
-          0% {
-            box-shadow: 0 0 15px rgba(13, 65, 225, 0.15);
-            border-color: rgba(255, 255, 255, 0.08);
-          }
-          100% {
-            box-shadow: 0 0 30px rgba(13, 65, 225, 0.45);
-            border-color: rgba(13, 65, 225, 0.4);
-          }
-        }
-
-        @keyframes float-svg {
-          0%, 100% {
-            transform: translateY(0);
-          }
           50% {
-            transform: translateY(-3px);
+            opacity: 1;
           }
         }
       `}</style>
     </div>
   );
 }
+
+
