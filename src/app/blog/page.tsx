@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import BlogClient from "./BlogClient";
 
 export const metadata: Metadata = {
-  title: "Blog | Trench Security",
+  title: "Blog",
   description: "Insights, research, and perspectives on AI-native SecOps, agentic automation, and the future of security operations — for security champions who think differently.",
   robots: {
     index: true,
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     canonical: "https://www.trenchsecurity.ai/blog",
   },
   openGraph: {
-    title: "Blog | Trench Security",
+    title: "Blog",
     description: "Insights, research, and perspectives on AI-native SecOps, agentic automation, and the future of security operations — for security champions who think differently.",
     url: "https://www.trenchsecurity.ai/blog",
     siteName: "Trench Security",
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Blog | Trench Security",
+    title: "Blog",
     description: "Insights, research, and perspectives on AI-native SecOps, agentic automation, and the future of security operations.",
     images: ["https://www.trenchsecurity.ai/blog-cover-images/Headless-SecOps-for-the-Agentic-World.png"],
   },

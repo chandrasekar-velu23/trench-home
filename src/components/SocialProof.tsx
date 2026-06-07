@@ -180,6 +180,7 @@ export default function SocialProof() {
           margin-top: 0;
           margin-bottom: 0.75rem;
           line-height: 1.2;
+          text-align: center;
         }
 
         .testimonial-slider {

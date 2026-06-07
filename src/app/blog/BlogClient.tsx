@@ -32,12 +32,14 @@ export default function BlogClient() {
   const [searchQuery, setSearchQuery] = useState("");
   const [activeFilter, setActiveFilter] = useState("All");
 
-  const filteredPosts = postsData.filter(post => {
-    const matchesFilter = activeFilter === "All" || post.category === activeFilter;
-    const matchesSearch = post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      post.description.toLowerCase().includes(searchQuery.toLowerCase());
-    return matchesFilter && matchesSearch;
-  });
+  const filteredPosts = postsData
+    .filter(post => {
+      const matchesFilter = activeFilter === "All" || post.category === activeFilter;
+      const matchesSearch = post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        post.description.toLowerCase().includes(searchQuery.toLowerCase());
+      return matchesFilter && matchesSearch;
+    })
+    .sort((a, b) => new Date(b.publishedTime).getTime() - new Date(a.publishedTime).getTime());
 
   const filters = ["All", "Product", "Security", "Technical", "Trends", "MSSP"];
 

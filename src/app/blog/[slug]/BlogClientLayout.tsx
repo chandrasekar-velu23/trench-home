@@ -58,6 +58,7 @@ export default function BlogClientLayout({ post, relatedPosts }: BlogClientLayou
   const [showToast, setShowToast] = useState(false);
   const [toastMessage, setToastMessage] = useState("");
   const [isMobileTocOpen, setIsMobileTocOpen] = useState(false);
+  const [lightboxImage, setLightboxImage] = useState<{src: string, alt: string} | null>(null);
 
   const articleRef = useRef<HTMLDivElement>(null);
 
@@ -109,6 +110,29 @@ export default function BlogClientLayout({ post, relatedPosts }: BlogClientLayou
     return () => {
       headings?.forEach(heading => {
         observer.unobserve(heading);
+      });
+    };
+  }, [post.body]);
+
+  // Setup Lightbox for blog images
+  useEffect(() => {
+    if (!articleRef.current) return;
+    
+    const images = articleRef.current.querySelectorAll("img");
+    
+    const handleImageClick = (e: Event) => {
+      const target = e.target as HTMLImageElement;
+      setLightboxImage({ src: target.src, alt: target.alt || "Blog image" });
+    };
+
+    images.forEach(img => {
+      img.style.cursor = "zoom-in";
+      img.addEventListener("click", handleImageClick);
+    });
+
+    return () => {
+      images.forEach(img => {
+        img.removeEventListener("click", handleImageClick);
       });
     };
   }, [post.body]);
@@ -194,6 +218,72 @@ export default function BlogClientLayout({ post, relatedPosts }: BlogClientLayou
 
   return (
     <main className="page-main" style={{ background: "#F8FAFC" }}>
+      {/* Lightbox Modal */}
+      {lightboxImage && (
+        <div 
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            backgroundColor: "rgba(15, 23, 42, 0.6)",
+            backdropFilter: "blur(12px)",
+            WebkitBackdropFilter: "blur(12px)",
+            zIndex: 10000,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            padding: "2rem",
+            cursor: "zoom-out"
+          }}
+          onClick={() => setLightboxImage(null)}
+        >
+          <div 
+            style={{
+              position: "relative",
+              maxWidth: "100%",
+              maxHeight: "100%",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              cursor: "default"
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button 
+              onClick={() => setLightboxImage(null)}
+              style={{
+                position: "absolute",
+                top: "-40px",
+                right: "0",
+                background: "transparent",
+                border: "none",
+                color: "#FFFFFF",
+                fontSize: "2.5rem",
+                cursor: "pointer",
+                padding: 0,
+                lineHeight: 1,
+                opacity: 0.8
+              }}
+            >
+              &times;
+            </button>
+            <img 
+              src={lightboxImage.src} 
+              alt={lightboxImage.alt} 
+              style={{
+                maxWidth: "90vw",
+                maxHeight: "85vh",
+                objectFit: "contain",
+                borderRadius: "8px",
+                boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.5)"
+              }} 
+            />
+          </div>
+        </div>
+      )}
+
       {/* Toast Alert */}
       {showToast && (
         <div style={{
@@ -234,7 +324,7 @@ export default function BlogClientLayout({ post, relatedPosts }: BlogClientLayou
 
         {/* Hero Section */}
         <section style={{ marginBottom: "3rem" }}>
-          <div style={{ display: "flex", gap: "0.75rem", marginBottom: "1rem" }}>
+          <div style={{ display: "flex", gap: "0.75rem", marginBottom: "0.5rem" }}>
             <span style={{
               fontSize: "0.8rem",
               fontWeight: 800,
@@ -446,7 +536,6 @@ export default function BlogClientLayout({ post, relatedPosts }: BlogClientLayou
               {cleanBody
                 .replace(/<p[^>]*>\s*(<!-- INJECT_HEADLESS_SECOPS_DIAGRAM -->)\s*<\/p>/g, "$1")
                 .replace(/<p[^>]*>\s*(<!-- INJECT_SECTION3_VISUAL -->)\s*<\/p>/g, "$1")
-                .replace(/([\s\S]*)(<img[^>]+>)([\s\S]*)$/, '$1<a href="/connect" style="display:block; cursor:pointer;" class="cta-banner-link">$2</a>$3')
                 .split(/(<!-- INJECT_HEADLESS_SECOPS_DIAGRAM -->|<!-- INJECT_SECTION3_VISUAL -->)/g).map((part, index) => {
                 if (part === '<!-- INJECT_HEADLESS_SECOPS_DIAGRAM -->') {
                   return (
@@ -470,7 +559,8 @@ export default function BlogClientLayout({ post, relatedPosts }: BlogClientLayou
 
             {/* Master CTA — inline within blog content, above comments */}
             {post.slug !== "introducing-headless-secops-for-the-agentic-world" &&
-              post.slug !== "ai-in-the-security-operations-clearing-the-clutter" && (
+              post.slug !== "ai-in-the-security-operations-clearing-the-clutter" &&
+              post.slug !== "actionable-secops-in-the-real-world" && (
               <div style={{
                 display: "flex",
                 alignItems: "center",
@@ -496,7 +586,7 @@ export default function BlogClientLayout({ post, relatedPosts }: BlogClientLayou
                   Agentic OS for Actionable SecOps
                 </h3>
                 <Link
-                  href="/"
+                  href="/connect"
                   style={{
                     display: "inline-flex",
                     alignItems: "center",
