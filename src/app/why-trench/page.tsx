@@ -9,7 +9,7 @@ import BrandBanner from "@/components/BrandBanner";
 import CTASection from "@/components/sections/CTASection";
 
 export const metadata: Metadata = {
-  title: "Why Trench | Trench Security",
+  title: "Why Trench",
   description: "Security Operations is a systems design problem. Not a monitoring problem. Learn why we built Trench to fix it.",
   alternates: {
     canonical: "https://www.trenchsecurity.ai/why-trench",

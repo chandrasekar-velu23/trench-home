@@ -23,7 +23,7 @@ export const postsData: BlogPost[] = [
     "title": "Introducing Headless SecOps for the Agentic World",
     "category": "Product",
     "date": "May 21, 2026",
-    "image": "/blog-cover-images/Headless-SecOps-for-the-Agentic-World.png",
+    "image": "/blog-cover-images/introducing-headless-secops-for-the-agentic-world.webp",
     "description": "No alerts. No dashboards. Just decisions that matter. Alert fatigue is the symptom. Cognitive overload is the disease. Headless SecOps is the cure.",
     "author": {
       "name": "Gurucharan R",
@@ -61,7 +61,7 @@ export const postsData: BlogPost[] = [
     "title": "Trench AI Now Available on Microsoft Marketplace",
     "category": "Product",
     "date": "Apr 2, 2026",
-    "image": "/blog-cover-images/1st_blog_banner.webp",
+    "image": "/blog-cover-images/trench-ai-now-available-on-microsoft-marketplace.webp",
     "description": "Deploy Trench AI seamlessly alongside Microsoft Sentinel or as a standalone AI SIEM accelerating threat detection, investigation, and response in minutes.",
     "author": {
       "name": "Team Trench",
@@ -115,7 +115,7 @@ export const postsData: BlogPost[] = [
     "title": "AI in the Security Operations: Clearing the Clutter",
     "category": "Security",
     "date": "Mar 26, 2026",
-    "image": "/blog-cover-images/2nd_Blog_Banner.webp",
+    "image": "/blog-cover-images/ai-in-the-security-operations-clearing-the-clutter.webp",
     "description": "The AISOC narrative is cluttered with obituaries for SIEM, SOAR, and XDR. Cut through the noise and discover the real architectural foundation needed for AI.",
     "author": {
       "name": "Gurucharan R",
@@ -221,7 +221,7 @@ export const postsData: BlogPost[] = [
     "title": "How Modern CISOs Demonstrate Real ROI with AI-Native SOC Platforms",
     "category": "Trends",
     "date": "Sep 19, 2025",
-    "image": "/blog-cover-images/5th_Blog_Image.webp",
+    "image": "/blog-cover-images/how-modern-cisos-demonstrate-real-roi-with-ai-native-soc-platforms.webp",
     "description": "CISOs face mounting pressure to prove security ROI. Discover how AI-native SOC platforms empower lean teams to deliver rapid, measurable business outcomes.",
     "author": {
       "name": "Team Trench",
@@ -267,7 +267,7 @@ export const postsData: BlogPost[] = [
     "title": "Launching Trench Agentic Threat Detection Mesh",
     "category": "Technical",
     "date": "Jan 5, 2026",
-    "image": "/blog-cover-images/3rd_Blog_Banner.webp",
+    "image": "/blog-cover-images/launching-trench-agentic-threat-detection-mesh.webp",
     "description": "Velocity, not data volume, is your biggest security risk. Discover how Agentic Threat Detection Mesh closes the latency gap and outpaces AI-driven threats.",
     "author": {
       "name": "Trench Technical Team",
@@ -309,7 +309,7 @@ export const postsData: BlogPost[] = [
     "title": "Launching \u201cReal-time data safety\u201d in AI-native Security Operations",
     "category": "Product",
     "date": "Oct 7, 2025",
-    "image": "/blog-cover-images/4th_blog_banner.webp",
+    "image": "/blog-cover-images/launching-u201creal-time-data-safetyu201d-in-ai-native-security-operations.webp",
     "description": "Leverage the power of large language models without compromising privacy. Discover our new Real-time Data Safety feature for completely secure AI operations.",
     "author": {
       "name": "Team Trench",
@@ -339,7 +339,7 @@ export const postsData: BlogPost[] = [
     "title": "Modernizing SOC using Agentic AI",
     "category": "Technical",
     "date": "Jun 13, 2025",
-    "image": "/blog-cover-images/9th_Blog_Banner.webp",
+    "image": "/blog-cover-images/modernizing-soc-using-agentic-ai.webp",
     "description": "Traditional SOC automation is struggling. Discover AI agentic automation: a paradigm where AI agents reason to reduce human workload and accelerate response.",
     "author": {
       "name": "Trench Technical Team",
@@ -373,7 +373,7 @@ export const postsData: BlogPost[] = [
     "title": "Optimizing Your AI-SOC: A Practical Guide to Offensive Validation and Tuning",
     "category": "Technical",
     "date": "Sep 16, 2025",
-    "image": "/blog-cover-images/6th_Blog_Banner.webp",
+    "image": "/blog-cover-images/optimizing-your-ai-soc-a-practical-guide-to-offensive-validation-and-tuning.webp",
     "description": "A concise guide for mid-sized SOC teams on using offensive security methods and a 6-week plan to maximize and optimize AI-driven SOC automation and response.",
     "author": {
       "name": "Trench Technical Team",
@@ -439,7 +439,7 @@ export const postsData: BlogPost[] = [
     "title": "Unlocking the Power of AI for MSSPs",
     "category": "MSSP",
     "date": "Jun 17, 2025",
-    "image": "/blog-cover-images/8th_Blog_Banner3.webp",
+    "image": "/blog-cover-images/unlocking-the-power-of-ai-for-mssps.webp",
     "description": "The managed security services market is extremely competitive. Discover how AI-enabled SOC platforms help MSSPs transform their offerings and scale rapidly.",
     "author": {
       "name": "Team Trench",
@@ -481,7 +481,7 @@ export const postsData: BlogPost[] = [
     "title": "Why Mid-Sized Companies Struggle with SOC Automation (And How to Fix It)",
     "category": "Trends",
     "date": "Aug 10, 2025",
-    "image": "/blog-cover-images/7th_Blog_banner.webp",
+    "image": "/blog-cover-images/why-mid-sized-companies-struggle-with-soc-automation-and-how-to-fix-it.webp",
     "description": "Mid-sized organizations are attractive targets but lack resources for enterprise security. Learn how to fix dangerous gaps in your security operations today.",
     "author": {
       "name": "Team Trench",
@@ -539,7 +539,7 @@ export const postsData: BlogPost[] = [
     "title": "Why should you enable AI in your SOC?",
     "category": "Trends",
     "date": "May 23, 2025",
-    "image": "/blog-cover-images/10th_Blog_Banner.webp",
+    "image": "/blog-cover-images/why-should-you-enable-ai-in-your-soc.webp",
     "description": "Security analysts are drowning in false positives and alert fatigue. Learn why enabling AI in your SOC is the definitive solution to prevent missed threats.",
     "author": {
       "name": "Team Trench",
@@ -581,7 +581,7 @@ export const postsData: BlogPost[] = [
     "title": "Actionable SecOps in the Real World",
     "category": "Security",
     "date": "June 6, 2026",
-    "image": "/blog-cover-images/actionable-secops.png",
+    "image": "/blog-cover-images/actionable-secops-in-the-real-world.webp",
     "description": "The Headless SecOps post sparked a clear question: 'What does actionable actually look like in our environment?' This is the answer. Real scenarios from our customer environments, the distinction that changes how you think about AI in your SOC, and why the difference between knowing and doing is an architecture problem, not a people problem.",
     "author": {
       "name": "Team Trench",

@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   
   if (!post) {
     return {
-      title: "Article Not Found | Trench Security",
+      title: "Article Not Found",
       robots: { index: false, follow: false }
     };
   }
@@ -36,7 +36,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   const canonicalUrl = `${BASE_URL}/blog/${slug}`;
 
   return {
-    title: `${post.title} | Trench Security Blog`,
+    title: post.title,
     description: cleanDescription,
     robots: {
       index: true,

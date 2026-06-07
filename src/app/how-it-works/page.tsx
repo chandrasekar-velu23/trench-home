@@ -4,7 +4,7 @@ import TextReveal from "@/components/animations/TextReveal";
 import ProcessSteps from "@/components/ProcessSteps";
 
 export const metadata: Metadata = {
-  title: "How It Works | Trench Security",
+  title: "How It Works",
   description: "Trench simplifies security operations by unifying visibility, detection, and response into a single, automated workflow.",
   alternates: {
     canonical: "https://www.trenchsecurity.ai/how-it-works",
