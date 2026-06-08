@@ -1857,7 +1857,7 @@ h6,
 }
 
 .blog-post-prose .cta-inner h2 {
-  font-size: 2.25rem;
+  font-size: 1.875rem;
   color: #FFFFFF;
   margin-top: 0;
   margin-bottom: 12px;
@@ -1877,7 +1877,7 @@ h6,
 
 .blog-post-prose .cta-btn-lg {
   display: inline-block;
-  padding: 16px 56px;
+  padding: 14px 40px;
   background: #FFFFFF;
   color: #0D41E1;
   font-weight: 800;
@@ -1919,5 +1919,14 @@ h6,
   }
   .blog-post-prose .cta-inner {
     padding: 40px 24px;
+  }
+  .blog-post-prose .cta-inner h2 {
+    font-size: 1.5rem;
+  }
+  .blog-post-prose .cta-btn-lg {
+    padding: 12px 24px;
+    font-size: 14px;
+    width: 100%;
+    text-align: center;
   }
 }
