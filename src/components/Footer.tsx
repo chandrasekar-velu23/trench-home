@@ -85,6 +85,13 @@ export default function Footer() {
                   height={42}
                   className="footer-partner-badge-small"
                 />
+                <Image
+                  src="/awards/inc_42 _trench-.png"
+                  alt="Inc42"
+                  width={50}
+                  height={50}
+                  className="footer-partner-badge-small"
+                />
               </div>
             </div>
           </div>
@@ -104,6 +111,7 @@ export default function Footer() {
             <Link href="/for-mssps">For MSSPs</Link>
             <Link href="/integrations">Integrations</Link>
             <Link href="/how-it-works">How it works?</Link>
+            <Link href="/career">Careers</Link>
           </div>
 
           {/* Column 4 — Address & Contact */}
@@ -122,7 +130,7 @@ export default function Footer() {
                 <h5 className="address-label">US Office:</h5>
                 <address className="footer-address">
                   <p>Trench Security Inc</p>
-                  <p>16192 Coastal Highway, Lewes, DE 19958</p>
+                  <p>1407 Canal Rd, Princeton, NJ 08540-8635</p>
                 </address>
               </div>
             </div>
@@ -157,10 +165,10 @@ export default function Footer() {
               />
             </div>
           </div>
-          
+
           <div className="mobile-trust-group">
             <span className="mobile-trust-label">Partnerships & Awards</span>
-            <div className="mobile-trust-badges">
+            <div className="mobile-trust-badges mobile-partners-grid">
               <Image
                 src="/awards/ISV-Partner-logo-new.png"
                 alt="microsoft-ISV"
@@ -178,6 +186,13 @@ export default function Footer() {
               <Image
                 src="/awards/CySecK-Logo-PNG@900x.webp"
                 alt="CySecK"
+                width={84}
+                height={42}
+                className="footer-partner-badge-small"
+              />
+              <Image
+                src="/awards/inc_42 _trench-.png"
+                alt="Inc42"
                 width={84}
                 height={42}
                 className="footer-partner-badge-small"
@@ -374,10 +389,11 @@ export default function Footer() {
         }
 
         .footer-partners-row {
-          display: flex;
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
           align-items: center;
-          gap: 0.85rem;
-          flex-wrap: wrap;
+          justify-items: start;
+          gap: 0.85rem 1.25rem;
         }
 
         .footer-partner-badge-small {
@@ -613,6 +629,14 @@ export default function Footer() {
             gap: 1.25rem;
             flex-wrap: wrap;
             width: 100%;
+          }
+
+          .mobile-partners-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.25rem;
+            justify-items: center;
+            align-items: center;
           }
 
           .footer-container {
