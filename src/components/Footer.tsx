@@ -193,8 +193,8 @@ export default function Footer() {
               <Image
                 src="/awards/inc_42 _trench-.png"
                 alt="Inc42"
-                width={84}
-                height={42}
+                width={50}
+                height={50}
                 className="footer-partner-badge-small"
               />
             </div>
@@ -318,10 +318,10 @@ export default function Footer() {
         }
 
         .footer-cert-badge-small {
-          height: 48px;
-          width: auto;
+          height: 56px !important;
+          width: auto !important;
           max-width: 100%;
-          object-fit: contain;
+          object-fit: contain !important;
           opacity: 0.8;
           transition: opacity 0.25s ease, transform 0.25s ease;
           filter: grayscale(10%);
@@ -397,11 +397,10 @@ export default function Footer() {
         }
 
         .footer-partner-badge-small {
-          height: auto;
-          width: auto;
-          max-height: 42px;
+          height: 42px !important;
+          width: auto !important;
           max-width: 100%;
-          object-fit: contain;
+          object-fit: contain !important;
           opacity: 0.75;
           transition: opacity 0.25s ease, transform 0.25s ease;
         }
@@ -678,7 +677,7 @@ export default function Footer() {
             color: #000000;
           }
           .footer-cert-badge-small {
-            height: 40px;
+            height: 40px !important;
           }
         }
       `}</style>

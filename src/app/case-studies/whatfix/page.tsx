@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import Button from '@/components/ui/Button';
 
 export default function WhatfixCaseStudyPage() {
   const [activeSection, setActiveSection] = useState("");
@@ -28,11 +29,11 @@ export default function WhatfixCaseStudyPage() {
       <section className="hero-section">
         <div className="hero-content">
           <div className="logo-wrapper">
-            <Image 
-              src="/customers/Whatfix.svg" 
-              alt="Whatfix Logo" 
-              width={160} 
-              height={45} 
+            <Image
+              src="/customers/Whatfix.svg"
+              alt="Whatfix Logo"
+              width={160}
+              height={45}
               style={{ objectFit: 'contain' }}
             />
           </div>
@@ -61,10 +62,10 @@ export default function WhatfixCaseStudyPage() {
         <div className="quote-container">
           <span className="quote-mark">“</span>
           <p className="quote-text">
-            An investigation that used to take our team close to an hour now closes in under 10 minutes — without leaving Slack. Trench didn't just automate our security workflows, it brought the entire SecOps engine into the tool our team already lives in. That's a completely different way to run security.
+            An investigation that used to take our team close to an hour now closes in under 10 minutes without leaving Slack. Trench didn't just automate our security workflows, it brought the entire SecOps engine into the tool our team already lives in. That's a completely different way to run security.
           </p>
           <div className="quote-author">
-            <p className="author-name">Achyuth,</p>
+            <p className="author-name">Achyuth</p>
             <p className="author-title">Head of Security, Whatfix</p>
           </div>
         </div>
@@ -87,7 +88,7 @@ export default function WhatfixCaseStudyPage() {
             <p>
               Whatfix's security posture was constrained by the limits of traditional, rule-based operations. Detection logic was untuned, hunting was time consuming, and security workflows lived in multiple tools and email threads entirely separate with poor context from where the team made decisions.
             </p>
-            
+
             <h4>Untuned Detection Rules at Scale</h4>
             <p>
               Thousands of SIEM rules were active without lifecycle management, MITRE mapping, or performance review producing low-fidelity signals with no way to distinguish precision detections from noise generators.
@@ -110,7 +111,7 @@ export default function WhatfixCaseStudyPage() {
 
             <h2 id="transformation">TRANSFORMATION</h2>
             <h3>From Static Rules to an Agentic Detection & Automation Engine</h3>
-            
+
             <div className="comparison-grid">
               <div className="comparison-card before">
                 <h4>BEFORE TRENCH</h4>
@@ -142,10 +143,10 @@ export default function WhatfixCaseStudyPage() {
               Trench deployed alongside Whatfix's existing environment with no rip-and-replace and no downtime. But the real shift wasn't technical, it was operational. For the first time, Whatfix's complete SecOps engine moved inside Slack: the collaboration layer where their team already worked, made decisions, and moved fast.
             </p>
             <p>
-              Detection findings, investigation workflows, hunt results, and response actions — all of it now flows directly into the channels where the team operates. The right signal reaches the right person with full context, without a portal login or context switch. Security stopped being something the team went to check. It became something that came to them.
+              Detection findings, investigation workflows, hunt results, and response actions - all of it now flows directly into the channels where the team operates. The right signal reaches the right person with full context, without a portal login or context switch. Security stopped being something the team went to check. It became something that came to them.
             </p>
             <p>
-              On the detection side, thousands of rules were evaluated and distilled into a precision set of high-fidelity use cases — each MITRE-mapped across cloud, identity, endpoint, and network. Achieving 5X coverage velocity in under 30 days. Autonomous threat hunts ran continuously across every environment, proactively surfacing supply chain compromises, malicious container artifacts, and active extortion campaigns that never triggered a single conventional alert. Response time across investigation and resolution dropped to under 10 minutes, from a baseline of over 70.
+              On the detection side, thousands of rules were evaluated and distilled into a precision set of high-fidelity use cases - each MITRE-mapped across cloud, identity, endpoint, and network. Achieving 5X coverage velocity in under 30 days. Autonomous threat hunts ran continuously across every environment, proactively surfacing supply chain compromises, malicious container artifacts, and active extortion campaigns that never triggered a single conventional alert. Response time across investigation and resolution dropped to under 10 minutes, from a baseline of over 70.
             </p>
           </article>
 
@@ -165,8 +166,10 @@ export default function WhatfixCaseStudyPage() {
           <h2>READY TO BUILD YOUR TRENCH?</h2>
           <h3>Headless SecOps for Teams That Move Fast</h3>
           <div className="cta-actions">
-            <Link href="/connect" className="btn-primary">
-              Request a Demo
+            <Link href="/connect">
+              <Button>
+                REQUEST A DEMO
+              </Button>
             </Link>
           </div>
         </div>
@@ -195,7 +198,7 @@ export default function WhatfixCaseStudyPage() {
         }
 
         .hero-section h1 {
-          font-size: clamp(2.5rem, 5vw, 4rem);
+          font-size: clamp(1.75rem, 5vw, 4rem);
           font-weight: 800;
           line-height: 1.1;
           margin-bottom: 1.5rem;
@@ -203,7 +206,7 @@ export default function WhatfixCaseStudyPage() {
         }
 
         .hero-subtitle {
-          font-size: 1.25rem;
+          font-size: clamp(1.1rem, 2vw, 1.25rem);
           line-height: 1.6;
           color: #444;
           max-width: 800px;
@@ -229,7 +232,7 @@ export default function WhatfixCaseStudyPage() {
         }
 
         .metric-value {
-          font-size: 2.5rem;
+          font-size: clamp(1.75rem, 4vw, 2.5rem);
           font-weight: 800;
           color: var(--color-primary-100, #0052FF);
         }
@@ -242,55 +245,59 @@ export default function WhatfixCaseStudyPage() {
 
         .quote-section {
           padding: 4rem 1rem;
-          background-color: #f4f7ff;
-          margin: 2rem 0;
+          margin: 4rem auto;
+          max-width: 1200px;
+          display: flex;
+          justify-content: center;
         }
 
         .quote-container {
-          max-width: 1000px;
-          margin: 0 auto;
+          max-width: 1100px;
+          width: 100%;
           position: relative;
-          padding: 3rem;
-          background: white;
-          border-radius: 16px;
-          box-shadow: 0 10px 40px rgba(0, 82, 255, 0.08);
-          border-left: 6px solid var(--color-primary-100, #0052FF);
+          padding: 2.5rem 2rem;
+          background: var(--color-primary-100, #0052FF);
+          border-radius: 24px;
+          border: none;
+          text-align: center;
         }
 
         .quote-mark {
-          position: absolute;
-          top: -20px;
-          left: 20px;
-          font-size: 6rem;
-          color: var(--color-primary-100, #0052FF);
-          opacity: 0.2;
+          display: block;
+          font-size: 4rem;
+          color: rgba(255, 255, 255, 0.3);
           line-height: 1;
           font-family: serif;
+          margin-bottom: 1.5rem;
         }
 
         .quote-text {
-          font-size: 1.5rem;
+          font-size: clamp(1.125rem, 2vw, 1.35rem);
           line-height: 1.6;
-          font-style: italic;
-          color: #111;
+          font-weight: 500;
+          color: #ffffff;
           margin-bottom: 2rem;
-          position: relative;
-          z-index: 1;
+          letter-spacing: 0;
+          font-style: normal;
         }
 
         .quote-author {
           display: flex;
           flex-direction: column;
+          align-items: center;
+          gap: 0.25rem;
         }
 
         .author-name {
           font-weight: 700;
-          font-size: 1.1rem;
+          font-size: 1.125rem;
+          color: #ffffff;
           margin: 0;
         }
 
         .author-title {
-          color: #666;
+          color: rgba(255, 255, 255, 0.8);
+          font-size: 0.95rem;
           margin: 0;
         }
 
@@ -311,13 +318,13 @@ export default function WhatfixCaseStudyPage() {
         }
 
         .article-content h2 {
-          font-size: 2rem;
+          font-size: clamp(1.5rem, 4vw, 2rem);
           font-weight: 800;
           color: #111;
           margin: 4rem 0 1.5rem;
           scroll-margin-top: 100px;
           padding-bottom: 0.5rem;
-          border-bottom: 2px solid #eaeaea;
+         
         }
 
         .article-content h2:first-of-type {
@@ -325,21 +332,21 @@ export default function WhatfixCaseStudyPage() {
         }
 
         .article-content h3 {
-          font-size: 1.5rem;
+          font-size: clamp(1.25rem, 3vw, 1.5rem);
           font-weight: 700;
           color: #222;
           margin: 2rem 0 1rem;
         }
 
         .article-content h4 {
-          font-size: 1.2rem;
+          font-size: clamp(1.1rem, 2.5vw, 1.2rem);
           font-weight: 600;
           color: #333;
           margin: 1.5rem 0 0.75rem;
         }
 
         .article-content p {
-          font-size: 1.1rem;
+          font-size: clamp(1rem, 2vw, 1.1rem);
           line-height: 1.8;
           color: #444;
           margin-bottom: 1.5rem;
@@ -353,7 +360,7 @@ export default function WhatfixCaseStudyPage() {
         }
 
         .comparison-card {
-          padding: 2rem;
+          padding: 1.5rem;
           border-radius: 12px;
         }
 
@@ -387,7 +394,7 @@ export default function WhatfixCaseStudyPage() {
           position: relative;
           padding-left: 1.5rem;
           margin-bottom: 1rem;
-          font-size: 1.05rem;
+          font-size: clamp(0.95rem, 2vw, 1.05rem);
           line-height: 1.5;
           color: #333;
         }
@@ -449,19 +456,20 @@ export default function WhatfixCaseStudyPage() {
         }
 
         .cta-container {
-          max-width: 800px;
+          max-width: 1200px;
           margin: 0 auto;
+          padding: 0 1rem;
         }
 
         .cta-container h2 {
-          font-size: 2rem;
+          font-size: clamp(1.25rem, 4vw, 2rem);
           font-weight: 800;
           color: var(--color-primary-100, #0052FF);
           margin-bottom: 0.5rem;
         }
 
         .cta-container h3 {
-          font-size: 2.5rem;
+          font-size: clamp(1.5rem, 4vw, 2.5rem);
           font-weight: 700;
           margin-bottom: 2.5rem;
         }
@@ -471,20 +479,6 @@ export default function WhatfixCaseStudyPage() {
           justify-content: center;
         }
 
-        .btn-primary {
-          background-color: var(--color-primary-100, #0052FF);
-          color: white;
-          font-weight: 600;
-          font-size: 1.1rem;
-          padding: 1rem 2rem;
-          border-radius: 8px;
-          text-decoration: none;
-          transition: background-color 0.2s;
-        }
-
-        .btn-primary:hover {
-          background-color: #0040cc;
-        }
 
         @media (max-width: 1024px) {
           .content-grid {
@@ -498,12 +492,6 @@ export default function WhatfixCaseStudyPage() {
         @media (max-width: 768px) {
           .comparison-grid {
             grid-template-columns: 1fr;
-          }
-          .hero-section h1 {
-            font-size: 2rem;
-          }
-          .quote-text {
-            font-size: 1.25rem;
           }
           .quote-container {
             padding: 2rem;

@@ -26,17 +26,19 @@ export default function CustomerSection() {
             className="customer-card logo-only-card"
             aria-label="Whatfix Case Study"
           >
-            <div className="logo-wrapper">
-              <Image 
-                src="/customers/Whatfix.svg" 
-                alt="Whatfix" 
-                width={220} 
-                height={60} 
-                style={{ objectFit: 'contain' }}
-              />
-            </div>
-            <div className="static-btn">
-              Case Study
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}>
+              <div className="logo-wrapper">
+                <Image 
+                  src="/customers/Whatfix.svg" 
+                  alt="Whatfix" 
+                  width={220} 
+                  height={60} 
+                  style={{ objectFit: 'contain' }}
+                />
+              </div>
+              <div className="static-btn" style={{ marginTop: '0.75rem' }}>
+                Case Study
+              </div>
             </div>
           </Link>
           <div className="customer-card logo-only-card ocrolus-container">
