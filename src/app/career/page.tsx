@@ -74,9 +74,11 @@ export default function CareerPage() {
                           <span>{job.type}</span>
                         </div>
                       </div>
-                      <Link href={job.link} className="btn-primary" style={{ display: 'inline-block', padding: '0.8rem 1.5rem', fontSize: '0.9rem', fontFamily: 'var(--font-poppins), sans-serif', textDecoration: 'none' }}>
-                        View Details
-                      </Link>
+                      <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+                        <Link href={job.link} className="btn-secondary" style={{ display: 'inline-block', padding: '0.8rem 1.5rem', fontSize: '0.9rem', fontFamily: 'var(--font-poppins), sans-serif', textDecoration: 'none', backgroundColor: 'transparent', border: '1px solid var(--color-primary-100)', color: 'var(--color-primary-100)' }}>
+                          View Details
+                        </Link>
+                      </div>
                     </div>
                     
                     <p className="body-text" style={{ marginBottom: '0', color: 'var(--color-neutral-600)', fontStyle: 'italic' }}>
@@ -89,12 +91,9 @@ export default function CareerPage() {
             
             <ScrollReveal direction="up" delay={0.4} style={{ marginTop: '4rem', textAlign: 'center', padding: '3rem', backgroundColor: '#f8fafc', borderRadius: '16px', border: '1px solid rgba(0, 0, 0, 0.05)' }}>
               <h3 className="title-sm" style={{ fontSize: '1.5rem', marginBottom: '1rem', color: '#000000' }}>Don't see a perfect fit?</h3>
-              <p className="body-text" style={{ marginBottom: '1.5rem', color: 'var(--color-neutral-600)' }}>
-                We're always looking for exceptional talent to join our team. Send us your resume and tell us how you can help Trench.
+              <p className="body-text" style={{ marginBottom: '0', color: 'var(--color-neutral-600)' }}>
+                We're always looking for exceptional talent to join our team. Send your resume to <a href="mailto:career@trenchsecurity.ai" style={{ color: 'var(--color-primary-100)', fontWeight: 600, textDecoration: 'underline' }}>career@trenchsecurity.ai</a> and tell us how you can help Trench.
               </p>
-              <a href="mailto:career@trenchsecurity.ai" className="btn-secondary" style={{ display: 'inline-block', padding: '0.8rem 1.5rem', fontSize: '0.9rem', fontFamily: 'var(--font-poppins), sans-serif', textDecoration: 'none' }}>
-                Get in Touch
-              </a>
             </ScrollReveal>
           </div>
         </div>

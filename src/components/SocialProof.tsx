@@ -9,31 +9,31 @@ import ScrollReveal from "./animations/ScrollReveal";
 const testimonials = [
   {
     id: 1,
-    quote: "Trench does in minutes what legacy SIEM teams spend weeks trying to do. Real-time detection built ground up for how threats actually move today, not patched together, purpose-built.",
-    author: "Srikanth Devarajan",
-    role: "Ex-VP & GM, Zscaler",
-    avatar: "/social/SD.webp"
-  },
-  {
-    id: 2,
-    quote: "What sets Trench apart is systems thinking applied to a hard problem, building a unified platform that actually reduces response times, not just automating for the sake of it. Rare clarity of vision in a noisy market.",
-    author: "Deepak Kothule",
-    role: "VP - Engineering Leader, Ex-FICO, Ex-Symantec",
-    avatar: "/social/DK.webp"
-  },
-  {
-    id: 3,
     quote: "Finally a platform built ground up for lean security teams. Trench gives a small team the detection power of an enterprise SOC, without the complexity, without the overhead.",
     author: "Senthil Kumar Iyyappan",
     role: "CISO, Ocrolus, Ex-Freshworks",
     avatar: "/social/SKI.webp"
   },
   {
-    id: 4,
+    id: 2,
+    quote: "An investigation that used to take our team close to an hour now closes in under 10 minutes without leaving Slack. Trench didn't just automate our security workflows, it brought the entire SecOps engine into the tool our team already lives in. That's a completely different way to run security.",
+    author: "Achyuth",
+    role: "Head of Security, Whatfix",
+    avatar: "/social/Achyuth.webp"
+  },
+  {
+    id: 3,
     quote: "Trench is a foundational transformation in how security operations work. A real unified platform, not bolted-on AI, that reasons about threats across your entire stack. This is what modern SecOps should look like.",
     author: "Subhro Banerjee",
     role: "Senior Global IT Security Leader | Lifescience MNC",
     avatar: "/social/SB.webp"
+  },
+  {
+    id: 4,
+    quote: "Trench does in minutes what legacy SIEM teams spend weeks trying to do. Real-time detection built ground up for how threats actually move today, not patched together, purpose-built.",
+    author: "Srikanth Devarajan",
+    role: "Ex-VP & GM, Zscaler",
+    avatar: "/social/SD.webp"
   },
 ];
 
