@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { Poppins } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next"
+import Script from "next/script";
 import "./globals.css";
 
 import LenisProvider from "@/components/LenisProvider";
@@ -115,11 +116,30 @@ export default function RootLayout({
       className={`${bricolage.variable} ${space.variable} ${poppins.variable}`}
       suppressHydrationWarning
     >
-      <Analytics />
+      <head>
+        {/* Load Google Tag Library */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-E1SQD3N78D"
+          strategy="afterInteractive"
+        />
+        {/* Initialize tracking parameters */}
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-E1SQD3N78D');
+          `}
+        </Script>
+      </head>
+
+      
       <body
         className="antialiased font-secondary"
         suppressHydrationWarning
       >
+        <Analytics />
         <LenisProvider>
           <NavigationLoaderProvider>
             <Navbar />
