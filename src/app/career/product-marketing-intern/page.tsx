@@ -116,7 +116,7 @@ export default function ProductMarketingInternPage() {
               <div style={{ marginTop: '4rem', paddingTop: '2rem', borderTop: '1px solid rgba(0,0,0,0.1)' }}>
                 <h2 style={{ fontFamily: 'var(--font-primary)', fontSize: '1.5rem', fontWeight: 800, color: '#000000', marginBottom: '1rem' }}>HOW TO APPLY</h2>
                 <p style={{ color: 'var(--color-neutral-600)', lineHeight: 1.6, marginBottom: '0', fontSize: '1.05rem' }}>
-                  Ready to make the industry stop scrolling? Please send an email to <a href="mailto:career@trenchsecurity.ai?subject=Application for Product Marketing Intern" style={{ color: 'var(--color-primary-100)', fontWeight: 600, textDecoration: 'underline' }}>career@trenchsecurity.ai</a> along with your resume to apply for this role.
+                  Ready to make the industry stop scrolling? Write to us not about yourself but why do you think you have fitment -<a href="mailto:career@trenchsecurity.ai?subject=Application for Product Marketing Intern" style={{ color: 'var(--color-primary-100)', fontWeight: 600, textDecoration: 'underline' }}>career@trenchsecurity.ai</a>.
                 </p>
               </div>
             </ScrollReveal>
