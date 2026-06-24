@@ -31,7 +31,7 @@ export default function CustomerSection() {
                 <Image 
                   src="/customers/Whatfix.svg" 
                   alt="Whatfix" 
-                  width={220} 
+                  width={200} 
                   height={60} 
                   style={{ objectFit: 'contain' }}
                 />
@@ -46,8 +46,19 @@ export default function CustomerSection() {
               <Image 
                 src="/customers/ocrolus-logo-1.png" 
                 alt="Ocrolus" 
-                width={180} 
-                height={50} 
+                width={200} 
+                height={60} 
+                style={{ objectFit: 'contain' }}
+              />
+            </div>
+          </div>
+          <div className="customer-card logo-only-card sbfe-container">
+            <div className="logo-wrapper">
+              <Image 
+                src="/customers/SBFE.png" 
+                alt="SBFE" 
+                width={200} 
+                height={60} 
                 style={{ objectFit: 'contain' }}
               />
             </div>
@@ -122,7 +133,8 @@ export default function CustomerSection() {
           text-align: center;
         }
 
-        .ocrolus-container {
+        .ocrolus-container,
+        .sbfe-container {
           cursor: default;
         }
 
@@ -130,7 +142,8 @@ export default function CustomerSection() {
           transform: translateY(-4px);
         }
 
-        .ocrolus-container:hover {
+        .ocrolus-container:hover,
+        .sbfe-container:hover {
           transform: translateY(-4px);
           border-color: transparent;
         }
