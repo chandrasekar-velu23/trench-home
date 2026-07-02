@@ -137,6 +137,34 @@ export default function BlogClientLayout({ post, relatedPosts }: BlogClientLayou
     };
   }, [post.body]);
 
+  useEffect(() => {
+    if (!lightboxImage) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setLightboxImage(null);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [lightboxImage]);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const originalOverflow = document.body.style.overflow;
+    if (lightboxImage) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = originalOverflow;
+    }
+
+    return () => {
+      document.body.style.overflow = originalOverflow;
+    };
+  }, [lightboxImage]);
+
   // Handle Likes
   const handleLike = () => {
     if (hasLiked) {
@@ -513,16 +541,22 @@ export default function BlogClientLayout({ post, relatedPosts }: BlogClientLayou
 
             {/* Cover Image nested within right column only */}
             {post.image && (
-              <div style={{ 
-                width: "100%", 
-                aspectRatio: "16/9", 
-                borderRadius: "16px", 
-                overflow: "hidden", 
-                position: "relative", 
-                marginBottom: "2.5rem", 
-                boxShadow: "0 10px 30px rgba(0, 0, 0, 0.03)",
-                border: "1px solid #E2E8F0"
-              }}>
+              <div
+                onClick={() => setLightboxImage({ src: post.image, alt: post.title })}
+                style={{ 
+                  width: "100%", 
+                  aspectRatio: "16/9", 
+                  borderRadius: "16px", 
+                  overflow: "hidden", 
+                  position: "relative", 
+                  marginBottom: "2.5rem", 
+                  boxShadow: "0 10px 30px rgba(0, 0, 0, 0.03)",
+                  border: "1px solid #E2E8F0",
+                  cursor: "zoom-in"
+                }}
+                role="button"
+                aria-label="Open cover image preview"
+              >
                 <Image src={post.image} alt={post.title} fill style={{ objectFit: "cover" }} priority />
               </div>
             )}
