@@ -122,14 +122,14 @@ export default function Footer() {
                 <h5 className="address-label">India Office:</h5>
                 <address className="footer-address">
                   <p>Trench Security Private Limited,</p>
-                  <p>4th Flr, TheHub@RaiSerenity, Yelеnahali, Begur,</p>
+                  <p>4th Flr, The Hub @ Raj Serenity, Yelenahali, Begur,</p>
                   <p>Bangalore-560068, Karnataka</p>
                 </address>
               </div>
               <div className="address-item">
                 <h5 className="address-label">US Office:</h5>
                 <address className="footer-address">
-                  <p>Trench Security Inc</p>
+                  <p>Trench Security Inc.</p>
                   <p>1407 Canal Rd, Princeton, NJ 08540-8635</p>
                 </address>
               </div>
