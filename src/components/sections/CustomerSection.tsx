@@ -21,12 +21,12 @@ export default function CustomerSection() {
         </ScrollReveal>
 
         <div className="customer-grid">
-          <Link 
-            href="/case-studies/whatfix"
-            className="customer-card logo-only-card"
-            aria-label="Whatfix Case Study"
-          >
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}>
+          <div className="customer-card logo-only-card">
+            <Link 
+              href="/case-studies/whatfix"
+              aria-label="Whatfix Case Study"
+              style={{ textDecoration: 'none', display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}
+            >
               <div className="logo-wrapper">
                 <Image 
                   src="/customers/Whatfix.svg" 
@@ -39,8 +39,8 @@ export default function CustomerSection() {
               <div className="static-btn" style={{ marginTop: '0.75rem' }}>
                 Case Study
               </div>
-            </div>
-          </Link>
+            </Link>
+          </div>
           <div className="customer-card logo-only-card ocrolus-container">
             <div className="logo-wrapper">
               <Image 
@@ -113,7 +113,7 @@ export default function CustomerSection() {
         }
 
         .customer-card:hover .logo-wrapper {
-          filter: grayscale(0%);
+          filter: none;
         }
 
         .logo-only-card {
@@ -166,7 +166,7 @@ export default function CustomerSection() {
           align-self: center !important;
         }
 
-        .logo-only-card:hover .static-btn {
+        .customer-card:hover .static-btn {
           background: var(--color-primary-100, #0052FF);
           color: white;
           border-color: var(--color-primary-100, #0052FF);

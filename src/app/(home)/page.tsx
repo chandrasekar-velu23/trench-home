@@ -52,7 +52,7 @@ export default function Home() {
       </section>
 
       {/* BRAND RIBBON BLOCK */}
-      <BrandBanner />
+      {/* <BrandBanner /> */}
 
       {/* PROCESS BLOCK */}
       <section className="content-block-full" style={{ paddingTop: "1rem", paddingBottom: "1rem" }}>

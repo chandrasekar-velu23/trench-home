@@ -49,7 +49,7 @@ export default function Footer() {
 
         {/* 4-Column Grid */}
         <div className="footer-columns-grid">
-          {/* Column 1 — Brand + Tagline + Partners */}
+          {/* Column 1 — Brand + Tagline */}
           <div className="footer-col footer-brand-col">
             <p className="footer-brand-desc">
               The Operating System for Actionable SecOps. Agentic automation built ground up for modern security teams.
@@ -59,40 +59,6 @@ export default function Footer() {
               <a href="mailto:ask@trenchsecurity.ai" className="footer-contact-link">
                 ask@trenchsecurity.ai
               </a>
-            </div>
-            {/* Subtle partners row directly under contact in brand column */}
-            <div className="footer-partners-group-brand hide-mobile">
-              <span className="footer-support-label">Partnerships & Awards</span>
-              <div className="footer-partners-row">
-                <Image
-                  src="/awards/ISV-Partner-logo-new.png"
-                  alt="microsoft-ISV"
-                  width={135}
-                  height={30}
-                  className="footer-partner-badge-small"
-                />
-                <Image
-                  src="/awards/Logo_IAA.webp"
-                  alt="Indian Achievers Award"
-                  width={84}
-                  height={42}
-                  className="footer-partner-badge-small"
-                />
-                <Image
-                  src="/awards/CySecK-Logo-PNG@900x.webp"
-                  alt="CySecK"
-                  width={84}
-                  height={42}
-                  className="footer-partner-badge-small"
-                />
-                <Image
-                  src="/awards/inc_42 _trench-.png"
-                  alt="Inc42"
-                  width={50}
-                  height={50}
-                  className="footer-partner-badge-small"
-                />
-              </div>
             </div>
           </div>
 
@@ -137,6 +103,48 @@ export default function Footer() {
           </div>
         </div>
 
+        {/* Partnerships & Awards Full Width Row (Desktop only) */}
+        <div className="footer-partners-row-full hide-mobile">
+          <span className="footer-support-label">Partnerships & Awards</span>
+          <div className="footer-partners-horizontal-list">
+            <Image
+              src="/awards/ISV-Partner-logo-new.png"
+              alt="microsoft-ISV"
+              width={162}
+              height={36}
+              className="footer-partner-badge-small"
+            />
+            <Image
+              src="/awards/Logo_IAA.webp"
+              alt="Indian Achievers Award"
+              width={100}
+              height={50}
+              className="footer-partner-badge-small"
+            />
+            <Image
+              src="/awards/CySecK-Logo-PNG@900x.webp"
+              alt="CySecK"
+              width={100}
+              height={50}
+              className="footer-partner-badge-small"
+            />
+            <Image
+              src="/awards/inc_42 _trench-.png"
+              alt="Inc42"
+              width={96}
+              height={96}
+              className="footer-partner-badge-large"
+            />
+            <Image
+              src="/awards/2025%20Products%20Awards%20Winner.png"
+              alt="2025 Products Awards Winner"
+              width={96}
+              height={96}
+              className="footer-partner-badge-large"
+            />
+          </div>
+        </div>
+
         {/* Mobile Trust Panel (Visible on mobile only) */}
         <div className="footer-mobile-trust-panel show-mobile-only">
           <div className="mobile-trust-group">
@@ -172,30 +180,37 @@ export default function Footer() {
               <Image
                 src="/awards/ISV-Partner-logo-new.png"
                 alt="microsoft-ISV"
-                width={135}
-                height={30}
+                width={162}
+                height={36}
                 className="footer-partner-badge-small"
               />
               <Image
                 src="/awards/Logo_IAA.webp"
                 alt="Indian Achievers Award"
-                width={84}
-                height={42}
+                width={100}
+                height={50}
                 className="footer-partner-badge-small"
               />
               <Image
                 src="/awards/CySecK-Logo-PNG@900x.webp"
                 alt="CySecK"
-                width={84}
-                height={42}
+                width={100}
+                height={50}
                 className="footer-partner-badge-small"
               />
               <Image
                 src="/awards/inc_42 _trench-.png"
                 alt="Inc42"
-                width={50}
-                height={50}
-                className="footer-partner-badge-small"
+                width={96}
+                height={96}
+                className="footer-partner-badge-large"
+              />
+              <Image
+                src="/awards/2025%20Products%20Awards%20Winner.png"
+                alt="2025 Products Awards Winner"
+                width={96}
+                height={96}
+                className="footer-partner-badge-large"
               />
             </div>
           </div>
@@ -378,27 +393,38 @@ export default function Footer() {
           color: #1e293b;
         }
 
-        /* ── Partnerships in Brand Column ── */
-        .footer-partners-group-brand {
+        /* ── Full-Width Partnerships & Awards Row ── */
+        .footer-partners-row-full {
+          width: 100%;
+          border-top: 1px solid rgba(15, 23, 42, 0.08);
+          padding-top: 1.5rem;
+          margin-top: 2rem;
           display: flex;
           flex-direction: column;
-          gap: 0.5rem;
-          margin-top: 0.75rem;
-          border-top: 1px solid rgba(15, 23, 42, 0.06);
-          padding-top: 1rem;
+          gap: 0.75rem;
         }
 
-        .footer-partners-row {
-          display: grid;
-          grid-template-columns: repeat(2, 1fr);
+        .footer-partners-horizontal-list {
+          display: flex;
           align-items: center;
-          justify-items: start;
-          gap: 0.85rem 1.25rem;
+          justify-content: flex-start;
+          gap: 3.5rem;
+          flex-wrap: nowrap;
+        }
+
+        .footer-partner-badge-large {
+          max-width: 100%;
+          object-fit: contain !important;
+          opacity: 0.85;
+          transition: opacity 0.25s ease, transform 0.25s ease;
+        }
+
+        .footer-partner-badge-large:hover {
+          opacity: 1;
+          transform: scale(1.05);
         }
 
         .footer-partner-badge-small {
-          height: 42px !important;
-          width: auto !important;
           max-width: 100%;
           object-fit: contain !important;
           opacity: 0.75;

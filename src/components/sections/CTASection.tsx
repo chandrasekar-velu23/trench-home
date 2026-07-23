@@ -98,7 +98,7 @@ export default function CTASection() {
 
       <style jsx>{`
         .cta-section {
-          padding: 6rem 0;
+          padding: 5rem 0;
           position: relative;
           overflow: visible;
         }
@@ -111,131 +111,143 @@ export default function CTASection() {
         /* ── Clouds ── */
         .cta-cloud {
           position: absolute;
-          width: 340px;
+          width: 300px;
           height: auto;
           z-index: 0;
           pointer-events: none;
-          opacity: 0.55;
+          opacity: 0.5;
           transition: opacity 0.6s ease, transform 0.15s ease-out;
           filter: blur(1px);
         }
 
-        .cta-cloud.hidden {
-          opacity: 0;
-        }
-
-        .cta-cloud.visible {
-          opacity: 0.55;
-        }
+        .cta-cloud.hidden { opacity: 0; }
+        .cta-cloud.visible { opacity: 0.5; }
 
         .cta-cloud-left {
-          left: -80px;
+          left: -70px;
           top: 50%;
-          margin-top: -100px;
+          margin-top: -90px;
         }
 
         .cta-cloud-right {
-          right: -80px;
+          right: -70px;
           top: 50%;
-          margin-top: -120px;
+          margin-top: -110px;
         }
 
         /* ── Card ── */
         .cta-card {
-          background: rgba(248, 250, 255, 0.92);
+          background: rgba(248, 250, 255, 0.95);
           backdrop-filter: blur(8px);
           border: 1.5px solid rgba(13, 65, 225, 0.1);
           border-radius: 24px;
-          padding: 3.5rem;
+          padding: 2.5rem 3rem;
           position: relative;
           z-index: 2;
           box-shadow: 0 12px 40px -12px rgba(13, 65, 225, 0.08);
+          max-width: 900px;
+          margin: 0 auto;
         }
 
         .cta-content {
           display: flex;
+          flex-direction: row;
           align-items: center;
-          
+          justify-content: center;
           gap: 3rem;
           position: relative;
           z-index: 2;
         }
 
         .cta-text {
-          max-width: 600px;
+          max-width: 520px;
+          flex-shrink: 0;
         }
 
         .cta-eyebrow {
           display: block;
           font-family: var(--font-primary);
-          font-size: 0.72rem;
+          font-size: 0.68rem;
           font-weight: 800;
           color: var(--color-primary-100);
           text-transform: uppercase;
           letter-spacing: 0.18em;
-          margin-bottom: 1rem;
+          margin-bottom: 0.6rem;
           opacity: 0.85;
         }
 
         .cta-title {
-          font-size: 2.25rem;
+          font-size: 2rem;
           font-weight: 700;
           color: #0d41e1;
-          margin-bottom: 0.75rem;
+          margin-bottom: 0.5rem;
           line-height: 1.2;
+          white-space: normal;
         }
 
         .cta-subtitle {
-          font-size: 1.125rem;
+          font-size: 1rem;
           color: var(--color-neutral-500);
           margin: 0;
-          line-height: 1.6;
+          line-height: 1.5;
+          max-width: 480px;
         }
 
         .cta-actions {
           display: flex;
-          gap: 1.25rem;
+          gap: 1rem;
           flex-shrink: 0;
+          align-items: center;
         }
 
         /* ── Responsive ── */
         @media (max-width: 1024px) {
+          .cta-title {
+            white-space: normal;
+            font-size: 1.75rem;
+          }
+          .cta-cloud { width: 220px; }
+          .cta-cloud-left { left: -30px; }
+          .cta-cloud-right { right: -30px; }
+        }
+
+        @media (max-width: 768px) {
           .cta-content {
             flex-direction: column;
-            text-align: center;
-            gap: 2.5rem;
+            align-items: flex-start;
+            gap: 1.5rem;
+          }
+          .cta-card {
+            padding: 2rem 1.75rem;
           }
           .cta-title {
-            font-size: 1.875rem;
+            font-size: 1.5rem;
           }
-          .cta-cloud {
-            width: 240px;
+          .cta-subtitle {
+            font-size: 0.9rem;
           }
-          .cta-cloud-left {
-            left: -40px;
-          }
-          .cta-cloud-right {
-            right: -40px;
+          .cta-actions {
+            width: 100%;
           }
         }
 
         @media (max-width: 640px) {
           .cta-section {
-            padding: 2rem 0;
+            padding: 2.5rem 0;
           }
           .cta-card {
-            padding: 1.75rem 1rem;
+            padding: 1.5rem 1.25rem;
           }
           .cta-content {
-            gap: 1.5rem;
+            gap: 1.25rem;
           }
           .cta-eyebrow {
             font-size: 0.6rem;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.4rem;
           }
           .cta-title {
             font-size: 1.2rem;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.4rem;
           }
           .cta-subtitle {
             font-size: 0.8rem;
@@ -244,32 +256,30 @@ export default function CTASection() {
             flex-direction: column;
             width: 100%;
             gap: 0.5rem;
-            align-items: center;
+            align-items: stretch;
           }
           :global(.cta-btn-primary),
           :global(.cta-btn-secondary) {
-            width: 150px !important;
-            height: 40px !important;
+            width: 100% !important;
+            height: 44px !important;
           }
           :global(.cta-btn-primary .button-text),
           :global(.cta-btn-secondary .button-text) {
-            font-size: 11px !important;
+            font-size: 12px !important;
             letter-spacing: 1px !important;
           }
           .cta-cloud {
-            width: 120px;
-            opacity: 0.25;
+            width: 100px;
+            opacity: 0.2;
           }
-          .cta-cloud.visible {
-            opacity: 0.25;
-          }
+          .cta-cloud.visible { opacity: 0.2; }
           .cta-cloud-left {
-            left: -10px;
-            margin-top: -40px;
+            left: -8px;
+            margin-top: -30px;
           }
           .cta-cloud-right {
-            right: -10px;
-            margin-top: -60px;
+            right: -8px;
+            margin-top: -50px;
           }
         }
       `}</style>

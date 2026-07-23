@@ -262,7 +262,7 @@ export default function Hero() {
           }
           .hero-content-wrapper {
             padding: 1rem 1rem;
-            padding-top: 80px; 
+            padding-top: 140px; 
             align-items: center; 
             justify-content: flex-start;
           }
