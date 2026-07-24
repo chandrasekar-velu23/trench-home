@@ -6,7 +6,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 import Button from "./ui/Button";
-import { ChevronDown, BookOpen, Calendar, FlaskConical, Video, Trophy } from "lucide-react";
+import { ChevronDown, BookOpen, Calendar, FlaskConical, Video, Trophy, Megaphone } from "lucide-react";
 import "./Navbar.css";
 
 const navLinks = [
@@ -20,7 +20,8 @@ const navLinks = [
       { name: "Blogs", href: "/blog", icon: BookOpen },
       { name: "Trench Labs", href: "/resources/trench-labs", icon: FlaskConical },
       { name: "Webinars", href: "/resources/webinars", icon: Video },
-      { name: "Community", href: "/resources/community", icon: Trophy }
+      { name: "Community", href: "/resources/community", icon: Trophy },
+      { name: "Announcements", href: "/announcements", icon: Megaphone }
     ]
   },
   { name: "Partners", href: "/for-mssps" }
@@ -101,16 +102,25 @@ export default function Navbar() {
         {/* Announcement Ticker Bar */}
         <div className="announcement-bar">
           <div className="announcement-ticker">
+            {/* Item 1 - Award */}
+            <div className="announcement-ticker-item">
+              <span>Trench Security is the <strong>2026 Winner of &lsquo;Products That Count&rsquo;</strong></span>
+              <Link href="/announcements/products-that-count-2026" className="announcement-button">
+                Read more
+              </Link>
+            </div>
+            {/* Item 2 - Blog */}
             <div className="announcement-ticker-item">
               <span>Read our latest blog post: <strong>The Agent Is Not the Product. The Foundation Is.</strong></span>
               <Link href="/blog/the-agent-is-not-the-product-the-foundation-is" className="announcement-button">
                 Read Article
               </Link>
             </div>
+            {/* Duplicates for seamless loop */}
             <div className="announcement-ticker-item" aria-hidden="true">
-              <span>Read our latest blog post: <strong>The Agent Is Not the Product. The Foundation Is.</strong></span>
-              <Link href="/blog/the-agent-is-not-the-product-the-foundation-is" className="announcement-button">
-                Read Article
+              <span>Trench Security is the <strong>2026 Winner of &lsquo;Products That Count&rsquo;</strong></span>
+              <Link href="/announcements/products-that-count-2026" className="announcement-button">
+                Read more
               </Link>
             </div>
             <div className="announcement-ticker-item" aria-hidden="true">
