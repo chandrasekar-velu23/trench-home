@@ -118,13 +118,13 @@ export default function Navbar() {
             </div>
             {/* Duplicates for seamless loop */}
             <div className="announcement-ticker-item" aria-hidden="true">
-              <span>Trench Security is the <strong>2026 Winner of &lsquo;Products That Count&rsquo;</strong></span>
+              <span>Announcement : Trench Security is the <strong>2026 Winner of &lsquo;Products That Count&rsquo;</strong></span>
               <Link href="/announcements/products-that-count-2026" className="announcement-button">
                 Read more
               </Link>
             </div>
             <div className="announcement-ticker-item" aria-hidden="true">
-              <span>Read our latest blog post: <strong>The Agent Is Not the Product. The Foundation Is.</strong></span>
+              <span>Read our latest blog post : <strong>The Agent Is Not the Product. The Foundation Is.</strong></span>
               <Link href="/blog/the-agent-is-not-the-product-the-foundation-is" className="announcement-button">
                 Read Article
               </Link>
@@ -137,113 +137,112 @@ export default function Navbar() {
             }`}
         >
           <div className="container-nav d-flex items-center justify-between w-full h-full">
-          {/* Logo Section */}
-          <Link href="/" className="nav-logo group z-[60]">
-            <Image
-              src="/logo/trench-logo.webp"
-              alt="Trench Logo"
-              width={160}
-              height={32}
-              priority
-              className="logo-img transition-transform duration-300"
-            />
-          </Link>
-
-          {/* Desktop Nav Links */}
-          <div className="nav-links-center hide-mobile">
-            {navLinks.map((link) =>
-              link.dropdown ? (
-                <div
-                  key={link.name}
-                  className="nav-item-dropdown-container"
-                  onMouseEnter={() => setDropdownOpen(true)}
-                  onMouseLeave={() => setDropdownOpen(false)}
-                >
-                  <button
-                    className={`nav-link nav-dropdown-trigger ${
-                      pathname.startsWith("/resources") || pathname === "/blog" ? "active" : ""
-                    } d-flex items-center gap-1`}
-                    style={{ background: "transparent", border: "none", cursor: "pointer" }}
-                  >
-                    {link.name}
-                    <motion.span
-                      animate={{ rotate: dropdownOpen ? 180 : 0 }}
-                      transition={{ duration: 0.2 }}
-                      className="d-flex items-center"
-                    >
-                      <ChevronDown size={14} />
-                    </motion.span>
-                  </button>
-
-                  <AnimatePresence>
-                    {dropdownOpen && (
-                      <motion.div
-                        initial={{ opacity: 0, y: 10, scale: 0.95 }}
-                        animate={{ opacity: 1, y: 0, scale: 1 }}
-                        exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                        transition={{ duration: 0.2, ease: "easeOut" }}
-                        className="nav-dropdown-menu"
-                      >
-                        <div className="nav-dropdown-grid">
-                          {link.dropdown.map((subLink) => {
-                            const SubIcon = subLink.icon;
-                            return (
-                              <Link
-                                key={subLink.name}
-                                href={subLink.href}
-                                className="nav-dropdown-item d-flex gap-3"
-                                onClick={() => setDropdownOpen(false)}
-                              >
-                                <div className="sublink-icon-wrap d-flex items-center justify-center">
-                                  <SubIcon size={18} className="sublink-icon" />
-                                </div>
-                                <div className="sublink-text">
-                                  <div className="sublink-name">{subLink.name}</div>
-                                </div>
-                              </Link>
-                            );
-                          })}
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-              ) : (
-                <Link
-                  key={link.name}
-                  href={link.href}
-                  className={`nav-link ${pathname === link.href ? 'active' : ''}`}
-                >
-                  {link.name}
-                </Link>
-              )
-            )}
-          </div>
-
-          {/* Desktop Actions */}
-          <div className="nav-actions d-flex items-center">
-            <Link href="/connect" className="hide-mobile">
-              <Button>
-                Get Started
-              </Button>
+            {/* Logo Section */}
+            <Link href="/" className="nav-logo group z-[60]">
+              <Image
+                src="/logo/trench-logo.webp"
+                alt="Trench Logo"
+                width={160}
+                height={32}
+                priority
+                className="logo-img transition-transform duration-300"
+              />
             </Link>
 
-            {/* Mobile Menu Button */}
-            <button
-              className="mobile-hamburger z-[2100]"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              aria-label="Toggle mobile menu"
-            >
+            {/* Desktop Nav Links */}
+            <div className="nav-links-center hide-mobile">
+              {navLinks.map((link) =>
+                link.dropdown ? (
+                  <div
+                    key={link.name}
+                    className="nav-item-dropdown-container"
+                    onMouseEnter={() => setDropdownOpen(true)}
+                    onMouseLeave={() => setDropdownOpen(false)}
+                  >
+                    <button
+                      className={`nav-link nav-dropdown-trigger ${pathname.startsWith("/resources") || pathname === "/blog" ? "active" : ""
+                        } d-flex items-center gap-1`}
+                      style={{ background: "transparent", border: "none", cursor: "pointer" }}
+                    >
+                      {link.name}
+                      <motion.span
+                        animate={{ rotate: dropdownOpen ? 180 : 0 }}
+                        transition={{ duration: 0.2 }}
+                        className="d-flex items-center"
+                      >
+                        <ChevronDown size={14} />
+                      </motion.span>
+                    </button>
+
+                    <AnimatePresence>
+                      {dropdownOpen && (
+                        <motion.div
+                          initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                          animate={{ opacity: 1, y: 0, scale: 1 }}
+                          exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                          transition={{ duration: 0.2, ease: "easeOut" }}
+                          className="nav-dropdown-menu"
+                        >
+                          <div className="nav-dropdown-grid">
+                            {link.dropdown.map((subLink) => {
+                              const SubIcon = subLink.icon;
+                              return (
+                                <Link
+                                  key={subLink.name}
+                                  href={subLink.href}
+                                  className="nav-dropdown-item d-flex gap-3"
+                                  onClick={() => setDropdownOpen(false)}
+                                >
+                                  <div className="sublink-icon-wrap d-flex items-center justify-center">
+                                    <SubIcon size={18} className="sublink-icon" />
+                                  </div>
+                                  <div className="sublink-text">
+                                    <div className="sublink-name">{subLink.name}</div>
+                                  </div>
+                                </Link>
+                              );
+                            })}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                ) : (
+                  <Link
+                    key={link.name}
+                    href={link.href}
+                    className={`nav-link ${pathname === link.href ? 'active' : ''}`}
+                  >
+                    {link.name}
+                  </Link>
+                )
+              )}
+            </div>
+
+            {/* Desktop Actions */}
+            <div className="nav-actions d-flex items-center">
+              <Link href="/connect" className="hide-mobile">
+                <Button>
+                  Get Started
+                </Button>
+              </Link>
+
+              {/* Mobile Menu Button */}
+              <button
+                className="mobile-hamburger z-[2100]"
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                aria-label="Toggle mobile menu"
+              >
 
 
-              <div className="hamburger-box">
-                <span className={`hamburger-inner ${mobileMenuOpen ? 'open' : ''}`}></span>
-              </div>
-            </button>
+                <div className="hamburger-box">
+                  <span className={`hamburger-inner ${mobileMenuOpen ? 'open' : ''}`}></span>
+                </div>
+              </button>
+            </div>
           </div>
         </div>
-      </div>
-    </motion.nav>
+      </motion.nav>
 
       {/* Mobile Menu Overlay */}
       <AnimatePresence>
@@ -271,9 +270,8 @@ export default function Navbar() {
                         className="w-full"
                       >
                         <button
-                          className={`mobile-nav-link ${
-                            pathname.startsWith("/resources") || pathname === "/blog" ? "active" : ""
-                          }`}
+                          className={`mobile-nav-link ${pathname.startsWith("/resources") || pathname === "/blog" ? "active" : ""
+                            }`}
                           onClick={() => setMobileResourcesOpen(!mobileResourcesOpen)}
                           style={{
                             background: "transparent",
