@@ -160,7 +160,7 @@ export default function Hero() {
           display: flex;
           justify-content: flex-start; /* Aligned left on desktop view */
           align-items: center;
-          margin-top: -25vh;
+          margin-top: -10vh;
           margin-left: auto;
           margin-right: auto;
         }

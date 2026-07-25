@@ -35,6 +35,7 @@ import ScrollReveal from "@/components/animations/ScrollReveal";
 import { BlogPost } from "../postsData";
 import HeadlessSecOpsModes from "@/components/HeadlessSecOpsModes";
 import Section3Visual from "@/components/Section3Visual";
+import Button from "@/components/ui/Button";
 
 interface BlogClientLayoutProps {
   post: BlogPost;
@@ -413,6 +414,17 @@ export default function BlogClientLayout({ post, relatedPosts }: BlogClientLayou
                       <LinkedinIcon size={16} />
                     </Link>
                   )}
+                  {post.author.name === "Michael Wilson" && (
+                    <Link 
+                      href="https://www.linkedin.com/in/michael-wilson-rebello-b719a86/" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      title="Connect with Michael Wilson on LinkedIn"
+                      style={{ display: "inline-flex", color: "#64748B", transition: "color 0.2s" }}
+                    >
+                      <LinkedinIcon size={16} />
+                    </Link>
+                  )}
                 </div>
                 {post.author.role && (
                   <div style={{ fontSize: "0.85rem", color: "#64748B" }}>{post.author.role}</div>
@@ -501,6 +513,37 @@ export default function BlogClientLayout({ post, relatedPosts }: BlogClientLayou
             )}
 
             {/* Quick Share Menu in Sidebar Removed */}
+
+            {/* CTA Card */}
+            <div style={{
+              marginTop: "2rem",
+              padding: "1.25rem 1.5rem",
+              border: "1.5px solid rgba(13, 65, 225, 0.18)",
+              borderRadius: "14px",
+              background: "#f8f9ff",
+              display: "flex",
+              flexDirection: "column",
+              gap: "0.6rem"
+            }}>
+              <p style={{
+                fontSize: "0.7rem",
+                fontWeight: 700,
+                letterSpacing: "0.08em",
+                color: "#0D41E1",
+                margin: 0,
+                textTransform: "uppercase"
+              }}>SEE TRENCH IN ACTION</p>
+              <h4 style={{
+                fontSize: "0.95rem",
+                fontWeight: 600,
+                color: "#111",
+                margin: 0,
+                lineHeight: 1.45
+              }}>Agentic OS for Actionable SecOps</h4>
+              <Link href="/connect" style={{ marginTop: "0.4rem" }}>
+                <Button>Get a Demo</Button>
+              </Link>
+            </div>
           </aside>
 
           {/* Main Article Body Column */}

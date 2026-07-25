@@ -384,6 +384,20 @@
   border-bottom: 1px solid rgba(13, 65, 225, 0.06);
 }
 
+/* Inline hyperlink inside richIntro */
+.ann-inline-link {
+  color: var(--color-primary-100);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1.5px;
+  font-weight: 700;
+  transition: color 0.2s ease;
+}
+
+.ann-inline-link:hover {
+  color: var(--color-primary-200);
+}
+
 .announcement-para {
   font-size: 1rem;
   color: var(--color-neutral-600);

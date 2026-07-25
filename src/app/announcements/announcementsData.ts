@@ -5,8 +5,11 @@
    and get their own detail page.
    ========================================= */
 
+export type RichSegment = { text: string; href?: string; external?: boolean };
+
 export type ContentBlock =
   | { type: "intro" | "paragraph" | "heading" | "closing"; text: string }
+  | { type: "richIntro"; segments: RichSegment[] }
   | { type: "list"; items: string[] }
   | { type: "innovations"; items: { label: string; desc: string }[] };
 
@@ -45,8 +48,25 @@ export const announcementsData: Announcement[] = [
       "Trench Security wins a 2026 Product Award from Products That Count for its innovation in cybersecurity — headless SecOps, intent graph detection, and TASC.",
     content: [
       {
-        type: "intro",
-        text: "Trench Security is a 2026 Product Awards winner, recognized by Products That Count, the world's largest product community.",
+        type: "richIntro",
+        segments: [
+          {
+            text: "Trench Security",
+            href: "https://www.linkedin.com/company/trenchsecurity/",
+            external: true,
+          },
+          {
+            text: " is a 2026 Product Awards winner, recognized by ",
+          },
+          {
+            text: "Products That Count",
+            href: "https://www.linkedin.com/company/products-that-count/",
+            external: true,
+          },
+          {
+            text: ", the world's largest product community.",
+          },
+        ],
       },
       {
         type: "paragraph",

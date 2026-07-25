@@ -5,7 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
-import type { Announcement } from "../announcementsData";
+import type { Announcement, RichSegment } from "../announcementsData";
+import CTASection from "@/components/sections/CTASection";
 import "../announcements.css";
 
 interface Props {
@@ -75,6 +76,29 @@ export default function AnnouncementDetailClient({ item }: Props) {
           {/* Content */}
           <div className="announcement-body">
             {item.content.map((block, bi) => {
+              /* Rich intro with inline hyperlinks */
+              if (block.type === "richIntro") {
+                return (
+                  <p key={bi} className="announcement-intro">
+                    {block.segments.map((seg: RichSegment, si: number) =>
+                      seg.href ? (
+                        <a
+                          key={si}
+                          href={seg.href}
+                          target={seg.external ? "_blank" : undefined}
+                          rel={seg.external ? "noopener noreferrer" : undefined}
+                          className="ann-inline-link"
+                        >
+                          {seg.text}
+                        </a>
+                      ) : (
+                        <React.Fragment key={si}>{seg.text}</React.Fragment>
+                      )
+                    )}
+                  </p>
+                );
+              }
+
               if (block.type === "intro" || block.type === "paragraph") {
                 return (
                   <p key={bi} className={block.type === "intro" ? "announcement-intro" : "announcement-para"}>
@@ -128,7 +152,7 @@ export default function AnnouncementDetailClient({ item }: Props) {
           </div>
         </motion.article>
 
-        {/* Footer nav */}
+        {/* Footer back nav */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -141,6 +165,11 @@ export default function AnnouncementDetailClient({ item }: Props) {
           </Link>
         </motion.div>
       </section>
+
+      {/* CTA — Book a demo */}
+      <div style={{ marginTop: "4rem" }}>
+        <CTASection />
+      </div>
     </main>
   );
 }

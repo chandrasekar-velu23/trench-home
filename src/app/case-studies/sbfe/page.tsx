@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Button from '@/components/ui/Button';
 
-export default function WhatfixCaseStudyPage() {
+export default function SBFECaseStudyPage() {
   const [activeSection, setActiveSection] = useState("");
 
   useEffect(() => {
@@ -30,29 +30,33 @@ export default function WhatfixCaseStudyPage() {
         <div className="hero-content">
           <div className="logo-wrapper">
             <Image
-              src="/customers/Whatfix.svg"
-              alt="Whatfix Logo"
+              src="/customers/SBFE.png"
+              alt="SBFE Logo"
               width={160}
               height={45}
               style={{ objectFit: 'contain' }}
             />
           </div>
-          <h1>How Whatfix Built Its Trench: Headless SecOps, One Decision Layer</h1>
+          <h1>How SBFE Built Its Trench: Actionable SecOps for U.S. Small Business Financial Exchange</h1>
           <p className="hero-subtitle">
-            The complete SecOps engine : detection, investigation, hunting and response, runs inside the collaboration layer where Whatfix's team already works. No dedicated console. No context switching. Security that moves at the speed of the business.
+            From SumoLogic bottlenecks and manual workflows to a fully headless, actionable security operation, running 24x7 on the Trench Agentic Operating System.
           </p>
           <div className="metrics-grid">
             <div className="metric-card">
-              <span className="metric-value">100%</span>
-              <span className="metric-label">SecOps workflows automated on Slack</span>
+              <span className="metric-value">One Platform</span>
+              <span className="metric-label">Agentic SIEM + SOC: detection, investigation, and response unified</span>
+            </div>
+            <div className="metric-card">
+              <span className="metric-value">Full Visibility</span>
+              <span className="metric-label">Across all connected log sources unified, normalized, monitored in real time</span>
             </div>
             <div className="metric-card">
               <span className="metric-value">&lt; 10 MINs</span>
-              <span className="metric-label">Across all SLAs</span>
+              <span className="metric-label">Every escalation arrives with full context and a clear recommended action</span>
             </div>
             <div className="metric-card">
               <span className="metric-value">24x7</span>
-              <span className="metric-label">Resilience</span>
+              <span className="metric-label">Autonomous coverage, no shift gaps, no blind spots in connected sources</span>
             </div>
           </div>
         </div>
@@ -62,11 +66,11 @@ export default function WhatfixCaseStudyPage() {
         <div className="quote-container">
           <span className="quote-mark">“</span>
           <p className="quote-text">
-            An investigation that used to take our team close to an hour now closes in under 10 minutes without leaving Slack. Trench didn't just automate our security workflows, it brought the entire SecOps engine into the tool our team already lives in. That's a completely different way to run security.
+            As a small security team, we needed a tool that could help us build rules, escalate material events, and evolve over time, essentially an extension of our own team. Within a few days of implementing Trench we were already working more efficiently, and a few weeks in, things have only gotten smoother. Trench has become a solid part of our security program.
           </p>
           <div className="quote-author">
-            <p className="author-name">Achyuth</p>
-            <p className="author-title">Head of Security, Whatfix</p>
+            <p className="author-name">Pete Tannish</p>
+            <p className="author-title">Head of Enterprise Risk &amp; Technology, SBFE</p>
           </div>
         </div>
       </section>
@@ -75,78 +79,107 @@ export default function WhatfixCaseStudyPage() {
         <div className="content-grid">
           <article className="article-content">
             <h2 id="company-profile">COMPANY PROFILE</h2>
-            <h3>Whatfix: When Security Has to Move at the Speed of the Business</h3>
+            <h3>SBFE: The Trusted Source for U.S. Small Business Credit Data</h3>
             <p>
-              Whatfix is an AI-native digital adoption platform that maximizes software ROI with in-app guidance, simulation training, and adoption analytics. As its infrastructure scaled across cloud environments, identity systems, and SaaS integrations, the security challenge wasn't just technical, it was operational. A lean, high-velocity team couldn't afford to run security from a separate tool that nobody checked in real time.
+              The Small Business Financial Exchange (SBFE) is an industry trade association formed in 2001. Over 140 U.S. small business lenders are members. SBFE's mission is to be the trusted source for small business data, delivering solutions and data-driven insights that drive access to capital and the growth of small businesses.
             </p>
             <p>
-              The answer wasn't to hire a bigger SOC. It was to bring the entire SecOps engine inside the collaboration layer where the team already worked and let autonomous agents handle everything else. That vision led them to Trench Security's Agentic AI System.
+              SBFE operates as a central repository for aggregating credit payment performance data , a closed, "give to get" exchange that provides data received from member lenders to major credit reporting bureaus for inclusion in risk management products. The sensitivity of that data and the trust of over 140 member institutions set the bar for what security must deliver: coverage that is continuous, auditable, and never dependent on manual effort.
             </p>
+            <div className="tags-row">
+              <span className="tag">Financial Services</span>
+              <span className="tag">Credit Data Infrastructure</span>
+              <span className="tag">GLBA</span>
+              <span className="tag">Federal Data Protection</span>
+              <span className="tag">140+ Member Lenders</span>
+              <span className="tag">Est. 2001</span>
+            </div>
 
             <h2 id="challenges">CHALLENGES</h2>
-            <h3>The Problem: Reactive Security, Blind Spots, and a SOC Disconnected from the Team</h3>
+            <h3>The Problem: Growing Infrastructure, Rising Complexity, and Security That Could Not Keep Pace</h3>
             <p>
-              Whatfix's security posture was constrained by the limits of traditional, rule-based operations. Detection logic was untuned, hunting was time consuming, and security workflows lived in multiple tools and email threads entirely separate with poor context from where the team made decisions.
+              SBFE's security posture was constrained by the limits of a conventional model , a legacy SIEM paired with manual SOC workflows , that could not scale alongside an expanding, data-sensitive environment.
             </p>
 
-            <h4>Untuned Detection Rules at Scale</h4>
+            <h4>A Legacy SIEM and Manual SOC That Could Not Scale</h4>
             <p>
-              Thousands of SIEM rules were active without lifecycle management, MITRE mapping, or performance review producing low-fidelity signals with no way to distinguish precision detections from noise generators.
+              SBFE operated a conventional security model , a legacy SIEM for log collection and detection, paired with manual SOC workflows for triage, investigation, and response. As the infrastructure grew across cloud, identity, endpoints, and SaaS, the gap between alert volume and available analyst capacity widened. Maintaining detection logic, managing escalations, and tracking investigation status required continuous human effort that compounded with every new environment addition.
             </p>
 
-            <h4>Limited Attack Surface Coverage</h4>
+            <h4>No Consolidated Detection Posture or Coverage Visibility</h4>
             <p>
-              Coverage across cloud, identity, endpoint, network, and SaaS was fragmented. Without a unified view, visibility gaps across MITRE ATT&CK tactics went undetected and unaddressed.
+              Without a unified view of what was being detected and where critical assets sat relative to known attack techniques, understanding coverage gaps required manual effort the team could not consistently sustain. As new assets were added to the environment, default monitoring coverage was not guaranteed , posture had to be actively tracked rather than built in.
             </p>
 
-            <h4>No Continuous Threat Hunting</h4>
+            <h4>Security Operations That Needed to Scale Without Proportional Headcount</h4>
             <p>
-              Proactive hunting required manual effort and analyst availability , a luxury a lean team rarely had. Threats were only found if they announced themselves.
+              With over 140 member institutions depending on SBFE data, the security function carried obligations that demanded scale. Manual triage, fragmented workflows, and coverage dependent on shift schedules created an operating model that could not sustainably match the pace of a growing threat environment.
             </p>
 
-            <h4>SecOps Isolated from Where the Team Works</h4>
+            <h4>Compliance Posture That Depended on Manual Assembly</h4>
             <p>
-              Security alerts lived in separate tools and email threads, disconnected from the collaboration layer where decisions were made. Constant context switching slowed every response.
+              Maintaining a structured, continuous audit record for a data-intensive environment required manual effort that competed directly with active security operations. Every compliance review demanded time the team needed to spend elsewhere. A built-in, continuous compliance trail , not one assembled after the fact , was a clear operational requirement.
             </p>
 
             <h2 id="transformation">TRANSFORMATION</h2>
-            <h3>From Static Rules to an Agentic Detection & Automation Engine</h3>
+            <h3>From a Legacy SIEM and Manual SOC to One Integrated Agentic Platform</h3>
 
             <div className="comparison-grid">
               <div className="comparison-card before">
                 <h4>BEFORE TRENCH</h4>
                 <ul>
-                  <li>Limited monitoring coverage and visibility gaps</li>
-                  <li>Detection rules accumulated without systematic tuning or MITRE mapping</li>
-                  <li>Fragmented MITRE coverage, blind to attack surface</li>
-                  <li>No proactive threat hunting</li>
-                  <li>Email alerts, no workflow structure</li>
-                  <li>Manually maintained institutional knowledge or playbooks</li>
+                  <li>Legacy SIEM combined with a manual SOC model: detection, investigation, and response managed across separate tools and workflows with significant human overhead</li>
+                  <li>No consolidated view of detection posture or MITRE ATT&amp;CK coverage , understanding coverage required ongoing manual effort</li>
+                  <li>Detection rules and investigation configurations required continuous manual upkeep as the environment scaled</li>
+                  <li>Alert volume and investigation workload grew faster than the team could absorb , every triage cycle required analyst time</li>
+                  <li>Security workflows lived outside the team's primary collaboration environment, creating context-switching overhead</li>
+                  <li>Escalation workflows lacked structured context , teams received notifications without severity, scope, or recommended next steps</li>
+                  <li>Producing a structured audit record required significant manual effort drawn from active security operations</li>
                 </ul>
               </div>
               <div className="comparison-card after">
                 <h4>AFTER TRENCH</h4>
                 <ul>
-                  <li>24�, 7 autonomous monitoring powered by Agents</li>
-                  <li>High-fidelity detections, high-quality investigations</li>
-                  <li>100% visibility on blindspots and coverage gaps</li>
-                  <li>Continuous autonomous hunting at scale</li>
-                  <li>100% workflows automated end-to-end via Slack</li>
-                  <li>Self-learning knowledge base across all playbooks and new scenarios</li>
+                  <li>One integrated agentic platform combining SIEM and SOC: detection, investigation, hunting, and response running continuously on the Trench Agentic SIEM</li>
+                  <li>Critical asset coverage established in weeks , full MITRE ATT&amp;CK posture visible and continuously updated</li>
+                  <li>Detection rules authored and deployed automatically from live threat intel through Intent Graph , no manual configuration, no tuning cycles</li>
+                  <li>Every alert auto-investigated 24x7 , each escalation arrives with full context: what happened, blast radius, and recommended next action in under 10 minutes</li>
+                  <li>100% headless SecOps , all findings, investigations, and response actions surface inside the team's collaboration tools with full context</li>
+                  <li>Every escalation arrives with full context of what happened and what needs to be done in under 10 minutes</li>
+                  <li>Every detection, investigation, and closure timestamped with a full audit trail , compliance posture is continuous and built in</li>
                 </ul>
               </div>
             </div>
 
             <h2 id="adoption-story">ADOPTION STORY</h2>
-            <h3>How the Whatfix SOC Team Made Trench Their Own</h3>
+            <h3>SBFE Built an Actionable SOC: Powered by the Trench Agentic SIEM</h3>
+
+            <h4>One Platform Replacing a Legacy SIEM and Manual SOC</h4>
             <p>
-              Trench deployed alongside Whatfix's existing environment with no rip-and-replace and no downtime. But the real shift wasn't technical, it was operational. For the first time, Whatfix's complete SecOps engine moved inside Slack: the collaboration layer where their team already worked, made decisions, and moved fast.
+              SBFE replaced its legacy SIEM and the manual SOC workflows it required with Trench's security-first, data lake-centric Agentic SIEM , one integrated platform where detection, investigation, threat hunting, and response run continuously, without separate tooling or human orchestration between them. Every log source across endpoints, identity, cloud, network, and SaaS now flows into a unified data layer. What previously required a SIEM for ingestion, a separate workflow for triage, and analyst time for every investigation is now a single, continuously operating agentic system.
+            </p>
+
+            <h4>Detection Posture Rebuilt Around Intent Graph and MITRE Coverage</h4>
+            <p>
+              Trench's Intent Graph became the foundation of SBFE's new detection posture , reasoning about the behavioral purpose behind every signal, not just the individual event. Rather than evaluating alerts in isolation, Intent Graph reasons across relationships, sequences, and context to identify what is genuinely suspicious versus expected activity. MITRE ATT&amp;CK-aligned detection rules now deploy automatically from live threat intel, with critical asset coverage established in weeks and every new asset onboarded with its default detection workflow enabled from day one.
+            </p>
+
+            <h4>Automated Investigation: Every Escalation Arrives With Context</h4>
+            <p>
+              Every alert now enters an automated investigation loop , context gathered, timeline built, blast radius scoped, case closed. Every escalation that reaches a human arrives with the complete picture: what happened, the scope of impact, and a clear recommended action, in under 10 minutes. Response and remediation cycles that previously required significant analyst time now close before the next shift starts.
+            </p>
+
+            <h4>Headless SecOps: Security That Comes to the Team</h4>
+            <p>
+              For a team where security operations needed to scale without proportional headcount, the headless model was the right architectural fit. Security findings, investigation outcomes, and escalations surface directly inside the collaboration layer the team already uses , no console login, no context switching, no separate tool to monitor. Security became something that came to the team, fully reasoned and ready to act on.
             </p>
             <p>
-              Detection findings, investigation workflows, hunt results, and response actions - all of it now flows directly into the channels where the team operates. The right signal reaches the right person with full context, without a portal login or context switch. Security stopped being something the team went to check. It became something that came to them.
+              The compliance posture changed fundamentally. Every detection, every investigation, every closure is timestamped with a full audit trail , built continuously as Trench operates, not assembled under pressure. The result is a compliance record that is always current, always complete, and available on demand.
             </p>
+
+            <h4>Autonomous Threat Hunting Across the Full Attack Surface</h4>
             <p>
-              On the detection side, thousands of rules were evaluated and distilled into a precision set of high-fidelity use cases - each MITRE-mapped across cloud, identity, endpoint, and network. Achieving 5X coverage velocity in under 30 days. Autonomous threat hunts ran continuously across every environment, proactively surfacing supply chain compromises, malicious container artifacts, and active extortion campaigns that never triggered a single conventional alert. Response time across investigation and resolution dropped to under 10 minutes, from a baseline of over 70.
+              Trench's autonomous threat hunting agents run continuously across SBFE's environment , proactively surfacing threats that evade rule-based detection. Behavioral anomalies, lateral movement indicators, and insider risk signals that no static rule set can anticipate are identified and surfaced before they become incidents. For an organization where data integrity underpins the trust of over 140 member institutions, proactive coverage across the full attack surface is not optional.
             </p>
           </article>
 
@@ -239,15 +272,16 @@ export default function WhatfixCaseStudyPage() {
         }
 
         .metric-value {
-          font-size: clamp(1.75rem, 4vw, 2.5rem);
+          font-size: clamp(1.5rem, 3.5vw, 2.25rem);
           font-weight: 800;
           color: var(--color-primary-100, #0052FF);
         }
 
         .metric-label {
-          font-size: 1rem;
+          font-size: 0.95rem;
           font-weight: 600;
           color: #555;
+          line-height: 1.4;
         }
 
         .quote-section {
@@ -331,7 +365,6 @@ export default function WhatfixCaseStudyPage() {
           margin: 4rem 0 1.5rem;
           scroll-margin-top: 100px;
           padding-bottom: 0.5rem;
-         
         }
 
         .article-content h2:first-of-type {
@@ -357,6 +390,23 @@ export default function WhatfixCaseStudyPage() {
           line-height: 1.8;
           color: #444;
           margin-bottom: 1.5rem;
+        }
+
+        .tags-row {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0.5rem;
+          margin: 1.5rem 0 2rem;
+        }
+
+        .tag {
+          font-size: 0.8rem;
+          font-weight: 600;
+          color: #555;
+          background: #f1f3f5;
+          padding: 4px 12px;
+          border-radius: 20px;
+          border: 1px solid #e0e0e0;
         }
 
         .comparison-grid {
@@ -407,7 +457,7 @@ export default function WhatfixCaseStudyPage() {
         }
 
         .comparison-card.before li::before {
-          content: "�, ";
+          content: "x";
           position: absolute;
           left: 0;
           color: #e03131;
@@ -514,7 +564,6 @@ export default function WhatfixCaseStudyPage() {
           justify-content: center;
         }
 
-
         @media (max-width: 1024px) {
           .content-grid {
             grid-template-columns: 1fr;
@@ -530,6 +579,12 @@ export default function WhatfixCaseStudyPage() {
           }
           .quote-container {
             padding: 2rem;
+          }
+          .metrics-grid {
+            gap: 1rem;
+          }
+          .metric-card {
+            min-width: 150px;
           }
         }
       `}</style>

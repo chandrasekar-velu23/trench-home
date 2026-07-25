@@ -53,15 +53,24 @@ export default function CustomerSection() {
             </div>
           </div>
           <div className="customer-card logo-only-card sbfe-container">
-            <div className="logo-wrapper">
-              <Image 
-                src="/customers/SBFE.png" 
-                alt="SBFE" 
-                width={200} 
-                height={60} 
-                style={{ objectFit: 'contain' }}
-              />
-            </div>
+            <Link 
+              href="/case-studies/sbfe"
+              aria-label="SBFE Case Study"
+              style={{ textDecoration: 'none', display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}
+            >
+              <div className="logo-wrapper">
+                <Image 
+                  src="/customers/SBFE.png" 
+                  alt="SBFE" 
+                  width={200} 
+                  height={60} 
+                  style={{ objectFit: 'contain' }}
+                />
+              </div>
+              <div className="static-btn" style={{ marginTop: '0.75rem' }}>
+                Case Study
+              </div>
+            </Link>
           </div>
         </div>
       </div>
@@ -133,8 +142,7 @@ export default function CustomerSection() {
           text-align: center;
         }
 
-        .ocrolus-container,
-        .sbfe-container {
+        .ocrolus-container {
           cursor: default;
         }
 
@@ -142,8 +150,7 @@ export default function CustomerSection() {
           transform: translateY(-4px);
         }
 
-        .ocrolus-container:hover,
-        .sbfe-container:hover {
+        .ocrolus-container:hover {
           transform: translateY(-4px);
           border-color: transparent;
         }

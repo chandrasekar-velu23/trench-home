@@ -155,6 +155,18 @@ export default function BlogClient() {
                                 <LinkedinIcon size={14} />
                               </Link>
                             )}
+                            {post.author.name === "Michael Wilson" && (
+                              <Link 
+                                href="https://www.linkedin.com/in/michael-wilson-rebello-b719a86/" 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                title="Connect with Michael Wilson on LinkedIn"
+                                onClick={(e) => e.stopPropagation()}
+                                style={{ display: 'inline-flex', color: '#64748B', transition: 'color 0.2s' }}
+                              >
+                                <LinkedinIcon size={14} />
+                              </Link>
+                            )}
                           </div>
                           {post.author.role && (
                             <div style={{ fontSize: '0.75rem', color: '#64748B' }}>{post.author.role}</div>
