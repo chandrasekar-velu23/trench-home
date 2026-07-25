@@ -42,7 +42,9 @@ export default function AnnouncementsListClient() {
       {/* Cards grid */}
       <section className="announcements-container">
         <div className="announcements-grid">
-          {announcementsData.map((item, i) => (
+          {[...announcementsData]
+            .sort((a, b) => new Date(b.publishedISO).getTime() - new Date(a.publishedISO).getTime())
+            .map((item, i) => (
             <motion.article
               key={item.slug}
               custom={i}

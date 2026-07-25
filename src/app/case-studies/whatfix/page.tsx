@@ -127,7 +127,7 @@ export default function WhatfixCaseStudyPage() {
               <div className="comparison-card after">
                 <h4>AFTER TRENCH</h4>
                 <ul>
-                  <li>24�, 7 autonomous monitoring powered by Agents</li>
+                  <li>24x7 autonomous monitoring powered by Agents</li>
                   <li>High-fidelity detections, high-quality investigations</li>
                   <li>100% visibility on blindspots and coverage gaps</li>
                   <li>Continuous autonomous hunting at scale</li>
@@ -407,7 +407,7 @@ export default function WhatfixCaseStudyPage() {
         }
 
         .comparison-card.before li::before {
-          content: "�, ";
+          content: "× ";
           position: absolute;
           left: 0;
           color: #e03131;
