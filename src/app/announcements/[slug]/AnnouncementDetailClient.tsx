@@ -147,6 +147,21 @@ export default function AnnouncementDetailClient({ item }: Props) {
                   </div>
                 );
               }
+              if (block.type === "button") {
+                return (
+                  <div key={bi} style={{ marginTop: "2rem", marginBottom: "1rem" }}>
+                    <Link
+                      href={block.href}
+                      target={block.external ? "_blank" : undefined}
+                      rel={block.external ? "noopener noreferrer" : undefined}
+                      className="btn-primary"
+                      style={{ display: "inline-flex", textDecoration: "none" }}
+                    >
+                      {block.text}
+                    </Link>
+                  </div>
+                );
+              }
               return null;
             })}
           </div>

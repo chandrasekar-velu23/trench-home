@@ -39,7 +39,7 @@ export default function SBFECaseStudyPage() {
           </div>
           <h1>How SBFE Built Its Trench: Actionable SecOps for U.S. Small Business Financial Exchange</h1>
           <p className="hero-subtitle">
-            From SumoLogic bottlenecks and manual workflows to a fully headless, actionable security operation, running 24x7 on the Trench Agentic Operating System.
+            From a legacy SIEM and manual SOC workflows to a fully headless, integrated agentic security operation with 24x7 monitoring.
           </p>
           <div className="metrics-grid">
             <div className="metric-card">
