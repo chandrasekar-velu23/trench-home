@@ -289,7 +289,7 @@ export default function WhyTrenchPage() {
           </div>
         </div>
       </section>
-      <BrandBanner />
+      {/* <BrandBanner /> */}
       {/* ── SECTION 5: CAREERS (Centered Layout) ── */}
       <section className="content-block wt-section careers-section">
         <div className="container-wide text-center">

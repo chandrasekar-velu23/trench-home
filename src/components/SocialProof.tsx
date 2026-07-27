@@ -23,13 +23,20 @@ const testimonials = [
   },
   {
     id: 3,
+    quote: "As a small security team, we needed a tool that could help us build rules, escalate material events, and evolve over time, essentially an extension of our own team. Within a few days of implementing Trench we were already working more efficiently, and a few weeks in, things have only gotten smoother. Trench has become a solid part of our security program.",
+    author: "Pete Tannish",
+    role: "Head of Enterprise Risk & Technology, SBFE",
+    avatar: ""
+  },
+  {
+    id: 4,
     quote: "Trench is a foundational transformation in how security operations work. A real unified platform, not bolted-on AI, that reasons about threats across your entire stack. This is what modern SecOps should look like.",
     author: "Subhro Banerjee",
     role: "Senior Global IT Security Leader | Lifescience MNC",
     avatar: "/social/SB.webp"
   },
   {
-    id: 4,
+    id: 5,
     quote: "Trench does in minutes what legacy SIEM teams spend weeks trying to do. Real-time detection built ground up for how threats actually move today, not patched together, purpose-built.",
     author: "Srikanth Devarajan",
     role: "Ex-VP & GM, Zscaler",
@@ -67,9 +74,11 @@ export default function SocialProof() {
       </div> */}
 
       <div className="testimonial-container">
-        <ScrollReveal direction="up" className="text-center" distance={40} style={{ marginBottom: "0rems" }}>
-
-          <h2 className="title-md text-center">Loved by Practitioners<br />& Security Leaders</h2>
+        <ScrollReveal direction="up" className="text-center flex flex-col items-center justify-center" distance={40} style={{ marginBottom: "0rems" }}>
+          <img src="/Icon/feedback%20icon.svg" alt="Feedback Icon" style={{ display: 'block', margin: '0 auto 1rem auto', height: '3rem', width: 'auto' }} />
+          <h2 className="title-md text-center">
+            Loved by Modern Security Leaders
+          </h2>
         </ScrollReveal>
 
 
@@ -144,7 +153,7 @@ export default function SocialProof() {
 
       <style jsx>{`
         .social-proof-section {
-          padding: 0.4rem 0 1.5rem;
+          padding: 4rem 0 1.5rem;
           background: transparent;
           display: flex;
           flex-direction: column;
