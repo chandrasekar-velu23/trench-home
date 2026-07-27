@@ -174,6 +174,7 @@ export default function Hero() {
           flex-direction: column;
           align-items: flex-start; /* Aligned children left */
           gap: 2.5rem;
+          margin-left: 4rem; /* Shift content slightly to the right */
         }
 
         .hero-top-group {
@@ -279,6 +280,7 @@ export default function Hero() {
             text-align: center !important;
             align-items: center !important;
             margin-bottom: 0;
+            margin-left: 0; /* Reset desktop offset */
             background: transparent;
             width: 100%;
             height: auto;

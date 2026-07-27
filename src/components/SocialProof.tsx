@@ -74,8 +74,8 @@ export default function SocialProof() {
       </div> */}
 
       <div className="testimonial-container">
-        <ScrollReveal direction="up" className="text-center flex flex-col items-center justify-center" distance={40} style={{ marginBottom: "0rems" }}>
-          <img src="/Icon/feedback%20icon.svg" alt="Feedback Icon" style={{ display: 'block', margin: '0 auto 1rem auto', height: '3rem', width: 'auto' }} />
+        <ScrollReveal direction="up" className="text-center flex flex-col items-center justify-center" distance={40} style={{ marginBottom: "0" }}>
+          <img src="/Icon/feedback%20icon.svg" alt="Feedback Icon" style={{ display: 'block', margin: '0 auto 1rem auto', height: 'clamp(3rem, 6vw, 4.5rem)', width: 'auto' }} />
           <h2 className="title-md text-center">
             Loved by Modern Security Leaders
           </h2>
@@ -187,7 +187,7 @@ export default function SocialProof() {
 
         .testimonial-container h2 {
           margin-top: 0;
-          margin-bottom: 0.75rem;
+          margin-bottom: 0;
           line-height: 1.2;
           text-align: center;
         }
@@ -198,9 +198,10 @@ export default function SocialProof() {
           flex-direction: column;
           align-items: center;
           position: relative;
-          min-height: 260px;
+          min-height: 280px;
           justify-content: center;
-          margin-top: 0.5rem;
+          margin-top: 0;
+          padding-bottom: 3.5rem;
         }
 
         .testimonial-card {
