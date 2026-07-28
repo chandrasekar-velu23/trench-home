@@ -87,6 +87,7 @@ export async function POST(request: NextRequest) {
       lastName,
       fullName: body.fullName,
       email: body.email,
+      contactNumber: body.contactNumber || '',
       company: body.companyName || body.company || '',
       teamSize: body.teamSize || 'MSSP Partner',
       intent: body.intent || 'MSSP Partnership',

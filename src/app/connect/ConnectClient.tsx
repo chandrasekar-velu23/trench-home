@@ -3,6 +3,8 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
+import "react-phone-number-input/style.css";
 import "./connect.css";
 
 /* ── Icons — all use currentColor so CSS controls the stroke ── */
@@ -78,10 +80,13 @@ export default function ConnectClient() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [emailError, setEmailError] = useState("");
+  const [phone, setPhone] = useState<string | undefined>("");
+  const [phoneError, setPhoneError] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setPhoneError("");
     
     try {
       // Get form data
@@ -100,9 +105,16 @@ export default function ConnectClient() {
       }
       setEmailError("");
 
+      if (!phone || !isValidPhoneNumber(phone)) {
+        setPhoneError("Please enter a valid phone number.");
+        setIsSubmitting(false);
+        return;
+      }
+
       const data = {
         fullName: formData.get('fullName') as string,
         email: email,
+        contactNumber: phone || '',
         teamSize: formData.get('teamSize') as string,
         intent: formData.get('intent') as string,
         message: (formData.get('message') as string) || ''
@@ -282,6 +294,23 @@ export default function ConnectClient() {
                       style={emailError ? { borderColor: '#ef4444' } : {}}
                     />
                     {emailError && <div style={{ color: '#ef4444', fontSize: '0.85rem', marginTop: '0.5rem' }}>{emailError}</div>}
+                  </div>
+
+                  {/* Contact Number */}
+                  <div className="connect-field">
+                    <label htmlFor="contactNumber" className="connect-label">Contact Number <span>*</span></label>
+                    <PhoneInput
+                      international
+                      defaultCountry="US"
+                      value={phone}
+                      onChange={(value) => {
+                        setPhone(value);
+                        if (phoneError) setPhoneError("");
+                      }}
+                      className="connect-input"
+                      style={phoneError ? { borderColor: '#ef4444' } : {}}
+                    />
+                    {phoneError && <div style={{ color: '#ef4444', fontSize: '0.85rem', marginTop: '0.5rem' }}>{phoneError}</div>}
                   </div>
 
                   {/* Team Size */}

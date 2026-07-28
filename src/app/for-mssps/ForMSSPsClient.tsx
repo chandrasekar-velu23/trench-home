@@ -5,6 +5,8 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import ScrollReveal from "@/components/animations/ScrollReveal";
 import TextReveal from "@/components/animations/TextReveal";
+import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
+import "react-phone-number-input/style.css";
 import "./for-mssps.css";
 
 /* ── Custom SVGs for high-performance visual aesthetics ── */
@@ -92,10 +94,13 @@ export default function ForMSSPsClient() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [emailError, setEmailError] = useState("");
+  const [phone, setPhone] = useState<string | undefined>("");
+  const [phoneError, setPhoneError] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setPhoneError("");
 
     try {
       const form = e.target as HTMLFormElement;
@@ -112,9 +117,16 @@ export default function ForMSSPsClient() {
       }
       setEmailError("");
 
+      if (!phone || !isValidPhoneNumber(phone)) {
+        setPhoneError("Please enter a valid phone number.");
+        setIsSubmitting(false);
+        return;
+      }
+
       const data = {
         fullName: formData.get("fullName") as string,
         email: email,
+        contactNumber: phone || "",
         companyName: formData.get("companyName") as string,
         message: (formData.get("message") as string) || ""
       };
@@ -292,6 +304,23 @@ export default function ForMSSPsClient() {
                       style={emailError ? { borderColor: '#ef4444' } : {}}
                     />
                     {emailError && <div style={{ color: '#ef4444', fontSize: '0.85rem', marginTop: '0.5rem' }}>{emailError}</div>}
+                  </div>
+
+                  {/* Contact Number */}
+                  <div className="mssp-field">
+                    <label htmlFor="contactNumber" className="mssp-label">Contact Number <span>*</span></label>
+                    <PhoneInput
+                      international
+                      defaultCountry="US"
+                      value={phone}
+                      onChange={(value) => {
+                        setPhone(value);
+                        if (phoneError) setPhoneError("");
+                      }}
+                      className="mssp-input"
+                      style={phoneError ? { borderColor: '#ef4444' } : {}}
+                    />
+                    {phoneError && <div style={{ color: '#ef4444', fontSize: '0.85rem', marginTop: '0.5rem' }}>{phoneError}</div>}
                   </div>
 
                   {/* Company Name */}
