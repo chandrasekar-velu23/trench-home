@@ -2,7 +2,7 @@
 
 .mssp-page {
   min-height: 100vh;
-  padding: 8rem 0 6rem;
+  padding: 11rem 0 6rem; /* Increased top padding for navbar clearance */
   position: relative;
   overflow: hidden;
   background: var(--color-neutral-100);
@@ -600,7 +600,7 @@
 
 @media (max-width: 991px) {
   .mssp-page {
-    padding: 7rem 0 5rem;
+    padding: 9rem 0 5rem;
   }
   .mssp-inner {
     grid-template-columns: 1fr;
@@ -628,7 +628,7 @@
 
 @media (max-width: 576px) {
   .mssp-page {
-    padding: 6.5rem 0 4rem;
+    padding: 8.5rem 0 4rem;
   }
   .mssp-card {
     padding: 1.75rem;

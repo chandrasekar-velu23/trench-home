@@ -163,6 +163,7 @@ export default function Hero() {
           margin-top: -10vh;
           margin-left: auto;
           margin-right: auto;
+          padding-left: 10rem; /* Shifts content 25rem from the left */
         }
 
         .hero-glass-card {
@@ -174,7 +175,6 @@ export default function Hero() {
           flex-direction: column;
           align-items: flex-start; /* Aligned children left */
           gap: 2.5rem;
-          margin-left: 4rem; /* Shift content slightly to the right */
         }
 
         .hero-top-group {
@@ -248,6 +248,9 @@ export default function Hero() {
             padding: 6rem 3rem 3rem;
             margin-top: -20vh;
           }
+          .hero-container-inner {
+            padding-left: 5rem; /* Reduced padding for tablets */
+          }
           .hero-glass-card {
             max-width: 800px;
           }
@@ -272,6 +275,7 @@ export default function Hero() {
             align-items: center;
             flex: 1;
             margin-top: -5vh;
+            padding-left: 0; /* Remove left padding on mobile */
           }
 
           .hero-glass-card {
