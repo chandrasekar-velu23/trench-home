@@ -1,13 +1,22 @@
 "use client";
 
-import React from "react";
+import React, { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Users, ShieldAlert, Award, Terminal, ArrowRight, Zap, Target, Calendar, Trophy, Sparkles } from "lucide-react";
+import { Users, ShieldAlert, Award, Terminal, ArrowRight, Zap, Target, Calendar, Trophy, Sparkles, ChevronLeft, ChevronRight } from "lucide-react";
 import ScrollReveal from "@/components/animations/ScrollReveal";
 import "../resources.css";
 
 export default function CommunityPage() {
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+  const scroll = (direction: 'left' | 'right') => {
+    if (scrollContainerRef.current) {
+      const scrollAmount = 300;
+      scrollContainerRef.current.scrollBy({ left: direction === 'left' ? -scrollAmount : scrollAmount, behavior: 'smooth' });
+    }
+  };
+
   return (
     <main className="resources-page overflow-hidden">
       {/* Hero Header & Unified BPL Showcase */}
@@ -77,6 +86,66 @@ export default function CommunityPage() {
                 referrerPolicy="strict-origin-when-cross-origin" 
                 allowFullScreen
               />
+            </div>
+          </ScrollReveal>
+        </div>
+
+        {/* Participant Feedback Gallery */}
+        <div style={{ marginTop: "6rem", marginBottom: "4rem" }}>
+          <ScrollReveal direction="up" style={{ marginBottom: "3.5rem", display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center" }}>
+            <h3 className="resources-title" style={{ fontSize: "28px", textAlign: "center", margin: "0 0 0.5rem" }}>What People Experience at BPL</h3>
+            <p className="resources-desc" style={{ fontSize: "16px", maxWidth: "600px", margin: "0 auto", textAlign: "center" }}>
+              Hear directly from the security practitioners who joined our inaugural league.
+            </p>
+          </ScrollReveal>
+
+          <ScrollReveal direction="up" delay={0.2}>
+            <style>{`
+              .feedback-carousel::-webkit-scrollbar {
+                display: none;
+              }
+            `}</style>
+            <div style={{ position: "relative", width: "100%", padding: "0 2rem", maxWidth: "1200px", margin: "0 auto" }}>
+              <button 
+                onClick={() => scroll('left')}
+                style={{ position: "absolute", left: "-10px", top: "50%", transform: "translateY(-50%)", zIndex: 10, background: "var(--color-primary-100, #0D41E1)", color: "white", borderRadius: "50%", width: "48px", height: "48px", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 4px 16px rgba(13, 65, 225, 0.3)", cursor: "pointer", border: "none", transition: "transform 0.2s ease, background 0.2s ease" }}
+                onMouseEnter={(e) => (e.currentTarget.style.transform = "translateY(-50%) scale(1.1)")}
+                onMouseLeave={(e) => (e.currentTarget.style.transform = "translateY(-50%) scale(1)")}
+              >
+                <ChevronLeft size={24} color="white" />
+              </button>
+
+              <div 
+                ref={scrollContainerRef}
+                className="feedback-carousel" 
+                style={{ display: "flex", overflowX: "auto", gap: "1rem", paddingBottom: "1.5rem", paddingLeft: "1rem", paddingRight: "1rem", scrollbarWidth: "none", msOverflowStyle: "none" }}
+              >
+                {[1, 2, 3, 4, 5, 6, 7].map((num) => (
+                  <div key={num} className="resources-card" style={{ padding: "0.5rem", minWidth: "200px", width: "20vw", maxWidth: "280px", flexShrink: 0 }}>
+                    <video 
+                      controls 
+                      controlsList="nodownload" 
+                      preload="metadata" 
+                      muted
+                      onMouseEnter={(e) => (e.target as HTMLVideoElement).play()}
+                      onMouseLeave={(e) => (e.target as HTMLVideoElement).pause()}
+                      style={{ width: "100%", height: "auto", borderRadius: "8px", background: "#000", cursor: "pointer", transition: "transform 0.3s ease" }}
+                    >
+                      <source src={`/BPL/optimized/Trench BPL Participant Feedback 0${num}.mp4`} type="video/mp4" />
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
+                ))}
+              </div>
+
+              <button 
+                onClick={() => scroll('right')}
+                style={{ position: "absolute", right: "-10px", top: "50%", transform: "translateY(-50%)", zIndex: 10, background: "var(--color-primary-100, #0D41E1)", color: "white", borderRadius: "50%", width: "48px", height: "48px", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 4px 16px rgba(13, 65, 225, 0.3)", cursor: "pointer", border: "none", transition: "transform 0.2s ease, background 0.2s ease" }}
+                onMouseEnter={(e) => (e.currentTarget.style.transform = "translateY(-50%) scale(1.1)")}
+                onMouseLeave={(e) => (e.currentTarget.style.transform = "translateY(-50%) scale(1)")}
+              >
+                <ChevronRight size={24} color="white" />
+              </button>
             </div>
           </ScrollReveal>
         </div>
