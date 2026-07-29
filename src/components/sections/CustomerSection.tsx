@@ -41,16 +41,25 @@ export default function CustomerSection() {
               </div>
             </Link>
           </div>
-          <div className="customer-card logo-only-card ocrolus-container">
-            <div className="logo-wrapper">
-              <Image 
-                src="/customers/ocrolus-logo-1.png" 
-                alt="Ocrolus" 
-                width={200} 
-                height={60} 
-                style={{ objectFit: 'contain' }}
-              />
-            </div>
+          <div className="customer-card logo-only-card">
+            <Link 
+              href="/case-studies/ocrolus"
+              aria-label="Ocrolus Case Study"
+              style={{ textDecoration: 'none', display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}
+            >
+              <div className="logo-wrapper">
+                <Image 
+                  src="/customers/ocrolus-logo-1.png" 
+                  alt="Ocrolus" 
+                  width={200} 
+                  height={60} 
+                  style={{ objectFit: 'contain' }}
+                />
+              </div>
+              <div className="static-btn" style={{ marginTop: '0.75rem' }}>
+                Case Study
+              </div>
+            </Link>
           </div>
           <div className="customer-card logo-only-card sbfe-container">
             <Link 
@@ -142,17 +151,8 @@ export default function CustomerSection() {
           text-align: center;
         }
 
-        .ocrolus-container {
-          cursor: default;
-        }
-
         .logo-only-card:hover {
           transform: translateY(-4px);
-        }
-
-        .ocrolus-container:hover {
-          transform: translateY(-4px);
-          border-color: transparent;
         }
 
         .static-btn {
