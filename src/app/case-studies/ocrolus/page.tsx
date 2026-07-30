@@ -146,6 +146,19 @@ export default function OcrolusCaseStudyPage() {
               </div>
             </div>
 
+            <section className="quote-section" style={{ margin: '3rem 0', padding: '0' }}>
+              <div className="quote-container">
+                <span className="quote-mark">“</span>
+                <p className="quote-text">
+                  To me, having a SIEM and a SOC as separate entities or vendors does not make sense anymore. Modern security monitoring should integrate them into one solution and that is exactly where Trench is leading the industry.
+                </p>
+                <div className="quote-author">
+                  <p className="author-name">Senthil Kumar Iyyappan</p>
+                  <p className="author-title">CISO, Ocrolus</p>
+                </div>
+              </div>
+            </section>
+
             <h2 id="adoption-story">AGENTIC TRANSFORMATION STORY</h2>
             <p>
               The transition from a legacy SIEM to an AI-powered Agentic SIEM was not simply a technology upgrade for Ocrolus; it was a fundamental rethinking of what security operations could and should look like. As an AI-native fintech handling sensitive financial data at scale, Ocrolus required a security posture that matched the speed, complexity, and intelligence of its own platform. The journey unfolded across four distinct phases, each building on the last to deliver a fully agentic, always-on SecOps engine.
@@ -324,10 +337,10 @@ export default function OcrolusCaseStudyPage() {
           margin-bottom: 1.5rem;
         }
 
-        .quote-text {
+        .quote-container p.quote-text {
           font-size: clamp(1.125rem, 2vw, 1.35rem);
           line-height: 1.6;
-          font-weight: 500;
+          font-weight: 400;
           color: #ffffff;
           margin-bottom: 2rem;
           letter-spacing: 0;
@@ -341,14 +354,14 @@ export default function OcrolusCaseStudyPage() {
           gap: 0.25rem;
         }
 
-        .author-name {
+        .quote-container p.author-name {
           font-weight: 700;
           font-size: 1.125rem;
           color: #ffffff;
           margin: 0;
         }
 
-        .author-title {
+        .quote-container p.author-title {
           color: rgba(255, 255, 255, 0.8);
           font-size: 0.95rem;
           margin: 0;

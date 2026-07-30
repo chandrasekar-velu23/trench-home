@@ -42,26 +42,47 @@ const testimonials = [
     role: "Ex-VP & GM, Zscaler",
     avatar: "/social/SD.webp"
   },
+  {
+    id: 6,
+    quote: "The shift from legacy SIEM to Trench was not about replacing a tool. It was about adopting an entirely new operating model, one where security is agentic, continuous, and built for the pace of an AI-native business. Every phase of the transition compounded on the last, and the result is a security operation that scales with Ocrolus. Security finally feels actionable.",
+    author: "Anupam Mandal",
+    role: "Head of Security Operations, Ocrolus",
+    avatar: ""
+  },
 ];
 
 export default function SocialProof() {
   const [index, setIndex] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
+  const [isClickedPause, setIsClickedPause] = useState(false);
 
-  const next = () => setIndex((prev) => (prev + 1) % testimonials.length);
-  const prev = () => setIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+  const next = () => {
+    setIndex((prev) => (prev + 1) % testimonials.length);
+    setIsClickedPause((prev) => !prev);
+  };
+  
+  const prev = () => {
+    setIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+    setIsClickedPause((prev) => !prev);
+  };
 
   // Auto-slide every 4 seconds, resetting when index changes
   useEffect(() => {
+    if (isHovered || isClickedPause) return;
     const timer = setInterval(() => {
       setIndex((prev) => (prev + 1) % testimonials.length);
     }, 4000);
     return () => clearInterval(timer);
-  }, [index]);
+  }, [index, isHovered, isClickedPause]);
 
   const current = testimonials[index];
 
   return (
-    <section className="social-proof-section">
+    <section 
+      className="social-proof-section"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
       {/* Top Section Divider */}
       {/* <div className="section-divider-wrapper">
         <svg width="635" height="72" viewBox="0 0 635 72" fill="none" xmlns="http://www.w3.org/2000/svg" className="section-divider-svg">

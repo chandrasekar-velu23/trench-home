@@ -28,7 +28,7 @@ const WHITEPAPERS = [
 export default function TrenchLabsPage() {
   const [activeTab, setActiveTab] = useState<'signals' | 'whitepapers'>('signals');
   const [activeSignal, setActiveSignal] = useState(TRENCH_SIGNALS[0]);
-  
+
   const [pdfDoc, setPdfDoc] = useState<any>(null);
   const [pageNum, setPageNum] = useState(1);
   const [numPages, setNumPages] = useState(0);
@@ -142,9 +142,9 @@ export default function TrenchLabsPage() {
       <section className="resources-hero">
         <ScrollReveal direction="up" className="text-center">
           <span className="resources-eyebrow">Trench Labs</span>
-          <h1 className="resources-title">Research & Intelligence</h1>
+          <h1 className="resources-title">Research</h1>
           <p className="resources-desc">
-            Explore cyber intelligence briefings, whitepapers, threat reports, and operational cybersecurity analysis directly from Trench research teams.
+            Explore research, reports, and blogs.
           </p>
         </ScrollReveal>
       </section>
@@ -152,13 +152,13 @@ export default function TrenchLabsPage() {
       {/* Dynamic Tab System */}
       <ScrollReveal direction="up" delay={0.1}>
         <div className="tabs-header">
-          <button 
+          <button
             className={`tab-trigger ${activeTab === 'signals' ? 'active' : ''}`}
             onClick={() => setActiveTab('signals')}
           >
             Trench Signals
           </button>
-          <button 
+          <button
             className={`tab-trigger ${activeTab === 'whitepapers' ? 'active' : ''}`}
             onClick={() => setActiveTab('whitepapers')}
           >
@@ -170,7 +170,7 @@ export default function TrenchLabsPage() {
       {/* Trench Signals Section */}
       {activeTab === 'signals' && (
         <section className="pdf-carousel-section" style={{ marginBottom: "5rem" }}>
-          
+
           {/* Signal Selector (for when more signals are added) */}
           {TRENCH_SIGNALS.length > 1 && (
             <div className="flex gap-4 mb-8 flex-wrap justify-center">
@@ -178,11 +178,10 @@ export default function TrenchLabsPage() {
                 <button
                   key={signal.id}
                   onClick={() => setActiveSignal(signal)}
-                  className={`px-4 py-2 rounded-full text-sm font-semibold transition-all ${
-                    activeSignal.id === signal.id 
-                      ? "bg-[var(--color-primary-100)] text-white shadow-lg" 
+                  className={`px-4 py-2 rounded-full text-sm font-semibold transition-all ${activeSignal.id === signal.id
+                      ? "bg-[var(--color-primary-100)] text-white shadow-lg"
                       : "bg-white/60 text-gray-600 hover:bg-white"
-                  }`}
+                    }`}
                 >
                   {signal.title}
                 </button>
@@ -201,8 +200,8 @@ export default function TrenchLabsPage() {
                 <React.Fragment>
                   {/* Control bar */}
                   <div className="pdf-controls">
-                    <button 
-                      onClick={handlePrevPage} 
+                    <button
+                      onClick={handlePrevPage}
                       disabled={pageNum <= 1}
                       className="pdf-control-btn"
                       aria-label="Previous Page"
@@ -214,8 +213,8 @@ export default function TrenchLabsPage() {
                       Page {pageNum} of {numPages}
                     </span>
 
-                    <button 
-                      onClick={handleNextPage} 
+                    <button
+                      onClick={handleNextPage}
                       disabled={pageNum >= numPages}
                       className="pdf-control-btn"
                       aria-label="Next Page"
@@ -261,16 +260,16 @@ export default function TrenchLabsPage() {
                     <FileText size={18} className="text-[var(--color-primary-100)]" />
                     <span className="resources-badge badge-primary" style={{ marginBottom: 0 }}>Whitepaper</span>
                   </div>
-                  
+
                   <h2 className="resources-title" style={{ fontSize: "2rem", marginBottom: "1.5rem" }}>
                     {wp.title}
                   </h2>
                   <div className="resources-desc" style={{ fontSize: "15px", textAlign: "justify", marginBottom: "2.5rem" }}>
                     <strong>Abstract:</strong> {wp.abstract}
                   </div>
-                  <a 
-                    href={wp.link} 
-                    target="_blank" 
+                  <a
+                    href={wp.link}
+                    target="_blank"
                     rel="noopener noreferrer"
                     className="pdf-action-btn"
                     style={{ alignSelf: "flex-start" }}
