@@ -78,6 +78,19 @@ export default function OcrolusCaseStudyPage() {
       <section className="main-content-section">
         <div className="content-grid">
           <article className="article-content">
+            <div className="video-wrapper">
+              <iframe 
+                width="560" 
+                height="315" 
+                src="https://www.youtube.com/embed/z7mCwOSinqs?si=jWLgMCmXATA_5JkP" 
+                title="YouTube video player" 
+                frameBorder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                referrerPolicy="strict-origin-when-cross-origin" 
+                allowFullScreen
+              ></iframe>
+            </div>
+
             <h2 id="company-profile">COMPANY PROFILE</h2>
             <h3>Ocrolus Inc.: Security Built for the Infrastructure of AI-Native Fintech</h3>
             <p>
@@ -355,6 +368,25 @@ export default function OcrolusCaseStudyPage() {
 
         .article-content {
           max-width: 800px;
+        }
+
+        .video-wrapper {
+          position: relative;
+          padding-bottom: 56.25%;
+          height: 0;
+          overflow: hidden;
+          margin-bottom: 3rem;
+          border-radius: 12px;
+          box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+          background: #000;
+        }
+        
+        .video-wrapper iframe {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
         }
 
         .article-content h2 {
