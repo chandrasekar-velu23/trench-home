@@ -142,6 +142,9 @@ export default function RootLayout({
             gtag('config', 'G-E1SQD3N78D');
           `}
         </Script>
+
+        {/* Mailchimp Integration */}
+        <Script id="mcjs" src="/mc.js" strategy="afterInteractive" />
       </head>
 
       
