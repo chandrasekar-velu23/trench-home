@@ -144,7 +144,9 @@ export default function RootLayout({
         </Script>
 
         {/* Mailchimp Integration */}
-        <Script id="mcjs" src="/mc.js" strategy="afterInteractive" />
+        <script id="mcjs" dangerouslySetInnerHTML={{
+          __html: `!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/e293fdae0e4a09d187dabd8c1/5358e9752afc32c595d726957.js");`
+        }} />
       </head>
 
       
