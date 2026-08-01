@@ -11,6 +11,7 @@ import SiemRibbon from "@/components/sections/SiemRibbon";
 import CustomerSection from "@/components/sections/CustomerSection";
 import CTASection from "@/components/sections/CTASection";
 import Collaborations from "@/components/Collaborations";
+import FloatingNewsletterButton from "@/components/FloatingNewsletterButton";
 
 export const metadata: Metadata = {
   alternates: {
@@ -92,6 +93,8 @@ export default function Home() {
           <FAQ />
         </div>
       </section>
+
+      <FloatingNewsletterButton />
     </main>
   );
 }
