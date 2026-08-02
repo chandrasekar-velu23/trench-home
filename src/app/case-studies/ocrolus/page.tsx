@@ -82,7 +82,7 @@ export default function OcrolusCaseStudyPage() {
               <iframe 
                 width="560" 
                 height="315" 
-                src="https://www.youtube.com/embed/z7mCwOSinqs?si=jWLgMCmXATA_5JkP" 
+                src="https://www.youtube.com/embed/PJxtlsN3BgA?si=Iqv2HES563j34x57" 
                 title="YouTube video player" 
                 frameBorder="0" 
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
