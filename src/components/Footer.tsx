@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { text } from "stream/consumers";
 
 export default function Footer() {
   return (
@@ -84,19 +85,20 @@ export default function Footer() {
           <div className="footer-col address-column">
             <h4 className="footer-heading">Locations</h4>
             <div className="addresses-container">
+
               <div className="address-item">
-                <h5 className="address-label">India Office:</h5>
                 <address className="footer-address">
-                  <p>Trench Security Private Limited,</p>
-                  <p>4th Flr, The Hub @ Raj Serenity, Yelenahali, Begur,</p>
-                  <p>Bangalore-560068, Karnataka</p>
+                  <p style={{ fontSize: 16, fontWeight: 800 }}>Trench Security Inc.</p>
+                  <h5 className="address-label">US Office:</h5>
+                  <p>1407 Canal Rd, Princeton, NJ 08540-8635</p>
                 </address>
               </div>
               <div className="address-item">
-                <h5 className="address-label">US Office:</h5>
+                <h5 className="address-label">India Office:</h5>
                 <address className="footer-address">
-                  <p>Trench Security Inc.</p>
-                  <p>1407 Canal Rd, Princeton, NJ 08540-8635</p>
+                  {/* <p>Trench Security Private Limited,</p> */}
+                  <p>4th Flr, The Hub @ Raj Serenity, Yelenahali, Begur,</p>
+                  <p>Bangalore-560068, Karnataka</p>
                 </address>
               </div>
             </div>
