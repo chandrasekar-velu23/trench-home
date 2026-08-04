@@ -41,7 +41,7 @@ export default function BlogClient() {
     })
     .sort((a, b) => new Date(b.publishedTime).getTime() - new Date(a.publishedTime).getTime());
 
-  const filters = ["All", "Product", "Security", "Technical", "Trends", "MSSP"];
+  const filters = ["All", "Product", "Security", "Research", "Technical", "Trends", "MSSP"];
 
   return (
     <main className="page-main overflow-hidden" style={{ background: "#F8FAFC" }}>

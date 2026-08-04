@@ -117,26 +117,22 @@ export default function BlogClientLayout({ post, relatedPosts }: BlogClientLayou
 
   // Setup Lightbox for blog images
   useEffect(() => {
-    if (!articleRef.current) return;
+    const articleEl = articleRef.current;
+    if (!articleEl) return;
     
-    const images = articleRef.current.querySelectorAll("img");
-    
-    const handleImageClick = (e: Event) => {
-      const target = e.target as HTMLImageElement;
-      setLightboxImage({ src: target.src, alt: target.alt || "Blog image" });
+    const handleArticleClick = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (target && target.tagName === "IMG") {
+        const img = target as HTMLImageElement;
+        setLightboxImage({ src: img.src, alt: img.alt || "Blog image" });
+      }
     };
 
-    images.forEach(img => {
-      img.style.cursor = "zoom-in";
-      img.addEventListener("click", handleImageClick);
-    });
-
+    articleEl.addEventListener("click", handleArticleClick);
     return () => {
-      images.forEach(img => {
-        img.removeEventListener("click", handleImageClick);
-      });
+      articleEl.removeEventListener("click", handleArticleClick);
     };
-  }, [post.body]);
+  }, [post.body, post.slug]);
 
   useEffect(() => {
     if (!lightboxImage) return;
@@ -637,7 +633,8 @@ export default function BlogClientLayout({ post, relatedPosts }: BlogClientLayou
             {/* Master CTA — inline within blog content, above comments */}
             {post.slug !== "introducing-headless-secops-for-the-agentic-world" &&
               post.slug !== "ai-in-the-security-operations-clearing-the-clutter" &&
-              post.slug !== "actionable-secops-in-the-real-world" && (
+              post.slug !== "actionable-secops-in-the-real-world" &&
+              post.slug !== "ai-changed-the-threat-landscape-why-are-we-still-defending-like-its-2020" && (
               <div style={{
                 display: "flex",
                 alignItems: "center",
@@ -882,6 +879,72 @@ export default function BlogClientLayout({ post, relatedPosts }: BlogClientLayou
         )}
       </div>
 
+      {/* Lightbox Image Preview Modal Overlay */}
+      {lightboxImage && (
+        <div 
+          onClick={() => setLightboxImage(null)}
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            zIndex: 99999,
+            background: "rgba(15, 23, 42, 0.92)",
+            backdropFilter: "blur(8px)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            padding: "2rem",
+            cursor: "zoom-out"
+          }}
+        >
+          <button 
+            onClick={() => setLightboxImage(null)}
+            style={{
+              position: "absolute",
+              top: "1.5rem",
+              right: "1.5rem",
+              background: "rgba(255, 255, 255, 0.2)",
+              color: "#FFFFFF",
+              border: "none",
+              borderRadius: "50%",
+              width: "44px",
+              height: "44px",
+              fontSize: "1.5rem",
+              cursor: "pointer",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              zIndex: 100000
+            }}
+            aria-label="Close image preview"
+          >
+            {"✕"}
+          </button>
+          <div 
+            onClick={(e) => e.stopPropagation()} 
+            style={{ position: "relative", maxWidth: "90vw", maxHeight: "90vh", display: "flex", flexDirection: "column", alignItems: "center" }}
+          >
+            <img 
+              src={lightboxImage.src} 
+              alt={lightboxImage.alt} 
+              style={{ 
+                maxWidth: "90vw", 
+                maxHeight: "85vh", 
+                objectFit: "contain", 
+                borderRadius: "12px", 
+                boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.5)" 
+              }} 
+            />
+            {lightboxImage.alt && (
+              <p style={{ color: "#CBD5E1", marginTop: "1rem", fontSize: "0.95rem", textAlign: "center", fontWeight: 500 }}>
+                {lightboxImage.alt}
+              </p>
+            )}
+          </div>
+        </div>
+      )}
     </main>
   );
 }
