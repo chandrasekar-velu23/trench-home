@@ -102,7 +102,7 @@ export const postsData: BlogPost[] = [
     </ul>
 
     <div style="width: 100%; margin: 30px 0; text-align: center;">
-        <img src="/blog/Instructions-vs-Goals.png" alt="Instructions vs Goals" style="max-width: 100%; height: auto; display: inline-block; cursor: zoom-in;" />
+        <img src="/blog/Instructions-vs-Goals.png" alt="Instructions vs Goals" style="max-width: 70%; height: auto; display: inline-block; cursor: zoom-in;" />
     </div>
 
     <div style="background: #EFF6FF; padding: 20px; border-radius: 8px; margin: 24px 0; border-left: 4px solid #0D41E1;">
@@ -125,7 +125,7 @@ export const postsData: BlogPost[] = [
     <p>Most detection tooling asks one question: does this action match something bad? Almost none of those 17,600 actions would have answered yes on their own.</p>
 
     <div style="width: 100%; margin: 30px 0; text-align: center;">
-        <img src="/blog/One-Action-Means-Nothing.png" alt="17,600 Actions. One Pattern." style="max-width: 100%; height: auto; display: inline-block; cursor: zoom-in;" />
+        <img src="/blog/One-Action-Means-Nothing.png" alt="17,600 Actions. One Pattern." style="max-width: 70%; height: auto; display: inline-block; cursor: zoom-in;" />
     </div>
 
     <p style="font-size: 1.1em; font-weight: bold; color: #0D41E1;">
@@ -165,10 +165,10 @@ export const postsData: BlogPost[] = [
     <p>Different attackers, different targets, different months. The pattern isn't any single case. It's how quickly autonomous, goal-directed attacks are becoming a routine part of the landscape rather than an exception.</p>
     <p>Every generation of attacker has demanded a corresponding generation of defence. The uncomfortable question isn't whether that's true. It's whether visibility, monitoring, and hunting as most teams practice them today were built for the generation of attacker that's already here, or the one it replaced five years ago.</p>
 
-    <h2 id="build-your-trench-for-autonomous-attacks">Build your Trench for autonomous attacks.</h2>
+    <p id="build-your-trench-for-autonomous-attacks">Every castle needs a Trench. If your monitoring is still built for an adversary that gets tired, see how Trench is built for the one that doesn't.</p>
     <div style="background: #0D41E1; padding: 30px; border-radius: 12px; margin: 30px 0; color: #FFFFFF; text-align: left; box-shadow: 0 10px 25px rgba(13, 65, 225, 0.2);">
         <p style="margin: 0 0 16px 0; font-size: 1.15em; font-weight: 600; line-height: 1.6;">
-            Every castle needs a Trench. If your monitoring is still built for an adversary that gets tired, see how Trench is built for the one that doesn't.
+            Build your Trench for autonomous attacks.
         </p>
         <a href="/connect" style="display: inline-block; background: #FFFFFF; color: #0D41E1; padding: 12px 24px; border-radius: 6px; font-weight: 700; text-decoration: none; transition: transform 0.2s;">
             See Trench in Action →

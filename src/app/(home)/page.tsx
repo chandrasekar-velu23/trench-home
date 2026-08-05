@@ -11,7 +11,7 @@ import SiemRibbon from "@/components/sections/SiemRibbon";
 import CustomerSection from "@/components/sections/CustomerSection";
 import CTASection from "@/components/sections/CTASection";
 import Collaborations from "@/components/Collaborations";
-import TrenchLabsPreview from "@/components/home/TrenchLabsPreview";
+
 
 export const metadata: Metadata = {
   alternates: {
