@@ -7,16 +7,16 @@ export const metadata: Metadata = {
 
 export default function DigestPage() {
   return (
-    <main className="relative min-h-screen w-full bg-[#f8fafc] flex flex-col pt-[180px] pb-8">
-      <div className="max-w-3xl mx-auto w-full flex-1 bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden mb-12">
+    <main className="h-screen w-full bg-[#f8fafc] flex flex-col pt-[140px] pb-8 overflow-hidden">
+      <div className="max-w-3xl mx-auto w-full flex-1 overflow-y-auto bg-white rounded-3xl shadow-xl border border-gray-100 p-8">
         <iframe
           width="100%"
-          height="850"
-          src="https://752fd23d.sibforms.com/v2/serve/MUIFAP0ZzfwyqXbs8gGzizNkcY7TCcW7nGIh-NQzScXep4NGXvG5zJurbxTh9Mv6WDBy-cVSKP0xw-076bdlDKb4g0EMgU_xW8FUxDdjSAoa83lufUTZAZKzLPvVm4xkTsN7JQe56WDf0EfqJgocwKAwwXS0-EfFhUAf9gKZLTuS827dwLpO4DrW4zun5PdSfa5OHTCdkxj9wuPtsg=="
+          height="500"
+          src="https://752fd23d.sibforms.com/v2/serve/MUIFAIR-imKeHwoy4wEPS3EQhm5xzqSeIShteaATv-zdhnDzif0dhG-8zS-K2MOjaLAv1vkobILuxIBMUqKVX_woxWdAfiwsbSYby82vTfux-Fh2dk5Q_SiBfOGGRwPm1x5qtYpuEhdpNMAoW-DwI8KcGhuTMwFqVva8fDLy380KyqmxuHwjb8ZR15noWEOT4JK0wkPZwfi-nJOWjQ=="
           frameBorder="0"
           scrolling="auto"
           allowFullScreen
-          style={{ display: "block", margin: "120px auto", width: "100%", backgroundColor: "transparent" }}
+          style={{ marginTop: "120px", maxWidth: "100%", backgroundColor: "transparent" }}
         ></iframe>
       </div>
     </main>

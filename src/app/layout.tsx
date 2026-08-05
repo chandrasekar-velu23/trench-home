@@ -11,6 +11,8 @@ import Footer from "@/components/Footer";
 import ClickSpark from "@/components/animations/ClickSpark";
 import NavigationLoaderProvider from "@/components/NavigationLoader";
 
+import FloatingNewsletterButton from "@/components/FloatingNewsletterButton";
+
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800"],
@@ -179,6 +181,7 @@ export default function RootLayout({
             </ClickSpark>
 
             <Footer />
+            <FloatingNewsletterButton />
           </NavigationLoaderProvider>
         </LenisProvider>
       </body>
