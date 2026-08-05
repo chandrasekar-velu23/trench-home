@@ -51,16 +51,14 @@ export default function CommunityPage() {
             <p className="bpl-desc" style={{ fontSize: "16px", margin: 0, lineHeight: "1.7", color: "var(--color-neutral-600)" }}>
               The BlueTeam Premier League (BPL), organized by Trench Security, is a highly curated cybersecurity gathering inspired by premier sporting leagues. Far from traditional, dry conferences, BPL focuses on conversation, collaboration, and active engagement. It's a space where security practitioners connect, exchange real-world SOC experiences, and have fun after hours.
             </p>
-            <a
-              href="https://luma.com/calendar/cal-FwLKyNupiOO86Mg?period=past"
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href="/resources/community/bpl-signup"
               className="bpl-cta"
               style={{ alignSelf: "flex-start" }}
             >
               <span>Join the League</span>
               <ArrowRight size={16} style={{ marginLeft: "8px" }} />
-            </a>
+            </Link>
           </div>
         </ScrollReveal>
       </section>
