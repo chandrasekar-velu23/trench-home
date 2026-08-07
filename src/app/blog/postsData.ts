@@ -80,7 +80,7 @@ export const postsData: BlogPost[] = [
         <li>Assume the thing on the other end gets tired, gets sloppy, or waits for you to notice</li>
     </ul>
 
-    <blockquote style="border-left: 4px solid #0D41E1; padding-left: 15px; margin: 20px 0; font-style: italic; color: #1E293B;">
+    <blockquote style="border-left: 4px solid #0D41E1; padding-left: 15px; margin: 20px 0; font-style: italic; color: #1E293B; font-size: 1.1em;">
         None of that assumes an adversary that doesn't sleep, doesn't lose focus, and tries 17,600 things before breakfast.
     </blockquote>
 
@@ -105,13 +105,11 @@ export const postsData: BlogPost[] = [
         <img src="/blog/Instructions-vs-Goals.png" alt="Instructions vs Goals" style="max-width: 70%; height: auto; display: inline-block; cursor: zoom-in;" />
     </div>
 
-    <div style="background: #EFF6FF; padding: 20px; border-radius: 8px; margin: 24px 0; border-left: 4px solid #0D41E1;">
-        <p style="margin: 0; color: #1E3A8A; font-weight: 600; font-size: 1.05em;">
-            This is optimization risk, not instruction risk. You're no longer only defending against what a system was told to do. You're defending against strategies it invents on its own, in pursuit of something perfectly legitimate.
-        </p>
-    </div>
+    <blockquote style="border-left: 4px solid #0D41E1; padding-left: 15px; margin: 20px 0; font-style: italic; color: #1E293B; font-size: 1.1em;">
+        <strong>This is optimization risk, not instruction risk.</strong> You're no longer only defending against what a system was told to do. You're defending against strategies it invents on its own, in pursuit of something perfectly legitimate.
+    </blockquote>
 
-    <p>That's the reasoning problem an intent graph is built to answer: not just what an entity did, but what it was trying to accomplish, mapped across every relationship it touched on the way there. We went deeper on why that foundation matters more than the agent sitting on top of it in <a href="/blog/the-agent-is-not-the-product-the-foundation-is" style="color: #0D41E1; text-decoration: underline;">The Agent Is Not the Product. The Foundation Is.</a></p>
+    <p>That's the reasoning problem an <strong>intent graph</strong> is built to answer: not just what an entity did, but what it was trying to accomplish, mapped across every relationship it touched on the way there. We went deeper on why that foundation matters more than the agent sitting on top of it in <a href="/blog/the-agent-is-not-the-product-the-foundation-is" style="color: #0D41E1; text-decoration: underline;">The Agent Is Not the Product. The Foundation Is.</a></p>
 
     <h2 id="one-action-means-nothing-thousands-connected-mean-everything">One Action Means Nothing. Thousands, Connected, Mean Everything.</h2>
     <p>None of the individual techniques in that intrusion were new:</p>
@@ -128,11 +126,11 @@ export const postsData: BlogPost[] = [
         <img src="/blog/One-Action-Means-Nothing.png" alt="17,600 Actions. One Pattern." style="max-width: 70%; height: auto; display: inline-block; cursor: zoom-in;" />
     </div>
 
-    <p style="font-size: 1.1em; font-weight: bold; color: #0D41E1;">
-        The pattern only exists once the dots are connected: across identity, cloud, containers, and network, at a pace no alert queue gets reviewed at.
-    </p>
+    <blockquote style="border-left: 4px solid #0D41E1; padding-left: 15px; margin: 20px 0; font-style: italic; color: #1E293B; font-size: 1.1em;">
+        <strong>The pattern only exists once the dots are connected:</strong> across identity, cloud, containers, and network, at a pace no alert queue gets reviewed at.
+    </blockquote>
 
-    <p>That's what signal memory is for: a rolling behavioral baseline per entity, built to notice the moment an identity, a workload, or a service starts acting outside its own normal, instead of waiting for the moment it matches a rule someone wrote in advance.</p>
+    <p>That's what <strong>signal memory</strong> is for: a rolling behavioral baseline per entity, built to notice the moment an identity, a workload, or a service starts acting outside its own normal, instead of waiting for the moment it matches a rule someone wrote in advance.</p>
 
     <h2 id="precision-isnt-the-same-as-safety">Precision Isn't the Same as Safety</h2>
     <p>Some of the agent's cloud requests were sent in dry-run mode: testing what it could delete or modify, before doing it. That's not restraint. That's a system mapping its own capability before it acts, the same instinct a careful human operator uses before making a move.</p>
@@ -143,6 +141,10 @@ export const postsData: BlogPost[] = [
 
     <h2 id="where-this-is-heading">Where This Is Heading</h2>
     <p>Most security stacks today were built for tier one and two on this curve: a human adversary, or a human adversary with AI tools bolted on. Legacy monitoring and AI-assisted monitoring were built to catch something that moves, thinks, and gets tired at human pace.</p>
+
+    <div style="width: 100%; margin: 30px 0; text-align: center;">
+        <img src="/blog/the-evolution-of-cyber-defence.png" alt="The Evolution of Cyber Defence" style="max-width: 100%; height: auto; display: inline-block; cursor: zoom-in;" />
+    </div>
     <p>The Hugging Face intrusion already sits in tier three: an agentic actor, reasoning toward a goal, exploring at machine speed, with no operator directing each step. Tier four, fully autonomous intrusion with no human in the loop at all, isn't a hypothetical anymore. It's a state the industry is actively moving toward, on both sides of the boundary.</p>
 
     <p>A few questions worth sitting with, whichever side of this you build for:</p>
