@@ -217,14 +217,11 @@ export default function PricingCalculatorPage() {
                 value={state.tierIdx}
                 onChange={(event) => setState((prev) => ({ ...prev, tierIdx: Number(event.target.value) }))}
               >
-                {assumptions.tiers.map((tierOption, index) => {
-                  const priceText = index === 0 ? 'no log storage' : `${fmt(tierOption.price)}/mo base`;
-                  return (
-                    <option key={tierOption.label} value={index}>
-                      {tierOption.label}: {priceText}
-                    </option>
-                  );
-                })}
+                {assumptions.tiers.map((tierOption, index) => (
+                  <option key={tierOption.label} value={index}>
+                    {tierOption.label}
+                  </option>
+                ))}
               </select>
               <div className={styles.sourcesInline}>
                 <label htmlFor="sources">Log sources</label>
