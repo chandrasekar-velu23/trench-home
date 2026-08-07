@@ -36,8 +36,8 @@ export default function FloatingNewsletterButton() {
     }
   }, []);
 
-  // Hide on the signup page itself so it's not redundant
-  if (pathname === "/newsletter-signup") {
+  // Hide on the signup page itself so it's not redundant, and hide on pricing
+  if (pathname === "/newsletter-signup" || (pathname && pathname.startsWith("/pricing"))) {
     return null;
   }
 

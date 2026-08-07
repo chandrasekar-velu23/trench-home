@@ -13,7 +13,7 @@
   --text-muted: #8A8F94;
 
   min-height: 100vh;
-  padding: 10rem 0 4rem;
+  padding: 12rem 0 4rem;
   background: var(--surface);
 }
 
@@ -433,11 +433,14 @@
   .summary {
     position: static;
   }
+  .pageShell {
+    padding: 9.5rem 0 3rem;
+  }
 }
 
 @media (max-width: 640px) {
   .pageShell {
-    padding: 5rem 0 3rem;
+    padding: 8rem 0 3rem;
   }
 
   .wrap {
