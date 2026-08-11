@@ -38,9 +38,10 @@ const initialAssumptions: Assumptions = {
     { label: '300-500 GB/day', price: 10200 },
     { label: '500-750 GB/day', price: 13200 },
     { label: '750 GB/day - 1 TB/day', price: 15000 },
-    { label: '1-2 TB/day', price: 20000 },
+    { label: '1-1.5 TB/day', price: 18000 },
+    { label: '1.5-2 TB/day', price: 22000 },
   ],
-  multipliers: [1.0, 1.0, 1.25, 1.75, 2.1, 2.5, 3.0, 5.0],
+  multipliers: [1.0, 1.0, 1.25, 1.75, 2.1, 2.5, 3.0, 4.0, 5.5],
   sourceBuckets: [
     { label: 'Under 20 tools', surcharge: false },
     { label: '20-40 tools', surcharge: true },
@@ -63,7 +64,7 @@ const initialAssumptions: Assumptions = {
     inv: {
       name: 'Investigation',
       level: 'L1',
-      base: 1800,
+      base: 2400,
       points: [
         'Always-on monitoring, 24x7',
         'Unlimited alerts (100 investigations/month)',
@@ -76,7 +77,7 @@ const initialAssumptions: Assumptions = {
     det: {
       name: 'Detection & hunting',
       level: 'L2',
-      base: 2400,
+      base: 1800,
       points: [
         'Critical asset coverage, MITRE-aligned',
         'Correlation engine and kill chain discovery',
@@ -89,7 +90,7 @@ const initialAssumptions: Assumptions = {
     resp: {
       name: 'Response',
       level: 'L2',
-      base: 1800,
+      base: 1500,
       points: [
         'Remediation actions at scale, with control',
         'End-to-end case closure workflows',
