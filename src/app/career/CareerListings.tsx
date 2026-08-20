@@ -27,31 +27,33 @@ export default function CareerListings({ jobs }: CareerListingsProps) {
   const controlsRef = useRef<HTMLDivElement>(null);
 
   const departments = useMemo(() => {
-    const depts = Array.from(new Set(jobs.map((j) => j.department)));
+    const depts = Array.from(new Set(jobs.map((j) => j.department))).sort((a, b) => a.localeCompare(b));
     return ["All", ...depts];
   }, [jobs]);
 
   const locations = useMemo(() => {
-    const locs = Array.from(new Set(jobs.map((j) => j.location)));
+    const locs = Array.from(new Set(jobs.map((j) => j.location))).sort((a, b) => a.localeCompare(b));
     return ["All", ...locs];
   }, [jobs]);
 
   const filteredJobs = useMemo(() => {
-    return jobs.filter((job) => {
-      const matchesSearch =
-        searchQuery === "" ||
-        job.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        job.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        job.department.toLowerCase().includes(searchQuery.toLowerCase());
+    return jobs
+      .filter((job) => {
+        const matchesSearch =
+          searchQuery === "" ||
+          job.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          job.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          job.department.toLowerCase().includes(searchQuery.toLowerCase());
 
-      const matchesDepartment =
-        activeDepartment === "All" || job.department === activeDepartment;
+        const matchesDepartment =
+          activeDepartment === "All" || job.department === activeDepartment;
 
-      const matchesLocation =
-        activeLocation === "All" || job.location === activeLocation;
+        const matchesLocation =
+          activeLocation === "All" || job.location === activeLocation;
 
-      return matchesSearch && matchesDepartment && matchesLocation;
-    });
+        return matchesSearch && matchesDepartment && matchesLocation;
+      })
+      .sort((a, b) => a.title.localeCompare(b.title));
   }, [jobs, searchQuery, activeDepartment, activeLocation]);
 
   const activeFilterCount =

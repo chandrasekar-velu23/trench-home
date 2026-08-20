@@ -13,15 +13,6 @@ export const metadata: Metadata = {
 
 const JOBS = [
   {
-    id: "product-marketing-intern",
-    title: "Product Marketing Intern",
-    department: "Marketing",
-    location: "Bengaluru, India",
-    type: "Paid, 6 Months, Fresher or 1+ yr exp",
-    description: "Cybersecurity is drowning in noise. We don't need someone to generate content. We need someone to make the industry stop scrolling.",
-    link: "/career/product-marketing-intern"
-  },
-  {
     id: "lead-agentic-secops",
     title: "AI Security Lead",
     department: "Security Operations",
@@ -31,13 +22,22 @@ const JOBS = [
     link: "/career/lead-agentic-secops"
   },
   {
-    id: "soc-analyst",
-    title: "SOC Analyst (Level 1-2)",
-    department: "Security Operations",
-    location: "On-site",
-    type: "Full-time, 2+ Years experience",
-    description: "Be on the frontline of our Security Operations Center, helping to identify, assess, and respond to cyber threats using industry-leading tools and AI-based threat intelligence.",
-    link: "/career/soc-analyst"
+    id: "ai-ml-lead",
+    title: "AI/ML Lead",
+    department: "AI & ML",
+    location: "Bengaluru, India",
+    type: "Full-time, 8-15 years experience",
+    description: "We are building the detection brain for Agentic SecOps. This is a hands-on leadership role to build the models that power Trench's detection brain, from security-focused SLMs and UEBA to synthetic data, evaluation and production MLOps.",
+    link: "/career/ai-ml-lead"
+  },
+  {
+    id: "product-marketing-intern",
+    title: "Product Marketing Intern",
+    department: "Marketing",
+    location: "Bengaluru, India",
+    type: "Paid, 6 Months, Fresher or 1+ yr exp",
+    description: "Cybersecurity is drowning in noise. We don't need someone to generate content. We need someone to make the industry stop scrolling.",
+    link: "/career/product-marketing-intern"
   },
   {
     id: "ai-lead-security-rd",
@@ -49,13 +49,13 @@ const JOBS = [
     link: "/career/ai-lead-security-rd"
   },
   {
-    id: "ai-ml-lead",
-    title: "AI/ML Lead",
-    department: "AI & ML",
-    location: "Bengaluru, India",
-    type: "Full-time, 8-15 years experience",
-    description: "We are building the detection brain for Agentic SecOps. This is a hands-on leadership role to build the models that power Trench's detection brain, from security-focused SLMs and UEBA to synthetic data, evaluation and production MLOps.",
-    link: "/career/ai-ml-lead"
+    id: "soc-analyst",
+    title: "SOC Analyst (Level 1-2)",
+    department: "Security Operations",
+    location: "On-site",
+    type: "Full-time, 2+ Years experience",
+    description: "Be on the frontline of our Security Operations Center, helping to identify, assess, and respond to cyber threats using industry-leading tools and AI-based threat intelligence.",
+    link: "/career/soc-analyst"
   }
 ];
 
