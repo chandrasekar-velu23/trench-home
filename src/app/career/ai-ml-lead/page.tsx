@@ -3,11 +3,11 @@ import Link from "next/link";
 import ScrollReveal from "@/components/animations/ScrollReveal";
 
 export const metadata: Metadata = {
-  title: "Product Marketing Intern | Careers",
-  description: "Join Trench as a Product Marketing Intern and own Trench's voice and product messaging.",
+  title: "AI/ML Lead | Careers",
+  description: "Join Trench as AI/ML Lead and build the models that power Trench's detection brain.",
 };
 
-export default function ProductMarketingInternPage() {
+export default function AIMLLeadPage() {
   return (
     <>
       <style dangerouslySetInnerHTML={{
@@ -216,7 +216,7 @@ export default function ProductMarketingInternPage() {
                   <span className="phase-badge">Active Hiring</span>
                 </div>
                 <h1 className="job-title">
-                  Product Marketing Intern
+                  AI/ML Lead
                 </h1>
 
                 <div className="job-tags-row">
@@ -225,7 +225,7 @@ export default function ProductMarketingInternPage() {
                       <rect width="20" height="14" x="2" y="7" rx="2" ry="2" />
                       <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
                     </svg>
-                    Marketing
+                    AI & ML
                   </span>
                   <span className="job-tag job-tag-loc">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -239,7 +239,7 @@ export default function ProductMarketingInternPage() {
                       <circle cx="12" cy="12" r="10" />
                       <polyline points="12 6 12 12 16 14" />
                     </svg>
-                    Paid, 6 Months, Fresher or 1+ yr exp
+                    Full-time, 8-15 years experience
                   </span>
                 </div>
               </div>
@@ -247,77 +247,104 @@ export default function ProductMarketingInternPage() {
 
             <ScrollReveal direction="up" delay={0.1}>
               <div className="job-quote-callout">
-                <p>&quot;Cybersecurity is drowning in noise. We don&apos;t need someone to generate content. We need someone to make the industry stop scrolling.&quot;</p>
+                <p>&quot;We are building the detection brain for Agentic SecOps.&quot;</p>
               </div>
 
               <div className="job-section-card">
                 <h2>ABOUT TRENCH</h2>
                 <p>
-                  The legacy SIEM is dead. Bloated toolchains, alert storms, SOC playbooks written for a world that no longer exists. Trench is an AI-native cybersecurity platform built on one conviction: security teams deserve decisions, not more data. We are not improving the status quo. We are replacing it.
+                  Security Operations is entering a fundamentally different era. AI can change how security signals are understood, correlated and acted upon. But building reliable AI for Security Operations requires more than putting an LLM on top of security data.
+                </p>
+                <p>
+                  Trench is building an agentic operating system for Security Operations. We are looking for an AI/ML Lead to build the models that power Trench&apos;s detection brain, from security-focused SLMs and UEBA to synthetic data, evaluation and production MLOps.
+                </p>
+                <p>
+                  This is a hands-on leadership role. You will set the ML direction, build models that work on real security data and help turn research into production.
                 </p>
               </div>
 
               <div className="job-section-card">
                 <h2>THE ROLE</h2>
                 <p>
-                  You will own Trench&apos;s voice and product messaging across every channel the bridge between what we build and why the world should care. LinkedIn posts that make a CISO stop scrolling. One-pagers that reframe how buyers think. Videos that make agentic SecOps feel obvious.
+                  You will work across Applied AI, Security ML and MLOps. You will solve hard problems around understanding security telemetry, detecting anomalous behaviour, fine-tuning models for security tasks and building reliable AI systems that operate in production. You will work closely with Security R&D, Detection Engineering and Platform teams to turn model capabilities into trustworthy security outcomes.
                 </p>
               </div>
 
               <div className="job-section-card">
                 <h2>WHAT YOU&apos;LL OWN</h2>
                 <ul>
-                  <li><strong>Social:</strong> Strategy, cadence, and platform voice across LinkedIn, X, and short-form video.</li>
-                  <li><strong>Product Messaging:</strong> Positioning and persona-specific narratives for CISOs, SOC analysts, and buyers.</li>
-                  <li><strong>Collateral:</strong> One-pagers, battle cards, and event materials that turn product depth into buyer clarity.</li>
-                  <li><strong>Video + Events:</strong> Short-form storytelling and Trench&apos;s end-to-end presence at industry events.</li>
+                  <li><strong>Security SLMs:</strong> Fine-tune small language models for security tasks such as alert triage, investigation summarization, detection generation and log understanding using approaches such as SFT, LoRA and QLoRA.</li>
+                  <li><strong>UEBA & anomaly detection:</strong> Build models that identify anomalous, risky and malicious behaviour across high-cardinality security telemetry using unsupervised, sequence and graph-based approaches.</li>
+                  <li><strong>Synthetic security data:</strong> Build pipelines to generate attack and behavioural data for training, augmentation and testing where real-world labels are scarce.</li>
+                  <li><strong>ML in production:</strong> Own training, feature engineering, model serving, inference, monitoring, drift detection and feedback loops across the ML lifecycle.</li>
+                  <li><strong>Evaluation & red-teaming:</strong> Build rigorous evaluation frameworks, benchmarks and guardrails so models can be measured before and after deployment.</li>
+                  <li><strong>Lead the direction:</strong> Stay hands-on, define the ML roadmap and mentor the team as it grows.</li>
                 </ul>
               </div>
 
               <div className="job-section-card">
                 <h2>MINDSET</h2>
                 <ul>
-                  <li>Features don&apos;t sell. Problems do. Product messaging is the job, not a byproduct of it.</li>
-                  <li>Cybersecurity is complex. Making it simple without dumbing it down is rare -- and exactly what we need.</li>
-                  <li>Volume is not the goal. Impact is. You know the difference between content that exists and content that matters.</li>
-                  <li>You ship before you ask for feedback. Ambiguity is the environment, not the exception.</li>
+                  <li>You are a builder. You take models from experiments to production, not just notebooks and papers.</li>
+                  <li>You care about measurement. You don&apos;t ship a model you cannot evaluate.</li>
+                  <li>You understand the problem before the model. You know when to fine-tune, when to prompt, when to use RAG and when a traditional ML approach is better.</li>
+                  <li>You use AI by default. You actively explore agentic frameworks and AI tooling to solve real problems.</li>
+                  <li>You work with messy data. Real security data is noisy, incomplete and constantly changing. You enjoy solving that problem.</li>
+                  <li>You want to build something new. We are not adding AI to another SIEM. We are building models that can fundamentally change how Security Operations detects and responds to threats.</li>
                 </ul>
               </div>
 
               <div className="job-section-card">
-                <h2>SKILLS</h2>
+                <h2>WHAT WE&apos;RE LOOKING FOR</h2>
                 <ul>
-                  <li>Tech background with genuine curiosity toward cybersecurity domain interest is non-negotiable.</li>
-                  <li>Strong writing with a distinct voice across formats taglines, messaging docs, social posts.</li>
-                  <li>Ability to read dense technical content and extract the story buried inside it.</li>
-                  <li>Comfortable with design and video tools, or hungry to learn fast.</li>
+                  <li>8 to 15 years of strong applied ML experience with a track record of shipping ML to production.</li>
+                  <li>Hands-on LLM / SLM fine-tuning using SFT, LoRA, QLoRA or similar techniques.</li>
+                  <li>Strong judgement on fine-tuning vs prompting vs RAG.</li>
+                  <li>Experience building Agentic AI using frameworks such as LangGraph, CrewAI, Agno or similar.</li>
+                  <li>Strong MLOps experience across training, serving, experiment tracking, model registry and monitoring.</li>
+                  <li>Experience with anomaly detection, UEBA, sequence or graph models.</li>
+                  <li>Strong Python and modern ML stack including PyTorch and Hugging Face.</li>
+                  <li>Strong evaluation discipline and production mindset.</li>
+                  <li>High ownership and comfort working with real-world data.</li>
                 </ul>
               </div>
 
               <div className="job-section-card">
-                <h2>WHAT WE&apos;RE NOT LOOKING FOR</h2>
+                <h2>BONUS POINTS</h2>
                 <ul>
-                  <li>Someone who uses AI to generate content and calls it done.</li>
-                  <li>Someone with no real interest in technology or cybersecurity.</li>
-                  <li>Someone who measures success by volume posts, assets, impressions.</li>
-                  <li>Someone who treats messaging as separate from the product.</li>
+                  <li>Security, fraud or anomaly detection experience.</li>
+                  <li>SIEM, EDR, identity or security telemetry experience.</li>
+                  <li>Synthetic data generation and programmatic labelling.</li>
+                  <li>Model optimization, quantization, distillation or GPU optimization.</li>
+                  <li>AI agents with tool use and production workflows.</li>
+                  <li>Feature stores and ML over columnar or streaming data.</li>
+                  <li>Open-source ML contributions.</li>
                 </ul>
               </div>
 
               <div className="job-section-card">
-                <h2>WHAT YOU GET</h2>
-                <ul>
-                  <li>Build a career as a next-generation storyteller in the AI-native marketing world before most people know that&apos;s the career to build.</li>
-                  <li>Real ownership over Trench&apos;s voice and messaging at the stage when both are still being defined.</li>
-                  <li>Direct access to the founding team across product, sales, and strategy.</li>
-                  <li>A portfolio that proves you can make one of the most complex domains feel urgent and human.</li>
+                <h2>WHY THIS ROLE</h2>
+                <p>
+                  You will build the intelligence behind a new operating model for Security Operations. The problems are hard:
+                </p>
+                <ul style={{ marginTop: '0.75rem', marginBottom: '1rem' }}>
+                  <li>How do we make models understand security telemetry?</li>
+                  <li>How do we detect behaviour that static rules cannot?</li>
+                  <li>How do we train reliable models when security labels are scarce?</li>
+                  <li>How do we make AI agents measurably better over time?</li>
                 </ul>
+                <p>
+                  If these problems excite you, this is the role.
+                </p>
               </div>
 
               <div className="job-apply-card">
                 <h2>HOW TO APPLY</h2>
-                <p style={{ color: 'var(--color-neutral-600)', lineHeight: 1.6, marginBottom: '0', fontSize: '1.05rem' }}>
-                  Ready to make the industry stop scrolling? Write to us not about yourself but why do you think you have fitment - <a href="mailto:career@trenchsecurity.ai?subject=Application for Product Marketing Intern" style={{ color: 'var(--color-primary-100)', fontWeight: 600, textDecoration: 'underline' }}>career@trenchsecurity.ai</a>.
+                <p style={{ color: 'var(--color-neutral-600)', lineHeight: 1.65, marginBottom: '1rem', fontSize: '1.05rem' }}>
+                  Email <a href="mailto:career@trenchsecurity.ai?subject=Application for AI/ML Lead" style={{ color: 'var(--color-primary-100)', fontWeight: 600, textDecoration: 'underline' }}>career@trenchsecurity.ai</a> with a short note about a model you took to production and how you evaluated it. Include your GitHub, papers or LinkedIn.
+                </p>
+                <p style={{ color: 'var(--color-neutral-600)', lineHeight: 1.6, marginBottom: '0', fontSize: '1.02rem' }}>
+                  No formal cover letter needed. Show us what you&apos;ve built. Show us how you think.
                 </p>
               </div>
             </ScrollReveal>
