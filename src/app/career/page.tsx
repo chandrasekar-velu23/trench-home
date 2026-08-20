@@ -13,22 +13,31 @@ export const metadata: Metadata = {
 
 const JOBS = [
   {
-    id: "lead-agentic-secops",
-    title: "AI Security Lead",
-    department: "Security Operations",
+    id: "ai-lead-security-rd",
+    title: "AI Lead, Security R&D",
+    department: "Engineering",
     location: "Bengaluru, India",
     type: "Full-time, 6-12 years experience",
-    description: "We are rewriting how Security Operations is practised. This is not a traditional SOC leadership role. You will help forward-looking security teams move from the traditional SOC model to an agentic operating model.",
-    link: "/career/lead-agentic-secops"
+    description: "We are building the technical core of Agentic SecOps. This is a builder's leadership role, you will set technical direction, lead a small senior team and stay hands-on.",
+    link: "/career/ai-lead-security-rd"
   },
   {
     id: "ai-ml-lead",
-    title: "AI/ML Lead",
+    title: "AI/ML Lead, Applied AI for Security",
     department: "AI & ML",
     location: "Bengaluru, India",
     type: "Full-time, 8-15 years experience",
     description: "We are building the detection brain for Agentic SecOps. This is a hands-on leadership role to build the models that power Trench's detection brain, from security-focused SLMs and UEBA to synthetic data, evaluation and production MLOps.",
     link: "/career/ai-ml-lead"
+  },
+  {
+    id: "lead-agentic-secops",
+    title: "Lead, Agentic SecOps",
+    department: "Security Operations",
+    location: "Bengaluru, India",
+    type: "Full-time, 6-12 years experience",
+    description: "We are rewriting how Security Operations is practised. This is not a traditional SOC leadership role. You will help forward-looking security teams move from the traditional SOC model to an agentic operating model.",
+    link: "/career/lead-agentic-secops"
   },
   {
     id: "product-marketing-intern",
@@ -38,15 +47,6 @@ const JOBS = [
     type: "Paid, 6 Months, Fresher or 1+ yr exp",
     description: "Cybersecurity is drowning in noise. We don't need someone to generate content. We need someone to make the industry stop scrolling.",
     link: "/career/product-marketing-intern"
-  },
-  {
-    id: "ai-lead-security-rd",
-    title: "R&D AI Tech Lead",
-    department: "Engineering",
-    location: "Bengaluru, India",
-    type: "Full-time, 6-12 years experience",
-    description: "We are building the technical core of Agentic SecOps. This is a builder's leadership role, you will set technical direction, lead a small senior team and stay hands-on.",
-    link: "/career/ai-lead-security-rd"
   }
   /*
   {

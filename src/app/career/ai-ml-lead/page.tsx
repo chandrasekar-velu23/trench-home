@@ -3,8 +3,8 @@ import Link from "next/link";
 import ScrollReveal from "@/components/animations/ScrollReveal";
 
 export const metadata: Metadata = {
-  title: "AI/ML Lead | Careers",
-  description: "Join Trench as AI/ML Lead and build the models that power Trench's detection brain.",
+  title: "AI/ML Lead, Applied AI for Security | Careers",
+  description: "Join Trench as AI/ML Lead, Applied AI for Security and build the models that power Trench's detection brain.",
 };
 
 export default function AIMLLeadPage() {
@@ -53,13 +53,6 @@ export default function AIMLLeadPage() {
           border-radius: 100px;
           font-family: var(--font-poppins), sans-serif;
           line-height: 1.2;
-        }
-        .phase-badge-dot {
-          width: 5px;
-          height: 5px;
-          border-radius: 50%;
-          background: #0D41E1;
-          display: inline-block;
         }
 
         .job-title {
@@ -216,7 +209,7 @@ export default function AIMLLeadPage() {
                   <span className="phase-badge">Active Hiring</span>
                 </div>
                 <h1 className="job-title">
-                  AI/ML Lead
+                  AI/ML Lead, Applied AI for Security
                 </h1>
 
                 <div className="job-tags-row">
@@ -256,7 +249,7 @@ export default function AIMLLeadPage() {
                   Security Operations is entering a fundamentally different era. AI can change how security signals are understood, correlated and acted upon. But building reliable AI for Security Operations requires more than putting an LLM on top of security data.
                 </p>
                 <p>
-                  Trench is building an agentic operating system for Security Operations. We are looking for an AI/ML Lead to build the models that power Trench&apos;s detection brain, from security-focused SLMs and UEBA to synthetic data, evaluation and production MLOps.
+                  Trench is building an agentic operating system for Security Operations. We are looking for an AI/ML Lead, Applied AI for Security to build the models that power Trench&apos;s detection brain, from security-focused SLMs and UEBA to synthetic data, evaluation and production MLOps.
                 </p>
                 <p>
                   This is a hands-on leadership role. You will set the ML direction, build models that work on real security data and help turn research into production.
@@ -341,7 +334,7 @@ export default function AIMLLeadPage() {
               <div className="job-apply-card">
                 <h2>HOW TO APPLY</h2>
                 <p style={{ color: 'var(--color-neutral-600)', lineHeight: 1.65, marginBottom: '1rem', fontSize: '1.05rem' }}>
-                  Email <a href="mailto:career@trenchsecurity.ai?subject=Application for AI/ML Lead" style={{ color: 'var(--color-primary-100)', fontWeight: 600, textDecoration: 'underline' }}>career@trenchsecurity.ai</a> with a short note about a model you took to production and how you evaluated it. Include your GitHub, papers or LinkedIn.
+                  Email <a href="mailto:career@trenchsecurity.ai?subject=Application for AI/ML Lead, Applied AI for Security" style={{ color: 'var(--color-primary-100)', fontWeight: 600, textDecoration: 'underline' }}>career@trenchsecurity.ai</a> with a short note about a model you took to production and how you evaluated it. Include your GitHub, papers or LinkedIn.
                 </p>
                 <p style={{ color: 'var(--color-neutral-600)', lineHeight: 1.6, marginBottom: '0', fontSize: '1.02rem' }}>
                   No formal cover letter needed. Show us what you&apos;ve built. Show us how you think.

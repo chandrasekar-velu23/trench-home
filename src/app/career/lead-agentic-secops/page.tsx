@@ -3,11 +3,11 @@ import Link from "next/link";
 import ScrollReveal from "@/components/animations/ScrollReveal";
 
 export const metadata: Metadata = {
-  title: "AI Security Lead | Careers",
-  description: "Join Trench as AI Security Lead and drive customer transformation from traditional SOC to an agentic operating model.",
+  title: "Lead, Agentic SecOps | Careers",
+  description: "Join Trench as Lead, Agentic SecOps and drive customer transformation from traditional SOC to an agentic operating model.",
 };
 
-export default function AISecurityLeadPage() {
+export default function LeadAgenticSecOpsPage() {
   return (
     <>
       <style dangerouslySetInnerHTML={{
@@ -53,13 +53,6 @@ export default function AISecurityLeadPage() {
           border-radius: 100px;
           font-family: var(--font-poppins), sans-serif;
           line-height: 1.2;
-        }
-        .phase-badge-dot {
-          width: 5px;
-          height: 5px;
-          border-radius: 50%;
-          background: #0D41E1;
-          display: inline-block;
         }
 
         .job-title {
@@ -216,7 +209,7 @@ export default function AISecurityLeadPage() {
                   <span className="phase-badge">Active Hiring</span>
                 </div>
                 <h1 className="job-title">
-                  AI Security Lead
+                  Lead, Agentic SecOps
                 </h1>
 
                 <div className="job-tags-row">
@@ -256,7 +249,7 @@ export default function AISecurityLeadPage() {
                   The attack landscape is changing faster than traditional Security Operations can keep up. AI is changing the speed and scale of attacks, while security teams continue to operate with more tools, more alerts, more rules and more manual investigation. We believe this model is reaching its limit. Trench is building an agentic approach to Security Operations where AI agents take on detection, investigation and response, enabling security teams to operate with greater speed, coverage and autonomy.
                 </p>
                 <p>
-                  We are looking for an AI Security Lead who believes in this transformation and wants to drive it with customers. This is not a traditional SOC leadership role. You will help forward-looking security teams move from the traditional SOC model to an agentic operating model and drive measurable transformation outcomes.
+                  We are looking for a Lead, Agentic SecOps who believes in this transformation and wants to drive it with customers. This is not a traditional SOC leadership role. You will help forward-looking security teams move from the traditional SOC model to an agentic operating model and drive measurable transformation outcomes.
                 </p>
               </div>
 
@@ -330,7 +323,7 @@ export default function AISecurityLeadPage() {
               <div className="job-apply-card">
                 <h2>HOW TO APPLY</h2>
                 <p style={{ color: 'var(--color-neutral-600)', lineHeight: 1.65, marginBottom: '1.25rem', fontSize: '1.05rem' }}>
-                  Send your application to <a href="mailto:career@trenchsecurity.ai?subject=Application for AI Security Lead" style={{ color: 'var(--color-primary-100)', fontWeight: 600, textDecoration: 'underline' }}>career@trenchsecurity.ai</a> with a short note about one of these:
+                  Send your application to <a href="mailto:career@trenchsecurity.ai?subject=Application for Lead, Agentic SecOps" style={{ color: 'var(--color-primary-100)', fontWeight: 600, textDecoration: 'underline' }}>career@trenchsecurity.ai</a> with a short note about one of these:
                 </p>
                 <ul style={{ color: 'var(--color-neutral-600)', lineHeight: 1.7, fontSize: '1.02rem', paddingLeft: '1.5rem', marginBottom: '1.25rem' }}>
                   <li>A SOC transformation you have led</li>

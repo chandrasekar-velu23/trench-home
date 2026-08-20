@@ -3,8 +3,8 @@ import Link from "next/link";
 import ScrollReveal from "@/components/animations/ScrollReveal";
 
 export const metadata: Metadata = {
-  title: "R&D AI Tech Lead | Careers",
-  description: "Join Trench as R&D AI Tech Lead and build the technical foundation behind agentic Security Operations.",
+  title: "AI Lead, Security R&D | Careers",
+  description: "Join Trench as AI Lead, Security R&D and build the technical foundation behind agentic Security Operations.",
 };
 
 export default function AILeadSecurityRDPage() {
@@ -53,13 +53,6 @@ export default function AILeadSecurityRDPage() {
           border-radius: 100px;
           font-family: var(--font-poppins), sans-serif;
           line-height: 1.2;
-        }
-        .phase-badge-dot {
-          width: 5px;
-          height: 5px;
-          border-radius: 50%;
-          background: #0D41E1;
-          display: inline-block;
         }
 
         .job-title {
@@ -216,7 +209,7 @@ export default function AILeadSecurityRDPage() {
                   <span className="phase-badge">Active Hiring</span>
                 </div>
                 <h1 className="job-title">
-                  R&D AI Tech Lead
+                  AI Lead, Security R&D
                 </h1>
 
                 <div className="job-tags-row">
@@ -256,7 +249,7 @@ export default function AILeadSecurityRDPage() {
                   Security Operations is entering a fundamentally different era. AI is changing how detection, investigation and response can be performed, while the scale and complexity of security telemetry continues to grow. Trench is building an agentic operating system for Security Operations.
                 </p>
                 <p>
-                  We are looking for an R&D AI Tech Lead to build the technical foundation behind this vision: the security data platform, AI agent infrastructure and engineering systems that power Trench. This is a builder&apos;s leadership role. You will set technical direction, lead a small senior team and stay hands-on.
+                  We are looking for an AI Lead, Security R&D to build the technical foundation behind this vision: the security data platform, AI agent infrastructure and engineering systems that power Trench. This is a builder&apos;s leadership role. You will set technical direction, lead a small senior team and stay hands-on.
                 </p>
               </div>
 
@@ -335,7 +328,7 @@ export default function AILeadSecurityRDPage() {
               <div className="job-apply-card">
                 <h2>HOW TO APPLY</h2>
                 <p style={{ color: 'var(--color-neutral-600)', lineHeight: 1.65, marginBottom: '1rem', fontSize: '1.05rem' }}>
-                  Email <a href="mailto:career@trenchsecurity.ai?subject=Application for R&D AI Tech Lead" style={{ color: 'var(--color-primary-100)', fontWeight: 600, textDecoration: 'underline' }}>career@trenchsecurity.ai</a> with a short note about something hard you&apos;ve built. It could be a data platform, high-scale pipeline, open-source contribution or AI-agent system. Include your GitHub and LinkedIn.
+                  Email <a href="mailto:career@trenchsecurity.ai?subject=Application for AI Lead, Security R&D" style={{ color: 'var(--color-primary-100)', fontWeight: 600, textDecoration: 'underline' }}>career@trenchsecurity.ai</a> with a short note about something hard you&apos;ve built. It could be a data platform, high-scale pipeline, open-source contribution or AI-agent system. Include your GitHub and LinkedIn.
                 </p>
                 <p style={{ color: 'var(--color-neutral-600)', lineHeight: 1.6, marginBottom: '0', fontSize: '1.02rem' }}>
                   No formal cover letter needed. Show us what you&apos;ve built. Show us how you think.
