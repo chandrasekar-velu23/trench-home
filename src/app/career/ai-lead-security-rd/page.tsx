@@ -1,0 +1,147 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import ScrollReveal from "@/components/animations/ScrollReveal";
+
+export const metadata: Metadata = {
+  title: "AI Lead, Security R&D | Careers",
+  description: "Join Trench as AI Lead, Security R&D and build the technical foundation behind agentic Security Operations.",
+};
+
+export default function AILeadSecurityRDPage() {
+  return (
+    <>
+      <style dangerouslySetInnerHTML={{
+        __html: `
+        .job-details-section h2 {
+          font-family: var(--font-primary);
+          font-size: 1.5rem;
+          font-weight: 800;
+          color: #000000;
+          margin-top: 2.5rem;
+          margin-bottom: 1rem;
+        }
+        .job-details-section p, .job-details-section li {
+          font-size: 1.125rem;
+          line-height: 1.7;
+          color: var(--color-neutral-600);
+          margin-bottom: 1rem;
+        }
+        .job-details-section ul {
+          padding-left: 1.5rem;
+          margin-bottom: 1.5rem;
+        }
+      `}} />
+      <main style={{ backgroundColor: '#ffffff', minHeight: '100vh', position: 'relative', zIndex: 10, paddingBottom: '80px' }}>
+        <div className="page-main overflow-hidden" style={{ backgroundColor: '#ffffff', paddingTop: '160px' }}>
+          <div className="container-wide" style={{ maxWidth: '800px' }}>
+
+            <Link href="/career" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', color: 'var(--color-primary-100)', fontWeight: 600, marginBottom: '2rem', textDecoration: 'none' }}>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M19 12H5M12 19l-7-7 7-7" />
+              </svg>
+              Back to Careers
+            </Link>
+
+            <ScrollReveal direction="up">
+              <h1 className="title-md" style={{ color: '#000000', marginBottom: '1rem', fontSize: '2.5rem' }}>
+                AI Lead, Security R&D
+              </h1>
+
+              <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', color: 'var(--color-neutral-500)', fontSize: '1rem', fontWeight: 500, marginBottom: '2rem', paddingBottom: '2rem', borderBottom: '1px solid rgba(0,0,0,0.1)' }}>
+                <span>Bengaluru, India</span>
+                <span>•</span>
+                <span>Full-time</span>
+                <span>•</span>
+                <span>6–12 years experience</span>
+              </div>
+            </ScrollReveal>
+
+            <ScrollReveal direction="up" delay={0.1} className="job-details-section">
+              <p style={{ fontSize: '1.25rem', fontWeight: 600, color: '#000000', fontStyle: 'italic', borderLeft: '4px solid var(--color-primary-100)', paddingLeft: '1.5rem', margin: '2rem 0' }}>
+                "We are building the technical core of Agentic SecOps."
+              </p>
+
+              <h2>TRENCH SECURITY · AI · SECURITY R&D · PLATFORM · DATA</h2>
+              <p>
+                Security Operations is entering a fundamentally different era. AI is changing how detection, investigation and response can be performed, while the scale and complexity of security telemetry continues to grow. Trench is building an agentic operating system for Security Operations.
+              </p>
+              <p>
+                We are looking for an AI Lead, Security R&D to build the technical foundation behind this vision: the security data platform, AI agent infrastructure and engineering systems that power Trench. This is a builder's leadership role. You will set technical direction, lead a small senior team and stay hands-on.
+              </p>
+
+              <h2>THE ROLE</h2>
+              <p>
+                You will work across Security Data, AI Agents and Platform Infrastructure. You will solve hard technical problems around high-scale security telemetry, AI agent infrastructure and reliable production systems. You will work closely with the CTO and product team to turn these systems into the foundation for Trench's next generation of Security Operations.
+              </p>
+
+              <h2>WHAT YOU'LL OWN</h2>
+              <ul>
+                <li><strong>Security data platform:</strong> Architect and scale our security data platform across storage, schemas, partitioning, retention and high-speed queries over security telemetry.</li>
+                <li><strong>Data pipelines:</strong> Build high-throughput ingestion, parsing, normalization and enrichment across cloud, endpoint, identity, network and SaaS sources.</li>
+                <li><strong>AI agents & infrastructure:</strong> Build the infrastructure and gateway layer powering detection, investigation and response agents, including orchestration, observability, cost controls and guardrails.</li>
+                <li><strong>Platform & DevOps:</strong> Own the infrastructure that keeps Trench reliable and secure across cloud, IaC, CI/CD, containers and observability.</li>
+                <li><strong>Lead the team:</strong> Hire, mentor and grow engineers while setting technical direction and raising the engineering bar.</li>
+                <li><strong>Stay hands-on:</strong> Write production Go and Python and use AI copilots and agentic tooling to accelerate how we build.</li>
+              </ul>
+
+              <h2>MINDSET</h2>
+              <ul>
+                <li>You are a builder. You solve hard problems and ship production systems.</li>
+                <li>You think in systems. You can move across data, AI and infrastructure without losing the bigger picture.</li>
+                <li>You use AI by default. You believe AI should fundamentally change how engineering teams build.</li>
+                <li>You have strong technical judgement. You know when to build, when to use existing technology and when to go deep.</li>
+                <li>You move fast. You are comfortable with ambiguity, take ownership and have a bias to ship.</li>
+                <li>You want to build something new. We are not adding AI to another SIEM. We are building the technical foundation for a different way of doing Security Operations.</li>
+              </ul>
+
+              <h2>WHAT WE'RE LOOKING FOR</h2>
+              <ul>
+                <li>6 to 12 years building and operating data-intensive backend or platform systems.</li>
+                <li>Deep experience with data storage and processing at scale.</li>
+                <li>Strong understanding of columnar, vector and key-value databases.</li>
+                <li>Experience building high-throughput pipelines using Kafka, Pub/Sub or similar technologies.</li>
+                <li>Strong Go and Python skills.</li>
+                <li>Experience with data mesh or domain-oriented architectures.</li>
+                <li>Experience leading engineers while remaining technically hands-on.</li>
+                <li>High ownership, startup mindset and bias to ship.</li>
+                <li>Cybersecurity exposure or the ability to quickly understand security data and SOC workflows.</li>
+              </ul>
+
+              <h2>BONUS POINTS</h2>
+              <ul>
+                <li>Open-source database or infrastructure contributions.</li>
+                <li>Experience building AI agents or agentic systems in production.</li>
+                <li>AI gateway or agent orchestration experience.</li>
+                <li>Strong use of Claude, copilots or agentic development tooling.</li>
+                <li>SIEM, security data platform, detection engineering or MITRE ATT&CK experience.</li>
+              </ul>
+
+              <h2>WHY THIS ROLE</h2>
+              <p>
+                You will help build the infrastructure behind a new operating model for Security Operations. You will work on problems such as:
+              </p>
+              <ul>
+                <li>How do we process massive volumes of security telemetry efficiently?</li>
+                <li>How do we build AI agents that can reason over security data reliably?</li>
+                <li>How do we make those agents production-ready, observable and controllable?</li>
+              </ul>
+              <p>
+                If these problems excite you, this is the role.
+              </p>
+
+              <div style={{ marginTop: '4rem', paddingTop: '2rem', borderTop: '1px solid rgba(0,0,0,0.1)' }}>
+                <h2 style={{ fontFamily: 'var(--font-primary)', fontSize: '1.5rem', fontWeight: 800, color: '#000000', marginBottom: '1rem' }}>HOW TO APPLY</h2>
+                <p style={{ color: 'var(--color-neutral-600)', lineHeight: 1.6, marginBottom: '1rem', fontSize: '1.05rem' }}>
+                  Email <a href="mailto:career@trenchsecurity.ai?subject=Application for AI Lead, Security R&D" style={{ color: 'var(--color-primary-100)', fontWeight: 600, textDecoration: 'underline' }}>career@trenchsecurity.ai</a> with a short note about something hard you've built. It could be a data platform, high-scale pipeline, open-source contribution or AI-agent system. Include your GitHub and LinkedIn.
+                </p>
+                <p style={{ color: 'var(--color-neutral-600)', lineHeight: 1.6, marginBottom: '0', fontSize: '1.05rem' }}>
+                  No formal cover letter needed. Show us what you've built. Show us how you think.
+                </p>
+              </div>
+            </ScrollReveal>
+          </div>
+        </div>
+      </main>
+    </>
+  );
+}

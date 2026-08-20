@@ -20,6 +20,33 @@ const JOBS = [
     type: "Paid · 6 Months · Fresher or 1+ yr exp",
     description: "Cybersecurity is drowning in noise. We don't need someone to generate content. We need someone to make the industry stop scrolling.",
     link: "/career/product-marketing-intern"
+  },
+  {
+    id: "lead-agentic-secops",
+    title: "Lead, Agentic SecOps",
+    department: "Security Operations",
+    location: "Bengaluru, India",
+    type: "Full-time · 6–12 years experience",
+    description: "We are rewriting how Security Operations is practised. This is not a traditional SOC leadership role. You will help forward-looking security teams move from the traditional SOC model to an agentic operating model.",
+    link: "/career/lead-agentic-secops"
+  },
+  {
+    id: "soc-analyst",
+    title: "SOC Analyst (Level 1–2)",
+    department: "Security Operations",
+    location: "On-site",
+    type: "Full-time · 2+ Years experience",
+    description: "Be on the frontline of our Security Operations Center, helping to identify, assess, and respond to cyber threats using industry-leading tools and AI-based threat intelligence.",
+    link: "/career/soc-analyst"
+  },
+  {
+    id: "ai-lead-security-rd",
+    title: "AI Lead, Security R&D",
+    department: "Engineering",
+    location: "Bengaluru, India",
+    type: "Full-time · 6–12 years experience",
+    description: "We are building the technical core of Agentic SecOps. This is a builder's leadership role, you will set technical direction, lead a small senior team and stay hands-on.",
+    link: "/career/ai-lead-security-rd"
   }
 ];
 
