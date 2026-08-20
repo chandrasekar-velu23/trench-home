@@ -1,3 +1,11 @@
+import { redirect } from "next/navigation";
+
+// Hidden for now - redirects to careers listing page
+export default function SOCAnalystPage() {
+  redirect("/career");
+}
+
+/*
 import type { Metadata } from "next";
 import Link from "next/link";
 import ScrollReveal from "@/components/animations/ScrollReveal";
@@ -305,3 +313,4 @@ export default function SOCAnalystPage() {
     </>
   );
 }
+*/

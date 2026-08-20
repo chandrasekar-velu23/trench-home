@@ -47,7 +47,8 @@ const JOBS = [
     type: "Full-time, 6-12 years experience",
     description: "We are building the technical core of Agentic SecOps. This is a builder's leadership role, you will set technical direction, lead a small senior team and stay hands-on.",
     link: "/career/ai-lead-security-rd"
-  },
+  }
+  /*
   {
     id: "soc-analyst",
     title: "SOC Analyst (Level 1-2)",
@@ -57,6 +58,7 @@ const JOBS = [
     description: "Be on the frontline of our Security Operations Center, helping to identify, assess, and respond to cyber threats using industry-leading tools and AI-based threat intelligence.",
     link: "/career/soc-analyst"
   }
+  */
 ];
 
 export default function CareerPage() {
