@@ -20,14 +20,14 @@ const COFOUNDERS = [
   {
     name: "Gurucharan Raghunathan",
     role: "Cofounder & CEO",
-    desc: "Built products at Microsoft and Radware. Saw the systems design problem in security up close. Built Trench to fix it.",
+    desc: "Built security products at Microsoft and Radware, across Email, Endpoint, Cloud and Application layers. Spent a decade watching those layers stay disconnected. Building Trench to fix it.",
     img: "/team/gurucharan.webp",
     linkedin: "https://www.linkedin.com/in/gurucharanraghunathan/",
   },
   {
     name: "Michael Wilson",
     role: "Cofounder & CTO",
-    desc: "Scaled networks at Radware, Avaya and Nortel. Knows what ground-up architecture looks like. Building it again for security operations.",
+    desc: "Built and scaled security systems at Radware, Avaya and Nortel over two decades. Passionate about ground-up architecture and system design. Building next-generation agentic security analytics at scale.",
     img: "/team/Michael.webp",
     linkedin: "https://www.linkedin.com/in/michael-wilson-rebello-b719a86/",
   },

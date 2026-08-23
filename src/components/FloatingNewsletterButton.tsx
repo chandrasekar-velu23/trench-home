@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 
 export default function FloatingNewsletterButton() {
@@ -9,7 +9,6 @@ export default function FloatingNewsletterButton() {
   // We use `isExpanded` to control if the text is shown alongside the icon.
   const [isExpanded, setIsExpanded] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
-  const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
     const hasPrompted = localStorage.getItem("trench_newsletter_expanded");
@@ -18,13 +17,6 @@ export default function FloatingNewsletterButton() {
       const timer = setTimeout(() => {
         setIsExpanded(true);
         localStorage.setItem("trench_newsletter_expanded", "true");
-        
-        if (audioRef.current) {
-          audioRef.current.volume = 0.5;
-          audioRef.current.play().catch(e => {
-             console.log("Notification sound blocked by browser interaction policy.");
-          });
-        }
 
         // Auto-collapse the button after 8 seconds
         setTimeout(() => {
@@ -49,7 +41,6 @@ export default function FloatingNewsletterButton() {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <audio ref={audioRef} src="https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3" preload="auto" />
 
       <style dangerouslySetInnerHTML={{__html: `
         .floating-newsletter-btn {
