@@ -19,6 +19,246 @@ export interface BlogPost {
 
 export const postsData: BlogPost[] = [
   {
+    "slug": "trench-agentic-secops-skills-vs-playbooks",
+    "title": "Trench Agentic SecOps: Skills vs. Playbooks",
+    "category": "Technical",
+    "date": "August 27, 2026",
+    "image": "/blog-cover-images/Agentic-SecOps-maturity-path-cover.png",
+    "description": "Playbooks encode yesterday's attack as a fixed tree. Discover why Trench Skills compose live investigative expertise from Signal Memory and the Intent Graph for true agentic SecOps.",
+    "author": {
+      "name": "Trench Team",
+      "role": "Trench Research",
+      "avatar": "/logo/Icon.webp"
+    },
+    "publishedTime": "2026-08-27T09:00:00.000Z",
+    "modifiedTime": "2026-08-27T09:00:00.000Z",
+    "tableOfContents": [
+      {
+        "id": "tl-dr",
+        "title": "TL;DR"
+      },
+      {
+        "id": "context",
+        "title": "Context"
+      },
+      {
+        "id": "its-a-quiet-tuesday",
+        "title": "It's a quiet Tuesday"
+      },
+      {
+        "id": "the-playbook-model",
+        "title": "The playbook model: built to match, not to reason"
+      },
+      {
+        "id": "the-ai-powered-model",
+        "title": "The AI-powered model: a faster way to walk the same tree"
+      },
+      {
+        "id": "trench-skills-composing-expertise",
+        "title": "Trench Skills: composing expertise, not matching alerts"
+      },
+      {
+        "id": "skills-vs-ai-playbooks",
+        "title": "Trench Skills vs. AI-powered playbooks"
+      },
+      {
+        "id": "sample-scenarios",
+        "title": "Sample scenarios with Skills performance"
+      },
+      {
+        "id": "the-design-flaw",
+        "title": "The design flaw"
+      }
+    ],
+    "body": `
+<div class="blog-post-body">
+    <p style="color: #0D41E1; font-size: 1.2em; font-weight: bold; text-align: center; padding: 20px 0; border-bottom: 1px solid rgba(0,0,0,0.1); margin-bottom: 30px;"><em>Playbooks encode yesterday's attack as a fixed tree. Trench Skills compose the right investigative expertise from Signal Memory and the Intent Graph, live.</em></p>
+
+    <h2 id="tl-dr">TL;DR</h2>
+    <ul>
+        <li><strong>Playbooks encode yesterday's attack as a fixed tree.</strong> Agentic infrastructure and agentic attackers both produce behavior nobody wrote a branch for.</li>
+        <li><strong>AI-powered triage</strong>, what the market sells as AISOC, walks that same tree faster. It still requires the pattern to already be known.</li>
+        <li><strong>Trench Skills</strong> compose the right investigative expertise from <strong>Signal Memory</strong> and the <strong>Intent Graph</strong>, live, the way an investigator reasons. That’s the sustainable model at scale to deliver agentic SecOps outcomes.</li>
+    </ul>
+
+    <h2 id="context">Context</h2>
+    <ul>
+        <li><a href="/blog/the-agent-is-not-the-product-the-foundation-is" style="color: #0D41E1; text-decoration: underline;">The Agent Is Not the Product. The Foundation Is.</a> laid out Trench's foundation: Signal Memory, the Intent Graph, a policy-governed Action Layer.</li>
+        <li><a href="/blog/ai-changed-the-threat-landscape-why-are-we-still-defending-like-its-2020" style="color: #0D41E1; text-decoration: underline;">AI Changed the Threat Landscape. Why Are We Still Defending Like It's 2020?</a> argued attackers moved from human-paced to machine-paced tactics.</li>
+        <li>This post covers the layer in between: how investigation actually happens once a signal fires in a <strong>Trench agentic SecOps environment</strong>, and why most SOCs still run that layer on the wrong artifact.</li>
+    </ul>
+
+    <h2 id="its-a-quiet-tuesday">It's a quiet Tuesday</h2>
+    <p>A support copilot connected to Salesforce starts querying billing and bank-record fields it's never touched, inside its own valid OAuth scope. A few sessions later it joins those fields into a single object. Then it reaches for a connected app it's never used.</p>
+    <p>No single call looks wrong. The credential is valid, the scope was granted. The SOC's detection rules cover bulk exports by a human, downloads outside business hours, known exfiltration tools. Nothing covers an agent quietly assembling a payload nobody taught it to build.</p>
+    <p>The analyst finds out after the fact, from a compliance question nobody wanted to ask: <em>how long was that data moving before anyone noticed?</em></p>
+
+    <h2 id="the-playbook-model">The playbook model: built to match, not to reason</h2>
+    <p>A playbook is a decision tree written in advance, for a threat someone already characterized. That held up when attackers mostly reused known techniques against static environments.</p>
+    <p>Three things break it:</p>
+    <ul>
+        <li><strong>The branch has to exist before the attack does.</strong> A DLP rule for "bulk export" assumes a human clicking a button, not an identity accumulating fields one query at a time.</li>
+        <li><strong>The tree is linear.</strong> An agent that queries a new object today, joins it next session, and attempts egress later never trips one trigger, because the behavior is relational and spread across time.</li>
+        <li><strong>Every integration is new maintenance debt.</strong> A new connected app needs a new branch, authored by a detection engineering function that's usually a fraction of one person's time, or the gap goes uncovered. Same complaint we hear about MSSPs: generic playbooks, no context.</li>
+    </ul>
+
+    <blockquote style="border-left: 4px solid #0D41E1; padding-left: 16px; margin: 24px 0; font-style: italic; color: #1E293B; font-size: 1.05em; background: #F8FAFC; padding-top: 12px; padding-bottom: 12px; border-radius: 0 8px 8px 0;">
+        A tree with no branch for a new pattern isn't a gap. It's the playbook working exactly as designed, against a threat it was never designed for.
+    </blockquote>
+
+    <h2 id="the-ai-powered-model">The AI-powered model: a faster way to walk the same tree</h2>
+    <p>AISOC platforms fixed a real problem: alert fatigue. Vectra AI's 2026 report puts the average SOC team at nearly 3,000 alerts a day, two-thirds unaddressed. Faster classification is a real improvement over static detection rules.</p>
+    <p>But faster matching is still matching:</p>
+    <ul>
+        <li>A recent academic survey on agent architectures notes that from-scratch reasoning on every task, with no reusable layer underneath, gets inefficient and hard to maintain as the task space grows, the same curve that burns out detection engineering teams hand-tuning rules.</li>
+        <li>Each query, scored alone, looks exactly like what it is: valid, in scope, under threshold. Nothing about last week's slightly different access carries forward.</li>
+        <li>This split shows up across the AISOC category broadly: a deterministic layer that only fires on known patterns, a reasoning layer that starts over every incident. Real progress. Not a different architecture for agentic SecOps.</li>
+    </ul>
+    <p>For a lean security team without a bench of dedicated detection engineers, that gap costs more than it does at enterprise scale. We covered why this starts at the data layer in <a href="/blog/ai-in-the-security-operations-clearing-the-clutter" style="color: #0D41E1; text-decoration: underline;">AI in the Security Operations: Clearing the Clutter</a>.</p>
+
+    <h2 id="trench-skills-composing-expertise">Trench Skills: composing expertise, not matching alerts</h2>
+    <p>Anthropic's Agent Skills load a lightweight description of each capability at startup, and pull in full instructions only for the one that matches the task. Nothing pre-loaded, nothing wasted. A recent survey defines agent skills as reusable procedural artifacts that coordinate tools, memory, and context under task-specific constraints.</p>
+    <p>Trench Skills work the same way for investigation:</p>
+    <ul>
+        <li><strong>Composed dynamically from Signal Memory and the Intent Graph</strong>, our context graph of how entities actually relate, not matched against a pre-written branch.</li>
+        <li><strong>Matched and reasoned over programmatically through TASC</strong>, our schema for agent reasoning, not searched by keyword the way a human reads a runbook.</li>
+        <li><strong>Routed straight into the Action Layer the moment they compose.</strong> No queue, no separate matching stage. We call this <strong>ZLTD (Zero Latency Threat Detection)</strong>: it removes the queue-and-match step, not a literal instant-response claim.</li>
+    </ul>
+
+    <div class="blog-post-image" style="width: 100%; margin-top: 40px; margin-bottom: 20px; text-align: center;">
+        <img src="/blog/skill-library-and-investigation-runtime.png" alt="Skill Library + Investigation Runtime" style="width: 100%; max-width: 850px; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); cursor: zoom-in;" />
+    </div>
+    <p style="text-align: center; font-size: 0.9em; color: #64748B; margin-bottom: 40px;"><em>Skill Library + Investigation Runtime: Reusable procedural artifacts that coordinate tools, memory, and context under task-specific constraints.</em></p>
+
+    <p>None of this removes the human, it changes where they sit. A composed Skill routes into whichever of Trench's three modes fits: full autonomy, Slack approval, or an on-demand interface for a genuinely complex case. Human On the Loop, not Human In the Loop, the same argument from <a href="/blog/actionable-secops-in-the-real-world" style="color: #0D41E1; text-decoration: underline;">Actionable SecOps in the Real World</a>.</p>
+
+    <div class="blog-post-image" style="width: 100%; margin-top: 40px; margin-bottom: 20px; text-align: center;">
+        <img src="/blog/before-skills-vs-after-skills.png" alt="Before Skills. After Skills." style="width: 100%; max-width: 850px; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); cursor: zoom-in;" />
+    </div>
+    <p style="text-align: center; font-size: 0.9em; color: #64748B; margin-bottom: 40px;"><em>Before Skills vs. After Skills: Trench Skills change what the team does and accelerate the shift to Headless SecOps.</em></p>
+
+    <h2 id="skills-vs-ai-playbooks">Trench Skills vs. AI-powered playbooks</h2>
+    <div style="overflow-x: auto; margin: 30px 0; border-radius: 8px; border: 1px solid #CBD5E1; box-shadow: 0 2px 10px rgba(0,0,0,0.02);">
+        <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95em;">
+            <thead>
+                <tr style="background: #0D41E1; color: white;">
+                    <th style="padding: 14px 16px; font-weight: 700; border-bottom: 1px solid #CBD5E1; width: 22%;">Dimension</th>
+                    <th style="padding: 14px 16px; font-weight: 700; border-bottom: 1px solid #CBD5E1; width: 39%;">AI-Powered Playbook Model</th>
+                    <th style="padding: 14px 16px; font-weight: 700; border-bottom: 1px solid #CBD5E1; width: 39%;">Trench Skills</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="padding: 14px 16px; border-bottom: 1px solid #E2E8F0; font-weight: 600; color: #0F172A;">Detection basis</td>
+                    <td style="padding: 14px 16px; border-bottom: 1px solid #E2E8F0; color: #334155;">Matches signals against a pre-written rule or trained pattern</td>
+                    <td style="padding: 14px 16px; border-bottom: 1px solid #E2E8F0; color: #0D41E1; font-weight: 600;">Composes from live relationships in Signal Memory and the Intent Graph</td>
+                </tr>
+                <tr style="background: #F8FAFC;">
+                    <td style="padding: 14px 16px; border-bottom: 1px solid #E2E8F0; font-weight: 600; color: #0F172A;">Coverage of novel behavior</td>
+                    <td style="padding: 14px 16px; border-bottom: 1px solid #E2E8F0; color: #334155;">Requires the pattern to already be known or trained on</td>
+                    <td style="padding: 14px 16px; border-bottom: 1px solid #E2E8F0; color: #0D41E1; font-weight: 600;">No pre-written branch required; triggered by what's actually connected</td>
+                </tr>
+                <tr>
+                    <td style="padding: 14px 16px; border-bottom: 1px solid #E2E8F0; font-weight: 600; color: #0F172A;">Investigation memory</td>
+                    <td style="padding: 14px 16px; border-bottom: 1px solid #E2E8F0; color: #334155;">Reasons from scratch on every incident</td>
+                    <td style="padding: 14px 16px; border-bottom: 1px solid #E2E8F0; color: #0D41E1; font-weight: 600;">Reuses composable, persistent expertise across incidents</td>
+                </tr>
+                <tr style="background: #F8FAFC;">
+                    <td style="padding: 14px 16px; border-bottom: 1px solid #E2E8F0; font-weight: 600; color: #0F172A;">Latency</td>
+                    <td style="padding: 14px 16px; border-bottom: 1px solid #E2E8F0; color: #334155;">Signal waits in queue to be matched against a ruleset</td>
+                    <td style="padding: 14px 16px; border-bottom: 1px solid #E2E8F0; color: #0D41E1; font-weight: 600;">Detection and composition happen in the same motion (ZLTD)</td>
+                </tr>
+                <tr>
+                    <td style="padding: 14px 16px; border-bottom: 1px solid #E2E8F0; font-weight: 600; color: #0F172A;">Maintenance burden</td>
+                    <td style="padding: 14px 16px; border-bottom: 1px solid #E2E8F0; color: #334155;">Every new integration or agent needs a new authored branch</td>
+                    <td style="padding: 14px 16px; border-bottom: 1px solid #E2E8F0; color: #0D41E1; font-weight: 600;">Skills compose automatically as new entities and relationships appear</td>
+                </tr>
+                <tr style="background: #F8FAFC;">
+                    <td style="padding: 14px 16px; border-bottom: 1px solid #E2E8F0; font-weight: 600; color: #0F172A;">Scalability</td>
+                    <td style="padding: 14px 16px; border-bottom: 1px solid #E2E8F0; color: #334155;">Effort and blind spots grow faster than headcount as agents, integrations, and alert volume increase</td>
+                    <td style="padding: 14px 16px; border-bottom: 1px solid #E2E8F0; color: #0D41E1; font-weight: 600;">Capability grows with the environment, not against it</td>
+                </tr>
+                <tr>
+                    <td style="padding: 14px 16px; border-bottom: 1px solid #E2E8F0; font-weight: 600; color: #0F172A;">Context graph</td>
+                    <td style="padding: 14px 16px; border-bottom: 1px solid #E2E8F0; color: #334155;">Alerts scored in isolation; no persistent model of entity relationships</td>
+                    <td style="padding: 14px 16px; border-bottom: 1px solid #E2E8F0; color: #0D41E1; font-weight: 600;">Intent Graph makes multi-step, cross-entity drift visible as one pattern</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h2 id="sample-scenarios">Sample scenarios with Skills performance</h2>
+    <p>Same failure in the first two models, same fix in Trench Skills, across four different types of the problem.</p>
+
+    <div style="overflow-x: auto; margin: 30px 0; border-radius: 8px; border: 1px solid #CBD5E1; box-shadow: 0 2px 10px rgba(0,0,0,0.02);">
+        <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9em;">
+            <thead>
+                <tr style="background: #0D41E1; color: white;">
+                    <th style="padding: 14px 14px; font-weight: 700; border-bottom: 1px solid #CBD5E1; width: 28%;">Scenario</th>
+                    <th style="padding: 14px 14px; font-weight: 700; border-bottom: 1px solid #CBD5E1; width: 22%;">Playbook</th>
+                    <th style="padding: 14px 14px; font-weight: 700; border-bottom: 1px solid #CBD5E1; width: 24%;">AI-Powered Triage</th>
+                    <th style="padding: 14px 14px; font-weight: 700; border-bottom: 1px solid #CBD5E1; width: 26%;">Trench Skills</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="padding: 14px 14px; border-bottom: 1px solid #E2E8F0; vertical-align: top;">
+                        <strong style="color: #0F172A; display: block; margin-bottom: 4px;">SaaS agent exfiltrating data</strong>
+                        <span style="color: #64748B; font-size: 0.88em; font-style: italic;">Salesforce copilot: new field access → aggregation → egress attempt</span>
+                    </td>
+                    <td style="padding: 14px 14px; border-bottom: 1px solid #E2E8F0; color: #334155; vertical-align: top;">No branch for "valid credential, new fields." Doesn't fire.</td>
+                    <td style="padding: 14px 14px; border-bottom: 1px solid #E2E8F0; color: #334155; vertical-align: top;">Each call scores clean alone; never correlates across sessions.</td>
+                    <td style="padding: 14px 14px; border-bottom: 1px solid #E2E8F0; color: #0D41E1; font-weight: 600; vertical-align: top;">Intent Graph flags the new relationship at query one. Skill composes before egress completes.</td>
+                </tr>
+                <tr style="background: #F8FAFC;">
+                    <td style="padding: 14px 14px; border-bottom: 1px solid #E2E8F0; vertical-align: top;">
+                        <strong style="color: #0F172A; display: block; margin-bottom: 4px;">Firewall rule change + anomalous egress</strong>
+                        <span style="color: #64748B; font-size: 0.88em; font-style: italic;">New outbound rule on a payments-adjacent host, then a traffic burst to a destination never seen before</span>
+                    </td>
+                    <td style="padding: 14px 14px; border-bottom: 1px solid #E2E8F0; color: #334155; vertical-align: top;">Rule-change alert is informational at best; nothing links it to the traffic that follows.</td>
+                    <td style="padding: 14px 14px; border-bottom: 1px solid #E2E8F0; color: #334155; vertical-align: top;">Rule change and traffic burst each score below threshold alone; destination isn't on any blocklist yet.</td>
+                    <td style="padding: 14px 14px; border-bottom: 1px solid #E2E8F0; color: #0D41E1; font-weight: 600; vertical-align: top;">Intent Graph correlates the rule change and the traffic burst as one relationship on one host; Signal Memory flags the deviation from baseline.</td>
+                </tr>
+                <tr>
+                    <td style="padding: 14px 14px; border-bottom: 1px solid #E2E8F0; vertical-align: top;">
+                        <strong style="color: #0F172A; display: block; margin-bottom: 4px;">Cloud identity agent disabling guardrails</strong>
+                        <span style="color: #64748B; font-size: 0.88em; font-style: italic;">Automation identity reconfiguring IAM, SSO, or logging controls</span>
+                    </td>
+                    <td style="padding: 14px 14px; border-bottom: 1px solid #E2E8F0; color: #334155; vertical-align: top;">Covers known-bad IPs and off-hours logins, not a valid automation account touching its own guardrails.</td>
+                    <td style="padding: 14px 14px; border-bottom: 1px solid #E2E8F0; color: #334155; vertical-align: top;">In scope for an admin-adjacent identity; scores low.</td>
+                    <td style="padding: 14px 14px; border-bottom: 1px solid #E2E8F0; color: #0D41E1; font-weight: 600; vertical-align: top;">Intent Graph correlates the config change with concurrent identity-provider anomalies no single signal carries alone.</td>
+                </tr>
+                <tr style="background: #F8FAFC;">
+                    <td style="padding: 14px 14px; border-bottom: 1px solid #E2E8F0; vertical-align: top;">
+                        <strong style="color: #0F172A; display: block; margin-bottom: 4px;">Most alerts are false positives</strong>
+                        <span style="color: #64748B; font-size: 0.88em; font-style: italic;">A storage bucket's access policy widens, coinciding with a migration already logged in the change record</span>
+                    </td>
+                    <td style="padding: 14px 14px; border-bottom: 1px solid #E2E8F0; color: #334155; vertical-align: top;">Fires the same public-bucket alert regardless of context; manual triage either way.</td>
+                    <td style="padding: 14px 14px; border-bottom: 1px solid #E2E8F0; color: #334155; vertical-align: top;">Scores policy change the same whether or not it's tied to an approved migration; escalates, wastes analyst time confirming what change record already explains.</td>
+                    <td style="padding: 14px 14px; border-bottom: 1px solid #E2E8F0; color: #0D41E1; font-weight: 600; vertical-align: top;">Matches a Known False Positive tied to the logged migration; resolves without paging anyone. A genuine misconfiguration gets the opposite verdict from the same check.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="blog-post-image" style="width: 100%; margin-top: 40px; margin-bottom: 20px; text-align: center;">
+        <img src="/blog/skill-responds-to-a-signal.png" alt="How a Trench Skill Responds to a Signal" style="width: 100%; max-width: 850px; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); cursor: zoom-in;" />
+    </div>
+    <p style="text-align: center; font-size: 0.9em; color: #64748B; margin-bottom: 40px;"><em>How a Trench Skill Responds to a Signal: Dynamic composition drawing on Signal Memory, the Intent Graph, and specialized reasoning angles.</em></p>
+
+    <h2 id="the-design-flaw">The design flaw</h2>
+    <p>You cannot patch your way out of a design flaw. A playbook is a patch, written after the fact for the last attack someone found. Faster triage on the same tree is still a patch, just applied quicker.</p>
+    <p>Trench Skills don't patch. They compose from what's actually connected, the moment it connects, whether the identity behind it is an agent in your stack or an attacker impersonating one.</p>
+
+    <div style="background: #0D41E1; padding: 36px 30px; border-radius: 12px; margin: 40px 0; color: #FFFFFF; text-align: left; box-shadow: 0 10px 25px rgba(13, 65, 225, 0.2);">
+        <h3 style="margin: 0 0 12px 0; color: #FFFFFF; font-size: 1.4em; font-weight: 700;">Meet Trench Skills.</h3>
+        <p style="margin: 0 0 24px 0; font-size: 1.05em; opacity: 0.95; max-width: 700px; line-height: 1.5;">See what composes in your environment that no playbook, and no AI SOC, ever would.</p>
+        <a href="/connect" style="display: inline-block; background: #FFFFFF; color: #0D41E1; padding: 12px 24px; border-radius: 6px; font-weight: 700; text-decoration: none; transition: transform 0.2s;">Talk to Trench →</a>
+    </div>
+</div>
+`
+  },
+  {
     "slug": "ai-changed-the-threat-landscape-why-are-we-still-defending-like-its-2020",
     "title": "AI Changed the Threat Landscape. Why Are We Still Defending Like It's 2020?",
     "category": "Research",

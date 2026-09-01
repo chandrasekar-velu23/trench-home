@@ -634,7 +634,8 @@ export default function BlogClientLayout({ post, relatedPosts }: BlogClientLayou
             {post.slug !== "introducing-headless-secops-for-the-agentic-world" &&
               post.slug !== "ai-in-the-security-operations-clearing-the-clutter" &&
               post.slug !== "actionable-secops-in-the-real-world" &&
-              post.slug !== "ai-changed-the-threat-landscape-why-are-we-still-defending-like-its-2020" && (
+              post.slug !== "ai-changed-the-threat-landscape-why-are-we-still-defending-like-its-2020" &&
+              post.slug !== "trench-agentic-secops-skills-vs-playbooks" && (
               <div style={{
                 display: "flex",
                 alignItems: "center",

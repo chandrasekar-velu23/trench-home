@@ -29,6 +29,7 @@ export default function Button({
         className={`ui-button ui-button-arrow ${className}`} 
         onClick={onClick}
         style={style}
+        suppressHydrationWarning
       >
         <svg width="85" height="42" viewBox="0 0 85 42" fill="none" xmlns="http://www.w3.org/2000/svg" className="button-svg">
           <path d="M1.48828 8.191C1.48828 5.52371 3.65055 3.36145 6.31783 3.36145H77.7951C80.4624 3.36145 82.6246 5.52371 82.6246 8.191V33.3046C82.6246 35.9719 80.4624 38.1342 77.7951 38.1342H6.31783C3.65055 38.1342 1.48828 35.9719 1.48828 33.3046V8.191Z" fill="#FCF7EE"/>
@@ -94,6 +95,7 @@ export default function Button({
       className={`ui-button ui-button-${variant} ${className}`} 
       onClick={onClick}
       style={style}
+      suppressHydrationWarning
     >
       <svg 
         viewBox={viewBoxes[variant as keyof typeof viewBoxes]} 

@@ -31,6 +31,20 @@ const COFOUNDERS = [
     img: "/team/Michael.webp",
     linkedin: "https://www.linkedin.com/in/michael-wilson-rebello-b719a86/",
   },
+  {
+    name: "Raghu Rao",
+    role: "Cofounder & Board Chair",
+    desc: "Built and exited InfoZen, an AI-driven analytics platform for the U.S. federal government. Co-founded WizNucleus to secure critical energy infrastructure. Now chairs Trench's advisory board and strategic partnerships.",
+    img: "/team/raghusrao.jpg",
+    linkedin: "https://www.linkedin.com/in/raghusrao/",
+  },
+  {
+    name: "Mayur Rao",
+    role: "Cofounder & Chief Strategy Officer",
+    desc: "Built mission-critical distributed systems and infrastructure across banks and hedge funds, including BlackRock. Founded Maatra, an AI-driven investment lab, and now leads strategy, finance and investor relations at Trench.",
+    img: "/team/Mayur Rao.jpg",
+    linkedin: "https://www.linkedin.com/in/mayur-rao/",
+  },
 ];
 
 const ADVISORS = [
