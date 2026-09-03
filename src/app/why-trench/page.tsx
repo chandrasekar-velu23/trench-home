@@ -223,7 +223,7 @@ export default function WhyTrenchPage() {
             ))}
           </div>
 
-          {/* Advisors Section */}
+          {/* Advisors Section (Temporarily hidden)
           <ScrollReveal
             direction="up"
             className="text-center"
@@ -259,6 +259,7 @@ export default function WhyTrenchPage() {
               </ScrollReveal>
             ))}
           </div>
+          */}
         </div>
       </section>
 
