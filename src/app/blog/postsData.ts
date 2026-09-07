@@ -24,7 +24,7 @@ export const postsData: BlogPost[] = [
     "category": "Technical",
     "date": "August 27, 2026",
     "image": "/blog-cover-images/Agentic-SecOps-maturity-path-cover.png",
-    "description": "Playbooks encode yesterday's attack as a fixed tree. Discover why Trench Skills compose live investigative expertise from Signal Memory and the Intent Graph for true agentic SecOps.",
+    "description": "Playbooks encode yesterday's attack as a fixed tree. Trench Skills compose the right investigative expertise from what's actually happening, live.",
     "author": {
       "name": "Trench Team",
       "role": "Trench Research",
@@ -62,8 +62,8 @@ export const postsData: BlogPost[] = [
         "title": "Trench Skills vs. AI-powered playbooks"
       },
       {
-        "id": "sample-scenarios",
-        "title": "Sample scenarios with Skills performance"
+        "id": "what-shows-up-in-the-queue",
+        "title": "What Shows Up in the Queue"
       },
       {
         "id": "the-design-flaw",
@@ -72,13 +72,13 @@ export const postsData: BlogPost[] = [
     ],
     "body": `
 <div class="blog-post-body">
-    <p style="color: #0D41E1; font-size: 1.2em; font-weight: bold; text-align: center; padding: 20px 0; border-bottom: 1px solid rgba(0,0,0,0.1); margin-bottom: 30px;"><em>Playbooks encode yesterday's attack as a fixed tree. Trench Skills compose the right investigative expertise from Signal Memory and the Intent Graph, live.</em></p>
+    <p style="color: #0D41E1; font-size: 1.2em; font-weight: bold; text-align: center; padding: 20px 0; border-bottom: 1px solid rgba(0,0,0,0.1); margin-bottom: 30px;"><em>Playbooks encode yesterday's attack as a fixed tree. Trench Skills compose the right investigative expertise from what's actually happening, live.</em></p>
 
     <h2 id="tl-dr">TL;DR</h2>
     <ul>
         <li><strong>Playbooks encode yesterday's attack as a fixed tree.</strong> Agentic infrastructure and agentic attackers both produce behavior nobody wrote a branch for.</li>
         <li><strong>AI-powered triage</strong>, what the market sells as AISOC, walks that same tree faster. It still requires the pattern to already be known.</li>
-        <li><strong>Trench Skills</strong> compose the right investigative expertise from <strong>Signal Memory</strong> and the <strong>Intent Graph</strong>, live, the way an investigator reasons. That’s the sustainable model at scale to deliver agentic SecOps outcomes.</li>
+        <li><strong>Trench Skills</strong> compose the right investigative expertise from <a href="/blog/the-agent-is-not-the-product-the-foundation-is" style="color: #0D41E1; text-decoration: underline;"><strong>Signal Memory</strong></a> and the <a href="/blog/the-agent-is-not-the-product-the-foundation-is" style="color: #0D41E1; text-decoration: underline;"><strong>Intent Graph</strong></a>, live, the way an investigator reasons. That’s the sustainable model at scale to deliver agentic SecOps outcomes.</li>
     </ul>
 
     <h2 id="context">Context</h2>
@@ -187,7 +187,7 @@ export const postsData: BlogPost[] = [
         </table>
     </div>
 
-    <h2 id="sample-scenarios">Sample scenarios with Skills performance</h2>
+    <h2 id="what-shows-up-in-the-queue">What Shows Up in the Queue</h2>
     <p>Same failure in the first two models, same fix in Trench Skills, across four different types of the problem.</p>
 
     <div style="overflow-x: auto; margin: 30px 0; border-radius: 8px; border: 1px solid #CBD5E1; box-shadow: 0 2px 10px rgba(0,0,0,0.02);">
@@ -234,7 +234,7 @@ export const postsData: BlogPost[] = [
                         <span style="color: #64748B; font-size: 0.88em; font-style: italic;">A storage bucket's access policy widens, coinciding with a migration already logged in the change record</span>
                     </td>
                     <td style="padding: 14px 14px; border-bottom: 1px solid #E2E8F0; color: #334155; vertical-align: top;">Fires the same public-bucket alert regardless of context; manual triage either way.</td>
-                    <td style="padding: 14px 14px; border-bottom: 1px solid #E2E8F0; color: #334155; vertical-align: top;">Scores policy change the same whether or not it's tied to an approved migration; escalates, wastes analyst time confirming what change record already explains.</td>
+                    <td style="padding: 14px 14px; border-bottom: 1px solid #E2E8F0; color: #334155; vertical-align: top;">Scores policy change the same whether or not it's tied to an approved migration; escalates, wastes analyst time confirming what the change record already explains.</td>
                     <td style="padding: 14px 14px; border-bottom: 1px solid #E2E8F0; color: #0D41E1; font-weight: 600; vertical-align: top;">Matches a Known False Positive tied to the logged migration; resolves without paging anyone. A genuine misconfiguration gets the opposite verdict from the same check.</td>
                 </tr>
             </tbody>
