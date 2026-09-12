@@ -2,17 +2,55 @@
 
 // --- CONFIGURATION ---
 const CONFIG = {
-  RECIPIENT_EMAIL: 'ask@trenchsecurity.ai', 
+  RECIPIENT_EMAIL: 'ask@trenchsecurity.ai',
   FROM_ALIAS: 'ask@trenchsecurity.ai', // ⚠️ Must be verified under Gmail Settings -> Accounts -> Send mail as
   SHEET_NAME: 'Form Submissions',
   JOB_SHEET_NAME: 'Job Applications',
   BPL_SHEET_NAME: 'BPL Submissions', // Dedicated tab for BPL signups
   BRAND_NAME: 'Trench Security',
-  BRAND_LOGO_URL: 'https://raw.githubusercontent.com/chandrasekar-velu23/trench-home/refs/heads/main/public/logo/trench-logo.png',
-  BPL_LOGO_URL: 'https://raw.githubusercontent.com/chandrasekar-velu23/trench-home/refs/heads/main/public/BPL/BPL%20LOGO.png',
+  // Served from the live site, NOT from raw.githubusercontent.com. Email clients
+  // fetch these over plain HTTP with no credentials, so a private repo would
+  // return 404 and every transactional email would lose its logo.
+  BRAND_LOGO_URL: 'https://www.trenchsecurity.ai/logo/trench-logo.png',
+  BPL_LOGO_URL: 'https://www.trenchsecurity.ai/BPL/BPL%20LOGO.png',
   LUMA_CALENDAR_URL: 'https://luma.com/calendar/cal-FwLKyNupiOO86Mg?period=past',
-  DRIVE_FOLDER_NAME: 'Trench Job Applications'
+  DRIVE_FOLDER_NAME: 'Trench Job Applications',
+  // Brand palette — kept in sync with src/index.css.
+  BRAND_NAVY: '#3152B9',
+  BRAND_NAVY_DARK: '#253D8F',
+  BRAND_ORANGE: '#E67E41'
 };
+
+/**
+ * The Web App is deployed "Anyone", so a GET lands here. Without this Apps
+ * Script renders an HTML error page; answer with plain JSON instead and never
+ * reveal whether the endpoint is wired to a sheet.
+ */
+function doGet() {
+  return createResponse('error', 'This endpoint accepts POST requests only.');
+}
+
+/**
+ * Optional shared secret. The /exec URL is world-postable, so anyone who learns
+ * it can write rows and trigger emails. Set a Script Property named
+ * SHARED_SECRET (Project Settings -> Script Properties) and the matching
+ * APPS_SCRIPT_SECRET env var on Vercel to lock that down.
+ *
+ * Returns true when no secret is configured, so setting it on only one side
+ * never takes the forms offline — configure Apps Script first, then Vercel.
+ */
+function isAuthorised(data) {
+  const expected = PropertiesService.getScriptProperties().getProperty('SHARED_SECRET');
+  if (!expected) return true; // not configured: behave exactly as before
+  const provided = data && data.secret ? String(data.secret) : '';
+  if (provided.length !== expected.length) return false;
+  // Constant-time-ish compare: never bail early on the first differing byte.
+  var diff = 0;
+  for (var i = 0; i < expected.length; i++) {
+    diff |= expected.charCodeAt(i) ^ provided.charCodeAt(i);
+  }
+  return diff === 0;
+}
 
 // Main function to handle form submissions via POST request
 function doPost(e) {
@@ -22,7 +60,12 @@ function doPost(e) {
     }
 
     const data = JSON.parse(e.postData.contents);
-    
+
+    if (!isAuthorised(data)) {
+      Logger.log('Rejected submission: bad or missing shared secret');
+      return createResponse('error', 'Unauthorised');
+    }
+
     // =========================================================
     // ROUTE 1: BPL COMMUNITY SIGNUPS
     // =========================================================
@@ -146,7 +189,7 @@ function handleBplSignup(data) {
       
       const headerRange = sheet.getRange(1, 1, 1, headers.length);
       headerRange.setFontWeight('bold');
-      headerRange.setBackground('#0D41E1');
+      headerRange.setBackground('#3152B9');
       headerRange.setFontColor('#FFFFFF');
       sheet.autoResizeColumns(1, headers.length);
     }
@@ -201,16 +244,16 @@ function sendBplAdminEmail(data) {
   
   const htmlBody = `
     <div style="font-family: sans-serif; font-size: 14px; color: #333; max-width: 580px; border: 1px solid #ddd; border-radius: 12px; padding: 24px; background: #ffffff;">
-      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; border-bottom: 2px solid #0D41E1; padding-bottom: 12px;">
+      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; border-bottom: 2px solid #3152B9; padding-bottom: 12px;">
         <img src="${CONFIG.BPL_LOGO_URL}" alt="BPL Logo" style="max-height: 45px; display: block;" />
-        <h2 style="color: #0D41E1; margin: 0; font-size: 20px;">New BPL Member Registration</h2>
+        <h2 style="color: #3152B9; margin: 0; font-size: 20px;">New BPL Member Registration</h2>
       </div>
       <table style="width: 100%; border-collapse: collapse;">
         <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px 0; font-weight: bold; width: 38%;">Full Name:</td><td style="padding: 10px 0;">${data.fullName}</td></tr>
-        <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px 0; font-weight: bold;">Work Email:</td><td style="padding: 10px 0;"><a href="mailto:${data.email}" style="color: #0D41E1;">${data.email}</a></td></tr>
+        <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px 0; font-weight: bold;">Work Email:</td><td style="padding: 10px 0;"><a href="mailto:${data.email}" style="color: #3152B9;">${data.email}</a></td></tr>
         <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px 0; font-weight: bold;">Phone Number:</td><td style="padding: 10px 0;">${data.phone}</td></tr>
         <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px 0; font-weight: bold;">Current Designation:</td><td style="padding: 10px 0;">${data.designation}</td></tr>
-        <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px 0; font-weight: bold;">LinkedIn Profile:</td><td style="padding: 10px 0;"><a href="${data.linkedin}" target="_blank" style="color: #0D41E1;">${data.linkedin}</a></td></tr>
+        <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px 0; font-weight: bold;">LinkedIn Profile:</td><td style="padding: 10px 0;"><a href="${data.linkedin}" target="_blank" style="color: #3152B9;">${data.linkedin}</a></td></tr>
       </table>
       <p style="font-size: 11px; color: #888; margin-top: 24px;">Submitted at: ${new Date(data.timestamp).toLocaleString()}</p>
     </div>
@@ -229,13 +272,13 @@ function sendBplWelcomeEmail(data) {
   const subject = `Welcome to BlueTeam Premier League (BPL)`;
   
   const htmlBody = `
-    <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 15px; line-height: 1.6; color: #1E293B; max-width: 600px; margin: 0 auto; border: 1px solid rgba(13, 65, 225, 0.15); border-radius: 16px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); background: #ffffff;">
+    <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 15px; line-height: 1.6; color: #1E293B; max-width: 600px; margin: 0 auto; border: 1px solid rgba(49, 82, 185, 0.15); border-radius: 16px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); background: #ffffff;">
       
       <!-- BPL Banner Header -->
-      <div style="background: linear-gradient(135deg, #0D41E1 0%, #1E3EB0 100%); padding: 32px 24px; text-align: center;">
+      <div style="background: linear-gradient(135deg, #3152B9 0%, #253D8F 100%); padding: 32px 24px; text-align: center;">
         <img src="${CONFIG.BPL_LOGO_URL}" alt="BlueTeam Premier League Logo" style="max-height: 90px; width: auto; margin-bottom: 12px; display: inline-block;" />
         <h1 style="color: #ffffff; font-size: 22px; font-weight: 800; margin: 0; letter-spacing: -0.02em;">BlueTeam Premier League</h1>
-        <p style="color: #34E1FF; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; margin: 6px 0 0;">Play Between The Lines</p>
+        <p style="color: #E67E41; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; margin: 6px 0 0;">Play Between The Lines</p>
       </div>
 
       <!-- Main Email Content -->
@@ -251,16 +294,16 @@ function sendBplWelcomeEmail(data) {
         </p>
 
         <!-- CTA Box for Luma Calendar -->
-        <div style="background: rgba(13, 65, 225, 0.04); border: 1px solid rgba(13, 65, 225, 0.15); border-radius: 14px; padding: 24px; margin: 28px 0; text-align: center;">
-          <h3 style="margin: 0 0 8px; font-size: 17px; color: #0D41E1; font-weight: 800;">Stay Tuned for Upcoming BPL Meetups</h3>
+        <div style="background: rgba(49, 82, 185, 0.04); border: 1px solid rgba(49, 82, 185, 0.15); border-radius: 14px; padding: 24px; margin: 28px 0; text-align: center;">
+          <h3 style="margin: 0 0 8px; font-size: 17px; color: #3152B9; font-weight: 800;">Stay Tuned for Upcoming BPL Meetups</h3>
           <p style="margin: 0 0 18px; font-size: 14px; color: #64748B;">Subscribe to our official Luma calendar to get automatic invitations to live match days, SOC workshops, and networking mixers.</p>
-          <a href="${CONFIG.LUMA_CALENDAR_URL}" target="_blank" style="display: inline-block; background: #0D41E1; color: #ffffff; font-weight: 700; font-size: 14px; text-decoration: none; padding: 12px 24px; border-radius: 10px; box-shadow: 0 4px 14px rgba(13, 65, 225, 0.3);">
+          <a href="${CONFIG.LUMA_CALENDAR_URL}" target="_blank" style="display: inline-block; background: #3152B9; color: #ffffff; font-weight: 700; font-size: 14px; text-decoration: none; padding: 12px 24px; border-radius: 10px; box-shadow: 0 4px 14px rgba(49, 82, 185, 0.3);">
             Follow BPL Calendar on Luma &rarr;
           </a>
         </div>
 
         <p style="color: #475569; font-size: 14px; margin-bottom: 24px;">
-          If you have any questions or would like to participate as a speaker or team captain, reply directly to this email or reach us at <a href="mailto:ask@trenchsecurity.ai" style="color: #0D41E1; font-weight: 600; text-decoration: none;">ask@trenchsecurity.ai</a>.
+          If you have any questions or would like to participate as a speaker or team captain, reply directly to this email or reach us at <a href="mailto:ask@trenchsecurity.ai" style="color: #3152B9; font-weight: 600; text-decoration: none;">ask@trenchsecurity.ai</a>.
         </p>
 
         <!-- Footer Signoff -->
@@ -270,7 +313,7 @@ function sendBplWelcomeEmail(data) {
           </div>
           <p style="margin: 0; font-size: 13px; color: #64748B; line-height: 1.5;">
             <strong>Team Trench Security</strong><br />
-            <a href="https://www.trenchsecurity.ai" style="color: #0D41E1; text-decoration: none; font-weight: 500;">www.trenchsecurity.ai</a>
+            <a href="https://www.trenchsecurity.ai" style="color: #3152B9; text-decoration: none; font-weight: 500;">www.trenchsecurity.ai</a>
           </p>
         </div>
       </div>
@@ -313,7 +356,7 @@ function handleJobApplication(data) {
       
       const headerRange = sheet.getRange(1, 1, 1, headers.length);
       headerRange.setFontWeight('bold');
-      headerRange.setBackground('#0D41E1');
+      headerRange.setBackground('#3152B9');
       headerRange.setFontColor('#FFFFFF');
       sheet.autoResizeColumns(1, headers.length);
     }
@@ -370,7 +413,7 @@ function getOrCreateSheet() {
     sheet.getRange(1, 1, 1, headers.length).setValues([headers]);
     const headerRange = sheet.getRange(1, 1, 1, headers.length);
     headerRange.setFontWeight('bold');
-    headerRange.setBackground('#0D41E1');
+    headerRange.setBackground('#3152B9');
     headerRange.setFontColor('#FFFFFF');
     sheet.autoResizeColumns(1, headers.length);
   }
@@ -409,7 +452,7 @@ function sendAdminEmail(data) {
   
   const htmlBody = `
     <div style="font-family: sans-serif; font-size: 14px; color: #333; max-width: 550px; border: 1px solid #ddd; border-radius: 8px; padding: 20px;">
-      <h2 style="color: #0D41E1; margin-top: 0;">New Lead Details</h2>
+      <h2 style="color: #3152B9; margin-top: 0;">New Lead Details</h2>
       <table style="width: 100%; border-collapse: collapse;">
         <tr style="border-bottom: 1px solid #eee;"><td style="padding: 8px 0; font-weight: bold; width: 35%;">Category:</td><td style="padding: 8px 0;">${data.category}</td></tr>
         <tr style="border-bottom: 1px solid #eee;"><td style="padding: 8px 0; font-weight: bold;">Full Name:</td><td style="padding: 8px 0;">${data.fullName}</td></tr>
@@ -419,7 +462,7 @@ function sendAdminEmail(data) {
         <tr style="border-bottom: 1px solid #eee;"><td style="padding: 8px 0; font-weight: bold;">Team Size:</td><td style="padding: 8px 0;">${data.teamSize}</td></tr>
         <tr style="border-bottom: 1px solid #eee;"><td style="padding: 8px 0; font-weight: bold;">Intent:</td><td style="padding: 8px 0;">${data.intent}</td></tr>
       </table>
-      ${data.message ? `<p style="margin-top: 15px; padding: 10px; background: #f9f9f9; border-left: 3px solid #0D41E1;"><strong>Message:</strong><br>${data.message.replace(/\n/g, '<br>')}</p>` : ''}
+      ${data.message ? `<p style="margin-top: 15px; padding: 10px; background: #f9f9f9; border-left: 3px solid #3152B9;"><strong>Message:</strong><br>${data.message.replace(/\n/g, '<br>')}</p>` : ''}
       <p style="font-size: 11px; color: #999; margin-top: 20px;">Submitted at: ${new Date().toLocaleString()}</p>
     </div>
   `;
@@ -448,7 +491,7 @@ function sendReceiverEmail(data) {
       
       <p>${isMSSP ? bodyTextMSSP : bodyTextConnect}</p>
       
-      <p>If you need to reach us before then, write to us at <a href="mailto:ask@trenchsecurity.ai" style="color: #0D41E1; text-decoration: none; font-weight: 500;">ask@trenchsecurity.ai</a></p>
+      <p>If you need to reach us before then, write to us at <a href="mailto:ask@trenchsecurity.ai" style="color: #3152B9; text-decoration: none; font-weight: 500;">ask@trenchsecurity.ai</a></p>
       
       <p style="margin-top: 24px; font-style: italic; color: #374151;">Every castle needs a Trench. Yours is on its way.</p>
       
@@ -457,7 +500,7 @@ function sendReceiverEmail(data) {
       </div>
       <p style="margin-top: 24px; line-height: 1.4; margin-bottom: 20px;">
         Team Trench,<br>
-        <a href="https://www.trenchsecurity.ai" style="color: #0D41E1; text-decoration: none; font-weight: 500;">www.trenchsecurity.ai</a>
+        <a href="https://www.trenchsecurity.ai" style="color: #3152B9; text-decoration: none; font-weight: 500;">www.trenchsecurity.ai</a>
       </p>
     </div>
   `;
@@ -468,69 +511,4 @@ function sendReceiverEmail(data) {
     replyTo: CONFIG.FROM_ALIAS,
     htmlBody: htmlBody
   });
-}
-
-// =========================================================
-// TEST FUNCTIONS FOR DIRECT TESTING IN GOOGLE APPS SCRIPT
-// =========================================================
-
-/**
- * TEST 1: Test sending BPL Welcome Email to your personal/work email.
- * Select 'testBplWelcomeEmail' in Google Apps Script editor and click 'Run'.
- */
-function testBplWelcomeEmail() {
-  const TEST_EMAIL = 'chandrasekar.v2304@gmail.com'; // 👈 Replace with your email address to test
-  Logger.log('Sending test BPL Welcome email to: ' + TEST_EMAIL);
-  
-  sendBplWelcomeEmail({
-    firstName: 'Chandra',
-    email: TEST_EMAIL,
-    designation: 'CISO / Security Director'
-  });
-  
-  Logger.log('✅ BPL Welcome email sent successfully!');
-}
-
-/**
- * TEST 2: Test sending BPL Admin Triage Notification Email.
- * Select 'testBplAdminEmail' in Google Apps Script editor and click 'Run'.
- */
-function testBplAdminEmail() {
-  Logger.log('Sending test BPL Admin email to: ' + CONFIG.RECIPIENT_EMAIL);
-  
-  sendBplAdminEmail({
-    firstName: 'Chandra',
-    lastName: 'Velu',
-    fullName: 'Chandra Velu',
-    email: 'chandra@acmesecurity.io',
-    phone: '+1 (555) 234-5678',
-    designation: 'Lead SOC Analyst',
-    linkedin: 'https://linkedin.com/in/chandrasekar-velu',
-    timestamp: new Date().toISOString()
-  });
-  
-  Logger.log('✅ BPL Admin email sent successfully!');
-}
-
-/**
- * TEST 3: Test full end-to-end BPL submission (updates Spreadsheet & sends both emails).
- * Select 'testBplFullSubmission' in Google Apps Script editor and click 'Run'.
- */
-function testBplFullSubmission() {
-  const TEST_EMAIL = 'chandrasekar.v2304@gmail.com'; // 👈 Replace with your email address to test
-  
-  const mockPayload = {
-    category: 'BPL Community Signup',
-    firstName: 'Chandra',
-    lastName: 'Velu',
-    email: TEST_EMAIL,
-    phone: '+1 (555) 987-6543',
-    designation: 'Head of Cyber Defense',
-    linkedin: 'https://linkedin.com/in/chandrasekar-velu',
-    timestamp: new Date().toISOString()
-  };
-  
-  Logger.log('Testing full BPL submission for: ' + TEST_EMAIL);
-  const result = handleBplSignup(mockPayload);
-  Logger.log('Result: ' + result.getContent());
 }

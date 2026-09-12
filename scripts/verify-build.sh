@@ -154,20 +154,27 @@ chk "CI workflow present"                  1 "$(yes "$(ls .github/workflows/ci.y
 chk "no insecure http:// self-link"        0 "$(grep -rc 'http://trenchsecurity.ai' src | awk -F: '{s+=$2} END {print s+0}')"
 chk "no public .zip"                       0 "$(find public -name '*.zip' | wc -l | tr -d ' ')"
 # Every static /public path referenced from source must exist (URL-decoded).
+# Matched against a listing of the REAL filenames rather than fs.existsSync:
+# Vercel serves from a case-sensitive filesystem, so /Certificates/x.webp is a
+# 404 in production even though it resolves on Windows and macOS.
 missing_assets=$(node -e '
 const fs=require("fs"),path=require("path");
 const walk=d=>fs.readdirSync(d,{withFileTypes:true}).flatMap(e=>e.isDirectory()?walk(path.join(d,e.name)):[path.join(d,e.name)]);
+const real=new Set(walk("public").map(p=>"/"+path.relative("public",p).split(path.sep).join("/")));
+const ci=new Map([...real].map(p=>[p.toLowerCase(),p]));
 const re=/["\x27`(](\/[A-Za-z0-9 _%().,\-\/]+\.(?:png|jpe?g|webp|svg|gif|pdf|mp4|avif|woff2))(?=["\x27`)\\?#])/g;
 const miss=new Set();
 for(const f of walk("src").filter(f=>/\.(tsx?|css)$/.test(f))){
   for(const m of fs.readFileSync(f,"utf8").matchAll(re)){
     let p=m[1]; try{p=decodeURIComponent(p)}catch{}
-    if(!fs.existsSync(path.join("public",p))) miss.add(p);
+    if(real.has(p)) continue;
+    const hit=ci.get(p.toLowerCase());
+    miss.add(hit?p+"  (wrong case; on disk: "+hit+")":p);
   }
 }
 for(const p of miss) console.error("     missing asset "+p);
 console.log(miss.size);')
-chk "every referenced asset exists"        0 "$missing_assets"
+chk "every referenced asset exists (exact case)" 0 "$missing_assets"
 
 echo "── Security ──"
 chk "HSTS header"                          1 "$(count 'Strict-Transport-Security' vercel.json)"

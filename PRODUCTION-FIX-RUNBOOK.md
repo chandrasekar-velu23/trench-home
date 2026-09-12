@@ -1066,7 +1066,7 @@ EOF
 
 ```bash
 cat > .env <<'EOF'
-GOOGLE_APPS_SCRIPT_URL=https://script.google.com/macros/s/AKfycbwMckarxMykK9AW8s60Fc5DJxEhi41Ahwh28ssz2zqdraQpAfY1uQb4BbFylwcQWzC7/exec
+GOOGLE_APPS_SCRIPT_URL=https://script.google.com/macros/s/<REDACTED-see-Vercel-env>/exec
 ADMIN_EMAIL=ask@trenchsecurity.ai
 EOF
 ```
@@ -1084,7 +1084,7 @@ Vercel dashboard → Project → **Settings → Environment Variables**. Add to 
 
 | Name | Value |
 |---|---|
-| `GOOGLE_APPS_SCRIPT_URL` | `https://script.google.com/macros/s/AKfycbwMckarxMykK9AW8s60Fc5DJxEhi41Ahwh28ssz2zqdraQpAfY1uQb4BbFylwcQWzC7/exec` |
+| `GOOGLE_APPS_SCRIPT_URL` | `https://script.google.com/macros/s/<REDACTED-see-Vercel-env>/exec` |
 | `ADMIN_EMAIL` | `ask@trenchsecurity.ai` |
 
 Or via CLI:

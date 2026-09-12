@@ -87,9 +87,9 @@ const VALUE_PROPS = [
 ];
 
 const COMPLIANCE_BADGES = [
-  { src: "/Certificates/AICPA-SOC.webp", alt: "SOC 2 Type II" },
-  { src: "/Certificates/GDPR.webp", alt: "GDPR Compliant" },
-  { src: "/Certificates/ISO.webp", alt: "ISO 27001" }
+  { src: "/certificates/AICPA-SOC.webp", alt: "SOC 2 Type II" },
+  { src: "/certificates/GDPR.webp", alt: "GDPR Compliant" },
+  { src: "/certificates/ISO.webp", alt: "ISO 27001" }
 ];
 
 export default function ForMSSPsClient() {
@@ -122,7 +122,7 @@ export default function ForMSSPsClient() {
       setEmailError("");
 
       if (!phone || !isValidPhoneNumber(phone)) {
-        setPhoneError("Please enter a valid phone number.");
+        setPhoneError("Please enter a valid phone number, and pick your country from the flag list.");
         setIsSubmitting(false);
         return;
       }
@@ -322,6 +322,11 @@ export default function ForMSSPsClient() {
                     <label htmlFor="contactNumber" className="mssp-label">Contact Number <span>*</span></label>
                     <PhoneInput
                       international
+                      /* The calling code is owned by the country dropdown. Without
+                         this the field starts at "+1" and typing a local number
+                         rewrites the code itself (9876543210 -> "+98 76 5432 10"),
+                         so isValidPhoneNumber always failed for non-US visitors. */
+                      countryCallingCodeEditable={false}
                       defaultCountry="US"
                       value={phone}
                       onChange={(value) => {

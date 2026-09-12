@@ -17,7 +17,7 @@ export default defineConfig(({ mode, isSsrBuild }) => {
   // spelling, and never over a real environment variable: loadEnv with an empty
   // prefix returns the whole environment, not just the file.
   const fileEnv = loadEnv(mode, rootDir, '')
-  for (const setting of ['GOOGLE_APPS_SCRIPT_URL', 'ADMIN_EMAIL', 'ALLOWED_ORIGINS']) {
+  for (const setting of ['GOOGLE_APPS_SCRIPT_URL', 'ADMIN_EMAIL', 'ALLOWED_ORIGINS', 'APPS_SCRIPT_SECRET']) {
     for (const name of [setting, `NEXT_PUBLIC_${setting}`]) {
       if (fileEnv[name] && process.env[name] === undefined) process.env[name] = fileEnv[name]
     }

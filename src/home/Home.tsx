@@ -662,7 +662,7 @@ export default function Home({
             </Reveal>
 
             <Reveal delay={200}>
-              <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap', alignItems: 'center' }}>
+              <div className="home-hero-ctas" style={{ display: 'flex', gap: 16, flexWrap: 'wrap', alignItems: 'center' }}>
                 <a href="#capabilities"
                   style={{
                     fontFamily: "'Poppins', 'Poppins Fallback: Arial', 'Poppins Fallback: Roboto', sans-serif",
@@ -1747,8 +1747,8 @@ export default function Home({
                 decoding="async"
                 className="home-bpl-logo"
               />
-              <div>
-                <p className="home-bpl-eyebrow">Community · Founding Edition: Bangalore</p>
+              <div className="home-bpl-copy">
+                <p className="home-bpl-eyebrow">Community</p>
                 <h2 id="home-bpl-title" className="home-bpl-title">BlueTeam Premier League</h2>
                 <p className="home-bpl-lead">
                   An exclusive cybersecurity league, organised by Trench, where blue teams compete through ideas,
@@ -1777,27 +1777,47 @@ export default function Home({
           </div>
 
           <style>{`
-            .home-bpl-section { max-width: 1380px; margin: 0 auto; padding: 0 32px 110px; }
-            .home-bpl-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 32px; flex-wrap: wrap; margin-bottom: 32px; }
-            .home-bpl-intro { display: flex; align-items: center; gap: 20px; max-width: 780px; }
-            .home-bpl-logo { width: 80px; height: 80px; object-fit: contain; flex-shrink: 0; }
-            .home-bpl-eyebrow { margin: 0 0 10px; font-family: 'Poppins', 'Poppins Fallback: Arial', 'Poppins Fallback: Roboto', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #3152B9; }
-            .home-bpl-title { margin: 0 0 10px; font-family: 'Poppins', 'Poppins Fallback: Arial', 'Poppins Fallback: Roboto', sans-serif; font-size: clamp(24px, 3.5vw, 36px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.2; color: #2B2B2B; }
-            .home-bpl-lead { margin: 0; font-family: 'Poppins', 'Poppins Fallback: Arial', 'Poppins Fallback: Roboto', sans-serif; font-size: 14.5px; line-height: 1.6; color: #4A4A4A; max-width: 560px; }
-            .home-bpl-cta { display: inline-flex; align-items: center; gap: 12px; flex-shrink: 0; font-family: 'Poppins', 'Poppins Fallback: Arial', 'Poppins Fallback: Roboto', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #F3EDE2; background-color: #3152B9; padding: 8px 8px 8px 24px; border-radius: 100px; text-decoration: none; box-shadow: 0 4px 14px rgba(49, 82, 185, 0.25); transition: background-color 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
+            /* Poppins is the body face for this block; declared once and inherited. */
+            .home-bpl-section { max-width: 1380px; margin: 0 auto; padding: 0 32px 110px; font-family: 'Poppins', 'Poppins Fallback: Arial', 'Poppins Fallback: Roboto', sans-serif; }
+            /* Head is a 2-column grid, not wrapping flex: the CTA keeps its own
+               column and never collides with the lead paragraph at mid widths. */
+            .home-bpl-head { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; column-gap: 40px; row-gap: 24px; margin-bottom: 40px; }
+            .home-bpl-intro { display: flex; align-items: center; gap: 24px; min-width: 0; }
+            .home-bpl-logo { width: 84px; height: 84px; object-fit: contain; flex-shrink: 0; }
+            .home-bpl-copy { min-width: 0; }
+            .home-bpl-eyebrow { margin: 0 0 10px; font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #3152B9; }
+            .home-bpl-title { margin: 0 0 12px; font-size: clamp(26px, 3.4vw, 38px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; color: #2B2B2B; text-wrap: balance; }
+            .home-bpl-lead { margin: 0; font-size: 15px; line-height: 1.65; color: #4A4A4A; max-width: 58ch; }
+            .home-bpl-cta { display: inline-flex; align-items: center; justify-content: center; gap: 12px; white-space: nowrap; font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #F3EDE2; background-color: #3152B9; padding: 8px 8px 8px 24px; border-radius: 100px; text-decoration: none; box-shadow: 0 4px 14px rgba(49, 82, 185, 0.25); transition: background-color 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
             .home-bpl-cta:hover, .home-bpl-cta:focus-visible { background-color: #2541A0; transform: translateY(-1px) scale(1.02); }
             .home-bpl-cta:focus-visible { outline: 2px solid #E67E41; outline-offset: 3px; }
-            .home-bpl-cta-arrow { width: 28px; height: 28px; border-radius: 50%; background-color: rgba(255, 255, 255, 0.15); display: flex; align-items: center; justify-content: center; }
-            .home-bpl-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
-            .home-bpl-card { background-color: #EDE7D9; border: 1px solid rgba(49, 82, 185, 0.15); border-radius: 20px; padding: 28px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.03); }
-            .home-bpl-card-icon { width: 40px; height: 40px; border-radius: 10px; background: rgba(49, 82, 185, 0.06); color: #3152B9; display: flex; align-items: center; justify-content: center; margin-bottom: 18px; }
-            .home-bpl-card h3 { margin: 0 0 8px; font-family: 'Poppins', 'Poppins Fallback: Arial', 'Poppins Fallback: Roboto', sans-serif; font-size: 17px; font-weight: 700; color: #2B2B2B; }
-            .home-bpl-card p { margin: 0; font-family: 'Poppins', 'Poppins Fallback: Arial', 'Poppins Fallback: Roboto', sans-serif; font-size: 14px; line-height: 1.6; color: #4A4A4A; }
-            @media (max-width: 900px) { .home-bpl-cards { grid-template-columns: 1fr; } }
+            .home-bpl-cta-arrow { width: 28px; height: 28px; border-radius: 50%; background-color: rgba(255, 255, 255, 0.15); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+            /* auto-fit keeps the cards even at every width instead of stepping 3 -> 1. */
+            .home-bpl-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+            .home-bpl-card { display: flex; flex-direction: column; background-color: #EDE7D9; border: 1px solid rgba(49, 82, 185, 0.15); border-radius: 20px; padding: 28px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.03); transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease; }
+            .home-bpl-card:hover { transform: translateY(-4px); border-color: rgba(49, 82, 185, 0.3); box-shadow: 0 16px 44px rgba(49, 82, 185, 0.09); }
+            .home-bpl-card-icon { width: 40px; height: 40px; border-radius: 10px; background: rgba(49, 82, 185, 0.06); color: #3152B9; display: flex; align-items: center; justify-content: center; margin-bottom: 18px; flex-shrink: 0; }
+            .home-bpl-card h3 { margin: 0 0 8px; font-size: 17px; font-weight: 700; color: #2B2B2B; }
+            .home-bpl-card p { margin: 0; font-size: 14px; line-height: 1.6; color: #4A4A4A; }
+
+            /* Tablet: CTA drops under the copy, still left-aligned with it. */
+            @media (max-width: 1024px) {
+              .home-bpl-head { grid-template-columns: minmax(0, 1fr); }
+              .home-bpl-cta { justify-self: start; }
+            }
+            /* Mobile: logo stacks above the copy so the title gets full width. */
             @media (max-width: 768px) {
               .home-bpl-section { padding: 0 20px 80px; }
-              .home-bpl-intro { align-items: flex-start; }
-              .home-bpl-logo { width: 60px; height: 60px; }
+              .home-bpl-head { margin-bottom: 32px; row-gap: 20px; }
+              .home-bpl-intro { flex-direction: column; align-items: flex-start; gap: 16px; }
+              .home-bpl-logo { width: 64px; height: 64px; }
+              .home-bpl-lead { font-size: 14.5px; }
+              .home-bpl-cta { width: 100%; padding: 10px 10px 10px 24px; justify-content: space-between; }
+              .home-bpl-card { padding: 24px; border-radius: 16px; }
+            }
+            @media (prefers-reduced-motion: reduce) {
+              .home-bpl-cta, .home-bpl-card { transition: none; }
+              .home-bpl-cta:hover, .home-bpl-cta:focus-visible, .home-bpl-card:hover { transform: none; }
             }
           `}</style>
         </section>
@@ -1809,6 +1829,30 @@ export default function Home({
       {/* footer removed, managed by App.tsx */}
 
       <style>{`
+        /* Hero CTAs: side by side and centred on mobile, matching the centred
+           headline above them. They shrink rather than wrap, so the pair stays
+           on one row down to the narrowest phones. */
+        @media (max-width: 768px) {
+          .home-hero-ctas {
+            justify-content: center;
+            flex-wrap: nowrap;
+            gap: 10px !important;
+            width: 100%;
+          }
+          .home-hero-ctas > a {
+            font-size: 12.5px !important;
+            white-space: nowrap;
+            flex: 0 1 auto;
+            min-width: 0;
+          }
+          .home-hero-ctas > a:first-child { padding: 7px 7px 7px 18px !important; }
+          .home-hero-ctas > a:last-child { padding: 10px 18px !important; }
+        }
+        @media (max-width: 360px) {
+          .home-hero-ctas > a { font-size: 11.5px !important; }
+          .home-hero-ctas > a:first-child { padding: 6px 6px 6px 14px !important; }
+          .home-hero-ctas > a:last-child { padding: 9px 14px !important; }
+        }
         @media (max-width: 768px) {
           .hidden-mobile { display: none !important; }
           .hamburger { display: flex !important; }

@@ -358,11 +358,25 @@
     gap: 2rem;
   }
 
+  /* Stack the photo above the copy, but keep everything on one left edge.
+     With align-items:center the name, role and LinkedIn icon were packed left
+     (they are content-width flex children, so text-align never reached them)
+     while the full-width description centred — so the card read as misaligned. */
   .cofounder-card-refined {
     flex-direction: column;
-    align-items: center;
-    text-align: center;
+    align-items: flex-start;
+    text-align: left;
     padding: 1.5rem;
+    gap: 1.25rem;
+  }
+
+  .cofounder-info-refined {
+    width: 100%;
+    align-items: flex-start;
+  }
+
+  .body-text-small-refined {
+    text-align: left;
   }
 
   .team-members-grid-refined {

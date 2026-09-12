@@ -95,7 +95,7 @@ ESLint config: `eslint.config.mjs` (flat config) — `eslint-config-next/core-we
 
 | Variable | Value | Consumed by | ✅/❌ |
 |---|---|---|---|
-| `NEXT_PUBLIC_GOOGLE_APPS_SCRIPT_URL` | `https://script.google.com/macros/s/AKfycbwMckarxMykK9AW8s60Fc5DJxEhi41Ahwh28ssz2zqdraQpAfY1uQb4BbFylwcQWzC7/exec` | `api/submit-form/route.ts`, `api/community-signup/route.ts` | |
+| `NEXT_PUBLIC_GOOGLE_APPS_SCRIPT_URL` | `https://script.google.com/macros/s/<REDACTED-see-Vercel-env>/exec` | `api/submit-form/route.ts`, `api/community-signup/route.ts` | |
 | `NEXT_PUBLIC_GOOGLE_SHEET_URL` | `https://docs.google.com/spreadsheets/d/12SIh6juJYamU4py1WWZ8Oz42QagUfwfNsXoJZszD2l8/edit` | reference only (not read in code) | |
 | `NEXT_PUBLIC_ADMIN_EMAIL` | `ask@trenchsecurity.ai` | `api/submit-form/route.ts` (`ADMIN_EMAIL`) | |
 | `NEXT_PUBLIC_GOOGLE_SHEET_ID` | `12SIh6juJYamU4py1WWZ8Oz42QagUfwfNsXoJZszD2l8` | `api/submit-form/route.ts` (`SHEET_ID` — declared but currently unused) | |
@@ -1073,7 +1073,7 @@ Run every check against the **new build's Vercel preview deployment** before poi
 | Google verification (meta) | `oYp5PFy7iOQQx5URYjzRrVn_etEIbG1qLxoRQ3PPB-4` |
 | Google verification (file) | `googlec87b45408e1ef533.html` |
 | Google Sheet ID | `12SIh6juJYamU4py1WWZ8Oz42QagUfwfNsXoJZszD2l8` |
-| Apps Script deployment | `AKfycbwMckarxMykK9AW8s60Fc5DJxEhi41Ahwh28ssz2zqdraQpAfY1uQb4BbFylwcQWzC7` |
+| Apps Script deployment | `<REDACTED>` |
 | Vercel project | `trench-home` / `prj_db2mW1d0fdPgf5vwGDy6xuGkA5dW` |
 | Vercel org | `team_VO319051phyld1JVUugmJ0B6` |
 | Luma calendar | `cal-FwLKyNupiOO86Mg` |

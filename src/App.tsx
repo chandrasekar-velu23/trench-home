@@ -122,13 +122,15 @@ function IconChevronDown({ size = 14, color = 'currentColor' }: { size?: number;
   )
 }
 
-// Static Announcement Data for Header Bar
+// Static Announcement Data for Header Bar.
+// Kept literal rather than derived from postsData so the 202 KB posts module
+// stays out of the entry bundle — update this when a newer post ships.
 const announcements = [
   {
     badge: 'BLOG',
-    text: 'Read our latest blog post: The Agent Is Not the Product. The Foundation Is.',
+    text: 'Read our latest blog post: Trench Agentic SecOps: Skills vs. Playbooks',
     cta: 'Read Article',
-    link: '/blog/the-agent-is-not-the-product-the-foundation-is',
+    link: '/blog/trench-agentic-secops-skills-vs-playbooks',
   },
   {
     badge: 'AWARD',
