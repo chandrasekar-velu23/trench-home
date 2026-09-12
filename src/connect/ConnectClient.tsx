@@ -6,6 +6,7 @@ import { isInitialMount } from "@/lib/useReveal";
 
 import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
 import "react-phone-number-input/style.css";
+import "@/compat/phone-input.css";
 import "./connect.css";
 
 /* ── Icons — all use currentColor so CSS controls the stroke ── */

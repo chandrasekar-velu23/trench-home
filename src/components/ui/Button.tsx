@@ -38,7 +38,7 @@ export default function Button({
         </svg>
         <span className="button-text">{children}</span>
 
-        <style jsx>{`
+        <style>{`
           .ui-button-arrow {
             position: relative;
             width: 85px;
@@ -113,7 +113,7 @@ export default function Button({
       </svg>
       <span className="button-text">{children}</span>
 
-      <style jsx>{`
+      <style>{`
         .ui-button {
           position: relative;
           width: ${sizes[variant as keyof typeof sizes]?.width || "161px"};

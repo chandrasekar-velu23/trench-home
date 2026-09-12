@@ -307,7 +307,7 @@ export default function ComparisonTable() {
         </div>
       </div>
 
-      <style jsx>{`
+      <style>{`
         /* ── Wrap ── */
         .ct-wrap {
           width: 100%;

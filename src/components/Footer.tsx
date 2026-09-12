@@ -240,12 +240,12 @@ export default function Footer() {
         </div>
       </div>
 
-      <style jsx>{`
+      <style>{`
         .footer-container {
           position: relative;
           width: 100%;
           min-height: auto;
-          background-image: url('/images/footer 1.png');
+          background-image: url('/images/footer 1.webp');
           background-size: cover;
           background-position: center bottom;
           background-repeat: no-repeat;
@@ -454,7 +454,7 @@ export default function Footer() {
           gap: 0.6rem;
         }
 
-        .link-column :global(a) {
+        .link-column a {
           font-size: 0.9rem;
           font-weight: 600;
           color: #1e293b; /* Slate 800 */
@@ -462,7 +462,7 @@ export default function Footer() {
           transition: all 0.2s ease;
         }
 
-        .link-column :global(a:hover) {
+        .link-column a:hover {
           color: #0f172a; /* Slate 900 */
           text-decoration: underline;
         }
@@ -667,7 +667,7 @@ export default function Footer() {
           }
 
           .footer-container {
-            background-image: url('/images/footer-1-ph.png');
+            background-image: url('/images/footer-1-ph.webp');
           }
           .footer-header-row {
             align-items: center;
@@ -701,7 +701,7 @@ export default function Footer() {
           .footer-address p {
             color: #000000;
           }
-          .link-column :global(a) {
+          .link-column a {
             color: #000000;
           }
           .footer-cert-badge-small {

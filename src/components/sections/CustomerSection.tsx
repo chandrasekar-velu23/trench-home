@@ -84,7 +84,7 @@ export default function CustomerSection() {
         </div>
       </div>
 
-      <style jsx>{`
+      <style>{`
         .customer-section {
           padding: 6rem 0;
           position: relative;

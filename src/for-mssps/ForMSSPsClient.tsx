@@ -8,6 +8,7 @@ import ScrollReveal from "@/components/animations/ScrollReveal";
 import TextReveal from "@/components/animations/TextReveal";
 import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
 import "react-phone-number-input/style.css";
+import "@/compat/phone-input.css";
 import "./for-mssps.css";
 
 /* ── Custom SVGs for high-performance visual aesthetics ── */

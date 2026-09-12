@@ -12,7 +12,7 @@ export default function SiemRibbon() {
           <span>, not just Visibility.</span>
         </p>
       </div>
-      <style jsx>{`
+      <style>{`
         .siem-ribbon {
           padding: 4rem 0;
           background: var(--color-primary-100);

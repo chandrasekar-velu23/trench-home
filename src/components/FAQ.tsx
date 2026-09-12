@@ -76,7 +76,7 @@ export default function FAQ() {
         ))}
       </AdvancedTimeline>
 
-      <style jsx>{`
+      <style>{`
         .faq-list { display: flex; flex-direction: column; gap: 0; }
         .faq-item { padding: 0 !important; overflow: hidden; background: transparent; }
         .faq-trigger {

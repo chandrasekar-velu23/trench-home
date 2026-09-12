@@ -52,7 +52,7 @@ export default function BrandBanner({ className = "", variant = "primary" }: Bra
         </svg>
       </div>
 
-      <style jsx>{`
+      <style>{`
         .brand-banner-section {
           width: 100%;
           overflow: hidden;

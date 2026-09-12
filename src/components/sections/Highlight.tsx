@@ -9,7 +9,7 @@ import TextReveal from "../animations/TextReveal";
 const highlights = [
   {
     id: 1,
-    logo: "/awards/Logo IAA (White).jpg",
+    logo: "/awards/Logo-IAA-(White)-(1).webp",
     title: "Indian Achievers Award",
     subtitle: "Building Global Cybersecurity Innovation",
     bg: "#ffffff"
@@ -85,7 +85,7 @@ export default function Highlight() {
         </div>
       </div>
 
-      <style jsx>{`
+      <style>{`
         .award-section {
           padding: 3rem 0;
           background: transparent;

@@ -19,7 +19,7 @@ const testimonials = [
     quote: "An investigation that used to take our team close to an hour now closes in under 10 minutes without leaving Slack. Trench didn't just automate our security workflows, it brought the entire SecOps engine into the tool our team already lives in. That's a completely different way to run security.",
     author: "Achyuth",
     role: "Head of Security, Whatfix",
-    avatar: "/social/Achyuth.webp"
+    avatar: ""
   },
   {
     id: 3,
@@ -172,7 +172,7 @@ export default function SocialProof() {
         </div>
       </div>
 
-      <style jsx>{`
+      <style>{`
         .social-proof-section {
           padding: 4rem 0 1.5rem;
           background: transparent;

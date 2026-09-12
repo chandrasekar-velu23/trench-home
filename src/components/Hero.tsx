@@ -16,7 +16,7 @@ export default function Hero() {
         {/* Desktop Background */}
         <div className="desktop-bg hero-bg-image-wrap">
           <Image
-            src="/images/hero.png"
+            src="/images/hero.webp"
             alt="Trench Guardian Castle"
             fill
             priority
@@ -29,7 +29,7 @@ export default function Hero() {
         {/* Mobile Background */}
         <div className="mobile-bg hero-bg-image-wrap">
           <Image
-            src="/images/hero-ph.png"
+            src="/images/hero-ph.webp"
             alt="Trench Guardian Castle Mobile"
             fill
             priority
@@ -84,7 +84,7 @@ export default function Hero() {
       </div >
       <div className="hero-bottom-fade" />
 
-      <style jsx>{`
+      <style>{`
         .hero-section {
           position: relative;
           width: 100%;
@@ -324,13 +324,13 @@ export default function Hero() {
             align-items: center !important;
             margin-top: -1rem !important;
           }
-          :global(.hero-btn-primary),
-          :global(.hero-btn-secondary) {
+          .hero-btn-primary,
+          .hero-btn-secondary {
             width: 130px !important;
             height: 30px !important;
           }
-          :global(.hero-btn-primary .button-text),
-          :global(.hero-btn-secondary .button-text) {
+          .hero-btn-primary .button-text,
+          .hero-btn-secondary .button-text {
             font-size: 11px !important;
             letter-spacing: 1px !important;
           }

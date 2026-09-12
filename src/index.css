@@ -270,3 +270,118 @@ html:not([data-landing]) .page-main > * {
 @media (prefers-reduced-motion: reduce) {
   .page-main > * { animation: none !important; }
 }
+
+/* ─── Ported from the old Next.js globals.css ───────────────────────────────
+   Classes the ported pages still carry in their markup but that no stylesheet
+   in this build defined. Old-brand blue (#0D41E1) is remapped to the current
+   navy so they match the palette above.                                      */
+
+/* Layout helpers */
+.d-flex { display: flex; }
+.fw-bold { font-weight: 700; }
+
+.container-nav {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+
+@media (max-width: 768px) {
+  .container-nav { padding: 0 1.5rem; }
+}
+
+.container-full {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+@media (min-width: 768px)  { .container-full { padding: 0 2rem; } }
+@media (min-width: 1024px) { .container-full { padding: 0 3rem; } }
+@media (min-width: 1280px) { .container-full { padding: 0 4rem; } }
+
+.content-block-full {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+/* No base rule by design — the old stylesheet only ever set this breakpoint,
+   and the sections carry their own desktop padding inline. */
+@media (max-width: 768px) {
+  .padding-section { padding: 4rem 0; }
+}
+
+@media (max-width: 1024px) {
+  .logo-img {
+    height: 32px !important;
+    width: auto !important;
+  }
+}
+
+/* Text helpers */
+.text-medium { font-size: 18px; line-height: 1.5; }
+.text-small  { font-size: 14px; line-height: 1.5; }
+
+/* Hiring-status pill. The job detail pages each repeat this in their own
+   inline <style>; /career did not, so its badge rendered unstyled. */
+.phase-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: #3152B9;
+  text-transform: uppercase;
+  background: rgba(49, 82, 185, 0.08);
+  border: 1px solid rgba(49, 82, 185, 0.15);
+  padding: 0.2rem 0.6rem;
+  border-radius: 100px;
+  font-family: var(--font-poppins), sans-serif;
+  line-height: 1.2;
+}
+
+/* Buttons */
+.btn-primary {
+  background-color: var(--color-cta-primary);
+  color: var(--color-text-inverse);
+  border: none;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  font-size: 0.7rem;
+  padding: 1.25rem 3rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-cta-primary-hover);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--color-primary-100);
+  border: 1px solid var(--color-primary-100);
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  font-size: 0.7rem;
+  padding: 1.25rem 3rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-neutral-200);
+}
+
+/* react-phone-number-input overrides live in src/compat/phone-input.css, next
+   to the vendor sheet they override — see the note in that file. */

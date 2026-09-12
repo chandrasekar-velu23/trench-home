@@ -96,7 +96,7 @@ export default function CTASection() {
         </div>
       </div>
 
-      <style jsx>{`
+      <style>{`
         .cta-section {
           padding: 5rem 0;
           position: relative;
@@ -258,13 +258,13 @@ export default function CTASection() {
             gap: 0.5rem;
             align-items: stretch;
           }
-          :global(.cta-btn-primary),
-          :global(.cta-btn-secondary) {
+          .cta-btn-primary,
+          .cta-btn-secondary {
             width: 100% !important;
             height: 44px !important;
           }
-          :global(.cta-btn-primary .button-text),
-          :global(.cta-btn-secondary .button-text) {
+          .cta-btn-primary .button-text,
+          .cta-btn-secondary .button-text {
             font-size: 12px !important;
             letter-spacing: 1px !important;
           }
