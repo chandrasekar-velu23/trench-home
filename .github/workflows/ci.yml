@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      # Fails on any known vulnerability in dependencies.
+      - run: npm audit --audit-level=low
+
+      # Form API: origin, content type, size, rate limit, honeypot, validation,
+      # and Google Sheet formula-injection guard.
+      - run: npm run test:forms
+
+      # typecheck -> client build -> SSR build -> prerender (see package.json)
+      - run: npm run build
+
+      # Fails on any regression of the launch blockers, SEO or AEO output.
+      - run: npm run verify
+
+      # Loads every page in headless Chrome (preinstalled on ubuntu-latest):
+      # mount, content, console errors, 404s, redirects, navigation, forms.
+      - run: npm run smoke

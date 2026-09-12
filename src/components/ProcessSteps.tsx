@@ -1,4 +1,5 @@
 "use client";
+import { isInitialMount } from "@/lib/useReveal";
 
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -16,7 +17,7 @@ const steps = [
     subtitle: "Connect everything. Miss nothing.",
     description: "Trench connects to every log source, tool and data stream across your stack, cloud, endpoint, identity, network and SaaS. No agents to deploy. No data duplication. Clean, normalized and ready for detection from day one.",
     badges: ["Native integrations across your entire stack", "Agentless connector-based setup", "Auto-normalized, enriched, and searchable"],
-    image: "/steps/investigate.svg",
+    image: "/steps/investigate.webp",
     Component: IngestProcess
   },
   {
@@ -25,7 +26,7 @@ const steps = [
     subtitle: "Detection driven by intent, not just rules.",
     description: "Trench's Intent Graph continuously maps attacker behavior, correlates signals across your entire data footprint and auto-generates detections aligned to real-world threats, not static rules written last quarter.",
     badges: ["Intent Graph detects based on attacker behavior, not signatures", "Real-time threat correlation across your stack", "MITRE ATT&CK aligned. Always current."],
-    image: "/steps/detect.svg",
+    image: "/steps/detect.webp",
     Component: DetectionProcess
   },
   {
@@ -34,7 +35,7 @@ const steps = [
     subtitle: "From alert to closed in minutes.",
     description: "When a threat is detected, Trench agents automatically investigate, correlate context and trigger response workflows. Your team gets actionable outcomes inside their collaboration tools. No context switching. No cognitive overload.",
     badges: ["Automated investigation and triage", "Decisions delivered to your collaboration tools", "Your team focuses on decisions. Not busywork."],
-    image: "/steps/respond.svg",
+    image: "/steps/respond.webp",
     Component: RespondProcess
   }
 ];
@@ -72,7 +73,7 @@ export default function ProcessSteps() {
       <div className="section-header">
         <ScrollReveal direction="up" distance={30}>
           <span className="eyebrow">FROM COGNITIVE OVERLOAD TO COGNITIVE HARMONY.</span>
-          <TextReveal text="Introducing Headless SecOps." as="h2" className="title-lg" />
+          <TextReveal text="Introducing Headless SecOps." as="h1" className="title-lg" />
           <p className="sub-headline" style={{ textTransform: 'uppercase', letterSpacing: '2px', fontSize: '13px', fontWeight: 600 }}>
             No alerts. No rules. No dashboards. Your SecOps, inside your collaboration tools.
           </p>
@@ -102,7 +103,7 @@ export default function ProcessSteps() {
           <AnimatePresence mode="wait">
             <motion.div
               key={activeIndex}
-              initial={{ opacity: 0, y: 10 }}
+              initial={isInitialMount() ? false : { opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.05 }}
@@ -126,7 +127,7 @@ export default function ProcessSteps() {
           <AnimatePresence mode="wait">
             <motion.div
               key={activeIndex}
-              initial={{ opacity: 0, x: 20 }}
+              initial={isInitialMount() ? false : { opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -20 }}
               transition={{ duration: 0.05 }}
@@ -155,7 +156,7 @@ export default function ProcessSteps() {
             {steps.map((s, i) => (
               <div key={i} onClick={() => handleTabClick(i)} style={{
                 height: "4px", flex: 1, borderRadius: "2px", cursor: "pointer",
-                background: i === activeIndex ? "var(--color-primary-100)" : i < activeIndex ? "rgba(13, 65, 225, 0.3)" : "rgba(0,0,0,0.1)",
+                background: i === activeIndex ? "var(--color-primary-100)" : i < activeIndex ? "rgba(49, 82, 185, 0.3)" : "rgba(0,0,0,0.1)",
                 transition: "all 0.3s",
               }} />
             ))}
@@ -164,7 +165,7 @@ export default function ProcessSteps() {
 
       </div>
 
-      <style jsx>{`
+      <style dangerouslySetInnerHTML={{ __html: `
         .process-wrapper {
           width: 100%;
           padding: 2rem 0;
@@ -190,7 +191,7 @@ export default function ProcessSteps() {
           margin-bottom: 1.5rem;
         }
 
-        :global(.headline) {
+        .headline {
           margin-bottom: 1.5rem;
         }
 
@@ -232,8 +233,8 @@ export default function ProcessSteps() {
           font-family: inherit;
         }
         .tab-button:hover {
-          border-color: rgba(13, 65, 225, 0.2);
-          background: rgba(13, 65, 225, 0.02);
+          border-color: rgba(49, 82, 185, 0.2);
+          background: rgba(49, 82, 185, 0.02);
         }
         .tab-button.active {
           border-color: var(--color-primary-100);
@@ -273,7 +274,7 @@ export default function ProcessSteps() {
           object-fit: contain;
         }
 
-        :global(.custom-process-component) {
+        .custom-process-component {
           width: 100% !important;
           height: 100% !important;
           padding: 0 !important;
@@ -330,20 +331,20 @@ export default function ProcessSteps() {
           .process-wrapper { padding: 2rem 0; }
           .section-header { margin-bottom: 1.5rem; padding: 0 1rem; }
           .eyebrow { font-size: 12px; margin-bottom: 1rem; }
-          :global(.title-lg) { font-size: 1.5rem; }
+          .title-lg { font-size: 1.5rem; }
           .sub-headline { font-size: 11px; }
           .main-grid-layout { gap: 1.5rem; padding: 0 1rem; }
           .visual-card-container { height: auto; min-height: auto; }
           .tab-button { padding: 0.5rem; font-size: 10px; }
           .tab-number { font-size: 16px; }
           .step-indicator { font-size: 12px; margin-bottom: 1rem; }
-          :global(.headline) { font-size: 1rem; margin-bottom: 0.75rem; }
+          .headline { font-size: 1rem; margin-bottom: 0.75rem; }
           .body-text-p { font-size: 0.85rem; margin-bottom: 1rem; }
           .badge-label { font-size: 0.75rem; }
           .badges-grid { gap: 0.75rem; }
         }
 
-      `}</style>
+      ` }} />
     </div>
   );
 }

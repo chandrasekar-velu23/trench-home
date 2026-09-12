@@ -1,0 +1,14 @@
+{
+  "name": "Trench Security",
+  "short_name": "Trench",
+  "description": "Trench is the new operating system for security operations. An agentic platform that does what your SIEM can't and your SOC never gets to, automatically.",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#EDE7D9",
+  "theme_color": "#3152B9",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "/trench.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}

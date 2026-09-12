@@ -1,0 +1,11 @@
+{
+  "title": "Trench | Agentic OS for Actionable SecOps",
+  "description": "Trench is the new operating system for security operations. An agentic platform that does what your SIEM can't and your SOC never gets to, automatically.",
+  "robots": {
+    "index": true
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}

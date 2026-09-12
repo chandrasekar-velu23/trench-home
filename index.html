@@ -1,0 +1,96 @@
+<!doctype html>
+<!-- data-landing: the first page paints without its entrance animation, so the
+     headline counts for LCP. RouteEffects removes it on the first navigation. -->
+<html lang="en" data-landing>
+
+<head>
+  <!-- figma:head-start -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Trench | Agentic OS for Actionable SecOps</title>
+  <meta name="description" content="Trench is the new operating system for security operations. An agentic platform that does what your SIEM can't and your SOC never gets to, automatically." />
+  <meta name="keywords" content="Cybersecurity, SecOps, Agentic SecOps, SOC Automation, SIEM, Security Operations, Enterprise Security, Cloud Security, Trench Security" />
+  <meta name="robots" content="index, follow" />
+  <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <meta name="author" content="Trench Security" />
+  <link rel="canonical" href="https://www.trenchsecurity.ai" />
+
+  <!-- Google Search Console (meta method; the /googlec87b45408e1ef533.html file method also stays) -->
+  <meta name="google-site-verification" content="oYp5PFy7iOQQx5URYjzRrVn_etEIbG1qLxoRQ3PPB-4" />
+
+  <link rel="icon" href="/trench.svg" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <meta name="theme-color" content="#EDE7D9" />
+  <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+  <link rel="alternate" type="text/plain" title="LLM-readable site summary" href="/llms.txt" />
+
+  <!-- Self-hosted fonts: preload the two faces used above the fold -->
+  <link rel="preload" href="/fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/poppins-400-latin.woff2" as="font" type="font/woff2" crossorigin />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Trench Security" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:url" content="https://www.trenchsecurity.ai" />
+  <meta property="og:title" content="Trench | Agentic OS for Actionable SecOps" />
+  <meta property="og:description" content="Trench is the new operating system for security operations. An agentic platform that does what your SIEM can't and your SOC never gets to, automatically." />
+  <meta property="og:image" content="https://www.trenchsecurity.ai/logo/trench-og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Trench SecOps Platform" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://www.trenchsecurity.ai" />
+  <meta name="twitter:title" content="Trench | Agentic OS for Actionable SecOps" />
+  <meta name="twitter:description" content="Trench is the new operating system for security operations. An agentic platform that does what your SIEM can't and your SOC never gets to, automatically." />
+  <meta name="twitter:image" content="https://www.trenchsecurity.ai/logo/trench-og-image.png" />
+
+  <!-- Tracking: GTM-P4DNDLW4, GA4 G-E1SQD3N78D, Clarity y14biiygt7,
+       ContentSquare 915bc8852a0d2, Mailchimp connected site.
+       The queues (dataLayer, gtag, clarity) exist immediately, so no event is
+       lost. The scripts themselves load once the HTML has parsed, which is
+       about when the previous Next.js site loaded them (afterInteractive), and
+       keeps them off the critical rendering path (FCP / LCP). jQuery is
+       deferred, so it has run before GTM loads, for any GTM tag that uses it. -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-E1SQD3N78D');
+    window.clarity = window.clarity || function(){(window.clarity.q = window.clarity.q || []).push(arguments)};
+    document.addEventListener('DOMContentLoaded', function () {
+      function load(src, id) {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = src;
+        if (id) s.id = id;
+        document.head.appendChild(s);
+      }
+      load('https://www.googletagmanager.com/gtm.js?id=GTM-P4DNDLW4');
+      load('https://www.googletagmanager.com/gtag/js?id=G-E1SQD3N78D');
+      load('https://www.clarity.ms/tag/y14biiygt7');
+      load('https://t.contentsquare.net/uxa/915bc8852a0d2.js');
+      load('https://chimpstatic.com/mcjs-connected/js/users/e293fdae0e4a09d187dabd8c1/5358e9752afc32c595d726957.js', 'mcjs');
+    });
+  </script>
+  <script defer src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <!-- figma:head-end -->
+</head>
+
+<body style="background-color: #EDE7D9;">
+  <!-- figma:body-start -->
+  <noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P4DNDLW4"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe>
+  </noscript>
+  <div id="root"></div>
+  <script type="module" src="/src/main.tsx"></script>
+  <!-- figma:body-end -->
+</body>
+
+</html>

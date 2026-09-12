@@ -1,0 +1,272 @@
+@import './fonts.css';
+@import 'tailwindcss';
+
+:root {
+  /* ── Brand core ── */
+  --color-primary-100: #3152B9;
+  --color-primary-200: #4A6AD4;
+  --color-primary-300: #6B89E0;
+
+  /* ── CTA button & surface defaults ── */
+  --color-cta-primary: #3152B9;
+  --color-cta-primary-hover: #253D8F;
+  --color-bg-secondary: #FFFFFF;
+
+  /* ── Neutral scale ── */
+  --color-neutral-100: #EDE7D9;  /* brand cream — matches page background */
+  --color-neutral-200: rgba(49, 82, 185, 0.06);
+  --color-neutral-300: rgba(49, 82, 185, 0.12);
+  --color-neutral-500: #94A3B8;
+  --color-neutral-600: #555555;
+  --color-neutral-700: #4A4A4A;
+  --color-neutral-800: #2B2B2B;
+
+  /* ── Semantic text aliases ── */
+  --color-text-primary:   #2B2B2B;
+  --color-text-secondary: #555555;
+  --color-text-muted:     #94A3B8;
+  --color-text-inverse:   #FFFFFF;
+
+  /* ── Semantic border aliases ── */
+  --color-border-default: rgba(49, 82, 185, 0.12);
+
+  /* ── Accent palette ── */
+  --color-secondary-magenta: #E67E41;   /* mapped to brand orange */
+  --color-secondary-cyan:    #4A6AD4;   /* mapped to lighter navy */
+  --color-accent:            #E67E41;
+
+  /* ── Typography ── */
+  --font-primary: 'Bricolage Grotesque', 'Bricolage Grotesque Fallback: Arial', 'Bricolage Grotesque Fallback: Roboto', sans-serif;
+  --font-secondary: 'Poppins', 'Poppins Fallback: Arial', 'Poppins Fallback: Roboto', sans-serif;
+}
+
+
+@theme {
+  --color-cream: #EDE7D9;
+  --color-cream-dark: #E4DCCB;
+  --color-navy: #3152B9;
+  --color-navy-dark: #253D8F;
+  --color-navy-light: #4A6AD4;
+  --color-orange: #E67E41;
+  --color-orange-dark: #CC6A2E;
+  --color-charcoal: #2B2B2B;
+  --color-charcoal-light: #4A4A4A;
+  --color-border: rgba(49, 82, 185, 0.12);
+  --font-display: 'Bricolage Grotesque', 'Bricolage Grotesque Fallback: Arial', 'Bricolage Grotesque Fallback: Roboto', sans-serif;
+  --font-body: 'Poppins', 'Poppins Fallback: Arial', 'Poppins Fallback: Roboto', sans-serif;
+  /* Were next/font variables in the old site; the ported pages still use them. */
+  --font-poppins: 'Poppins', 'Poppins Fallback: Arial', 'Poppins Fallback: Roboto';
+  --font-bricolage: 'Bricolage Grotesque', 'Bricolage Grotesque Fallback: Arial', 'Bricolage Grotesque Fallback: Roboto';
+}
+
+h1, h2, h3, h4, h5, h6, .font-display, [style*="fontFamily: 'Poppins'"][style*="fontSize: 'clamp("] {
+  font-family: 'Bricolage Grotesque', 'Bricolage Grotesque Fallback: Arial', 'Bricolage Grotesque Fallback: Roboto', sans-serif !important;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Poppins', 'Poppins Fallback: Arial', 'Poppins Fallback: Roboto', sans-serif;
+  background-color: #EDE7D9;
+  color: #2B2B2B;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Hide scrollbar but allow scrolling */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: #EDE7D9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(49, 82, 185, 0.25);
+  border-radius: 2px;
+}
+
+@keyframes marqueeTicker {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ─── Global Layout Utilities (used by all sub-pages) ─── */
+
+/* page-main: base wrapper for every sub-page, accounts for fixed header */
+.page-main {
+  width: 100%;
+  min-height: 100vh;
+  padding-top: 130px; /* 72px nav + 38px announcement bar + clearance */
+}
+
+/* container-wide: centred content column with modern wide layout */
+.container-wide {
+  width: 100%;
+  max-width: 1380px;
+  margin: 0 auto;
+  padding: 0 2.5rem;
+}
+
+@media (max-width: 1024px) {
+  .container-wide {
+    padding: 0 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .container-wide {
+    padding: 0 1.25rem;
+  }
+}
+
+/* content-block: standard vertical section rhythm */
+.content-block {
+  padding: clamp(4.5rem, 8vw, 7rem) 0;
+}
+
+/* grid-2: two-column responsive grid */
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3.5rem;
+}
+@media (max-width: 768px) {
+  .grid-2 {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+/* grid-3: three-column responsive grid */
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.75rem;
+}
+@media (max-width: 900px) {
+  .grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 600px) {
+  .grid-3 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* grid-4: four-column responsive grid */
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2.25rem;
+}
+@media (max-width: 1024px) {
+  .grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 600px) {
+  .grid-4 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* text-center utility */
+.text-center {
+  text-align: center;
+}
+
+/* overflow-hidden utility */
+.overflow-hidden {
+  overflow: hidden;
+}
+
+/* ─── Fade-in animation for page transitions ─── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+html:not([data-landing]) .page-main > * {
+  animation: fadeInUp 0.45s ease both;
+}
+
+/* ─── Typography Utilities (used by sub-pages) ─── */
+
+.title-lg {
+  font-family: 'Bricolage Grotesque', 'Bricolage Grotesque Fallback: Arial', 'Bricolage Grotesque Fallback: Roboto', sans-serif;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: #2B2B2B;
+}
+
+.title-md {
+  font-family: 'Bricolage Grotesque', 'Bricolage Grotesque Fallback: Arial', 'Bricolage Grotesque Fallback: Roboto', sans-serif;
+  font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  color: #2B2B2B;
+}
+
+.title-sm {
+  font-family: 'Bricolage Grotesque', 'Bricolage Grotesque Fallback: Arial', 'Bricolage Grotesque Fallback: Roboto', sans-serif;
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: #2B2B2B;
+}
+
+.body-lead {
+  font-family: 'Poppins', 'Poppins Fallback: Arial', 'Poppins Fallback: Roboto', sans-serif;
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  font-weight: 400;
+  line-height: 1.7;
+  color: #555555;
+}
+
+.body-text {
+  font-family: 'Poppins', 'Poppins Fallback: Arial', 'Poppins Fallback: Roboto', sans-serif;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #555555;
+}
+
+.eyebrow {
+  font-family: 'Poppins', 'Poppins Fallback: Arial', 'Poppins Fallback: Roboto', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #3152B9;
+}
+
+/* ─── Spacing utilities ─── */
+.mt-auto { margin-top: auto; }
+.mb-auto { margin-bottom: auto; }
+.mx-auto { margin-left: auto; margin-right: auto; }
+.w-full  { width: 100%; }
+.flex    { display: flex; }
+.flex-col { flex-direction: column; }
+.items-center { align-items: center; }
+.justify-center { justify-content: center; }
+.gap-4   { gap: 1rem; }
+.gap-6   { gap: 1.5rem; }
+.gap-8   { gap: 2rem; }
+/* Page entrance animation (in-app navigation only): off for reduced motion. */
+@media (prefers-reduced-motion: reduce) {
+  .page-main > * { animation: none !important; }
+}

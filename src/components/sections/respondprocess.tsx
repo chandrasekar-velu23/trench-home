@@ -9,15 +9,15 @@ export default function RespondProcess() {
     }, []);
 
     // Brand palette only
-    const P = "#0D41E1";
-    const P2 = "#1E3EB0";
-    const PT = "#EFF6FF";
-    const PM = "#DBEAFE";
+    const P = "#3152B9";
+    const P2 = "#253D8F";
+    const PT = "#EDE7D9";
+    const PM = "#E4DCCB";
     const BG = "#ffffff";
-    const BB = "#F1F5F9";
-    const SC = "#E2E8F0";
-    const TM = "#64748B";
-    const TD = "#1E293B";
+    const BB = "#E4DCCB";
+    const SC = "rgba(49, 82, 185, 0.12)";
+    const TM = "#555555";
+    const TD = "#2B2B2B";
 
     // Timeline nodes — evenly spaced across the wider viewBox
     const flow = [
@@ -83,7 +83,7 @@ export default function RespondProcess() {
                         {/* active step number */}
                         {i === step && (
                             <text x={node.x} y="145" textAnchor="middle" fontSize="12"
-                                fill={P} fontWeight="800" fontFamily="'Poppins', sans-serif">
+                                fill={P} fontWeight="800" fontFamily="'Poppins', 'Poppins Fallback: Arial', 'Poppins Fallback: Roboto', sans-serif">
                                 {i + 1}
                             </text>
                         )}
@@ -98,7 +98,7 @@ export default function RespondProcess() {
                                 textAnchor="middle" fontSize="9.5"
                                 fill={i <= step ? P : TD}
                                 fontWeight={i <= step ? "800" : "600"}
-                                fontFamily="'Poppins', sans-serif">
+                                fontFamily="'Poppins', 'Poppins Fallback: Arial', 'Poppins Fallback: Roboto', sans-serif">
                                 {line}
                             </text>
                         ))}
@@ -117,7 +117,7 @@ export default function RespondProcess() {
                 <rect x="16" y="265" width="318" height="140" rx="10"
                     fill={BB} stroke={P} strokeWidth="1.8" strokeOpacity="0.45" />
                 <text x="36" y="290" fontSize="10" fill={P}
-                    fontWeight="800" fontFamily="'Poppins', sans-serif" letterSpacing="1.5">
+                    fontWeight="800" fontFamily="'Poppins', 'Poppins Fallback: Arial', 'Poppins Fallback: Roboto', sans-serif" letterSpacing="1.5">
                     AI AGENT ACTIVITY
                 </text>
                 {agentActions.slice(0, Math.min(step + 1, 5)).map((action, i) => (
@@ -134,7 +134,7 @@ export default function RespondProcess() {
                             fill={i === step ? P : PM} />
                         <text x="50" y={318 + i * 20} fontSize="9.5"
                             fill={i === step ? P : TD}
-                            fontFamily="'Poppins', sans-serif"
+                            fontFamily="'Poppins', 'Poppins Fallback: Arial', 'Poppins Fallback: Roboto', sans-serif"
                             fontWeight={i === step ? "700" : "500"}>
                             {action}
                         </text>
@@ -145,19 +145,19 @@ export default function RespondProcess() {
                 <rect x="346" y="265" width="318" height="140" rx="10"
                     fill={BB} stroke={P} strokeWidth="1.8" strokeOpacity="0.45" />
                 <text x="366" y="290" fontSize="10" fill={P}
-                    fontWeight="800" fontFamily="'Poppins', sans-serif" letterSpacing="1.5">
+                    fontWeight="800" fontFamily="'Poppins', 'Poppins Fallback: Arial', 'Poppins Fallback: Roboto', sans-serif" letterSpacing="1.5">
                     RESPONSE METRICS
                 </text>
                 {metrics.map((m, i) => (
                     <g key={i}>
                         <text x="366" y={316 + i * 20} fontSize="9"
                             fill={m.active ? TD : TM}
-                            fontWeight="600" fontFamily="'Poppins', sans-serif">
+                            fontWeight="600" fontFamily="'Poppins', 'Poppins Fallback: Arial', 'Poppins Fallback: Roboto', sans-serif">
                             {m.label}
                         </text>
                         <text x="654" y={316 + i * 20} textAnchor="end" fontSize="9"
                             fill={m.active ? P : TM}
-                            fontFamily="'Poppins', sans-serif" fontWeight="800">
+                            fontFamily="'Poppins', 'Poppins Fallback: Arial', 'Poppins Fallback: Roboto', sans-serif" fontWeight="800">
                             {m.value}
                         </text>
                         <line x1="366" y1={320 + i * 20} x2="654" y2={320 + i * 20}
@@ -168,12 +168,12 @@ export default function RespondProcess() {
 
                 {/* ── FOOTER ── */}
                 <text x="340" y="422" textAnchor="middle" fontSize="9" fill={TM}
-                    fontFamily="'Poppins', sans-serif" fontWeight="600" letterSpacing="2">
+                    fontFamily="'Poppins', 'Poppins Fallback: Arial', 'Poppins Fallback: Roboto', sans-serif" fontWeight="600" letterSpacing="2">
                     DETECT → INVESTIGATE → CORRELATE → CLOSE
                 </text>
             </svg>
 
-            <style jsx>{`
+            <style dangerouslySetInnerHTML={{ __html: `
                 .respond-wrap {
                     width: 100%;
                     height: 100%;
@@ -182,8 +182,8 @@ export default function RespondProcess() {
                     justify-content: stretch;
                     background: #ffffff;
                     border-radius: 20px;
-                    border: 1px solid #E2E8F0;
-                    box-shadow: 0 4px 32px rgba(13, 65, 225, 0.07);
+                    border: 1px solid rgba(49, 82, 185, 0.12);
+                    box-shadow: 0 4px 32px rgba(49, 82, 185, 0.07);
                     overflow: hidden;
                     min-height: 200px;
                     padding: 0;
@@ -200,7 +200,7 @@ export default function RespondProcess() {
                     height: 100%;
                     display: block;
                 }
-            `}</style>
+            ` }} />
         </div>
     );
 }

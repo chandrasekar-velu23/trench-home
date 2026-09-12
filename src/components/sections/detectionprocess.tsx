@@ -19,14 +19,14 @@ export default function DetectionProcess() {
     const active = tick % threatNodes.length;
 
     // Brand palette only
-    const P = "#0D41E1";
-    const PT = "#EFF6FF";
-    const PM = "#DBEAFE";
+    const P = "#3152B9";
+    const PT = "#EDE7D9";
+    const PM = "#E4DCCB";
     const BG = "#ffffff";
-    const BB = "#F1F5F9";
-    const SC = "#E2E8F0";
-    const TM = "#64748B";
-    const TD = "#1E293B";
+    const BB = "#E4DCCB";
+    const SC = "rgba(49, 82, 185, 0.12)";
+    const TM = "#555555";
+    const TD = "#2B2B2B";
 
     return (
         <div className="detect-wrap">
@@ -42,9 +42,9 @@ export default function DetectionProcess() {
                 <rect x="10" y="75" width="102" height="290" rx="10"
                     fill={BB} stroke={SC} strokeWidth="1.5" />
                 <text x="61" y="102" textAnchor="middle" fontSize="9.5"
-                    fill={TD} fontWeight="700" fontFamily="'Poppins', sans-serif">RAW</text>
+                    fill={TD} fontWeight="700" fontFamily="'Poppins', 'Poppins Fallback: Arial', 'Poppins Fallback: Roboto', sans-serif">RAW</text>
                 <text x="61" y="118" textAnchor="middle" fontSize="9.5"
-                    fill={TD} fontWeight="700" fontFamily="'Poppins', sans-serif">SIGNALS</text>
+                    fill={TD} fontWeight="700" fontFamily="'Poppins', 'Poppins Fallback: Arial', 'Poppins Fallback: Roboto', sans-serif">SIGNALS</text>
 
                 {["LOG", "ALERT", "EVENT", "FLOW", "INTEL"].map((l, i) => (
                     <g key={i}>
@@ -53,7 +53,7 @@ export default function DetectionProcess() {
                             stroke={active === i ? P : SC} strokeWidth="1.5" />
                         <text x="61" y={158 + i * 38} textAnchor="middle" fontSize="10"
                             fill={active === i ? P : TD}
-                            fontWeight="700" fontFamily="'Poppins', sans-serif">
+                            fontWeight="700" fontFamily="'Poppins', 'Poppins Fallback: Arial', 'Poppins Fallback: Roboto', sans-serif">
                             {l}
                         </text>
                     </g>
@@ -73,9 +73,9 @@ export default function DetectionProcess() {
                 <circle cx="325" cy="215" r="20"
                     fill={PT} stroke={P} strokeWidth="2.5" />
                 <text x="325" y="211" textAnchor="middle" fontSize="8.5"
-                    fill={P} fontFamily="'Poppins', sans-serif" fontWeight="800">INTENT</text>
+                    fill={P} fontFamily="'Poppins', 'Poppins Fallback: Arial', 'Poppins Fallback: Roboto', sans-serif" fontWeight="800">INTENT</text>
                 <text x="325" y="224" textAnchor="middle" fontSize="8.5"
-                    fill={P} fontFamily="'Poppins', sans-serif" fontWeight="800">GRAPH</text>
+                    fill={P} fontFamily="'Poppins', 'Poppins Fallback: Arial', 'Poppins Fallback: Roboto', sans-serif" fontWeight="800">GRAPH</text>
 
                 {/* ── THREAT NODES ── */}
                 {threatNodes.map((node, i) => (
@@ -93,7 +93,7 @@ export default function DetectionProcess() {
                             <text key={j} x={node.x} y={node.y + 7 + j * 15}
                                 textAnchor="middle" fontSize="9.5"
                                 fill={i === active ? P : TD}
-                                fontWeight="700" fontFamily="'Poppins', sans-serif">
+                                fontWeight="700" fontFamily="'Poppins', 'Poppins Fallback: Arial', 'Poppins Fallback: Roboto', sans-serif">
                                 {line}
                             </text>
                         ))}
@@ -104,7 +104,7 @@ export default function DetectionProcess() {
                 <rect x="250" y="378" width="150" height="28" rx="14"
                     fill={PT} stroke={P} strokeWidth="1.8" strokeOpacity="0.8" />
                 <text x="325" y="395" textAnchor="middle" fontSize="9.5"
-                    fill={P} fontWeight="700" fontFamily="'Poppins', sans-serif">
+                    fill={P} fontWeight="700" fontFamily="'Poppins', 'Poppins Fallback: Arial', 'Poppins Fallback: Roboto', sans-serif">
                     MITRE ATT&amp;CK ALIGNED
                 </text>
 
@@ -117,9 +117,9 @@ export default function DetectionProcess() {
                 <rect x="516" y="125" width="152" height="182" rx="10"
                     fill={BB} stroke={SC} strokeWidth="1.5" />
                 <text x="592" y="150" textAnchor="middle" fontSize="9.5"
-                    fill={P} fontWeight="700" fontFamily="'Poppins', sans-serif">AUTO-GENERATED</text>
+                    fill={P} fontWeight="700" fontFamily="'Poppins', 'Poppins Fallback: Arial', 'Poppins Fallback: Roboto', sans-serif">AUTO-GENERATED</text>
                 <text x="592" y="165" textAnchor="middle" fontSize="9.5"
-                    fill={P} fontWeight="700" fontFamily="'Poppins', sans-serif">DETECTIONS</text>
+                    fill={P} fontWeight="700" fontFamily="'Poppins', 'Poppins Fallback: Arial', 'Poppins Fallback: Roboto', sans-serif">DETECTIONS</text>
 
                 {[0, 1, 2, 3].map(i => (
                     <g key={i}>
@@ -138,12 +138,12 @@ export default function DetectionProcess() {
 
                 {/* ── FOOTER ── */}
                 <text x="350" y="425" textAnchor="middle" fontSize="9" fill={TM}
-                    fontFamily="'Poppins', sans-serif" fontWeight="600" letterSpacing="2">
+                    fontFamily="'Poppins', 'Poppins Fallback: Arial', 'Poppins Fallback: Roboto', sans-serif" fontWeight="600" letterSpacing="2">
                     SIGNALS → INTENT GRAPH → DETECTIONS
                 </text>
             </svg>
 
-            <style jsx>{`
+            <style dangerouslySetInnerHTML={{ __html: `
                 .detect-wrap {
                     width: 100%;
                     height: 100%;
@@ -152,8 +152,8 @@ export default function DetectionProcess() {
                     justify-content: stretch;
                     background: #ffffff;
                     border-radius: 20px;
-                    border: 1px solid #E2E8F0;
-                    box-shadow: 0 4px 32px rgba(13, 65, 225, 0.07);
+                    border: 1px solid rgba(49, 82, 185, 0.12);
+                    box-shadow: 0 4px 32px rgba(49, 82, 185, 0.07);
                     overflow: hidden;
                     min-height: 200px;
                     padding: 0;
@@ -175,7 +175,7 @@ export default function DetectionProcess() {
                     height: 100%;
                     display: block;
                 }
-            `}</style>
+            ` }} />
         </div>
     );
 }
