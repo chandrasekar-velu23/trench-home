@@ -169,14 +169,22 @@ export default function BplSignupPage() {
         }),
       });
 
-      const result = await res.json();
+      let result: { status?: string; message?: string } | null = null;
+      const contentType = res.headers.get("content-type");
+      if (contentType && contentType.includes("application/json")) {
+        try {
+          result = await res.json();
+        } catch {
+          // JSON parsing failed
+        }
+      }
 
-      if (res.ok && result.status === "success") {
+      if (res.ok && result?.status === "success") {
         setShowModal(true);
       } else {
         setErrors((prev) => ({
           ...prev,
-          form: result.message || "Failed to submit signup. Please try again.",
+          form: result?.message || "Failed to submit signup. Please try again or email ask@trenchsecurity.ai.",
         }));
       }
     } catch (err) {

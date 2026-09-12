@@ -144,17 +144,22 @@ export default function ForMSSPsClient() {
         body: JSON.stringify(data),
       });
 
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message || "Form submission failed");
+      // Handle response safely without throwing syntax error on HTML/plain text
+      let result: { status?: string; message?: string } | null = null;
+      const contentType = response.headers.get("content-type");
+      if (contentType && contentType.includes("application/json")) {
+        try {
+          result = await response.json();
+        } catch {
+          // JSON parsing failed
+        }
       }
 
-      const result = await response.json();
-
-      if (result.status === "success") {
+      if (response.ok && result?.status === "success") {
         setIsSuccess(true);
       } else {
-        throw new Error(result.message || "Form submission failed");
+        const fallbackMsg = "Form submission failed. Please try again or email ask@trenchsecurity.ai.";
+        throw new Error(result?.message || fallbackMsg);
       }
     } catch (error) {
       console.error("Form submission error:", error);
