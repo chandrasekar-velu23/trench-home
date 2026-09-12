@@ -1,6 +1,8 @@
 import type { IncomingMessage, ServerResponse } from 'node:http'
 import { handleApiRequest, writeResult } from './_lib/forms'
 
+export const maxDuration = 60
+
 // Vercel Node.js function. Vercel parses JSON onto req.body and throws when
 // the body is not valid JSON, which is reported as a 400.
 export default async function handler(req: IncomingMessage & { body?: unknown }, res: ServerResponse) {
