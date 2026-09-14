@@ -10,6 +10,7 @@ export default function AIMLLeadPage() {
         .job-details-container {
           max-width: 860px;
           margin: 0 auto;
+          padding: 0 1.5rem;
         }
 
         .job-back-link {
@@ -182,13 +183,21 @@ export default function AIMLLeadPage() {
         }
 
         @media (max-width: 640px) {
-          .job-title { font-size: 2rem; }
-          .job-section-card { padding: 1.5rem; }
-          .job-apply-card { padding: 1.5rem; }
+          .job-details-container { padding: 0 1.25rem; }
+          .page-main-career { padding-top: 100px !important; }
+          .job-title { font-size: 1.85rem; margin: 0.5rem 0 1rem; }
+          .job-tag { white-space: normal; }
+          .job-quote-callout { padding: 1.15rem 1.25rem; margin: 1.5rem 0 1.75rem; }
+          .job-quote-callout p { font-size: 1.05rem; }
+          .job-section-card { padding: 1.35rem 1.25rem; margin-bottom: 1.5rem; border-radius: 14px; }
+          .job-section-card h2 { font-size: 1.1rem; margin-bottom: 0.85rem; }
+          .job-section-card p, .job-section-card li { font-size: 0.98rem; line-height: 1.65; }
+          .job-apply-card { padding: 1.35rem 1.25rem; margin-top: 2rem; border-radius: 14px; }
+          .job-apply-card h2 { font-size: 1.2rem; }
         }
       `}} />
       <main style={{ backgroundColor: '#EDE7D9', minHeight: '100vh', position: 'relative', zIndex: 10, paddingBottom: '80px' }}>
-        <div className="page-main overflow-hidden" style={{ backgroundColor: '#EDE7D9', paddingTop: '160px' }}>
+        <div className="page-main page-main-career overflow-hidden" style={{ backgroundColor: '#EDE7D9', paddingTop: '160px' }}>
           <div className="job-details-container">
 
             <Link href="/career" className="job-back-link">

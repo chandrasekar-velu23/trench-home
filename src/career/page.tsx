@@ -10,7 +10,7 @@ const JOBS = [
     title: "AI Lead, Security R&D",
     department: "Engineering",
     location: "Bengaluru, India",
-    type: "Full-time · 6-12 years experience",
+    type: "Full-time, 6-12 years experience",
     description: "We are building the technical core of Agentic SecOps. This is a builder's leadership role, you will set technical direction, lead a small senior team and stay hands-on.",
     link: "/career/ai-lead-security-rd"
   },
@@ -19,7 +19,7 @@ const JOBS = [
     title: "AI/ML Lead, Applied AI for Security",
     department: "AI & ML",
     location: "Bengaluru, India",
-    type: "Full-time · 8-15 years experience",
+    type: "Full-time, 8-15 years experience",
     description: "We are building the detection brain for Agentic SecOps. This is a hands-on leadership role to build the models that power Trench's detection brain, from security-focused SLMs and UEBA to synthetic data, evaluation and production MLOps.",
     link: "/career/ai-ml-lead"
   },
@@ -28,18 +28,9 @@ const JOBS = [
     title: "Lead, Agentic SecOps",
     department: "Security Operations",
     location: "Bengaluru, India",
-    type: "Full-time · 6-12 years experience",
+    type: "Full-time, 6-12 years experience",
     description: "We are rewriting how Security Operations is practised. This is not a traditional SOC leadership role. You will help forward-looking security teams move from the traditional SOC model to an agentic operating model.",
     link: "/career/lead-agentic-secops"
-  },
-  {
-    id: "product-marketing-intern",
-    title: "Product Marketing Intern",
-    department: "Marketing",
-    location: "Bengaluru, India",
-    type: "Paid · 6 Months · Fresher or 1+ yr exp",
-    description: "Cybersecurity is drowning in noise. We don't need someone to generate content. We need someone to make the industry stop scrolling.",
-    link: "/career/product-marketing-intern"
   }
 ];
 
@@ -59,6 +50,11 @@ export default function CareerPage() {
           transform: translateY(-5px);
           box-shadow: 0 20px 40px rgba(49, 82, 185, 0.09);
         }
+        @media (max-width: 640px) {
+          .career-card {
+            padding: 1.5rem 1.25rem;
+          }
+        }
       `}} />
       <main style={{ backgroundColor: '#EDE7D9', minHeight: '100vh', position: 'relative', zIndex: 10 }}>
         {/* Explicit cream background to override any body gradients */}
@@ -72,8 +68,8 @@ export default function CareerPage() {
             </ScrollReveal>
 
             {/* Hero Image */}
-            <div style={{ width: '100%', maxWidth: '100%', height: 'auto', marginTop: '2rem', marginBottom: '3rem', borderRadius: '16px', overflow: 'hidden' }}>
-              <Image src="/career.webp" alt="Careers Hero" width={1200} height={400} style={{ width: '100%', height: 'auto', display: 'block' }} priority />
+            <div style={{ width: '100%', maxWidth: '100%', marginTop: '2rem', marginBottom: '3rem' }}>
+              <Image src="/career.webp" alt="Careers Hero" width={1200} height={400} style={{ width: '100%', height: 'auto', display: 'block', objectFit: 'contain' }} priority />
             </div>
 
             <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
@@ -91,11 +87,9 @@ export default function CareerPage() {
                           <span className="phase-badge">Active Hiring</span>
                         </div>
                         <h2 className="title-sm" style={{ marginBottom: '0.5rem', fontSize: '1.75rem', color: '#000000' }}>{job.title}</h2>
-                        <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', color: 'var(--color-neutral-500)', fontSize: '0.9rem', fontWeight: 500 }}>
+                        <div style={{ display: 'flex', gap: '1.25rem', flexWrap: 'wrap', color: 'var(--color-neutral-500)', fontSize: '0.9rem', fontWeight: 500 }}>
                           <span>{job.department}</span>
-                          <span>•</span>
                           <span>{job.location}</span>
-                          <span>•</span>
                           <span>{job.type}</span>
                         </div>
                       </div>

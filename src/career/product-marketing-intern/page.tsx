@@ -42,13 +42,10 @@ export default function ProductMarketingInternPage() {
                 Product Marketing Intern
               </h1>
 
-              <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', color: 'var(--color-neutral-500)', fontSize: '1rem', fontWeight: 500, marginBottom: '2rem', paddingBottom: '2rem', borderBottom: '1px solid rgba(0,0,0,0.1)' }}>
+              <div style={{ display: 'flex', gap: '1.25rem', flexWrap: 'wrap', color: 'var(--color-neutral-500)', fontSize: '1rem', fontWeight: 500, marginBottom: '2rem', paddingBottom: '2rem', borderBottom: '1px solid rgba(0,0,0,0.1)' }}>
                 <span>Bengaluru, India</span>
-                <span>•</span>
                 <span>Paid</span>
-                <span>•</span>
                 <span>6 Months</span>
-                <span>•</span>
                 <span>Fresher or 1+ year experience</span>
               </div>
             </ScrollReveal>
