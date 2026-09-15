@@ -805,7 +805,7 @@ export default function App({ initialPath }: { initialPath?: string } = {}) {
                     US OFFICE:
                   </span>
                   <span style={{ fontFamily: "'Poppins', 'Poppins Fallback: Arial', 'Poppins Fallback: Roboto', sans-serif", fontSize: 13, color: currentTheme.textMuted, lineHeight: 1.5, display: 'block' }}>
-                    1407 Canal Rd, Princeton, NJ 08540-8635
+                    1009 Lenox Drive, Suite 100, Lawrenceville, New Jersey 08649
                   </span>
                 </div>
 

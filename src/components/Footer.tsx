@@ -90,7 +90,7 @@ export default function Footer() {
                 <address className="footer-address">
                   <p style={{ fontSize: 16, fontWeight: 800 }}>Trench Security Inc.</p>
                   <h5 className="address-label">US Office:</h5>
-                  <p>1407 Canal Rd, Princeton, NJ 08540-8635</p>
+                  <p>1009 Lenox Drive, Suite 100, Lawrenceville, New Jersey 08649</p>
                 </address>
               </div>
               <div className="address-item">
